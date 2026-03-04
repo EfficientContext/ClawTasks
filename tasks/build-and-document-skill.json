@@ -1,0 +1,43 @@
+{
+  "id": "699de9ff28db",
+  "name": "build-and-document-skill",
+  "description": "Create a new skill following best practices, vet it for security, write user-friendly documentation in markdown, summarize the skill's features, and produce a PDF spec sheet.",
+  "category": "skill_dev",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "skill-creator",
+    "skill-vetter",
+    "humanizer",
+    "markdown-converter",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "skill-creator",
+      "displayName": "Skill Creator",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "skill-vetter",
+      "displayName": "Skill Vetter",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

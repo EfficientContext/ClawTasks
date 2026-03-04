@@ -1,0 +1,43 @@
+{
+  "id": "743d2389c8dd",
+  "name": "rss-news-digest",
+  "description": "Fetch today's news from RSS feeds, summarize each article, rewrite headlines in a friendly tone, format as a markdown newsletter, and log interesting findings to learnings.",
+  "category": "document",
+  "difficulty": "medium",
+  "expected_steps": 8,
+  "skills_required": [
+    "news-summary",
+    "summarize",
+    "humanizer",
+    "markdown-converter",
+    "self-improving-agent"
+  ],
+  "skills_info": [
+    {
+      "slug": "news-summary",
+      "displayName": "News Summary",
+      "category": "utility"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    }
+  ],
+  "num_skills": 5
+}

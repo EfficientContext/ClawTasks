@@ -1,0 +1,37 @@
+{
+  "id": "12f4492a3c86",
+  "name": "documentation-site-scraper",
+  "description": "Browse a framework's documentation site with headless browser, extract all tutorial pages, summarize each, convert to a unified markdown reference, and generate a downloadable PDF.",
+  "category": "automation",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "agent-browser",
+    "summarize",
+    "markdown-converter",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

@@ -1,0 +1,37 @@
+{
+  "id": "af8e20a28fd0",
+  "name": "self-improvement-research-cycle",
+  "description": "Review your recent error log, search for solutions to the top 3 issues online, summarize the fixes, update your learnings file, and create a summary report in markdown.",
+  "category": "agent_improvement",
+  "difficulty": "medium",
+  "expected_steps": 10,
+  "skills_required": [
+    "self-improving-agent",
+    "web-search",
+    "summarize",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

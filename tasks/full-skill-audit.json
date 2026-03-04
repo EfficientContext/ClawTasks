@@ -1,0 +1,43 @@
+{
+  "id": "bae07e349ffd",
+  "name": "full-skill-audit",
+  "description": "Find available skills on ClawHub, vet the top results for security, summarize each skill's capabilities, log evaluation notes to learnings, and generate an audit report PDF.",
+  "category": "maintenance",
+  "difficulty": "medium",
+  "expected_steps": 10,
+  "skills_required": [
+    "find-skills",
+    "skill-vetter",
+    "summarize",
+    "self-improving-agent",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "find-skills",
+      "displayName": "Find Skills",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "skill-vetter",
+      "displayName": "Skill Vetter",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

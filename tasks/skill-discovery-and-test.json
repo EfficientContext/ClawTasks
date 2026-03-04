@@ -1,0 +1,43 @@
+{
+  "id": "718abd52b736",
+  "name": "skill-discovery-and-test",
+  "description": "Search for skills related to 'PDF manipulation' on ClawHub, vet the top 3 for security, summarize capabilities, test the best one by creating a sample PDF, and log results.",
+  "category": "maintenance",
+  "difficulty": "medium",
+  "expected_steps": 8,
+  "skills_required": [
+    "find-skills",
+    "skill-vetter",
+    "summarize",
+    "nano-pdf",
+    "self-improving-agent"
+  ],
+  "skills_info": [
+    {
+      "slug": "find-skills",
+      "displayName": "Find Skills",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "skill-vetter",
+      "displayName": "Skill Vetter",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    }
+  ],
+  "num_skills": 5
+}

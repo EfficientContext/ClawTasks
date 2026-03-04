@@ -1,0 +1,254 @@
+[
+  {
+    "slug": "tavily-search",
+    "displayName": "Tavily Web Search",
+    "reason": "needs login / API key / account",
+    "downloads": 85979
+  },
+  {
+    "slug": "gog",
+    "displayName": "Gog",
+    "reason": "needs login / API key / account",
+    "downloads": 81370
+  },
+  {
+    "slug": "github",
+    "displayName": "Github",
+    "reason": "needs login / API key / account",
+    "downloads": 66397
+  },
+  {
+    "slug": "sonoscli",
+    "displayName": "Sonoscli",
+    "reason": "needs login / API key / account",
+    "downloads": 46124
+  },
+  {
+    "slug": "notion",
+    "displayName": "Notion",
+    "reason": "needs login / API key / account",
+    "downloads": 38709
+  },
+  {
+    "slug": "obsidian",
+    "displayName": "Obsidian",
+    "reason": "needs login / API key / account",
+    "downloads": 33484
+  },
+  {
+    "slug": "nano-banana-pro",
+    "displayName": "Nano Banana Pro",
+    "reason": "needs login / API key / account",
+    "downloads": 33295
+  },
+  {
+    "slug": "brave-search",
+    "displayName": "Brave Search",
+    "reason": "needs login / API key / account",
+    "downloads": 26952
+  },
+  {
+    "slug": "youtube-watcher",
+    "displayName": "YouTube Watcher",
+    "reason": "needs login / API key / account",
+    "downloads": 22528
+  },
+  {
+    "slug": "himalaya",
+    "displayName": "Himalaya",
+    "reason": "needs login / API key / account",
+    "downloads": 22132
+  },
+  {
+    "slug": "slack",
+    "displayName": "Slack",
+    "reason": "needs login / API key / account",
+    "downloads": 21067
+  },
+  {
+    "slug": "youtube-api-skill",
+    "displayName": "YouTube",
+    "reason": "needs login / API key / account",
+    "downloads": 20779
+  },
+  {
+    "slug": "gmail",
+    "displayName": "Gmail",
+    "reason": "needs login / API key / account",
+    "downloads": 20015
+  },
+  {
+    "slug": "lnbits-with-qrcode",
+    "displayName": "LNBits Wallet wtih QR Code",
+    "reason": "needs login / API key / account",
+    "downloads": 19263
+  },
+  {
+    "slug": "trello",
+    "displayName": "Trello",
+    "reason": "needs login / API key / account",
+    "downloads": 18692
+  },
+  {
+    "slug": "imap-smtp-email",
+    "displayName": "imap-smtp-email",
+    "reason": "needs login / API key / account",
+    "downloads": 17947
+  },
+  {
+    "slug": "outlook-api",
+    "displayName": "Outlook",
+    "reason": "needs login / API key / account",
+    "downloads": 17881
+  },
+  {
+    "slug": "stripe-api",
+    "displayName": "Stripe",
+    "reason": "needs login / API key / account",
+    "downloads": 17581
+  },
+  {
+    "slug": "whatsapp-business",
+    "displayName": "WhatsApp Business",
+    "reason": "needs login / API key / account",
+    "downloads": 17187
+  },
+  {
+    "slug": "shopify",
+    "displayName": "Shopify",
+    "reason": "needs login / API key / account",
+    "downloads": 16592
+  },
+  {
+    "slug": "xero",
+    "displayName": "Xero",
+    "reason": "needs login / API key / account",
+    "downloads": 16509
+  },
+  {
+    "slug": "salesforce-api",
+    "displayName": "Salesforce",
+    "reason": "needs login / API key / account",
+    "downloads": 16293
+  },
+  {
+    "slug": "typeform",
+    "displayName": "Typeform",
+    "reason": "needs login / API key / account",
+    "downloads": 16285
+  },
+  {
+    "slug": "google-slides",
+    "displayName": "Google Slides",
+    "reason": "needs login / API key / account",
+    "downloads": 16103
+  },
+  {
+    "slug": "caldav-calendar",
+    "displayName": "Caldav Calendar",
+    "reason": "needs login / API key / account",
+    "downloads": 16059
+  },
+  {
+    "slug": "apple-notes",
+    "displayName": "Apple Notes",
+    "reason": "needs login / API key / account",
+    "downloads": 15692
+  },
+  {
+    "slug": "discord",
+    "displayName": "Discord",
+    "reason": "needs login / API key / account",
+    "downloads": 15636
+  },
+  {
+    "slug": "google-meet",
+    "displayName": "Google Meet",
+    "reason": "needs login / API key / account",
+    "downloads": 15629
+  },
+  {
+    "slug": "clickup-api",
+    "displayName": "ClickUp",
+    "reason": "needs login / API key / account",
+    "downloads": 15615
+  },
+  {
+    "slug": "calendly-api",
+    "displayName": "Calendly",
+    "reason": "needs login / API key / account",
+    "downloads": 15524
+  },
+  {
+    "slug": "asana-api",
+    "displayName": "Asana",
+    "reason": "needs login / API key / account",
+    "downloads": 15209
+  },
+  {
+    "slug": "fathom-api",
+    "displayName": "Fathom",
+    "reason": "needs login / API key / account",
+    "downloads": 15142
+  },
+  {
+    "slug": "trello-api",
+    "displayName": "Trello",
+    "reason": "needs login / API key / account",
+    "downloads": 15076
+  },
+  {
+    "slug": "google-workspace-admin",
+    "displayName": "Google Workspace Admin",
+    "reason": "needs login / API key / account",
+    "downloads": 15073
+  },
+  {
+    "slug": "pipedrive-api",
+    "displayName": "Pipedrive",
+    "reason": "needs login / API key / account",
+    "downloads": 14653
+  },
+  {
+    "slug": "mailchimp",
+    "displayName": "Mailchimp",
+    "reason": "needs login / API key / account",
+    "downloads": 14471
+  },
+  {
+    "slug": "google-play",
+    "displayName": "Google Play",
+    "reason": "needs login / API key / account",
+    "downloads": 14296
+  },
+  {
+    "slug": "klaviyo",
+    "displayName": "Klaviyo",
+    "reason": "needs login / API key / account",
+    "downloads": 14235
+  },
+  {
+    "slug": "apple-reminders",
+    "displayName": "Apple Reminders",
+    "reason": "needs login / API key / account",
+    "downloads": 13589
+  },
+  {
+    "slug": "n8n-workflow-automation",
+    "displayName": "n8n workflow automation",
+    "reason": "needs login / API key / account",
+    "downloads": 13535
+  },
+  {
+    "slug": "exa-web-search-free",
+    "displayName": "Exa Web Search (Free)",
+    "reason": "needs login / API key / account",
+    "downloads": 13440
+  },
+  {
+    "slug": "x-twitter",
+    "displayName": "x-twitter",
+    "reason": "needs login / API key / account",
+    "downloads": 12983
+  }
+]

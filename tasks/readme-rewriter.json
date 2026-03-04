@@ -1,0 +1,43 @@
+{
+  "id": "cb3f3e5da5bd",
+  "name": "readme-rewriter",
+  "description": "Read a project's README.md, summarize its structure, search for README best practices online, rewrite it in a friendlier more engaging tone, and output both markdown and PDF.",
+  "category": "text_processing",
+  "difficulty": "medium",
+  "expected_steps": 8,
+  "skills_required": [
+    "summarize",
+    "web-search",
+    "humanizer",
+    "markdown-converter",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

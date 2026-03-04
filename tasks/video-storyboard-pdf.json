@@ -1,0 +1,37 @@
+{
+  "id": "29662b2b87b9",
+  "name": "video-storyboard-pdf",
+  "description": "Extract 8 keyframes from a video at equal intervals using ffmpeg, summarize what happens in each section, write captions, and compile into a storyboard PDF.",
+  "category": "media",
+  "difficulty": "medium",
+  "expected_steps": 8,
+  "skills_required": [
+    "video-frames",
+    "summarize",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "video-frames",
+      "displayName": "Video Frames",
+      "category": "media_processing"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

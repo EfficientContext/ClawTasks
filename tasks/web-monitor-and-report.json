@@ -1,0 +1,43 @@
+{
+  "id": "df283561c27b",
+  "name": "web-monitor-and-report",
+  "description": "Set up proactive monitoring of a competitor's website using headless browser, summarize any changes detected, log changes to learnings, and create a markdown change report.",
+  "category": "automation",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "proactive-agent",
+    "agent-browser",
+    "summarize",
+    "self-improving-agent",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "proactive-agent",
+      "displayName": "Proactive Agent",
+      "category": "agent_meta"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

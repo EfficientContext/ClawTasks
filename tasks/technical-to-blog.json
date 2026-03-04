@@ -1,0 +1,43 @@
+{
+  "id": "ebba1586791f",
+  "name": "technical-to-blog",
+  "description": "Read a technical PDF document, summarize the core concepts, rewrite in a beginner-friendly blog style, convert to clean markdown, and produce a blog-ready PDF.",
+  "category": "text_processing",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "pdf",
+    "summarize",
+    "humanizer",
+    "markdown-converter",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "pdf",
+      "displayName": "Pdf",
+      "category": "document_processing"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

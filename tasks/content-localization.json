@@ -1,0 +1,43 @@
+{
+  "id": "37b7fddd0a69",
+  "name": "content-localization",
+  "description": "Browse an English documentation site with headless browser, summarize each page, rewrite the content for a non-technical audience, format all pages as markdown, and compile into a PDF handbook.",
+  "category": "text_processing",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "agent-browser",
+    "summarize",
+    "humanizer",
+    "markdown-converter",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

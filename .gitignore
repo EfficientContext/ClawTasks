@@ -1,0 +1,9 @@
+# Downloaded skills (re-download with: python scripts/download_skills.py)
+skills/
+
+# Benchmark results
+results/
+
+# Python
+__pycache__/
+*.pyc

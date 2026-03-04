@@ -1,0 +1,37 @@
+{
+  "id": "e8808ed8d0a9",
+  "name": "daily-news-digest",
+  "description": "Fetch today's weather and news from RSS feeds, search for deeper coverage on the top story, summarize all content, and create a morning digest PDF.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 8,
+  "skills_required": [
+    "weather",
+    "news-summary",
+    "summarize",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "weather",
+      "displayName": "Weather",
+      "category": "utility"
+    },
+    {
+      "slug": "news-summary",
+      "displayName": "News Summary",
+      "category": "utility"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

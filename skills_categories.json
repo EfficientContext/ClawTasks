@@ -1,0 +1,408 @@
+{
+  "other": [
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "summary": "Captures learnings, errors, and corrections to enable continuous improvement. Use when: (1) A command or operation fails unexpectedly, (2) User corrects Clau...",
+      "downloads": 100995,
+      "installs": 1161,
+      "stars": 1239
+    },
+    {
+      "slug": "api-gateway",
+      "displayName": "API Gateway",
+      "summary": "Connect to 100+ APIs (Google Workspace, Microsoft 365, GitHub, Notion, Slack, Airtable, HubSpot, etc.) with managed OAuth. Use this skill when users want to...",
+      "downloads": 32467,
+      "installs": 98,
+      "stars": 161
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "summary": "Remove signs of AI-generated writing from text. Use when editing or reviewing\ntext to make it sound more natural and human-written. Based on Wikipedia's\ncomprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including:\ninflated symbolism, promotional language, superficial -ing analyses, vague\nattributions, em dash overuse, rule of three, AI vocabulary words, negative\nparallelisms, and excessive conjunctive phrases.",
+      "downloads": 31173,
+      "installs": 293,
+      "stars": 281
+    },
+    {
+      "slug": "mcporter",
+      "displayName": "Mcporter",
+      "summary": "Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.",
+      "downloads": 27607,
+      "installs": 799,
+      "stars": 79
+    },
+    {
+      "slug": "free-ride",
+      "displayName": "Free Ride - Unlimited free AI",
+      "summary": "Manages free AI models from OpenRouter for OpenClaw. Automatically ranks models by quality, configures fallbacks for rate-limit handling, and updates opencla...",
+      "downloads": 27211,
+      "installs": 102,
+      "stars": 209
+    },
+    {
+      "slug": "humanize-ai-text",
+      "displayName": "Humanize AI text",
+      "summary": "Humanize AI-generated text to bypass detection. This humanizer rewrites ChatGPT, Claude, and GPT content to sound natural and pass AI detectors like GPTZero,...",
+      "downloads": 25269,
+      "installs": 84,
+      "stars": 111
+    },
+    {
+      "slug": "byterover",
+      "displayName": "ByteRover",
+      "summary": "You MUST use this for gathering contexts before any work. This is a Knowledge management for AI agents. Use `brv` to store and retrieve project patterns, dec...",
+      "downloads": 24036,
+      "installs": 76,
+      "stars": 73
+    },
+    {
+      "slug": "stock-analysis",
+      "displayName": "Stock Analysis",
+      "summary": "Analyze stocks and cryptocurrencies using Yahoo Finance data. Supports portfolio management, watchlists with alerts, dividend analysis, 8-dimension stock scoring, viral trend detection (Hot Scanner), and rumor/early signal detection. Use for stock analysis, portfolio tracking, earnings reactions, crypto monitoring, trending stocks, or finding rumors before they hit mainstream.",
+      "downloads": 21705,
+      "installs": 127,
+      "stars": 115
+    },
+    {
+      "slug": "gemini",
+      "displayName": "Gemini",
+      "summary": "Gemini CLI for one-shot Q&A, summaries, and generation.",
+      "downloads": 17560,
+      "installs": 666,
+      "stars": 35
+    },
+    {
+      "slug": "sag",
+      "displayName": "Sag",
+      "summary": "ElevenLabs text-to-speech with mac-style say UX.",
+      "downloads": 13853,
+      "installs": 566,
+      "stars": 15
+    },
+    {
+      "slug": "git-essentials",
+      "displayName": "Git Essentials",
+      "summary": "Essential Git commands and workflows for version control, branching, and collaboration.",
+      "downloads": 13799,
+      "installs": 56,
+      "stars": 10
+    },
+    {
+      "slug": "self-improving",
+      "displayName": "Self-Improving Agent (With Self-Reflection)",
+      "summary": "Self-reflection + Self-criticism + Self-learning + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use this...",
+      "downloads": 13207,
+      "installs": 125,
+      "stars": 31
+    }
+  ],
+  "agent_meta": [
+    {
+      "slug": "find-skills",
+      "displayName": "Find Skills",
+      "summary": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
+      "downloads": 83041,
+      "installs": 729,
+      "stars": 381
+    },
+    {
+      "slug": "proactive-agent",
+      "displayName": "Proactive Agent",
+      "summary": "Transform AI agents from task-followers into proactive partners that anticipate needs and continuously improve. Now with WAL Protocol, Working Buffer, Autonomous Crons, and battle-tested patterns. Part of the Hal Stack 🦞",
+      "downloads": 53745,
+      "installs": 443,
+      "stars": 359
+    },
+    {
+      "slug": "auto-updater",
+      "displayName": "Auto-Updater Skill",
+      "summary": "Automatically update Clawdbot and all installed skills once daily. Runs via cron, checks for updates, applies them, and messages the user with a summary of what changed.",
+      "downloads": 25922,
+      "installs": 320,
+      "stars": 189
+    },
+    {
+      "slug": "skill-creator",
+      "displayName": "Skill Creator",
+      "summary": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "downloads": 23650,
+      "installs": 717,
+      "stars": 87
+    },
+    {
+      "slug": "model-usage",
+      "displayName": "Model Usage",
+      "summary": "Use CodexBar CLI local cost usage to summarize per-model usage for Codex or Claude, including the current (most recent) model or a full model breakdown. Trigger when asked for model-level usage/cost data from codexbar, or when you need a scriptable per-model summary from codexbar cost JSON.",
+      "downloads": 19546,
+      "installs": 741,
+      "stars": 69
+    },
+    {
+      "slug": "skill-vetter",
+      "displayName": "Skill Vetter",
+      "summary": "Security-first skill vetting for AI agents. Use before installing any skill from ClawdHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.",
+      "downloads": 16139,
+      "installs": 162,
+      "stars": 82
+    }
+  ],
+  "search_web": [
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "summary": "Summarize URLs or files with the summarize CLI (web, PDFs, images, audio, YouTube).",
+      "downloads": 73028,
+      "installs": 1487,
+      "stars": 336
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "summary": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+      "downloads": 66097,
+      "installs": 812,
+      "stars": 347
+    },
+    {
+      "slug": "clawddocs",
+      "displayName": "Clawdbot Documentation Expert",
+      "summary": "Clawdbot documentation expert with decision tree navigation, search scripts, doc fetching, version tracking, and config snippets for all Clawdbot features",
+      "downloads": 22525,
+      "installs": 267,
+      "stars": 222
+    },
+    {
+      "slug": "baidu-search",
+      "displayName": "baidu web search",
+      "summary": "Search the web using Baidu AI Search Engine (BDSE). Use for live information, documentation, or research topics.",
+      "downloads": 21307,
+      "installs": 98,
+      "stars": 45
+    },
+    {
+      "slug": "frontend-design",
+      "displayName": "Frontend Design",
+      "summary": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
+      "downloads": 21289,
+      "installs": 198,
+      "stars": 167
+    },
+    {
+      "slug": "elite-longterm-memory",
+      "displayName": "Elite Longterm Memory",
+      "summary": "Ultimate AI agent memory system for Cursor, Claude, ChatGPT & Copilot. WAL protocol + vector search + git-notes + cloud backup. Never lose context again. Vibe-coding ready.",
+      "downloads": 20393,
+      "installs": 126,
+      "stars": 93
+    },
+    {
+      "slug": "browser-use",
+      "displayName": "Browser Use",
+      "summary": "Automates browser interactions for web testing, form filling, screenshots, and data extraction. Use when the user needs to navigate websites, interact with w...",
+      "downloads": 18152,
+      "installs": 105,
+      "stars": 44
+    },
+    {
+      "slug": "markdown-convert",
+      "displayName": "Markdown.new Skill",
+      "summary": "Convert public web pages into clean Markdown with markdown.new for AI workflows. Use when tasks require URL-to-Markdown conversion for summarization, RAG ing...",
+      "downloads": 16166,
+      "installs": 5,
+      "stars": 35
+    },
+    {
+      "slug": "multi-search-engine",
+      "displayName": "Multi Search Engine",
+      "summary": "Multi search engine integration with 17 engines (8 CN + 9 Global). Supports advanced search operators, time filters, site search, privacy engines, and WolframAlpha knowledge queries. No API keys required.",
+      "downloads": 15537,
+      "installs": 112,
+      "stars": 128
+    },
+    {
+      "slug": "qmd",
+      "displayName": "Qmd",
+      "summary": "Local search/indexing CLI (BM25 + vectors + rerank) with MCP mode.",
+      "downloads": 15376,
+      "installs": 149,
+      "stars": 52
+    },
+    {
+      "slug": "stock-market-pro",
+      "displayName": "Stock Market Pro",
+      "summary": "Yahoo Finance (yfinance) powered stock analysis skill: quotes, fundamentals, ASCII trends, high-resolution charts (RSI/MACD/BB/VWAP/ATR), plus optional web a...",
+      "downloads": 15313,
+      "installs": 81,
+      "stars": 95
+    },
+    {
+      "slug": "browser-automation",
+      "displayName": "Browser Automation",
+      "summary": "Automate web browser interactions using natural language via CLI commands. Use when the user asks to browse websites, navigate web pages, extract data from websites, take screenshots, fill forms, click buttons, or interact with web applications.",
+      "downloads": 14604,
+      "installs": 116,
+      "stars": 19
+    },
+    {
+      "slug": "moltbook-interact",
+      "displayName": "moltbook-interact",
+      "summary": "Interact with Moltbook social network for AI agents. Post, reply, browse, and analyze engagement. Use when the user wants to engage with Moltbook, check their feed, reply to posts, or track their activity on the agent social network.",
+      "downloads": 14395,
+      "installs": 79,
+      "stars": 17
+    },
+    {
+      "slug": "clawdhub",
+      "displayName": "Clawdhub",
+      "summary": "Use the ClawdHub CLI to search, install, update, and publish agent skills from clawdhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawdhub CLI.",
+      "downloads": 14119,
+      "installs": 216,
+      "stars": 141
+    },
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "summary": "This skill should be used when users need to search the web for information, find current content, look up news articles, search for images, or find videos. It uses DuckDuckGo's search API to return results in clean, formatted output (text, markdown, or JSON). Use for research, fact-checking, finding recent information, or gathering web resources.",
+      "downloads": 13960,
+      "installs": 149,
+      "stars": 18
+    },
+    {
+      "slug": "duckduckgo-search",
+      "displayName": "Performs web searches using DuckDuckGo to retrieve real-time information from the internet. Use when the user needs to search for current events, documentation, tutorials, or any information that requires web search capabilities.",
+      "summary": "Performs web searches using DuckDuckGo to retrieve real-time information from the internet. Use when the user needs to search for current events, documentation, tutorials, or any information that requires web search capabilities.",
+      "downloads": 13877,
+      "installs": 116,
+      "stars": 27
+    },
+    {
+      "slug": "playwright-mcp",
+      "displayName": "Playwright MCP",
+      "summary": "Browser automation via Playwright MCP server. Navigate websites, click elements, fill forms, extract data, take screenshots, and perform full browser automation workflows.",
+      "downloads": 13749,
+      "installs": 146,
+      "stars": 40
+    }
+  ],
+  "utility": [
+    {
+      "slug": "weather",
+      "displayName": "Weather",
+      "summary": "Get current weather and forecasts (no API key required).",
+      "downloads": 56473,
+      "installs": 1089,
+      "stars": 191
+    },
+    {
+      "slug": "desktop-control",
+      "displayName": "Desktop Control",
+      "summary": "Advanced desktop automation with mouse, keyboard, and screen control",
+      "downloads": 17090,
+      "installs": 104,
+      "stars": 128
+    },
+    {
+      "slug": "docker-essentials",
+      "displayName": "Docker Essentials",
+      "summary": "Essential Docker commands and workflows for container management, image operations, and debugging.",
+      "downloads": 15644,
+      "installs": 106,
+      "stars": 16
+    },
+    {
+      "slug": "news-summary",
+      "displayName": "News Summary",
+      "summary": "This skill should be used when the user asks for news updates, daily briefings, or what's happening in the world. Fetches news from trusted international RSS feeds and can create voice summaries.",
+      "downloads": 14771,
+      "installs": 72,
+      "stars": 40
+    }
+  ],
+  "document_processing": [
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "summary": "Edit PDFs with natural-language instructions using the nano-pdf CLI.",
+      "downloads": 35525,
+      "installs": 817,
+      "stars": 81
+    },
+    {
+      "slug": "blogwatcher",
+      "displayName": "Blogwatcher",
+      "summary": "Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI.",
+      "downloads": 19551,
+      "installs": 627,
+      "stars": 29
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "summary": "Convert documents and files to Markdown using markitdown. Use when converting PDF, Word (.docx), PowerPoint (.pptx), Excel (.xlsx, .xls), HTML, CSV, JSON, XML, images (with EXIF/OCR), audio (with transcription), ZIP archives, YouTube URLs, or EPubs to Markdown format for LLM processing or text analysis.",
+      "downloads": 13887,
+      "installs": 96,
+      "stars": 83
+    },
+    {
+      "slug": "pdf",
+      "displayName": "Pdf",
+      "summary": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.",
+      "downloads": 13253,
+      "installs": 133,
+      "stars": 21
+    }
+  ],
+  "media_processing": [
+    {
+      "slug": "openai-whisper",
+      "displayName": "Openai Whisper",
+      "summary": "Local speech-to-text with the Whisper CLI (no API key).",
+      "downloads": 30257,
+      "installs": 760,
+      "stars": 159
+    },
+    {
+      "slug": "video-frames",
+      "displayName": "Video Frames",
+      "summary": "Extract frames or short clips from videos using ffmpeg.",
+      "downloads": 19116,
+      "installs": 621,
+      "stars": 52
+    },
+    {
+      "slug": "peekaboo",
+      "displayName": "Peekaboo",
+      "summary": "Capture and automate macOS UI with the Peekaboo CLI.",
+      "downloads": 13467,
+      "installs": 584,
+      "stars": 34
+    }
+  ],
+  "design_frontend": [
+    {
+      "slug": "automation-workflows",
+      "displayName": "Automation Workflows",
+      "summary": "Design and implement automation workflows to save time and scale operations as a solopreneur. Use when identifying repetitive tasks to automate, building workflows across tools, setting up triggers and actions, or optimizing existing automations. Covers automation opportunity identification, workflow design, tool selection (Zapier, Make, n8n), testing, and maintenance. Trigger on \"automate\", \"automation\", \"workflow automation\", \"save time\", \"reduce manual work\", \"automate my business\", \"no-code automation\".",
+      "downloads": 21545,
+      "installs": 181,
+      "stars": 99
+    },
+    {
+      "slug": "superdesign",
+      "displayName": "SuperDesign",
+      "summary": "Expert frontend design guidelines for creating beautiful, modern UIs. Use when building landing pages, dashboards, or any user interface.",
+      "downloads": 14377,
+      "installs": 102,
+      "stars": 80
+    },
+    {
+      "slug": "marketing-mode",
+      "displayName": "Marketing Mode",
+      "summary": "Marketing Mode combines 23 comprehensive marketing skills covering strategy, psychology, content, SEO, conversion optimization, and paid growth. Use when users need marketing strategy, copywriting, SEO help, conversion optimization, paid advertising, or any marketing tactic.",
+      "downloads": 14267,
+      "installs": 93,
+      "stars": 93
+    }
+  ]
+}

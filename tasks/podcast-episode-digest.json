@@ -1,0 +1,37 @@
+{
+  "id": "fda34d1fde7a",
+  "name": "podcast-episode-digest",
+  "description": "Transcribe a podcast audio file using Whisper, summarize the discussion, rewrite key quotes in polished prose, and create a PDF show notes document.",
+  "category": "media",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "openai-whisper",
+    "summarize",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "openai-whisper",
+      "displayName": "Openai Whisper",
+      "category": "media_processing"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

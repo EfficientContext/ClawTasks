@@ -1,0 +1,1945 @@
+[
+  {
+    "id": "ada6dd040522",
+    "name": "research-to-pdf-report",
+    "description": "Research 'transformer architecture improvements in 2025' on the web using DuckDuckGo, summarize the top 5 results, rewrite the summary in an accessible tone, and compile everything into a PDF report.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "c5486c5382ee",
+    "name": "competitive-analysis",
+    "description": "Browse the websites of 3 AI startups using the headless browser, summarize each product page, rewrite findings in professional tone, log key insights to your learnings, and output a markdown comparison document.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "self-improving-agent",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "306021430dc8",
+    "name": "multi-source-fact-check",
+    "description": "Search for the claim 'LLMs can replace software engineers' using multiple search engines, summarize arguments from each source, humanize the report for a general audience, and save it as a PDF.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "multi-search-engine",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "multi-search-engine",
+        "displayName": "Multi Search Engine",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "9ab31d980f2c",
+    "name": "tech-trend-briefing",
+    "description": "Search for the latest AI news this week, summarize the top 10 articles, compile into a PDF briefing, and log any surprising findings to your learnings file.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "nano-pdf",
+      "self-improving-agent"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "a70f07df3ea0",
+    "name": "academic-paper-digest",
+    "description": "Search for recent papers on 'retrieval-augmented generation', browse the top 3 results with headless browser to get full text, summarize each paper, rewrite summaries for a blog audience, and create a markdown digest.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "web-search",
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "ef0ac0d891ee",
+    "name": "search-learn-and-document",
+    "description": "Search for best practices on 'Python async programming', summarize the top results, log key learnings to your improvement file, rewrite as a beginner-friendly guide, and output as a PDF.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "self-improving-agent",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "036ccea658d4",
+    "name": "industry-report-builder",
+    "description": "Browse industry news sites for 'cloud computing trends' using the headless browser, summarize findings, write an executive summary in professional tone, and compile into a PDF.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "83360dfa5ec6",
+    "name": "blog-digest-to-pdf",
+    "description": "Fetch the latest 3 blog posts via the headless browser, summarize each, rewrite summaries in engaging tone, and compile into a single PDF digest.",
+    "category": "document",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "326d57010b70",
+    "name": "document-cleanup-and-publish",
+    "description": "Read a rough draft PDF, extract and summarize the content, clean up and humanize the language, generate a new polished PDF, and log any style improvements to learnings.",
+    "category": "document",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "pdf",
+      "summarize",
+      "humanizer",
+      "nano-pdf",
+      "self-improving-agent"
+    ],
+    "skills_info": [
+      {
+        "slug": "pdf",
+        "displayName": "Pdf",
+        "category": "document_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "0df29c3a225d",
+    "name": "web-content-to-ebook",
+    "description": "Browse a documentation site's 5 main pages using headless browser, summarize each section, convert to clean markdown chapters, and compile into a PDF ebook.",
+    "category": "document",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "de64276c27e4",
+    "name": "meeting-notes-pipeline",
+    "description": "Transcribe a meeting audio recording using Whisper, summarize key points and action items, rewrite in professional tone, create a formatted markdown document, and save a PDF copy.",
+    "category": "document",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "openai-whisper",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "openai-whisper",
+        "displayName": "Openai Whisper",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "b69c61259b27",
+    "name": "newsletter-builder",
+    "description": "Search for this week's top tech news, summarize each story, rewrite in an engaging newsletter tone, format as markdown, and create a print-ready PDF.",
+    "category": "document",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "743d2389c8dd",
+    "name": "rss-news-digest",
+    "description": "Fetch today's news from RSS feeds, summarize each article, rewrite headlines in a friendly tone, format as a markdown newsletter, and log interesting findings to learnings.",
+    "category": "document",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "news-summary",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "self-improving-agent"
+    ],
+    "skills_info": [
+      {
+        "slug": "news-summary",
+        "displayName": "News Summary",
+        "category": "utility"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "a74acd0b1fb5",
+    "name": "video-to-blog-post",
+    "description": "Extract keyframes from a tutorial video using ffmpeg, transcribe the audio with Whisper, summarize the content, rewrite as a blog post in natural tone, and output as markdown.",
+    "category": "media",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "video-frames",
+      "openai-whisper",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "video-frames",
+        "displayName": "Video Frames",
+        "category": "media_processing"
+      },
+      {
+        "slug": "openai-whisper",
+        "displayName": "Openai Whisper",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "29662b2b87b9",
+    "name": "video-storyboard-pdf",
+    "description": "Extract 8 keyframes from a video at equal intervals using ffmpeg, summarize what happens in each section, write captions, and compile into a storyboard PDF.",
+    "category": "media",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "video-frames",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "video-frames",
+        "displayName": "Video Frames",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "fda34d1fde7a",
+    "name": "podcast-episode-digest",
+    "description": "Transcribe a podcast audio file using Whisper, summarize the discussion, rewrite key quotes in polished prose, and create a PDF show notes document.",
+    "category": "media",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "openai-whisper",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "openai-whisper",
+        "displayName": "Openai Whisper",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "910621ef3667",
+    "name": "video-tutorial-study-guide",
+    "description": "Extract frames from a coding tutorial video, transcribe the narration with Whisper, summarize each section, log key learnings, and create a study guide in markdown.",
+    "category": "media",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "video-frames",
+      "openai-whisper",
+      "summarize",
+      "self-improving-agent",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "video-frames",
+        "displayName": "Video Frames",
+        "category": "media_processing"
+      },
+      {
+        "slug": "openai-whisper",
+        "displayName": "Openai Whisper",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "3534fa109dff",
+    "name": "transcribe-and-report",
+    "description": "Transcribe a recorded interview using Whisper, summarize main discussion points, search for context on topics mentioned, rewrite as a journalist-style article, and produce a PDF.",
+    "category": "media",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "openai-whisper",
+      "summarize",
+      "web-search",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "openai-whisper",
+        "displayName": "Openai Whisper",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "313be23a1fd9",
+    "name": "lecture-notes-creator",
+    "description": "Transcribe a lecture recording, summarize it into structured notes, convert to clean markdown, log key concepts to learnings, and export as PDF.",
+    "category": "media",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "openai-whisper",
+      "summarize",
+      "markdown-converter",
+      "self-improving-agent",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "openai-whisper",
+        "displayName": "Openai Whisper",
+        "category": "media_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "ce21441483f8",
+    "name": "landing-page-pipeline",
+    "description": "Research competitor landing pages via headless browser, summarize their patterns, design a landing page following frontend design best practices, write marketing copy, and export the spec as a PDF.",
+    "category": "design",
+    "difficulty": "hard",
+    "expected_steps": 14,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "superdesign",
+      "marketing-mode",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "superdesign",
+        "displayName": "SuperDesign",
+        "category": "design_frontend"
+      },
+      {
+        "slug": "marketing-mode",
+        "displayName": "Marketing Mode",
+        "category": "design_frontend"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "e5e91e783fab",
+    "name": "marketing-content-pipeline",
+    "description": "Browse competitor websites with the headless browser, summarize their messaging, create humanized marketing copy using best practices, and compile a brand guideline document in markdown.",
+    "category": "design",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "marketing-mode",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "marketing-mode",
+        "displayName": "Marketing Mode",
+        "category": "design_frontend"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "fd5654f95b9c",
+    "name": "design-spec-document",
+    "description": "Research UI patterns for 'pricing pages' online, summarize best practices, create a frontend design spec following design guidelines, rewrite for clarity, and document in markdown.",
+    "category": "design",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "superdesign",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "superdesign",
+        "displayName": "SuperDesign",
+        "category": "design_frontend"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "3fd6a9129d88",
+    "name": "product-brochure-creator",
+    "description": "Search for product description best practices, summarize findings, write humanized product copy, apply marketing psychology principles, and compile a brochure PDF.",
+    "category": "design",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "humanizer",
+      "marketing-mode",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "marketing-mode",
+        "displayName": "Marketing Mode",
+        "category": "design_frontend"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "a488cb069db4",
+    "name": "ux-research-report",
+    "description": "Search for UX design trends online, browse design showcase sites with headless browser, summarize findings, apply frontend design principles, and create a design system PDF.",
+    "category": "design",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "web-search",
+      "agent-browser",
+      "summarize",
+      "superdesign",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "superdesign",
+        "displayName": "SuperDesign",
+        "category": "design_frontend"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "bae07e349ffd",
+    "name": "full-skill-audit",
+    "description": "Find available skills on ClawHub, vet the top results for security, summarize each skill's capabilities, log evaluation notes to learnings, and generate an audit report PDF.",
+    "category": "maintenance",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "find-skills",
+      "skill-vetter",
+      "summarize",
+      "self-improving-agent",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "find-skills",
+        "displayName": "Find Skills",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "skill-vetter",
+        "displayName": "Skill Vetter",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "af8e20a28fd0",
+    "name": "self-improvement-research-cycle",
+    "description": "Review your recent error log, search for solutions to the top 3 issues online, summarize the fixes, update your learnings file, and create a summary report in markdown.",
+    "category": "agent_improvement",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "self-improving-agent",
+      "web-search",
+      "summarize",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "2444d5e1ff79",
+    "name": "proactive-learning-setup",
+    "description": "Set up proactive mode so the agent logs learnings from every session, searches for solutions when errors occur, summarizes patterns, and generates weekly improvement reports in markdown.",
+    "category": "agent_improvement",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "proactive-agent",
+      "self-improving-agent",
+      "web-search",
+      "summarize",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "proactive-agent",
+        "displayName": "Proactive Agent",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "718abd52b736",
+    "name": "skill-discovery-and-test",
+    "description": "Search for skills related to 'PDF manipulation' on ClawHub, vet the top 3 for security, summarize capabilities, test the best one by creating a sample PDF, and log results.",
+    "category": "maintenance",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "find-skills",
+      "skill-vetter",
+      "summarize",
+      "nano-pdf",
+      "self-improving-agent"
+    ],
+    "skills_info": [
+      {
+        "slug": "find-skills",
+        "displayName": "Find Skills",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "skill-vetter",
+        "displayName": "Skill Vetter",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "410b924c3cda",
+    "name": "create-custom-skill",
+    "description": "Follow skill creation best practices to package a local script as a proper skill with SKILL.md, vet it for security issues, summarize the skill's documentation, and log the creation process.",
+    "category": "maintenance",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "skill-creator",
+      "skill-vetter",
+      "summarize",
+      "self-improving-agent"
+    ],
+    "skills_info": [
+      {
+        "slug": "skill-creator",
+        "displayName": "Skill Creator",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "skill-vetter",
+        "displayName": "Skill Vetter",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "b47e406c0466",
+    "name": "proactive-error-monitor",
+    "description": "Set up proactive monitoring: automatically detect errors in log files, search for solutions online, summarize fixes, update learnings, and produce a weekly incident report PDF.",
+    "category": "agent_improvement",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "proactive-agent",
+      "web-search",
+      "summarize",
+      "self-improving-agent",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "proactive-agent",
+        "displayName": "Proactive Agent",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "5266af1daac9",
+    "name": "morning-briefing",
+    "description": "Get today's weather from wttr.in, search for top tech news, summarize everything, rewrite in a friendly morning tone, and create a PDF daily briefing.",
+    "category": "planning",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "weather",
+      "web-search",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "weather",
+        "displayName": "Weather",
+        "category": "utility"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "dc6b072e627f",
+    "name": "travel-planner",
+    "description": "Get the weather forecast for Tokyo next week, search for top tourist attractions, summarize findings, rewrite as a traveler-friendly guide, and create a travel itinerary PDF.",
+    "category": "planning",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "weather",
+      "web-search",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "weather",
+        "displayName": "Weather",
+        "category": "utility"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "e8808ed8d0a9",
+    "name": "daily-news-digest",
+    "description": "Fetch today's weather and news from RSS feeds, search for deeper coverage on the top story, summarize all content, and create a morning digest PDF.",
+    "category": "planning",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "weather",
+      "news-summary",
+      "summarize",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "weather",
+        "displayName": "Weather",
+        "category": "utility"
+      },
+      {
+        "slug": "news-summary",
+        "displayName": "News Summary",
+        "category": "utility"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "902909c6e79c",
+    "name": "weekly-review-doc",
+    "description": "Review this week's learnings log, search for improvements to your workflow online, summarize findings, rewrite as actionable advice, and create a weekly review in markdown.",
+    "category": "planning",
+    "difficulty": "medium",
+    "expected_steps": 10,
+    "skills_required": [
+      "self-improving-agent",
+      "web-search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "1639767acc71",
+    "name": "weather-activity-planner",
+    "description": "Get the weather for this weekend, search for outdoor activities suitable for the forecast, summarize options, log preferences to learnings, and output as a PDF plan.",
+    "category": "planning",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "weather",
+      "web-search",
+      "summarize",
+      "self-improving-agent",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "weather",
+        "displayName": "Weather",
+        "category": "utility"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "68e10b6e8a0b",
+    "name": "article-to-podcast-script",
+    "description": "Fetch an article via headless browser, summarize the key points, rewrite as a conversational podcast script in natural tone, format in markdown, and log interesting facts to learnings.",
+    "category": "text_processing",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "self-improving-agent"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "ebba1586791f",
+    "name": "technical-to-blog",
+    "description": "Read a technical PDF document, summarize the core concepts, rewrite in a beginner-friendly blog style, convert to clean markdown, and produce a blog-ready PDF.",
+    "category": "text_processing",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "pdf",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "pdf",
+        "displayName": "Pdf",
+        "category": "document_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "e3e5fcab6f80",
+    "name": "translate-and-publish",
+    "description": "Search for a Chinese tech article about AI, summarize it, rewrite the summary for an English audience in natural tone, format as a markdown blog post, and create a PDF version.",
+    "category": "text_processing",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "web-search",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "cb3f3e5da5bd",
+    "name": "readme-rewriter",
+    "description": "Read a project's README.md, summarize its structure, search for README best practices online, rewrite it in a friendlier more engaging tone, and output both markdown and PDF.",
+    "category": "text_processing",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "summarize",
+      "web-search",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "web-search",
+        "displayName": "Web Search",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "37b7fddd0a69",
+    "name": "content-localization",
+    "description": "Browse an English documentation site with headless browser, summarize each page, rewrite the content for a non-technical audience, format all pages as markdown, and compile into a PDF handbook.",
+    "category": "text_processing",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "b823aafdf2a2",
+    "name": "pdf-to-friendly-guide",
+    "description": "Extract text from a dense PDF manual, summarize each chapter, rewrite in plain language, log any jargon patterns found, and produce a simplified PDF guide.",
+    "category": "text_processing",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "pdf",
+      "summarize",
+      "humanizer",
+      "self-improving-agent",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "pdf",
+        "displayName": "Pdf",
+        "category": "document_processing"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "df283561c27b",
+    "name": "web-monitor-and-report",
+    "description": "Set up proactive monitoring of a competitor's website using headless browser, summarize any changes detected, log changes to learnings, and create a markdown change report.",
+    "category": "automation",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "proactive-agent",
+      "agent-browser",
+      "summarize",
+      "self-improving-agent",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {
+        "slug": "proactive-agent",
+        "displayName": "Proactive Agent",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "7922cfccad70",
+    "name": "scrape-analyze-report",
+    "description": "Navigate to a job board using headless browser, extract Python developer listings, summarize salary ranges and requirements, rewrite as a readable report, and compile into a PDF.",
+    "category": "automation",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "12f4492a3c86",
+    "name": "documentation-site-scraper",
+    "description": "Browse a framework's documentation site with headless browser, extract all tutorial pages, summarize each, convert to a unified markdown reference, and generate a downloadable PDF.",
+    "category": "automation",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "agent-browser",
+      "summarize",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "agent-browser",
+        "displayName": "Agent Browser",
+        "category": "search_web"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 4
+  },
+  {
+    "id": "48c547390512",
+    "name": "proactive-news-watcher",
+    "description": "Set up proactive mode to periodically fetch news via RSS, summarize new articles, detect trending topics, log trends to learnings, and generate a weekly trend report PDF.",
+    "category": "automation",
+    "difficulty": "hard",
+    "expected_steps": 12,
+    "skills_required": [
+      "proactive-agent",
+      "news-summary",
+      "summarize",
+      "self-improving-agent",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "proactive-agent",
+        "displayName": "Proactive Agent",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "news-summary",
+        "displayName": "News Summary",
+        "category": "utility"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "self-improving-agent",
+        "displayName": "self-improving-agent",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "687332d4af79",
+    "name": "skill-comparison-report",
+    "description": "Find all skills on ClawHub related to 'web search', vet each for security, summarize their capabilities, rewrite as a comparison guide, and generate a recommendation PDF.",
+    "category": "skill_dev",
+    "difficulty": "medium",
+    "expected_steps": 8,
+    "skills_required": [
+      "find-skills",
+      "skill-vetter",
+      "summarize",
+      "humanizer",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "find-skills",
+        "displayName": "Find Skills",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "skill-vetter",
+        "displayName": "Skill Vetter",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "summarize",
+        "displayName": "Summarize",
+        "category": "search_web"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  },
+  {
+    "id": "699de9ff28db",
+    "name": "build-and-document-skill",
+    "description": "Create a new skill following best practices, vet it for security, write user-friendly documentation in markdown, summarize the skill's features, and produce a PDF spec sheet.",
+    "category": "skill_dev",
+    "difficulty": "hard",
+    "expected_steps": 10,
+    "skills_required": [
+      "skill-creator",
+      "skill-vetter",
+      "humanizer",
+      "markdown-converter",
+      "nano-pdf"
+    ],
+    "skills_info": [
+      {
+        "slug": "skill-creator",
+        "displayName": "Skill Creator",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "skill-vetter",
+        "displayName": "Skill Vetter",
+        "category": "agent_meta"
+      },
+      {
+        "slug": "humanizer",
+        "displayName": "Humanizer",
+        "category": "other"
+      },
+      {
+        "slug": "markdown-converter",
+        "displayName": "Markdown Converter",
+        "category": "document_processing"
+      },
+      {
+        "slug": "nano-pdf",
+        "displayName": "Nano Pdf",
+        "category": "document_processing"
+      }
+    ],
+    "num_skills": 5
+  }
+]

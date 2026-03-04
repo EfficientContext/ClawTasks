@@ -1,0 +1,43 @@
+{
+  "id": "3534fa109dff",
+  "name": "transcribe-and-report",
+  "description": "Transcribe a recorded interview using Whisper, summarize main discussion points, search for context on topics mentioned, rewrite as a journalist-style article, and produce a PDF.",
+  "category": "media",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "openai-whisper",
+    "summarize",
+    "web-search",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "openai-whisper",
+      "displayName": "Openai Whisper",
+      "category": "media_processing"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

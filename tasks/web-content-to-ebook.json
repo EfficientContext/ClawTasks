@@ -1,0 +1,37 @@
+{
+  "id": "0df29c3a225d",
+  "name": "web-content-to-ebook",
+  "description": "Browse a documentation site's 5 main pages using headless browser, summarize each section, convert to clean markdown chapters, and compile into a PDF ebook.",
+  "category": "document",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "agent-browser",
+    "summarize",
+    "markdown-converter",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}
