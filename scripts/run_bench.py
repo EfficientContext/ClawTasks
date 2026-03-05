@@ -1,30 +1,21 @@
 #!/usr/bin/env python3
 """
-ClawBench Runner — execute benchmark tasks against OpenClaw with ContextPilot.
+ClawBench Runner — execute benchmark tasks with OpenClaw or Claude Code.
 
-Skills are downloaded locally to skills/<slug>/ — no homebrew or openclaw CLI needed.
-Users reference skills by local path.
+Skills are downloaded locally to skills/<slug>/ and loaded by:
+  - OpenClaw: via skills.load.extraDirs config pointing to our skills/ dir
+  - Claude Code: by injecting SKILL.md contents into the prompt
 
 Usage:
-    # Download all required skills first
-    python scripts/download_skills.py
+    python scripts/download_skills.py          # download skills first
+    python scripts/run_bench.py --dry-run      # preview
+    python scripts/run_bench.py --batch-size 1 # run all tasks
 
-    # Run all tasks, batch_size=1 (sequential)
-    python scripts/run_bench.py --batch-size 1
+    # With OpenClaw
+    python scripts/run_bench.py --batch-size 1 --runner openclaw
 
-    # Run specific task
-    python scripts/run_bench.py --task research-to-pdf-report --batch-size 1
-
-    # Run by category
-    python scripts/run_bench.py --category research --batch-size 1
-
-    # Dry run (just show what would run)
-    python scripts/run_bench.py --dry-run
-
-Prerequisites:
-    1. Skills downloaded: python scripts/download_skills.py
-    2. ContextPilot proxy running on localhost:8765 (optional)
-    3. OpenClaw installed OR claude CLI available
+    # With Claude Code
+    python scripts/run_bench.py --batch-size 1 --runner claude
 """
 
 import argparse
@@ -34,16 +25,18 @@ import pathlib
 import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TASKS_FILE = ROOT / "tasks_all.json"
 SKILLS_DIR = ROOT / "skills"
 RESULTS_DIR = ROOT / "results"
 
+# OpenClaw binary — try nvm node 22 path first
+OPENCLAW_BIN = pathlib.Path.home() / "openclaw" / "openclaw.mjs"
+
 
 def check_contextpilot_running(port: int = 8765) -> bool:
-    """Check if ContextPilot proxy is running."""
     try:
         import urllib.request
         resp = urllib.request.urlopen(f"http://localhost:{port}/health", timeout=3)
@@ -53,36 +46,38 @@ def check_contextpilot_running(port: int = 8765) -> bool:
 
 
 def check_skills_downloaded(task: dict) -> dict[str, bool]:
-    """Check which skills are available locally."""
     return {
         slug: (SKILLS_DIR / slug / "SKILL.md").exists()
         for slug in task["skills_required"]
     }
 
 
-def build_skill_context(task: dict) -> str:
-    """
-    Build the combined skill context to prepend to the task prompt.
+def get_node22_path() -> str | None:
+    """Find node 22 binary for running openclaw."""
+    nvm_dir = pathlib.Path.home() / ".nvm"
+    if nvm_dir.exists():
+        for d in sorted((nvm_dir / "versions" / "node").glob("v22.*"), reverse=True):
+            node = d / "bin" / "node"
+            if node.exists():
+                return str(node)
+    return None
 
-    Reads each skill's SKILL.md and concatenates them, so the agent
-    has all skill instructions available in its context.
-    """
+
+def build_skill_context(task: dict) -> str:
+    """Read each skill's SKILL.md and concatenate into prompt context."""
     parts = []
     for slug in task["skills_required"]:
         skill_md = SKILLS_DIR / slug / "SKILL.md"
         if skill_md.exists():
             content = skill_md.read_text()
             parts.append(f"<skill name=\"{slug}\">\n{content}\n</skill>")
-        else:
-            parts.append(f"<skill name=\"{slug}\">\n[NOT DOWNLOADED — run: python scripts/download_skills.py]\n</skill>")
-
     return "\n\n".join(parts)
 
 
 def build_prompt(task: dict) -> str:
-    """Build the full prompt: skill context + task description."""
+    """Build full prompt: skill instructions + task description."""
     skill_context = build_skill_context(task)
-    return f"""You have the following skills available:
+    return f"""You have the following skills available. Read each skill's instructions carefully.
 
 {skill_context}
 
@@ -90,98 +85,104 @@ def build_prompt(task: dict) -> str:
 
 TASK: {task['description']}
 
-Use the skills above to complete this task. Follow each skill's instructions for tool usage and CLI commands."""
+Use the skills above to complete this task step by step."""
 
 
-def run_task_with_openclaw(task: dict, timeout: int = 300,
-                           runner: str = "openclaw") -> dict:
+def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
     """
-    Run a single benchmark task.
+    Run task via OpenClaw: `openclaw agent --local --message "..."`.
 
-    Supports two runners:
-      - "openclaw": uses openclaw CLI
-      - "claude": uses claude CLI (Claude Code)
+    We inject SKILL.md contents directly into --message instead of relying
+    on openclaw's skill loading (which tries to install missing binaries).
+    """
+    node_bin = get_node22_path()
+    if not node_bin:
+        return _error_result(task, "Node.js 22+ not found. Install: nvm install 22")
+
+    prompt = build_prompt(task)
+    start_time = time.time()
+    try:
+        result = subprocess.run(
+            [node_bin, str(OPENCLAW_BIN), "agent",
+             "--local", "--message", prompt],
+            capture_output=True, text=True, timeout=timeout,
+            env={**os.environ, "NODE_NO_WARNINGS": "1"},
+        )
+        return _build_result(task, result, time.time() - start_time,
+                           prompt_length=len(prompt))
+    except subprocess.TimeoutExpired:
+        return _timeout_result(task, timeout, time.time() - start_time)
+    except FileNotFoundError as e:
+        return _error_result(task, str(e))
+
+
+def run_task_claude(task: dict, timeout: int = 300) -> dict:
+    """
+    Run task via Claude Code CLI.
+    Skills are injected directly into the prompt.
     """
     prompt = build_prompt(task)
     start_time = time.time()
-
-    if runner == "openclaw":
-        cmd = [
-            "openclaw", "run",
-            "--print",
-            "--permission-mode", "bypassPermissions",
-            "--prompt", prompt,
-        ]
-    elif runner == "claude":
-        cmd = [
-            "claude",
-            "--print",
-            "--permission-mode", "bypassPermissions",
-            "-p", prompt,
-        ]
-    else:
-        return {
-            "task_id": task["id"],
-            "task_name": task["name"],
-            "success": False,
-            "exit_code": -1,
-            "stdout": "",
-            "stderr": f"Unknown runner: {runner}",
-            "elapsed_seconds": 0,
-            "timestamp": datetime.utcnow().isoformat(),
-        }
-
     try:
         result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-            env={
-                **os.environ,
-                "X_CONTEXTPILOT_ENABLED": "true",
-                "X_CONTEXTPILOT_SCOPE": "all",
-            },
+            ["claude", "--print", "-p", prompt],
+            capture_output=True, text=True, timeout=timeout,
         )
-        elapsed = time.time() - start_time
-
-        return {
-            "task_id": task["id"],
-            "task_name": task["name"],
-            "success": result.returncode == 0,
-            "exit_code": result.returncode,
-            "stdout": result.stdout[:10000],
-            "stderr": result.stderr[:5000],
-            "elapsed_seconds": round(elapsed, 2),
-            "timestamp": datetime.utcnow().isoformat(),
-            "skills_available": list(check_skills_downloaded(task).keys()),
-            "prompt_length": len(prompt),
-        }
-
+        return _build_result(task, result, time.time() - start_time,
+                           prompt_length=len(prompt))
     except subprocess.TimeoutExpired:
-        elapsed = time.time() - start_time
-        return {
-            "task_id": task["id"],
-            "task_name": task["name"],
-            "success": False,
-            "exit_code": -1,
-            "stdout": "",
-            "stderr": f"Timeout after {timeout}s",
-            "elapsed_seconds": round(elapsed, 2),
-            "timestamp": datetime.utcnow().isoformat(),
-        }
+        return _timeout_result(task, timeout, time.time() - start_time)
+    except FileNotFoundError:
+        return _error_result(task, "claude CLI not found")
 
 
-def run_benchmark(tasks: list[dict], batch_size: int = 1,
-                  dry_run: bool = False, timeout: int = 300,
-                  runner: str = "openclaw") -> list[dict]:
-    """Run benchmark tasks sequentially (batch_size=1)."""
+def _build_result(task, result, elapsed, prompt_length=None):
+    r = {
+        "task_id": task["id"],
+        "task_name": task["name"],
+        "success": result.returncode == 0,
+        "exit_code": result.returncode,
+        "stdout": result.stdout[:10000],
+        "stderr": result.stderr[:5000],
+        "elapsed_seconds": round(elapsed, 2),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "skills": task["skills_required"],
+    }
+    if prompt_length:
+        r["prompt_length"] = prompt_length
+    return r
+
+
+def _timeout_result(task, timeout, elapsed):
+    return {
+        "task_id": task["id"],
+        "task_name": task["name"],
+        "success": False,
+        "exit_code": -1,
+        "stdout": "", "stderr": f"Timeout after {timeout}s",
+        "elapsed_seconds": round(elapsed, 2),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def _error_result(task, msg):
+    return {
+        "task_id": task["id"],
+        "task_name": task["name"],
+        "success": False, "exit_code": -1,
+        "stdout": "", "stderr": msg,
+        "elapsed_seconds": 0,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def run_benchmark(tasks, batch_size=1, dry_run=False,
+                  timeout=300, runner="openclaw"):
     RESULTS_DIR.mkdir(exist_ok=True)
     results = []
 
     print(f"\n{'='*60}")
-    print(f"ClawBench — Running {len(tasks)} tasks (batch_size={batch_size})")
-    print(f"Runner: {runner}")
+    print(f"ClawBench — {len(tasks)} tasks, batch_size={batch_size}, runner={runner}")
     print(f"Skills dir: {SKILLS_DIR}")
     print(f"{'='*60}\n")
 
@@ -190,59 +191,49 @@ def run_benchmark(tasks: list[dict], batch_size: int = 1,
         print(f"  Skills: {', '.join(task['skills_required'])}")
         print(f"  Difficulty: {task['difficulty']}")
 
-        # Check skills availability
         skill_status = check_skills_downloaded(task)
         missing = [s for s, ok in skill_status.items() if not ok]
         if missing:
             print(f"  WARNING: missing skills: {', '.join(missing)}")
-            print(f"  Run: python scripts/download_skills.py")
 
         if dry_run:
-            prompt = build_prompt(task)
-            print(f"  [DRY RUN] Prompt length: {len(prompt)} chars")
+            plen = len(build_prompt(task))
+            print(f"  [DRY RUN] Prompt: ~{plen} chars")
             print(f"  [DRY RUN] Task: {task['description'][:80]}...")
-            results.append({
-                "task_id": task["id"],
-                "task_name": task["name"],
-                "dry_run": True,
-                "prompt_length": len(prompt),
-                "skills_downloaded": {s: ok for s, ok in skill_status.items()},
-            })
+            results.append({"task_id": task["id"], "task_name": task["name"],
+                           "dry_run": True, "prompt_length": plen})
             continue
 
-        # Run the task
-        print(f"  Running task...")
-        result = run_task_with_openclaw(task, timeout=timeout, runner=runner)
+        print(f"  Running...")
+        if runner == "openclaw":
+            result = run_task_openclaw(task, timeout)
+        else:
+            result = run_task_claude(task, timeout)
         results.append(result)
 
         status = "PASS" if result["success"] else "FAIL"
         print(f"  Result: {status} ({result['elapsed_seconds']}s)")
 
-        # Save individual result
         result_file = RESULTS_DIR / f"{task['name']}_result.json"
         result_file.write_text(json.dumps(result, indent=2))
-
         print()
 
-    # Save combined results
-    run_id = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-    combined_file = RESULTS_DIR / f"run_{run_id}.json"
-    combined_file.write_text(json.dumps({
-        "run_id": run_id,
-        "runner": runner,
-        "batch_size": batch_size,
-        "total_tasks": len(tasks),
+    # Save combined
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    combined = RESULTS_DIR / f"run_{run_id}.json"
+    combined.write_text(json.dumps({
+        "run_id": run_id, "runner": runner,
+        "batch_size": batch_size, "total_tasks": len(tasks),
         "results": results,
     }, indent=2))
 
-    # Summary
     if not dry_run:
         passed = sum(1 for r in results if r.get("success"))
         failed = len(results) - passed
         total_time = sum(r.get("elapsed_seconds", 0) for r in results)
         print(f"\n{'='*60}")
         print(f"Summary: {passed} passed, {failed} failed, {total_time:.1f}s total")
-        print(f"Results: {combined_file}")
+        print(f"Results: {combined}")
         print(f"{'='*60}")
 
     return results
@@ -250,48 +241,35 @@ def run_benchmark(tasks: list[dict], batch_size: int = 1,
 
 def main():
     parser = argparse.ArgumentParser(description="ClawBench Runner")
-    parser.add_argument("--batch-size", type=int, default=1,
-                       help="Number of tasks to run concurrently (default: 1)")
-    parser.add_argument("--task", type=str, default=None,
-                       help="Run a specific task by name")
-    parser.add_argument("--category", type=str, default=None,
-                       help="Run tasks in a specific category")
-    parser.add_argument("--difficulty", type=str, default=None,
-                       choices=["medium", "hard"],
-                       help="Run tasks of a specific difficulty")
-    parser.add_argument("--dry-run", action="store_true",
-                       help="Show what would run without executing")
-    parser.add_argument("--timeout", type=int, default=300,
-                       help="Timeout per task in seconds (default: 300)")
-    parser.add_argument("--runner", type=str, default="openclaw",
+    parser.add_argument("--batch-size", type=int, default=1)
+    parser.add_argument("--task", type=str, default=None)
+    parser.add_argument("--category", type=str, default=None)
+    parser.add_argument("--difficulty", choices=["medium", "hard"])
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--timeout", type=int, default=300)
+    parser.add_argument("--runner", default="openclaw",
                        choices=["openclaw", "claude"],
-                       help="Which CLI runner to use (default: openclaw)")
-    parser.add_argument("--contextpilot-port", type=int, default=8765,
-                       help="ContextPilot proxy port (default: 8765)")
+                       help="openclaw: uses `openclaw agent --local`; "
+                            "claude: uses `claude --print`")
+    parser.add_argument("--contextpilot-port", type=int, default=8765)
     args = parser.parse_args()
 
-    # Load tasks
     tasks = json.loads(TASKS_FILE.read_text())
-
-    # Filter
     if args.task:
         tasks = [t for t in tasks if t["name"] == args.task]
         if not tasks:
-            print(f"Task '{args.task}' not found")
-            sys.exit(1)
+            sys.exit(f"Task '{args.task}' not found")
     if args.category:
         tasks = [t for t in tasks if t["category"] == args.category]
         if not tasks:
-            print(f"No tasks in category '{args.category}'")
-            sys.exit(1)
+            sys.exit(f"No tasks in category '{args.category}'")
     if args.difficulty:
         tasks = [t for t in tasks if t["difficulty"] == args.difficulty]
 
-    # Pre-flight checks (skip for dry-run)
     if not args.dry_run:
         print("Pre-flight checks:")
 
-        # Check skills downloaded
+        # Skills
         all_slugs = set()
         for t in tasks:
             all_slugs.update(t["skills_required"])
@@ -300,30 +278,32 @@ def main():
         if downloaded < len(all_slugs):
             print(f"  Run: python scripts/download_skills.py")
 
-        # Check ContextPilot (optional)
+        # Runner
+        if args.runner == "openclaw":
+            node = get_node22_path()
+            if node and OPENCLAW_BIN.exists():
+                print(f"  OpenClaw: OK (node={node})")
+            else:
+                print(f"  OpenClaw: NOT READY")
+                if not node:
+                    print("    Node 22+ needed: nvm install 22")
+                if not OPENCLAW_BIN.exists():
+                    print(f"    openclaw not found at {OPENCLAW_BIN}")
+                sys.exit(1)
+        else:
+            try:
+                subprocess.run(["claude", "--version"], capture_output=True, timeout=5)
+                print(f"  Claude Code: OK")
+            except (FileNotFoundError, subprocess.TimeoutExpired):
+                print(f"  Claude Code: NOT FOUND")
+                sys.exit(1)
+
+        # ContextPilot (optional)
         cp_ok = check_contextpilot_running(args.contextpilot_port)
-        print(f"  ContextPilot (port {args.contextpilot_port}): {'OK' if cp_ok else 'not running (optional)'}")
+        print(f"  ContextPilot: {'OK' if cp_ok else 'not running (optional)'}")
 
-        # Check runner
-        runner_cmd = args.runner if args.runner != "claude" else "claude"
-        try:
-            subprocess.run([runner_cmd, "--version" if args.runner == "openclaw" else "--help"],
-                         capture_output=True, timeout=10)
-            print(f"  Runner ({args.runner}): OK")
-        except (FileNotFoundError, subprocess.TimeoutExpired):
-            print(f"  Runner ({args.runner}): NOT FOUND")
-            if args.runner == "openclaw":
-                print("  Install: npm install -g @openclaw/cli")
-            sys.exit(1)
-
-    # Run
-    run_benchmark(
-        tasks,
-        batch_size=args.batch_size,
-        dry_run=args.dry_run,
-        timeout=args.timeout,
-        runner=args.runner,
-    )
+    run_benchmark(tasks, batch_size=args.batch_size, dry_run=args.dry_run,
+                  timeout=args.timeout, runner=args.runner)
 
 
 if __name__ == "__main__":
