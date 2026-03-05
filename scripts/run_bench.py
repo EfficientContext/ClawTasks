@@ -25,7 +25,27 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 TASKS_FILE = ROOT / "tasks_all.json"
 SKILLS_DIR = ROOT / "skills"
 RESULTS_DIR = ROOT / "results"
-OPENCLAW_BIN = pathlib.Path.home() / "openclaw" / "openclaw.mjs"
+def find_openclaw_bin() -> pathlib.Path | None:
+    """Auto-detect openclaw.mjs location."""
+    candidates = [
+        pathlib.Path.home() / "openclaw" / "openclaw.mjs",
+        pathlib.Path("/usr/local/lib/node_modules/openclaw/openclaw.mjs"),
+        pathlib.Path.home() / ".npm-global" / "lib" / "node_modules" / "openclaw" / "openclaw.mjs",
+    ]
+    # Also check if `openclaw` is in PATH (global install)
+    for c in candidates:
+        if c.exists():
+            return c
+    # Try `which openclaw`
+    try:
+        r = subprocess.run(["which", "openclaw"], capture_output=True, text=True, timeout=5)
+        if r.returncode == 0:
+            p = pathlib.Path(r.stdout.strip())
+            if p.exists():
+                return p
+    except Exception:
+        pass
+    return None
 
 
 def check_contextpilot_running(port: int = 8765) -> bool:
@@ -75,13 +95,24 @@ def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
     if not node_bin:
         return _error_result(task, "Node.js 22+ not found. Run: nvm install 22")
 
+    oc_bin = find_openclaw_bin()
+    if not oc_bin:
+        return _error_result(task,
+            "openclaw not found. Install: npm install -g openclaw, "
+            "or clone ~/openclaw and run pnpm install && pnpm build")
+
     prompt = build_prompt(task)
     start_time = time.time()
+
+    # If it's a .mjs file, run with node; if it's a binary/symlink, run directly
+    if str(oc_bin).endswith(".mjs"):
+        cmd = [node_bin, str(oc_bin), "agent", "--local", "--message", prompt]
+    else:
+        cmd = [str(oc_bin), "agent", "--local", "--message", prompt]
+
     try:
         result = subprocess.run(
-            [node_bin, str(OPENCLAW_BIN), "agent",
-             "--local", "--message", prompt],
-            capture_output=True, text=True, timeout=timeout,
+            cmd, capture_output=True, text=True, timeout=timeout,
             env={**os.environ, "NODE_NO_WARNINGS": "1"},
         )
         return _build_result(task, result, time.time() - start_time,
