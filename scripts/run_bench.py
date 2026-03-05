@@ -104,11 +104,14 @@ def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
     prompt = build_prompt(task)
     start_time = time.time()
 
-    # If it's a .mjs file, run with node; if it's a binary/symlink, run directly
+    session_id = f"clawbench-{task['id']}"
+
     if str(oc_bin).endswith(".mjs"):
-        cmd = [node_bin, str(oc_bin), "agent", "--local", "--message", prompt]
+        cmd = [node_bin, str(oc_bin), "agent", "--local",
+               "--session-id", session_id, "--message", prompt]
     else:
-        cmd = [str(oc_bin), "agent", "--local", "--message", prompt]
+        cmd = [str(oc_bin), "agent", "--local",
+               "--session-id", session_id, "--message", prompt]
 
     try:
         result = subprocess.run(
