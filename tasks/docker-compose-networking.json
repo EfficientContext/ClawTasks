@@ -1,12 +1,12 @@
 {
-  "id": "22fc3da8ca4e",
+  "id": "8352a891dfdc",
   "name": "docker-compose-networking",
-  "description": "Use web-search to search for 'Docker Compose networking between containers'. Then use agent-browser to visit the Docker networking documentation. The search results and docs will describe the same bridge network and DNS concepts. Use summarize on the overlapping content. Save as docker-networking.pdf.",
+  "description": "Use the web_search tool to search for 'Docker Compose networking between containers'. Then use agent-browser to visit the Docker networking documentation. The search results and docs will describe the same bridge network and DNS concepts. Use summarize on the overlapping content. Save as docker-networking.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

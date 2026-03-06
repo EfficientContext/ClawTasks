@@ -1,12 +1,12 @@
 {
-  "id": "b543a279af30",
+  "id": "a5f0e806fb56",
   "name": "docker-compose-volumes",
-  "description": "Use web-search to search for 'Docker Compose volumes explained'. Then use web-search to search for 'Docker named volumes vs bind mounts performance'. Both return the same volume docs. Use summarize on overlapping sources. Log the storage recommendations to your learnings. Save as docker-volumes.md with URLs.",
+  "description": "Use the web_search tool to search for 'Docker Compose volumes explained'. Then use the web_search tool to search for 'Docker named volumes vs bind mounts performance'. Both return the same volume docs. Use summarize on overlapping sources. Log the storage recommendations to your learnings. Save as docker-volumes.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

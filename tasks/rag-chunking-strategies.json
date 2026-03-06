@@ -1,12 +1,12 @@
 {
-  "id": "d512e58b6d3a",
+  "id": "1fa5bc4f5f20",
   "name": "rag-chunking-strategies",
-  "description": "Use web-search to search for 'RAG chunking strategies comparison'. Then use web-search to search for 'text splitting methods for retrieval augmented generation'. Both searches will return overlapping articles about the same chunking techniques. List the overlapping URLs. Use summarize on them. Log the best chunking approach to your learnings. Save as rag-chunking.md with URLs.",
+  "description": "Use the web_search tool to search for 'RAG chunking strategies comparison'. Then use the web_search tool to search for 'text splitting methods for retrieval augmented generation'. Both searches will return overlapping articles about the same chunking techniques. List the overlapping URLs. Use summarize on them. Log the best chunking approach to your learnings. Save as rag-chunking.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

@@ -1,12 +1,12 @@
 {
-  "id": "0de320b1f8e0",
+  "id": "f002d0e959f7",
   "name": "rag-embedding-models",
-  "description": "Use web-search to search for 'best embedding models for RAG 2025'. Then use web-search to search for 'MTEB leaderboard embedding comparison'. Both will return the same benchmark pages. Use agent-browser to visit the MTEB leaderboard page and extract the current top models. Use summarize to consolidate. Save as rag-embeddings.pdf with the actual leaderboard rankings from the page.",
+  "description": "Use the web_search tool to search for 'best embedding models for RAG 2025'. Then use the web_search tool to search for 'MTEB leaderboard embedding comparison'. Both will return the same benchmark pages. Use agent-browser to visit the MTEB leaderboard page and extract the current top models. Use summarize to consolidate. Save as rag-embeddings.pdf with the actual leaderboard rankings from the page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

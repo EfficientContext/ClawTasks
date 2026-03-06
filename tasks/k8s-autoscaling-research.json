@@ -1,12 +1,12 @@
 {
-  "id": "ab82339382af",
+  "id": "86a9122c865f",
   "name": "k8s-autoscaling-research",
-  "description": "Use web-search to search for 'Kubernetes HPA horizontal pod autoscaler tutorial'. Then use agent-browser to visit the official kubernetes.io HPA documentation page. The search snippets and the docs will contain the same YAML examples. Use summarize on both. Rewrite as a cheatsheet. Save as k8s-hpa.pdf with the actual YAML configs from the docs page.",
+  "description": "Use the web_search tool to search for 'Kubernetes HPA horizontal pod autoscaler tutorial'. Then use agent-browser to visit the official kubernetes.io HPA documentation page. The search snippets and the docs will contain the same YAML examples. Use summarize on both. Rewrite as a cheatsheet. Save as k8s-hpa.pdf with the actual YAML configs from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

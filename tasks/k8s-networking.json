@@ -1,12 +1,12 @@
 {
-  "id": "b241a190d6f6",
+  "id": "592f7a08a236",
   "name": "k8s-networking",
-  "description": "Use web-search to search for 'Kubernetes networking Services Ingress explained'. Then use agent-browser to visit the kubernetes.io networking concepts page. The search results and docs page will cover the same Services, Ingress, and DNS content. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.pdf with URLs.",
+  "description": "Use the web_search tool to search for 'Kubernetes networking Services Ingress explained'. Then use agent-browser to visit the kubernetes.io networking concepts page. The search results and docs page will cover the same Services, Ingress, and DNS content. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

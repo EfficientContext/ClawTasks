@@ -1,12 +1,12 @@
 {
-  "id": "4dd310644cd3",
+  "id": "703aefb40293",
   "name": "prompt-engineering-few-shot",
-  "description": "Use web-search to search for 'few-shot prompting guide 2025'. Then use agent-browser to visit the Anthropic or OpenAI prompting documentation page. The search results and the docs will describe the same few-shot patterns. Use summarize on the overlapping content. Save as prompt-few-shot.pdf with the actual examples from the docs page.",
+  "description": "Use the web_search tool to search for 'few-shot prompting guide 2025'. Then use agent-browser to visit the Anthropic or OpenAI prompting documentation page. The search results and the docs will describe the same few-shot patterns. Use summarize on the overlapping content. Save as prompt-few-shot.pdf with the actual examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

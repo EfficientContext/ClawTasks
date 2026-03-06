@@ -1,12 +1,12 @@
 {
-  "id": "179f8d50dd3b",
+  "id": "d232e789e183",
   "name": "rag-evaluation",
-  "description": "Use web-search to search for 'RAG evaluation metrics RAGAS'. Then use agent-browser to visit the RAGAS documentation page. The search results and the docs will describe the same faithfulness/relevancy metrics. Use summarize to consolidate. Log the evaluation framework to your learnings. Save as rag-eval.pdf with metric definitions from the actual docs.",
+  "description": "Use the web_search tool to search for 'RAG evaluation metrics RAGAS'. Then use agent-browser to visit the RAGAS documentation page. The search results and the docs will describe the same faithfulness/relevancy metrics. Use summarize to consolidate. Log the evaluation framework to your learnings. Save as rag-eval.pdf with metric definitions from the actual docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "self-improving-agent",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

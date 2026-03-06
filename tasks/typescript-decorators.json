@@ -1,12 +1,12 @@
 {
-  "id": "18ed78a7d9d7",
+  "id": "a6cce9f6ebaf",
   "name": "typescript-decorators",
-  "description": "Use web-search to search for 'TypeScript decorators tutorial 2025'. Then use agent-browser to visit the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.pdf with the actual decorator examples from the docs page.",
+  "description": "Use the web_search tool to search for 'TypeScript decorators tutorial 2025'. Then use agent-browser to visit the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.pdf with the actual decorator examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

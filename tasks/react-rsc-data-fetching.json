@@ -1,12 +1,12 @@
 {
-  "id": "73ce16fd930c",
+  "id": "4a51fdea5ba5",
   "name": "react-rsc-data-fetching",
-  "description": "Use web-search to search for 'React Server Components data fetching patterns'. Then use agent-browser to visit the Next.js docs page about data fetching. The search results and the docs page will describe the same fetch/cache patterns. Use summarize to consolidate. Log the overlapping patterns to your learnings file. Save as react-data-fetching.pdf.",
+  "description": "Use the web_search tool to search for 'React Server Components data fetching patterns'. Then use agent-browser to visit the Next.js docs page about data fetching. The search results and the docs page will describe the same fetch/cache patterns. Use summarize to consolidate. Log the overlapping patterns to your learnings file. Save as react-data-fetching.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "self-improving-agent",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

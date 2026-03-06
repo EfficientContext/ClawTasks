@@ -1,12 +1,12 @@
 {
-  "id": "4243ca42fae3",
+  "id": "c572f8e03aec",
   "name": "python-async-error-handling",
-  "description": "Use web-search to search for 'Python asyncio exception handling try except'. Then use agent-browser to visit the official Python docs page for asyncio at docs.python.org and extract the error handling section. Compare which content appears in both the search results and the docs page. Use summarize to create a consolidated summary. Log the overlapping error patterns to your learnings file. Save as python-async-errors.pdf.",
+  "description": "Use the web_search tool to search for 'Python asyncio exception handling try except'. Then use agent-browser to visit the official Python docs page for asyncio at docs.python.org and extract the error handling section. Compare which content appears in both the search results and the docs page. Use summarize to create a consolidated summary. Log the overlapping error patterns to your learnings file. Save as python-async-errors.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "self-improving-agent",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

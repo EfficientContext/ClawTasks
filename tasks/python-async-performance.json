@@ -1,12 +1,12 @@
 {
-  "id": "c1c2be437da5",
+  "id": "ddf4510a5c6b",
   "name": "python-async-performance",
-  "description": "Use web-search to search for 'Python asyncio performance benchmark 2025'. Then use web-search to search for 'Python async vs multiprocessing speed comparison'. Identify overlapping benchmark articles. Use agent-browser to visit the top overlapping article and extract full benchmark data. Use summarize to create a performance comparison. Save as python-async-perf.pdf with benchmark numbers and source URLs.",
+  "description": "Use the web_search tool to search for 'Python asyncio performance benchmark 2025'. Then use the web_search tool to search for 'Python async vs multiprocessing speed comparison'. Identify overlapping benchmark articles. Use agent-browser to visit the top overlapping article and extract full benchmark data. Use summarize to create a performance comparison. Save as python-async-perf.pdf with benchmark numbers and source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

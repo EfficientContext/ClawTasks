@@ -1,12 +1,12 @@
 {
-  "id": "a8d9461b07f9",
+  "id": "31a02b785715",
   "name": "css-grid-responsive",
-  "description": "Use web-search to search for 'CSS Grid responsive design auto-fit minmax'. Then use agent-browser to visit a top tutorial page about responsive CSS Grid. The search snippets and the tutorial will cover the same auto-fit/minmax patterns. Use summarize on the overlapping content. Apply design guidelines. Save as css-responsive.pdf.",
+  "description": "Use the web_search tool to search for 'CSS Grid responsive design auto-fit minmax'. Then use agent-browser to visit a top tutorial page about responsive CSS Grid. The search snippets and the tutorial will cover the same auto-fit/minmax patterns. Use summarize on the overlapping content. Apply design guidelines. Save as css-responsive.pdf.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "superdesign",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

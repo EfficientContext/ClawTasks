@@ -1,12 +1,12 @@
 {
-  "id": "36ada7d2e5e3",
+  "id": "a9b4e5f244b9",
   "name": "typescript-utility-types",
-  "description": "Use web-search to search for 'TypeScript utility types Partial Pick Omit'. Then use web-search to search for 'TypeScript Record Exclude Extract'. Results will overlap because utility types docs cross-reference each other. List overlapping URLs. Use summarize. Log type patterns to your learnings. Save as ts-utility-types.md with URLs.",
+  "description": "Use the web_search tool to search for 'TypeScript utility types Partial Pick Omit'. Then use the web_search tool to search for 'TypeScript Record Exclude Extract'. Results will overlap because utility types docs cross-reference each other. List overlapping URLs. Use summarize. Log type patterns to your learnings. Save as ts-utility-types.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

@@ -1,12 +1,12 @@
 {
-  "id": "508f28b3fa5c",
+  "id": "1f7cbb7d8942",
   "name": "rag-architecture-guide",
-  "description": "Use web-search to search for 'retrieval augmented generation architecture 2025'. Then use agent-browser to visit the top result and extract the full article. The search snippets and the full article will overlap heavily. Use summarize on both sources. Rewrite as an architecture overview. Save as rag-architecture.pdf with all URLs and diagram descriptions found on the actual pages.",
+  "description": "Use the web_search tool to search for 'retrieval augmented generation architecture 2025'. Then use agent-browser to visit the top result and extract the full article. The search snippets and the full article will overlap heavily. Use summarize on both sources. Rewrite as an architecture overview. Save as rag-architecture.pdf with all URLs and diagram descriptions found on the actual pages.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

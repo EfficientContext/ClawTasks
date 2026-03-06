@@ -1,12 +1,12 @@
 {
-  "id": "4f11f19a24fc",
+  "id": "14069b2f0a7d",
   "name": "react-rsc-research",
-  "description": "Use web-search to search for 'React Server Components 2025'. Then use agent-browser to visit react.dev and navigate to the Server Components documentation page. Compare the search result snippets with the official docs content — they will overlap significantly. Use summarize on both. Rewrite for a blog audience. Save as react-rsc-guide.pdf with all URLs.",
+  "description": "Use the web_search tool to search for 'React Server Components 2025'. Then use agent-browser to visit react.dev and navigate to the Server Components documentation page. Compare the search result snippets with the official docs content — they will overlap significantly. Use summarize on both. Rewrite for a blog audience. Save as react-rsc-guide.pdf with all URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

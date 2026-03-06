@@ -1,12 +1,12 @@
 {
-  "id": "f2b6400ca8d5",
+  "id": "3bd7d5dd423f",
   "name": "k8s-resource-limits",
-  "description": "Use web-search to search for 'Kubernetes resource requests limits best practices'. Then use web-search to search for 'Kubernetes CPU memory OOMKilled troubleshooting'. Both return the same resource management articles. Use summarize on the overlapping content. Log recommendations to your learnings. Save as k8s-resources.md with source URLs.",
+  "description": "Use the web_search tool to search for 'Kubernetes resource requests limits best practices'. Then use the web_search tool to search for 'Kubernetes CPU memory OOMKilled troubleshooting'. Both return the same resource management articles. Use summarize on the overlapping content. Log recommendations to your learnings. Save as k8s-resources.md with source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

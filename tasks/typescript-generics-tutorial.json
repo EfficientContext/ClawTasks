@@ -1,12 +1,12 @@
 {
-  "id": "ae39c6b1cedf",
+  "id": "b2d8550b5d1b",
   "name": "typescript-generics-tutorial",
-  "description": "Use web-search to search for 'TypeScript generics tutorial 2025'. Then use agent-browser to visit the TypeScript Handbook generics page at typescriptlang.org. The search results will reference the same handbook content. Use summarize on both. Rewrite with more examples. Save as ts-generics.pdf with URLs.",
+  "description": "Use the web_search tool to search for 'TypeScript generics tutorial 2025'. Then use agent-browser to visit the TypeScript Handbook generics page at typescriptlang.org. The search results will reference the same handbook content. Use summarize on both. Rewrite with more examples. Save as ts-generics.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

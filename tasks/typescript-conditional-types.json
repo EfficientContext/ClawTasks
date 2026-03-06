@@ -1,21 +1,21 @@
 {
-  "id": "1fdba33035f8",
+  "id": "757cbb83eb51",
   "name": "typescript-conditional-types",
-  "description": "Use web-search to search for 'TypeScript conditional types tutorial'. Then use web-search to search for 'TypeScript infer keyword examples'. Both return overlapping articles about the same advanced type features. Use summarize on overlapping sources. Rewrite with clear examples. Save as ts-conditional.md with URLs.",
+  "description": "Use the web_search tool to search for 'TypeScript conditional types tutorial'. Then use the web_search tool to search for 'TypeScript infer keyword examples'. Both return overlapping articles about the same advanced type features. Use summarize on overlapping sources. Rewrite with clear examples. Save as ts-conditional.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "humanizer",
     "markdown-converter"
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

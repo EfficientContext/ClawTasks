@@ -1,12 +1,12 @@
 {
-  "id": "28aae2535d19",
+  "id": "84bb692b22e4",
   "name": "rust-error-patterns",
-  "description": "Use web-search to search for 'Rust anyhow vs thiserror when to use'. Then use web-search to search for 'Rust error handling crate comparison 2025'. The same comparison blog posts will appear in both. List overlapping URLs. Use summarize on them. Log the patterns to your learnings. Save as rust-error-crates.md with URLs.",
+  "description": "Use the web_search tool to search for 'Rust anyhow vs thiserror when to use'. Then use the web_search tool to search for 'Rust error handling crate comparison 2025'. The same comparison blog posts will appear in both. List overlapping URLs. Use summarize on them. Log the patterns to your learnings. Save as rust-error-crates.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

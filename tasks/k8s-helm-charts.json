@@ -1,12 +1,12 @@
 {
-  "id": "f1b94edca594",
+  "id": "96f3af2ce384",
   "name": "k8s-helm-charts",
-  "description": "Use web-search to search for 'Kubernetes Helm chart tutorial getting started'. Then use agent-browser to visit the official helm.sh getting-started page. The search snippets and the docs will describe the same chart structure and helm commands. Use summarize on both. Save as k8s-helm.pdf with the actual commands from the docs.",
+  "description": "Use the web_search tool to search for 'Kubernetes Helm chart tutorial getting started'. Then use agent-browser to visit the official helm.sh getting-started page. The search snippets and the docs will describe the same chart structure and helm commands. Use summarize on both. Save as k8s-helm.pdf with the actual commands from the docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

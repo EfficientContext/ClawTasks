@@ -1,12 +1,12 @@
 {
-  "id": "44d7af1bf8f3",
+  "id": "7275b78f07bc",
   "name": "python-async-patterns",
-  "description": "Use web-search to search for 'Python async await patterns' and collect the top 5 URLs. Then use web-search again to search for 'Python asyncio vs threading comparison' and collect another 5 URLs. List which URLs appear in BOTH result sets (these are the overlapping documents). Use summarize on the overlapping URLs. Rewrite the summary in plain language and save as python-async-patterns.md with all URLs cited.",
+  "description": "Use the web_search tool to search for 'Python async await patterns' and collect the top 5 URLs. Then use web-search again to search for 'Python asyncio vs threading comparison' and collect another 5 URLs. List which URLs appear in BOTH result sets (these are the overlapping documents). Use summarize on the overlapping URLs. Rewrite the summary in plain language and save as python-async-patterns.md with all URLs cited.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

@@ -1,12 +1,12 @@
 {
-  "id": "292edba6d9de",
+  "id": "6ed6050e6265",
   "name": "python-async-deep-dive",
-  "description": "Use web-search to search DuckDuckGo for 'Python asyncio tutorial 2025' and collect the top 5 result URLs. Then use agent-browser to open the #1 result URL and extract its full page text. Use summarize to summarize both the search snippets and the full page. Rewrite the summary in beginner-friendly language. Save the final output as python-async-guide.pdf including all source URLs you found.",
+  "description": "Use the web_search tool to search for 'Python asyncio tutorial 2025' and collect the top 5 result URLs. Then use agent-browser to open the #1 result URL and extract its full page text. Use summarize to summarize both the search snippets and the full page. Rewrite the summary in beginner-friendly language. Save the final output as python-async-guide.pdf including all source URLs you found.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

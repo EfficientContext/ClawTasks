@@ -1,12 +1,12 @@
 {
-  "id": "37a510ac01b0",
+  "id": "274a2d1a2374",
   "name": "css-grid-named-areas",
-  "description": "Use web-search to search for 'CSS Grid template areas tutorial'. Then use web-search to search for 'CSS Grid named lines examples'. Both return overlapping MDN docs. Use summarize on overlapping sources. Rewrite with visual ASCII layout examples. Save as css-areas.md.",
+  "description": "Use the web_search tool to search for 'CSS Grid template areas tutorial'. Then use the web_search tool to search for 'CSS Grid named lines examples'. Both return overlapping MDN docs. Use summarize on overlapping sources. Rewrite with visual ASCII layout examples. Save as css-areas.md.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "superdesign",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

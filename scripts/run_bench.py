@@ -88,7 +88,7 @@ def build_prompt(task: dict) -> str:
 TASK: {task['description']}
 
 RULES:
-1. You MUST actually invoke the tools/commands described in each skill (web-search, agent-browser, summarize CLI, etc.). Do NOT skip any skill.
+1. You MUST actually invoke the tools/commands described in each skill (web_search, agent-browser, summarize CLI, etc.). Do NOT skip any skill.
 2. You may use your memory and learnings alongside tool outputs.
 3. Save the final output to a file (PDF or markdown as specified).
 4. Show the tool commands you ran and their outputs."""

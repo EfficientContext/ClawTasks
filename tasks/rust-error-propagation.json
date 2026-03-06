@@ -1,12 +1,12 @@
 {
-  "id": "98ee97010e3c",
+  "id": "ffdf23dd8103",
   "name": "rust-error-propagation",
-  "description": "Use web-search to search for 'Rust question mark operator error propagation'. Then use agent-browser to visit the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait. Use summarize to consolidate the overlapping content. Log to your learnings. Save as rust-propagation.pdf.",
+  "description": "Use the web_search tool to search for 'Rust question mark operator error propagation'. Then use agent-browser to visit the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait. Use summarize to consolidate the overlapping content. Log to your learnings. Save as rust-propagation.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "self-improving-agent",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

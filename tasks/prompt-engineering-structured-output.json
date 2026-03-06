@@ -1,12 +1,12 @@
 {
-  "id": "2f101ccba748",
+  "id": "219faf96d1e0",
   "name": "prompt-engineering-structured-output",
-  "description": "Use web-search to search for 'prompt engineering structured output JSON schema'. Then use agent-browser to browse the Anthropic or OpenAI structured output documentation. The search results and docs will cover the same JSON mode patterns. Use summarize on both. Save as prompt-structured.pdf with actual JSON schema examples from the docs.",
+  "description": "Use the web_search tool to search for 'prompt engineering structured output JSON schema'. Then use agent-browser to browse the Anthropic or OpenAI structured output documentation. The search results and docs will cover the same JSON mode patterns. Use summarize on both. Save as prompt-structured.pdf with actual JSON schema examples from the docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

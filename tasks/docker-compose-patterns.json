@@ -1,12 +1,12 @@
 {
-  "id": "cbbb1e3ac5c4",
+  "id": "4ebca442d5d5",
   "name": "docker-compose-patterns",
-  "description": "Use web-search to search for 'Docker Compose best practices production'. Then use web-search to search for 'Docker Compose health check restart policy'. Overlapping articles will cover the same topics. List overlapping URLs. Use summarize on them. Log best practices to your learnings. Save as docker-compose-best.md with URLs.",
+  "description": "Use the web_search tool to search for 'Docker Compose best practices production'. Then use the web_search tool to search for 'Docker Compose health check restart policy'. Overlapping articles will cover the same topics. List overlapping URLs. Use summarize on them. Log best practices to your learnings. Save as docker-compose-best.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

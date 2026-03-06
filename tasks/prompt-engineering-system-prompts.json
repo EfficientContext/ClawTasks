@@ -1,12 +1,12 @@
 {
-  "id": "41932d4b4e77",
+  "id": "3d6fbc0f4628",
   "name": "prompt-engineering-system-prompts",
-  "description": "Use web-search to search for 'system prompt best practices LLM'. Then use web-search to search for 'system message design for AI agents'. Both return the same articles about system prompt structure. Use summarize on overlapping sources. Log useful system prompt templates to your learnings. Save as system-prompts.md.",
+  "description": "Use the web_search tool to search for 'system prompt best practices LLM'. Then use the web_search tool to search for 'system message design for AI agents'. Both return the same articles about system prompt structure. Use summarize on overlapping sources. Log useful system prompt templates to your learnings. Save as system-prompts.md.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

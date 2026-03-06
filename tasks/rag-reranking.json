@@ -1,12 +1,12 @@
 {
-  "id": "b6d5c6cc57da",
+  "id": "2a06fec56440",
   "name": "rag-reranking",
-  "description": "Use web-search to search for 'RAG reranking techniques'. Then use web-search to search for 'cross-encoder vs bi-encoder retrieval'. The same reranking papers and articles will appear in both. Use summarize on the overlapping sources. Log the reranking trade-offs to your learnings. Save as rag-reranking.md citing which URLs overlapped.",
+  "description": "Use the web_search tool to search for 'RAG reranking techniques'. Then use the web_search tool to search for 'cross-encoder vs bi-encoder retrieval'. The same reranking papers and articles will appear in both. Use summarize on the overlapping sources. Log the reranking trade-offs to your learnings. Save as rag-reranking.md citing which URLs overlapped.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "self-improving-agent",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

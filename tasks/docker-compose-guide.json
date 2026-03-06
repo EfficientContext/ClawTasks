@@ -1,12 +1,12 @@
 {
-  "id": "e2981dd1f4ea",
+  "id": "43d4c9075833",
   "name": "docker-compose-guide",
-  "description": "Use web-search to search for 'Docker Compose multi-service setup tutorial 2025'. Then use agent-browser to visit the official Docker Compose documentation page at docs.docker.com. The search results and docs will contain the same YAML examples. Use summarize on both. Rewrite for beginners. Save as docker-compose-guide.pdf with the YAML examples from the actual docs.",
+  "description": "Use the web_search tool to search for 'Docker Compose multi-service setup tutorial 2025'. Then use agent-browser to visit the official Docker Compose documentation page at docs.docker.com. The search results and docs will contain the same YAML examples. Use summarize on both. Rewrite for beginners. Save as docker-compose-guide.pdf with the YAML examples from the actual docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

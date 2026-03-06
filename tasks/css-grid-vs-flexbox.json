@@ -1,12 +1,12 @@
 {
-  "id": "8dbd410529ab",
+  "id": "196d5d5dc7d1",
   "name": "css-grid-vs-flexbox",
-  "description": "Use web-search to search for 'CSS Grid vs Flexbox when to use which'. Then use web-search to search for 'CSS layout best practices 2025'. Both return the same comparison articles. Use summarize on overlapping sources. Apply design guidelines for layout decisions. Save as css-layout-guide.md with source URLs.",
+  "description": "Use the web_search tool to search for 'CSS Grid vs Flexbox when to use which'. Then use the web_search tool to search for 'CSS layout best practices 2025'. Both return the same comparison articles. Use summarize on overlapping sources. Apply design guidelines for layout decisions. Save as css-layout-guide.md with source URLs.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "superdesign",
     "humanizer",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

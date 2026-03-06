@@ -1,12 +1,12 @@
 {
-  "id": "bdec10627433",
+  "id": "54906132ee61",
   "name": "css-grid-deep-dive",
-  "description": "Use web-search to search for 'CSS Grid layout complete guide'. Then use agent-browser to visit the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.pdf with the actual CSS snippets from MDN.",
+  "description": "Use the web_search tool to search for 'CSS Grid layout complete guide'. Then use agent-browser to visit the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.pdf with the actual CSS snippets from MDN.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "superdesign",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",

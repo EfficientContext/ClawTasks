@@ -1,21 +1,21 @@
 {
-  "id": "21c6f6ab026e",
+  "id": "f1c2a62ddd08",
   "name": "python-async-real-world",
-  "description": "Use web-search to search for 'Python asyncio real world examples aiohttp'. Then use web-search to search for 'Python httpx async tutorial'. List the overlapping URLs and articles that appear in both searches. Use summarize to summarize each overlapping article. Rewrite as a practical cookbook in plain language. Save as python-async-cookbook.md with all source URLs.",
+  "description": "Use the web_search tool to search for 'Python asyncio real world examples aiohttp'. Then use the web_search tool to search for 'Python httpx async tutorial'. List the overlapping URLs and articles that appear in both searches. Use summarize to summarize each overlapping article. Rewrite as a practical cookbook in plain language. Save as python-async-cookbook.md with all source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
-    "web-search",
+    "web_search",
     "summarize",
     "humanizer",
     "markdown-converter"
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "summarize",

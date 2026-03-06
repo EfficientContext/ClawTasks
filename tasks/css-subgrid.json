@@ -1,12 +1,12 @@
 {
-  "id": "59ed9e6c707e",
+  "id": "07323a3fe63b",
   "name": "css-subgrid",
-  "description": "Use web-search to search for 'CSS subgrid browser support 2025'. Then use agent-browser to visit the MDN subgrid page. The search results and MDN docs will describe the same subgrid features. Use summarize on the overlapping content. Apply design best practices. Save as css-subgrid.pdf with browser support data from the actual MDN page.",
+  "description": "Use the web_search tool to search for 'CSS subgrid browser support 2025'. Then use agent-browser to visit the MDN subgrid page. The search results and MDN docs will describe the same subgrid features. Use summarize on the overlapping content. Apply design best practices. Save as css-subgrid.pdf with browser support data from the actual MDN page.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
-    "web-search",
+    "web_search",
     "agent-browser",
     "summarize",
     "superdesign",
@@ -14,9 +14,9 @@
   ],
   "skills_info": [
     {
-      "slug": "web-search",
-      "displayName": "Web Search",
-      "category": "search_web"
+      "slug": "web_search",
+      "displayName": "web_search",
+      "category": "unknown"
     },
     {
       "slug": "agent-browser",
