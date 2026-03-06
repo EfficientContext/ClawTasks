@@ -252,7 +252,8 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit", type=int, default=None,
                        help="Only run first N tasks")
-    parser.add_argument("--timeout", type=int, default=300)
+    parser.add_argument("--timeout", type=int, default=None,
+                       help="Timeout per task in seconds (default: no limit)")
     parser.add_argument("--runner", default="openclaw",
                        choices=["openclaw", "claude"])
     args = parser.parse_args()
