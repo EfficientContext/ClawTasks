@@ -1,7 +1,7 @@
 {
   "id": "179f8d50dd3b",
   "name": "rag-evaluation",
-  "description": "Search for 'RAG evaluation metrics', then search for 'how to evaluate retrieval augmented generation'. Both return the same RAGAS/faithfulness/relevancy articles. Summarize, browse a top evaluation framework page for details, and save as PDF guide.",
+  "description": "Use web-search to search for 'RAG evaluation metrics RAGAS'. Then use agent-browser to visit the RAGAS documentation page. The search results and the docs will describe the same faithfulness/relevancy metrics. Use summarize to consolidate. Log the evaluation framework to your learnings. Save as rag-eval.pdf with metric definitions from the actual docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

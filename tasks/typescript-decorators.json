@@ -1,7 +1,7 @@
 {
   "id": "18ed78a7d9d7",
   "name": "typescript-decorators",
-  "description": "Search for 'TypeScript decorators tutorial', then browse the TC39 decorators proposal page. The search results and the proposal will describe the same decorator syntax and semantics. Summarize, browse for full spec detail, and create a PDF guide.",
+  "description": "Use web-search to search for 'TypeScript decorators tutorial 2025'. Then use agent-browser to visit the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.pdf with the actual decorator examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

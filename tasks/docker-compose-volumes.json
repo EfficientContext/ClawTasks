@@ -1,7 +1,7 @@
 {
   "id": "b543a279af30",
   "name": "docker-compose-volumes",
-  "description": "Search for 'Docker Compose volumes explained', then search for 'Docker named volumes vs bind mounts'. Both return the same volume documentation and comparison articles. Summarize, log storage patterns to learnings, and format as markdown reference.",
+  "description": "Use web-search to search for 'Docker Compose volumes explained'. Then use web-search to search for 'Docker named volumes vs bind mounts performance'. Both return the same volume docs. Use summarize on overlapping sources. Log the storage recommendations to your learnings. Save as docker-volumes.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

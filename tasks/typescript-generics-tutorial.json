@@ -1,7 +1,7 @@
 {
   "id": "ae39c6b1cedf",
   "name": "typescript-generics-tutorial",
-  "description": "Search for 'TypeScript generics tutorial', then browse the TypeScript Handbook generics page with the headless browser. The search results will reference the same handbook content. Summarize, rewrite with more examples, and compile into a PDF tutorial.",
+  "description": "Use web-search to search for 'TypeScript generics tutorial 2025'. Then use agent-browser to visit the TypeScript Handbook generics page at typescriptlang.org. The search results will reference the same handbook content. Use summarize on both. Rewrite with more examples. Save as ts-generics.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

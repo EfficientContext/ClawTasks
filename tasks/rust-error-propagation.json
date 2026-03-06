@@ -1,7 +1,7 @@
 {
   "id": "98ee97010e3c",
   "name": "rust-error-propagation",
-  "description": "Search for 'Rust ? operator error propagation', then browse the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait patterns. Summarize, log to learnings, and save as PDF.",
+  "description": "Use web-search to search for 'Rust question mark operator error propagation'. Then use agent-browser to visit the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait. Use summarize to consolidate the overlapping content. Log to your learnings. Save as rust-propagation.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

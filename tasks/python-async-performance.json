@@ -1,7 +1,7 @@
 {
   "id": "c1c2be437da5",
   "name": "python-async-performance",
-  "description": "Search for 'Python asyncio performance benchmarks', then search for 'Python async vs multiprocessing speed'. Both will reference the same GIL and event loop benchmarks. Summarize the overlapping performance data, browse a top benchmark article for details, and create a PDF comparison report.",
+  "description": "Use web-search to search for 'Python asyncio performance benchmark 2025'. Then use web-search to search for 'Python async vs multiprocessing speed comparison'. Identify overlapping benchmark articles. Use agent-browser to visit the top overlapping article and extract full benchmark data. Use summarize to create a performance comparison. Save as python-async-perf.pdf with benchmark numbers and source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

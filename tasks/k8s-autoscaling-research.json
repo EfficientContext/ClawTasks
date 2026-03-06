@@ -1,7 +1,7 @@
 {
   "id": "ab82339382af",
   "name": "k8s-autoscaling-research",
-  "description": "Search for 'Kubernetes HPA autoscaling', then browse the official Kubernetes docs page about Horizontal Pod Autoscaler with the headless browser. The search results and docs will contain the same HPA config examples. Summarize, humanize, and create a PDF cheatsheet.",
+  "description": "Use web-search to search for 'Kubernetes HPA horizontal pod autoscaler tutorial'. Then use agent-browser to visit the official kubernetes.io HPA documentation page. The search snippets and the docs will contain the same YAML examples. Use summarize on both. Rewrite as a cheatsheet. Save as k8s-hpa.pdf with the actual YAML configs from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

@@ -1,7 +1,7 @@
 {
   "id": "41932d4b4e77",
   "name": "prompt-engineering-system-prompts",
-  "description": "Search for 'system prompt best practices', then search for 'LLM system message design'. Both return the same articles about system prompt structure, role setting, and constraints. Summarize, log useful system prompt templates to learnings, and format as markdown.",
+  "description": "Use web-search to search for 'system prompt best practices LLM'. Then use web-search to search for 'system message design for AI agents'. Both return the same articles about system prompt structure. Use summarize on overlapping sources. Log useful system prompt templates to your learnings. Save as system-prompts.md.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

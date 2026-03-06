@@ -1,7 +1,7 @@
 {
   "id": "292edba6d9de",
   "name": "python-async-deep-dive",
-  "description": "Search for 'Python asyncio tutorial' using web search, then browse the top result's full page with the headless browser to get detailed content. The search snippets and full page will overlap. Summarize both, rewrite in beginner-friendly language, and save as a PDF guide.",
+  "description": "Use web-search to search DuckDuckGo for 'Python asyncio tutorial 2025' and collect the top 5 result URLs. Then use agent-browser to open the #1 result URL and extract its full page text. Use summarize to summarize both the search snippets and the full page. Rewrite the summary in beginner-friendly language. Save the final output as python-async-guide.pdf including all source URLs you found.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

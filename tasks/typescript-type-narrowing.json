@@ -1,7 +1,7 @@
 {
   "id": "c60efd12b755",
   "name": "typescript-type-narrowing",
-  "description": "Search for 'TypeScript type narrowing', then browse the TypeScript Handbook narrowing page. The search results and handbook will cover the same typeof/instanceof/in guard patterns. Summarize, log the narrowing techniques to learnings, and save as PDF.",
+  "description": "Use web-search to search for 'TypeScript type narrowing type guards'. Then use agent-browser to visit the TypeScript Handbook narrowing page. The search results and handbook will cover the same typeof/instanceof patterns. Use summarize on the overlapping content. Log narrowing techniques to learnings. Save as ts-narrowing.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

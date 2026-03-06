@@ -1,7 +1,7 @@
 {
   "id": "34fe7d63cad5",
   "name": "docker-compose-env",
-  "description": "Search for 'Docker Compose environment variables', then search for 'Docker Compose .env file secrets'. Both queries will return the same articles about env_file, variable substitution, and secret management. Summarize, browse top result for full examples, and create a PDF.",
+  "description": "Use web-search to search for 'Docker Compose environment variables .env file'. Then use agent-browser to visit the Docker docs page about environment variables in Compose. The search results and docs will cover the same env_file and variable substitution patterns. Use summarize. Save as docker-env.pdf with the actual config syntax from the docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

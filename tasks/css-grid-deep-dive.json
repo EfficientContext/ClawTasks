@@ -1,7 +1,7 @@
 {
   "id": "bdec10627433",
   "name": "css-grid-deep-dive",
-  "description": "Search for 'CSS Grid layout tutorial', then browse the MDN CSS Grid page with the headless browser. Search snippets and the MDN page will contain the same grid-template examples. Summarize, apply frontend design guidelines, and create a PDF cheatsheet.",
+  "description": "Use web-search to search for 'CSS Grid layout complete guide'. Then use agent-browser to visit the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.pdf with the actual CSS snippets from MDN.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,

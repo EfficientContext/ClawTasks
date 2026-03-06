@@ -1,7 +1,7 @@
 {
   "id": "f2b6400ca8d5",
   "name": "k8s-resource-limits",
-  "description": "Search for 'Kubernetes resource limits best practices', then search for 'Kubernetes CPU memory requests vs limits'. Both return the same resource management articles. Summarize, log the overlapping recommendations to learnings, and format as markdown.",
+  "description": "Use web-search to search for 'Kubernetes resource requests limits best practices'. Then use web-search to search for 'Kubernetes CPU memory OOMKilled troubleshooting'. Both return the same resource management articles. Use summarize on the overlapping content. Log recommendations to your learnings. Save as k8s-resources.md with source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

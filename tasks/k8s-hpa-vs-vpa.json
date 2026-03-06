@@ -1,7 +1,7 @@
 {
   "id": "3f5e2b33638d",
   "name": "k8s-hpa-vs-vpa",
-  "description": "Search for 'Kubernetes HPA vs VPA', then search for 'Kubernetes pod autoscaling best practices'. Both will return overlapping docs about HPA, VPA, and KEDA. Summarize, log key decision criteria to learnings, and format as a markdown decision guide.",
+  "description": "Use web-search to search for 'Kubernetes HPA vs VPA comparison'. Then use web-search to search for 'Kubernetes pod autoscaling best practices 2025'. Both will return overlapping docs about HPA, VPA, and KEDA. List overlapping URLs. Use summarize on them. Log the decision criteria to your learnings. Save as k8s-scaling.md with cited URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

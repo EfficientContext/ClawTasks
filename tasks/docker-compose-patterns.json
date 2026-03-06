@@ -1,7 +1,7 @@
 {
   "id": "cbbb1e3ac5c4",
   "name": "docker-compose-patterns",
-  "description": "Search for 'Docker Compose best practices', then search for 'Docker Compose production deployment'. Overlapping articles will cover the same topics (health checks, restart policies, volumes). Summarize, log to learnings, and create a markdown checklist.",
+  "description": "Use web-search to search for 'Docker Compose best practices production'. Then use web-search to search for 'Docker Compose health check restart policy'. Overlapping articles will cover the same topics. List overlapping URLs. Use summarize on them. Log best practices to your learnings. Save as docker-compose-best.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

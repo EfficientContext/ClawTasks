@@ -1,7 +1,7 @@
 {
   "id": "b241a190d6f6",
   "name": "k8s-networking",
-  "description": "Search for 'Kubernetes networking explained', then browse the Kubernetes networking concepts docs page. The search results and docs page will cover the same Services, Ingress, and CNI content. Summarize the overlapping material, rewrite for DevOps beginners, and save as PDF.",
+  "description": "Use web-search to search for 'Kubernetes networking Services Ingress explained'. Then use agent-browser to visit the kubernetes.io networking concepts page. The search results and docs page will cover the same Services, Ingress, and DNS content. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

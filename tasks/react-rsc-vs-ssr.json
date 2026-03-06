@@ -1,7 +1,7 @@
 {
   "id": "3598cd355548",
   "name": "react-rsc-vs-ssr",
-  "description": "Search for 'React Server Components vs SSR', then search for 'Next.js App Router RSC'. Results will heavily overlap since both topics reference the same React/Next.js documentation. Summarize, log key differences to learnings, and format as markdown.",
+  "description": "Use web-search to search for 'React Server Components vs SSR differences'. Then use web-search to search for 'Next.js App Router vs Pages Router'. List which articles and documentation pages appear in both result sets. Use summarize on the overlapping sources. Log the key architectural differences to your learnings file. Save as react-rsc-vs-ssr.md with cited URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

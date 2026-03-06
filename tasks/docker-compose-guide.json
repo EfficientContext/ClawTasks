@@ -1,7 +1,7 @@
 {
   "id": "e2981dd1f4ea",
   "name": "docker-compose-guide",
-  "description": "Search for 'Docker Compose multi-service setup', then browse the Docker Compose documentation page with the headless browser. The search results and docs will contain the same YAML examples. Summarize, humanize for beginners, and save as PDF.",
+  "description": "Use web-search to search for 'Docker Compose multi-service setup tutorial 2025'. Then use agent-browser to visit the official Docker Compose documentation page at docs.docker.com. The search results and docs will contain the same YAML examples. Use summarize on both. Rewrite for beginners. Save as docker-compose-guide.pdf with the YAML examples from the actual docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

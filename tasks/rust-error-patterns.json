@@ -1,7 +1,7 @@
 {
   "id": "28aae2535d19",
   "name": "rust-error-patterns",
-  "description": "Search for 'Rust anyhow vs thiserror', then search for 'Rust error handling best practices 2025'. Many of the same blog posts and docs will appear in both. Summarize the overlapping advice, log patterns to learnings, and output as markdown.",
+  "description": "Use web-search to search for 'Rust anyhow vs thiserror when to use'. Then use web-search to search for 'Rust error handling crate comparison 2025'. The same comparison blog posts will appear in both. List overlapping URLs. Use summarize on them. Log the patterns to your learnings. Save as rust-error-crates.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

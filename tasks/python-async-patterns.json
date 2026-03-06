@@ -1,7 +1,7 @@
 {
   "id": "44d7af1bf8f3",
   "name": "python-async-patterns",
-  "description": "Search for 'Python async await patterns', then search for 'Python asyncio vs threading'. Both searches will return overlapping articles about Python concurrency. Summarize the combined findings, log key insights to learnings, and create a comparison document in markdown.",
+  "description": "Use web-search to search for 'Python async await patterns' and collect the top 5 URLs. Then use web-search again to search for 'Python asyncio vs threading comparison' and collect another 5 URLs. List which URLs appear in BOTH result sets (these are the overlapping documents). Use summarize on the overlapping URLs. Rewrite the summary in plain language and save as python-async-patterns.md with all URLs cited.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

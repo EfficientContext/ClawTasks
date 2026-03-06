@@ -1,7 +1,7 @@
 {
   "id": "4243ca42fae3",
   "name": "python-async-error-handling",
-  "description": "Search for 'Python asyncio error handling', then browse the Python docs page about asyncio exceptions with the headless browser. The search results and docs page will cover the same try/except patterns for coroutines. Summarize the overlapping content, log error patterns to learnings, and output as PDF.",
+  "description": "Use web-search to search for 'Python asyncio exception handling try except'. Then use agent-browser to visit the official Python docs page for asyncio at docs.python.org and extract the error handling section. Compare which content appears in both the search results and the docs page. Use summarize to create a consolidated summary. Log the overlapping error patterns to your learnings file. Save as python-async-errors.pdf.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

@@ -1,7 +1,7 @@
 {
   "id": "1fdba33035f8",
   "name": "typescript-conditional-types",
-  "description": "Search for 'TypeScript conditional types', then search for 'TypeScript infer keyword explained'. Both return overlapping articles about the same advanced type system features. Summarize the deduplicated content, rewrite with examples, and format as markdown.",
+  "description": "Use web-search to search for 'TypeScript conditional types tutorial'. Then use web-search to search for 'TypeScript infer keyword examples'. Both return overlapping articles about the same advanced type features. Use summarize on overlapping sources. Rewrite with clear examples. Save as ts-conditional.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

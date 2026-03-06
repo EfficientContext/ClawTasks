@@ -25,7 +25,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 TASKS_FILE = ROOT / "tasks_all.json"
 SKILLS_DIR = ROOT / "skills"
 RESULTS_DIR = ROOT / "results"
-def find_openclaw_bin() -> pathlib.Path | None:
+def find_openclaw_bin():
     """Auto-detect openclaw.mjs location."""
     candidates = [
         pathlib.Path.home() / "openclaw" / "openclaw.mjs",
@@ -57,7 +57,7 @@ def check_contextpilot_running(port: int = 8765) -> bool:
         return False
 
 
-def get_node22_path() -> str | None:
+def get_node22_path():
     nvm_dir = pathlib.Path.home() / ".nvm"
     if nvm_dir.exists():
         for d in sorted((nvm_dir / "versions" / "node").glob("v22.*"), reverse=True):
@@ -79,7 +79,7 @@ def build_skill_context(task: dict) -> str:
 
 def build_prompt(task: dict) -> str:
     ctx = build_skill_context(task)
-    return f"""You have the following skills available. Read each skill's instructions carefully.
+    return f"""You have the following skills available. You MUST use each skill at least once to complete the task.
 
 {ctx}
 
@@ -87,7 +87,11 @@ def build_prompt(task: dict) -> str:
 
 TASK: {task['description']}
 
-Use the skills above to complete this task step by step."""
+RULES:
+1. You MUST actually invoke the tools/commands described in each skill (web-search, agent-browser, summarize CLI, etc.). Do NOT skip any skill.
+2. You may use your memory and learnings alongside tool outputs.
+3. Save the final output to a file (PDF or markdown as specified).
+4. Show the tool commands you ran and their outputs."""
 
 
 def run_task_openclaw(task: dict, timeout: int = 300) -> dict:

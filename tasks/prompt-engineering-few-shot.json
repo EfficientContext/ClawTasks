@@ -1,7 +1,7 @@
 {
   "id": "4dd310644cd3",
   "name": "prompt-engineering-few-shot",
-  "description": "Search for 'few-shot prompting examples', then browse the OpenAI prompting guide with the headless browser. The search results and the guide will describe the same few-shot patterns. Summarize the overlapping content, rewrite with concrete examples, and save as PDF.",
+  "description": "Use web-search to search for 'few-shot prompting guide 2025'. Then use agent-browser to visit the Anthropic or OpenAI prompting documentation page. The search results and the docs will describe the same few-shot patterns. Use summarize on the overlapping content. Save as prompt-few-shot.pdf with the actual examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

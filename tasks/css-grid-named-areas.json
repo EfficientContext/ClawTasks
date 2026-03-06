@@ -1,7 +1,7 @@
 {
   "id": "37a510ac01b0",
   "name": "css-grid-named-areas",
-  "description": "Search for 'CSS Grid template areas', then search for 'CSS Grid named grid lines'. Both return overlapping MDN docs and tutorials about the same grid naming features. Summarize, rewrite with visual examples, and format as markdown.",
+  "description": "Use web-search to search for 'CSS Grid template areas tutorial'. Then use web-search to search for 'CSS Grid named lines examples'. Both return overlapping MDN docs. Use summarize on overlapping sources. Rewrite with visual ASCII layout examples. Save as css-areas.md.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 10,

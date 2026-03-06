@@ -1,7 +1,7 @@
 {
   "id": "b6d5c6cc57da",
   "name": "rag-reranking",
-  "description": "Search for 'RAG reranking techniques', then search for 'cross-encoder vs bi-encoder retrieval'. The results will overlap on the same reranking papers and Cohere/Jina references. Summarize the overlapping content, log reranking patterns to learnings, and format as markdown.",
+  "description": "Use web-search to search for 'RAG reranking techniques'. Then use web-search to search for 'cross-encoder vs bi-encoder retrieval'. The same reranking papers and articles will appear in both. Use summarize on the overlapping sources. Log the reranking trade-offs to your learnings. Save as rag-reranking.md citing which URLs overlapped.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

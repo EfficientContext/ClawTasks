@@ -1,7 +1,7 @@
 {
   "id": "4f68a33708ef",
   "name": "prompt-engineering-evaluation",
-  "description": "Search for 'prompt evaluation techniques', then search for 'how to test LLM prompts'. Both return overlapping articles about the same eval frameworks and metrics. Summarize, log evaluation patterns to learnings, and create a markdown checklist.",
+  "description": "Use web-search to search for 'how to evaluate LLM prompts'. Then use web-search to search for 'prompt testing framework comparison'. Both return overlapping articles about the same eval tools. Use summarize on overlapping sources. Log evaluation patterns to your learnings. Save as prompt-eval.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

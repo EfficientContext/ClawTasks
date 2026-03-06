@@ -1,7 +1,7 @@
 {
   "id": "9de3061d6481",
   "name": "rust-error-handling-guide",
-  "description": "Search for 'Rust error handling Result anyhow', then browse the Rust Book's error handling chapter with the headless browser. Search snippets and the book chapter will cover the same Result/Option/? patterns. Summarize, rewrite for beginners, and create a PDF.",
+  "description": "Use web-search to search for 'Rust error handling Result Option tutorial'. Then use agent-browser to visit the Rust Book error handling chapter at doc.rust-lang.org. The search results and the book chapter will cover the same patterns. Use summarize on both. Rewrite for beginners. Save as rust-errors.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

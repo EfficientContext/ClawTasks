@@ -1,7 +1,7 @@
 {
   "id": "36ada7d2e5e3",
   "name": "typescript-utility-types",
-  "description": "Search for 'TypeScript utility types explained', then search for 'TypeScript Partial Pick Omit Record'. The results will overlap heavily since utility types documentation cross-references itself. Summarize, log type patterns to learnings, and format as markdown reference.",
+  "description": "Use web-search to search for 'TypeScript utility types Partial Pick Omit'. Then use web-search to search for 'TypeScript Record Exclude Extract'. Results will overlap because utility types docs cross-reference each other. List overlapping URLs. Use summarize. Log type patterns to your learnings. Save as ts-utility-types.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

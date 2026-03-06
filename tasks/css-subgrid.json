@@ -1,7 +1,7 @@
 {
   "id": "59ed9e6c707e",
   "name": "css-subgrid",
-  "description": "Search for 'CSS subgrid tutorial', then browse the MDN subgrid page. The search results and MDN docs will describe the same subgrid alignment features. Summarize the overlapping content, apply design best practices, and create a PDF reference.",
+  "description": "Use web-search to search for 'CSS subgrid browser support 2025'. Then use agent-browser to visit the MDN subgrid page. The search results and MDN docs will describe the same subgrid features. Use summarize on the overlapping content. Apply design best practices. Save as css-subgrid.pdf with browser support data from the actual MDN page.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,

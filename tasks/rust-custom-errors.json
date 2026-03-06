@@ -1,7 +1,7 @@
 {
   "id": "f9b795565ee5",
   "name": "rust-custom-errors",
-  "description": "Search for 'Rust custom error types', then search for 'Rust implement Display Error trait'. Both return overlapping articles showing the same derive/impl patterns. Summarize the deduplicated examples, rewrite with clear annotations, and format as markdown.",
+  "description": "Use web-search to search for 'Rust custom error type implementation'. Then use web-search to search for 'Rust implement Display Error trait example'. Both return the same articles showing derive/impl patterns. Use summarize on overlapping sources. Rewrite with annotated code examples. Save as rust-custom-errors.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
