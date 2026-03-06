@@ -1,0 +1,43 @@
+{
+  "id": "44d7af1bf8f3",
+  "name": "python-async-patterns",
+  "description": "Search for 'Python async await patterns', then search for 'Python asyncio vs threading'. Both searches will return overlapping articles about Python concurrency. Summarize the combined findings, log key insights to learnings, and create a comparison document in markdown.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "self-improving-agent",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

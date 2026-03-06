@@ -1,0 +1,43 @@
+{
+  "id": "ae39c6b1cedf",
+  "name": "typescript-generics-tutorial",
+  "description": "Search for 'TypeScript generics tutorial', then browse the TypeScript Handbook generics page with the headless browser. The search results will reference the same handbook content. Summarize, rewrite with more examples, and compile into a PDF tutorial.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

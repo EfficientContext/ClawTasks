@@ -1,0 +1,43 @@
+{
+  "id": "b241a190d6f6",
+  "name": "k8s-networking",
+  "description": "Search for 'Kubernetes networking explained', then browse the Kubernetes networking concepts docs page. The search results and docs page will cover the same Services, Ingress, and CNI content. Summarize the overlapping material, rewrite for DevOps beginners, and save as PDF.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

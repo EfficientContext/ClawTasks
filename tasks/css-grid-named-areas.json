@@ -1,0 +1,43 @@
+{
+  "id": "37a510ac01b0",
+  "name": "css-grid-named-areas",
+  "description": "Search for 'CSS Grid template areas', then search for 'CSS Grid named grid lines'. Both return overlapping MDN docs and tutorials about the same grid naming features. Summarize, rewrite with visual examples, and format as markdown.",
+  "category": "design",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "superdesign",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "superdesign",
+      "displayName": "SuperDesign",
+      "category": "design_frontend"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

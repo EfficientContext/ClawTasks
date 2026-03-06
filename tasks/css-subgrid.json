@@ -1,0 +1,43 @@
+{
+  "id": "59ed9e6c707e",
+  "name": "css-subgrid",
+  "description": "Search for 'CSS subgrid tutorial', then browse the MDN subgrid page. The search results and MDN docs will describe the same subgrid alignment features. Summarize the overlapping content, apply design best practices, and create a PDF reference.",
+  "category": "design",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "superdesign",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "superdesign",
+      "displayName": "SuperDesign",
+      "category": "design_frontend"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

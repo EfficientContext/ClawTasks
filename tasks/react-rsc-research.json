@@ -1,0 +1,43 @@
+{
+  "id": "4f11f19a24fc",
+  "name": "react-rsc-research",
+  "description": "Search for 'React Server Components explained', then browse the official React docs page about RSC with the headless browser. The search results will reference the same docs content. Summarize both, rewrite for a blog audience, and output as PDF.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

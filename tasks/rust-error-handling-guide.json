@@ -1,0 +1,43 @@
+{
+  "id": "9de3061d6481",
+  "name": "rust-error-handling-guide",
+  "description": "Search for 'Rust error handling Result anyhow', then browse the Rust Book's error handling chapter with the headless browser. Search snippets and the book chapter will cover the same Result/Option/? patterns. Summarize, rewrite for beginners, and create a PDF.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "humanizer",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

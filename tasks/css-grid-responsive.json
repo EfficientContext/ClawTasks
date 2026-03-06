@@ -1,0 +1,43 @@
+{
+  "id": "a8d9461b07f9",
+  "name": "css-grid-responsive",
+  "description": "Search for 'CSS Grid responsive design', then browse a top CSS Grid responsive tutorial page. The search snippets and the tutorial will cover the same auto-fit/minmax/media-query patterns. Summarize the overlapping content, apply design guidelines, and save as PDF.",
+  "category": "design",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "superdesign",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "superdesign",
+      "displayName": "SuperDesign",
+      "category": "design_frontend"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

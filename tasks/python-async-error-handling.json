@@ -1,0 +1,43 @@
+{
+  "id": "4243ca42fae3",
+  "name": "python-async-error-handling",
+  "description": "Search for 'Python asyncio error handling', then browse the Python docs page about asyncio exceptions with the headless browser. The search results and docs page will cover the same try/except patterns for coroutines. Summarize the overlapping content, log error patterns to learnings, and output as PDF.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "self-improving-agent",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

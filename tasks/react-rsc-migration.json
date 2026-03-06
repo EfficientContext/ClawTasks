@@ -1,0 +1,37 @@
+{
+  "id": "d37054f03be7",
+  "name": "react-rsc-migration",
+  "description": "Search for 'migrate to React Server Components', then search for 'Next.js Pages Router to App Router migration'. Both return overlapping migration guides referencing the same API changes. Summarize the deduplicated steps, humanize for teams, and create a markdown migration checklist.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

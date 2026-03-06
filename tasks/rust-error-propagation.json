@@ -1,0 +1,43 @@
+{
+  "id": "98ee97010e3c",
+  "name": "rust-error-propagation",
+  "description": "Search for 'Rust ? operator error propagation', then browse the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait patterns. Summarize, log to learnings, and save as PDF.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "self-improving-agent",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

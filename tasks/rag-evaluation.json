@@ -1,0 +1,43 @@
+{
+  "id": "179f8d50dd3b",
+  "name": "rag-evaluation",
+  "description": "Search for 'RAG evaluation metrics', then search for 'how to evaluate retrieval augmented generation'. Both return the same RAGAS/faithfulness/relevancy articles. Summarize, browse a top evaluation framework page for details, and save as PDF guide.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "self-improving-agent",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

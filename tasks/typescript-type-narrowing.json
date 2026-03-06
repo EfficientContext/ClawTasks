@@ -1,0 +1,43 @@
+{
+  "id": "c60efd12b755",
+  "name": "typescript-type-narrowing",
+  "description": "Search for 'TypeScript type narrowing', then browse the TypeScript Handbook narrowing page. The search results and handbook will cover the same typeof/instanceof/in guard patterns. Summarize, log the narrowing techniques to learnings, and save as PDF.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 12,
+  "skills_required": [
+    "web-search",
+    "agent-browser",
+    "summarize",
+    "self-improving-agent",
+    "nano-pdf"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "agent-browser",
+      "displayName": "Agent Browser",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "nano-pdf",
+      "displayName": "Nano Pdf",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

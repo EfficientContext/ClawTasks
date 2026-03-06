@@ -1,0 +1,37 @@
+{
+  "id": "1fdba33035f8",
+  "name": "typescript-conditional-types",
+  "description": "Search for 'TypeScript conditional types', then search for 'TypeScript infer keyword explained'. Both return overlapping articles about the same advanced type system features. Summarize the deduplicated content, rewrite with examples, and format as markdown.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

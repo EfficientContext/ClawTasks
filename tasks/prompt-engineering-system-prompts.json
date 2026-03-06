@@ -1,0 +1,43 @@
+{
+  "id": "41932d4b4e77",
+  "name": "prompt-engineering-system-prompts",
+  "description": "Search for 'system prompt best practices', then search for 'LLM system message design'. Both return the same articles about system prompt structure, role setting, and constraints. Summarize, log useful system prompt templates to learnings, and format as markdown.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "self-improving-agent",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

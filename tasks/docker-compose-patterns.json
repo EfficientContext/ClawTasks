@@ -1,0 +1,43 @@
+{
+  "id": "cbbb1e3ac5c4",
+  "name": "docker-compose-patterns",
+  "description": "Search for 'Docker Compose best practices', then search for 'Docker Compose production deployment'. Overlapping articles will cover the same topics (health checks, restart policies, volumes). Summarize, log to learnings, and create a markdown checklist.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "self-improving-agent",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

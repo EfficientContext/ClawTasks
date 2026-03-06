@@ -1,0 +1,37 @@
+{
+  "id": "21c6f6ab026e",
+  "name": "python-async-real-world",
+  "description": "Search for 'Python asyncio real world examples', then search for 'Python aiohttp async HTTP requests'. The results will overlap on the same aiohttp/httpx tutorials. Summarize, rewrite the overlapping examples in plain language, and format as a markdown cookbook.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

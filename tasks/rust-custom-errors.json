@@ -1,0 +1,37 @@
+{
+  "id": "f9b795565ee5",
+  "name": "rust-custom-errors",
+  "description": "Search for 'Rust custom error types', then search for 'Rust implement Display Error trait'. Both return overlapping articles showing the same derive/impl patterns. Summarize the deduplicated examples, rewrite with clear annotations, and format as markdown.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 4
+}

@@ -104,7 +104,8 @@ def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
     prompt = build_prompt(task)
     start_time = time.time()
 
-    session_id = f"clawbench-{task['id']}"
+    # Fresh session every run — no memory carryover
+    session_id = f"clawbench-{task['id']}-{int(time.time())}"
 
     if str(oc_bin).endswith(".mjs"):
         cmd = [node_bin, str(oc_bin), "agent", "--local",
@@ -248,6 +249,9 @@ def main():
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--task", type=str)
     parser.add_argument("--category", type=str)
+    parser.add_argument("--topic", type=str,
+                       help="Filter by topic prefix, e.g. python-async, react-rsc, rag, k8s, "
+                            "rust-error, docker-compose, typescript, css-grid, prompt-engineering")
     parser.add_argument("--difficulty", choices=["medium", "hard"])
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit", type=int, default=None,
@@ -267,6 +271,10 @@ def main():
         tasks = [t for t in tasks if t["category"] == args.category]
         if not tasks:
             sys.exit(f"No tasks in category '{args.category}'")
+    if args.topic:
+        tasks = [t for t in tasks if t["name"].startswith(args.topic)]
+        if not tasks:
+            sys.exit(f"No tasks matching topic '{args.topic}'")
     if args.difficulty:
         tasks = [t for t in tasks if t["difficulty"] == args.difficulty]
     if args.limit:

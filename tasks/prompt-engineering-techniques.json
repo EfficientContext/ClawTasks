@@ -1,0 +1,43 @@
+{
+  "id": "d20eead87083",
+  "name": "prompt-engineering-techniques",
+  "description": "Search for 'prompt engineering techniques', then search for 'chain of thought prompting best practices'. Results will overlap on the same techniques (CoT, few-shot, etc.). Summarize the overlapping advice, log effective patterns to learnings, and create a markdown playbook.",
+  "category": "research",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "self-improving-agent",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

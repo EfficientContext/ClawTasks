@@ -1,0 +1,43 @@
+{
+  "id": "8dbd410529ab",
+  "name": "css-grid-vs-flexbox",
+  "description": "Search for 'CSS Grid vs Flexbox when to use', then search for 'CSS layout best practices 2025'. Both will return the same comparison articles. Summarize, apply design guidelines for choosing layouts, and write a markdown decision guide.",
+  "category": "design",
+  "difficulty": "hard",
+  "expected_steps": 10,
+  "skills_required": [
+    "web-search",
+    "summarize",
+    "superdesign",
+    "humanizer",
+    "markdown-converter"
+  ],
+  "skills_info": [
+    {
+      "slug": "web-search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    },
+    {
+      "slug": "summarize",
+      "displayName": "Summarize",
+      "category": "search_web"
+    },
+    {
+      "slug": "superdesign",
+      "displayName": "SuperDesign",
+      "category": "design_frontend"
+    },
+    {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
+      "category": "document_processing"
+    }
+  ],
+  "num_skills": 5
+}

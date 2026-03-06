@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
 """
-Generate multi-skill benchmark tasks from categorized ClawHub skills.
+Generate multi-skill benchmark tasks with high document overlap.
 
-Design principles:
-  - Every task uses 4-5 skills
-  - High skill overlap: ~10 core skills appear across most tasks
-  - NO skills that require login / API key / account
-  - Realistic workflows that a user would actually request
+Each narrow topic has 4-5 tasks that search/retrieve the SAME subject
+from different angles, guaranteeing overlapping documents in tool_results.
 
-Core skills (no login needed, appear in many tasks):
-  summarize, nano-pdf, web-search, humanizer, self-improving-agent,
-  markdown-converter, agent-browser, proactive-agent, weather,
-  openai-whisper, video-frames, pdf
-
-Output: tasks/ directory with individual JSON task files + tasks_all.json
+Overlap patterns:
+  A) web-search "X" + agent-browser browse same page → same doc twice
+  B) web-search "X tutorial" + web-search "X best practices" → same articles
+  C) whisper transcript about X + web-search "X" → same concepts
+  D) learnings about X + web-search "X" → memory overlaps with search
+  E) weather data + web-search "city weather" → same climate info
 """
 
 import json
@@ -24,7 +21,6 @@ from collections import Counter
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TASKS_DIR = ROOT / "tasks"
 
-# ── Load filtered skills ──────────────────────────────────────────────────
 categories = json.loads((ROOT / "skills_categories.json").read_text())
 
 skill_map = {}
@@ -32,424 +28,312 @@ for cat, skills in categories.items():
     for s in skills:
         skill_map[s["slug"]] = {**s, "category": cat}
 
-# ============================================================================
-# Task Templates — 4-5 skills each, high overlap, NO login required
-#
-# Core no-login skills used heavily:
-#   summarize        – CLI summarization of URLs/files (no key)
-#   nano-pdf         – local PDF editing CLI
-#   web-search       – DuckDuckGo (no key)
-#   humanizer        – text rewriting (pure LLM instructions)
-#   self-improving-agent – local .learnings/ logging
-#   markdown-converter – local file conversion (markitdown)
-#   agent-browser    – headless browser automation (local)
-#   proactive-agent  – behavioral framework (LLM instructions)
-#   weather          – wttr.in (no key)
-#   openai-whisper   – local speech-to-text
-#   video-frames     – ffmpeg (local)
-#   pdf              – local Python PDF tools
-#   find-skills      – ClawHub search (no login)
-#   skill-vetter     – local file analysis
-#   skill-creator    – instructions only
-#   superdesign      – design guidelines
-#   marketing-mode   – marketing guidelines
-#   news-summary     – RSS feeds (no login)
-# ============================================================================
-
 TASK_TEMPLATES = [
 
-    # ── Research Pipelines ─────────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════════
+    # Python Async (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
     {
-        "name": "research-to-pdf-report",
-        "description": "Research 'transformer architecture improvements in 2025' on the web using DuckDuckGo, summarize the top 5 results, rewrite the summary in an accessible tone, and compile everything into a PDF report.",
-        "skills_required": ["web-search", "summarize", "humanizer", "nano-pdf"],
-        "category": "research",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "python-async-deep-dive",
+        "description": "Search for 'Python asyncio tutorial' using web search, then browse the top result's full page with the headless browser to get detailed content. The search snippets and full page will overlap. Summarize both, rewrite in beginner-friendly language, and save as a PDF guide.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "competitive-analysis",
-        "description": "Browse the websites of 3 AI startups using the headless browser, summarize each product page, rewrite findings in professional tone, log key insights to your learnings, and output a markdown comparison document.",
-        "skills_required": ["agent-browser", "summarize", "humanizer", "self-improving-agent", "markdown-converter"],
-        "category": "research",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "python-async-patterns",
+        "description": "Search for 'Python async await patterns', then search for 'Python asyncio vs threading'. Both searches will return overlapping articles about Python concurrency. Summarize the combined findings, log key insights to learnings, and create a comparison document in markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "multi-source-fact-check",
-        "description": "Search for the claim 'LLMs can replace software engineers' using multiple search engines, summarize arguments from each source, humanize the report for a general audience, and save it as a PDF.",
-        "skills_required": ["multi-search-engine", "summarize", "humanizer", "nano-pdf"],
-        "category": "research",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "python-async-error-handling",
+        "description": "Search for 'Python asyncio error handling', then browse the Python docs page about asyncio exceptions with the headless browser. The search results and docs page will cover the same try/except patterns for coroutines. Summarize the overlapping content, log error patterns to learnings, and output as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "self-improving-agent", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "tech-trend-briefing",
-        "description": "Search for the latest AI news this week, summarize the top 10 articles, compile into a PDF briefing, and log any surprising findings to your learnings file.",
-        "skills_required": ["web-search", "summarize", "nano-pdf", "self-improving-agent"],
-        "category": "research",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "python-async-real-world",
+        "description": "Search for 'Python asyncio real world examples', then search for 'Python aiohttp async HTTP requests'. The results will overlap on the same aiohttp/httpx tutorials. Summarize, rewrite the overlapping examples in plain language, and format as a markdown cookbook.",
+        "skills_required": ["web-search", "summarize", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "academic-paper-digest",
-        "description": "Search for recent papers on 'retrieval-augmented generation', browse the top 3 results with headless browser to get full text, summarize each paper, rewrite summaries for a blog audience, and create a markdown digest.",
-        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "markdown-converter"],
-        "category": "research",
-        "difficulty": "hard",
-        "expected_steps": 12,
-    },
-    {
-        "name": "search-learn-and-document",
-        "description": "Search for best practices on 'Python async programming', summarize the top results, log key learnings to your improvement file, rewrite as a beginner-friendly guide, and output as a PDF.",
-        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "nano-pdf"],
-        "category": "research",
-        "difficulty": "medium",
-        "expected_steps": 10,
-    },
-    {
-        "name": "industry-report-builder",
-        "description": "Browse industry news sites for 'cloud computing trends' using the headless browser, summarize findings, write an executive summary in professional tone, and compile into a PDF.",
-        "skills_required": ["agent-browser", "summarize", "humanizer", "nano-pdf"],
-        "category": "research",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "python-async-performance",
+        "description": "Search for 'Python asyncio performance benchmarks', then search for 'Python async vs multiprocessing speed'. Both will reference the same GIL and event loop benchmarks. Summarize the overlapping performance data, browse a top benchmark article for details, and create a PDF comparison report.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
 
-    # ── Document Processing Pipelines ──────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════════
+    # React Server Components (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
     {
-        "name": "blog-digest-to-pdf",
-        "description": "Fetch the latest 3 blog posts via the headless browser, summarize each, rewrite summaries in engaging tone, and compile into a single PDF digest.",
-        "skills_required": ["agent-browser", "summarize", "humanizer", "nano-pdf"],
-        "category": "document",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "react-rsc-research",
+        "description": "Search for 'React Server Components explained', then browse the official React docs page about RSC with the headless browser. The search results will reference the same docs content. Summarize both, rewrite for a blog audience, and output as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "document-cleanup-and-publish",
-        "description": "Read a rough draft PDF, extract and summarize the content, clean up and humanize the language, generate a new polished PDF, and log any style improvements to learnings.",
-        "skills_required": ["pdf", "summarize", "humanizer", "nano-pdf", "self-improving-agent"],
-        "category": "document",
-        "difficulty": "medium",
-        "expected_steps": 8,
+        "name": "react-rsc-vs-ssr",
+        "description": "Search for 'React Server Components vs SSR', then search for 'Next.js App Router RSC'. Results will heavily overlap since both topics reference the same React/Next.js documentation. Summarize, log key differences to learnings, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "web-content-to-ebook",
-        "description": "Browse a documentation site's 5 main pages using headless browser, summarize each section, convert to clean markdown chapters, and compile into a PDF ebook.",
-        "skills_required": ["agent-browser", "summarize", "markdown-converter", "nano-pdf"],
-        "category": "document",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "react-rsc-data-fetching",
+        "description": "Search for 'React Server Components data fetching', then browse the Next.js data fetching docs with the headless browser. The search results and docs will describe the same fetch/cache/revalidate patterns. Summarize the overlapping content, log patterns to learnings, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "self-improving-agent", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "meeting-notes-pipeline",
-        "description": "Transcribe a meeting audio recording using Whisper, summarize key points and action items, rewrite in professional tone, create a formatted markdown document, and save a PDF copy.",
-        "skills_required": ["openai-whisper", "summarize", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "document",
-        "difficulty": "medium",
-        "expected_steps": 8,
+        "name": "react-rsc-migration",
+        "description": "Search for 'migrate to React Server Components', then search for 'Next.js Pages Router to App Router migration'. Both return overlapping migration guides referencing the same API changes. Summarize the deduplicated steps, humanize for teams, and create a markdown migration checklist.",
+        "skills_required": ["web-search", "summarize", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "newsletter-builder",
-        "description": "Search for this week's top tech news, summarize each story, rewrite in an engaging newsletter tone, format as markdown, and create a print-ready PDF.",
-        "skills_required": ["web-search", "summarize", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "document",
-        "difficulty": "medium",
-        "expected_steps": 10,
-    },
-    {
-        "name": "rss-news-digest",
-        "description": "Fetch today's news from RSS feeds, summarize each article, rewrite headlines in a friendly tone, format as a markdown newsletter, and log interesting findings to learnings.",
-        "skills_required": ["news-summary", "summarize", "humanizer", "markdown-converter", "self-improving-agent"],
-        "category": "document",
-        "difficulty": "medium",
-        "expected_steps": 8,
+        "name": "react-rsc-caching",
+        "description": "Search for 'React Server Components caching strategy', then search for 'Next.js cache revalidation RSC'. The same caching docs will appear in both. Summarize, browse the top result for full details, and compile into a PDF reference.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
 
-    # ── Media Processing ───────────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════════
+    # RAG / Retrieval (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
     {
-        "name": "video-to-blog-post",
-        "description": "Extract keyframes from a tutorial video using ffmpeg, transcribe the audio with Whisper, summarize the content, rewrite as a blog post in natural tone, and output as markdown.",
-        "skills_required": ["video-frames", "openai-whisper", "summarize", "humanizer", "markdown-converter"],
-        "category": "media",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "rag-architecture-guide",
+        "description": "Search for 'retrieval augmented generation architecture', then browse a top result page about RAG with the headless browser. The browser content will overlap heavily with search snippets. Summarize everything, rewrite as an architecture guide, and compile into PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "video-storyboard-pdf",
-        "description": "Extract 8 keyframes from a video at equal intervals using ffmpeg, summarize what happens in each section, write captions, and compile into a storyboard PDF.",
-        "skills_required": ["video-frames", "summarize", "humanizer", "nano-pdf"],
-        "category": "media",
-        "difficulty": "medium",
-        "expected_steps": 8,
+        "name": "rag-chunking-strategies",
+        "description": "Search for 'RAG chunking strategies', then search for 'text splitting for retrieval augmented generation'. Both queries will return overlapping articles about the same chunking techniques. Summarize the deduplicated findings, log best practices to learnings, and output as markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "podcast-episode-digest",
-        "description": "Transcribe a podcast audio file using Whisper, summarize the discussion, rewrite key quotes in polished prose, and create a PDF show notes document.",
-        "skills_required": ["openai-whisper", "summarize", "humanizer", "nano-pdf"],
-        "category": "media",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "rag-embedding-models",
+        "description": "Search for 'RAG embedding models comparison', then search for 'best embedding model for retrieval 2025'. Both will return overlapping MTEB benchmark pages and the same model recommendations. Summarize, browse the MTEB leaderboard page for details, and create a PDF comparison.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "video-tutorial-study-guide",
-        "description": "Extract frames from a coding tutorial video, transcribe the narration with Whisper, summarize each section, log key learnings, and create a study guide in markdown.",
-        "skills_required": ["video-frames", "openai-whisper", "summarize", "self-improving-agent", "markdown-converter"],
-        "category": "media",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "rag-reranking",
+        "description": "Search for 'RAG reranking techniques', then search for 'cross-encoder vs bi-encoder retrieval'. The results will overlap on the same reranking papers and Cohere/Jina references. Summarize the overlapping content, log reranking patterns to learnings, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "transcribe-and-report",
-        "description": "Transcribe a recorded interview using Whisper, summarize main discussion points, search for context on topics mentioned, rewrite as a journalist-style article, and produce a PDF.",
-        "skills_required": ["openai-whisper", "summarize", "web-search", "humanizer", "nano-pdf"],
-        "category": "media",
-        "difficulty": "hard",
-        "expected_steps": 12,
-    },
-    {
-        "name": "lecture-notes-creator",
-        "description": "Transcribe a lecture recording, summarize it into structured notes, convert to clean markdown, log key concepts to learnings, and export as PDF.",
-        "skills_required": ["openai-whisper", "summarize", "markdown-converter", "self-improving-agent", "nano-pdf"],
-        "category": "media",
-        "difficulty": "medium",
-        "expected_steps": 8,
+        "name": "rag-evaluation",
+        "description": "Search for 'RAG evaluation metrics', then search for 'how to evaluate retrieval augmented generation'. Both return the same RAGAS/faithfulness/relevancy articles. Summarize, browse a top evaluation framework page for details, and save as PDF guide.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "self-improving-agent", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
 
-    # ── Design & Marketing ─────────────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════════
+    # Kubernetes (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
     {
-        "name": "landing-page-pipeline",
-        "description": "Research competitor landing pages via headless browser, summarize their patterns, design a landing page following frontend design best practices, write marketing copy, and export the spec as a PDF.",
-        "skills_required": ["agent-browser", "summarize", "superdesign", "marketing-mode", "nano-pdf"],
-        "category": "design",
-        "difficulty": "hard",
-        "expected_steps": 14,
+        "name": "k8s-autoscaling-research",
+        "description": "Search for 'Kubernetes HPA autoscaling', then browse the official Kubernetes docs page about Horizontal Pod Autoscaler with the headless browser. The search results and docs will contain the same HPA config examples. Summarize, humanize, and create a PDF cheatsheet.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "marketing-content-pipeline",
-        "description": "Browse competitor websites with the headless browser, summarize their messaging, create humanized marketing copy using best practices, and compile a brand guideline document in markdown.",
-        "skills_required": ["agent-browser", "summarize", "marketing-mode", "humanizer", "markdown-converter"],
-        "category": "design",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "k8s-hpa-vs-vpa",
+        "description": "Search for 'Kubernetes HPA vs VPA', then search for 'Kubernetes pod autoscaling best practices'. Both will return overlapping docs about HPA, VPA, and KEDA. Summarize, log key decision criteria to learnings, and format as a markdown decision guide.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "design-spec-document",
-        "description": "Research UI patterns for 'pricing pages' online, summarize best practices, create a frontend design spec following design guidelines, rewrite for clarity, and document in markdown.",
-        "skills_required": ["web-search", "summarize", "superdesign", "humanizer", "markdown-converter"],
-        "category": "design",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "k8s-networking",
+        "description": "Search for 'Kubernetes networking explained', then browse the Kubernetes networking concepts docs page. The search results and docs page will cover the same Services, Ingress, and CNI content. Summarize the overlapping material, rewrite for DevOps beginners, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "product-brochure-creator",
-        "description": "Search for product description best practices, summarize findings, write humanized product copy, apply marketing psychology principles, and compile a brochure PDF.",
-        "skills_required": ["web-search", "summarize", "humanizer", "marketing-mode", "nano-pdf"],
-        "category": "design",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "name": "k8s-resource-limits",
+        "description": "Search for 'Kubernetes resource limits best practices', then search for 'Kubernetes CPU memory requests vs limits'. Both return the same resource management articles. Summarize, log the overlapping recommendations to learnings, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "ux-research-report",
-        "description": "Search for UX design trends online, browse design showcase sites with headless browser, summarize findings, apply frontend design principles, and create a design system PDF.",
+        "name": "k8s-helm-charts",
+        "description": "Search for 'Kubernetes Helm chart tutorial', then browse the Helm docs getting-started page. Search snippets and the Helm docs will describe the same chart structure and commands. Summarize, browse for full detail, and create a PDF quickstart guide.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # Rust Error Handling (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
+    {
+        "name": "rust-error-handling-guide",
+        "description": "Search for 'Rust error handling Result anyhow', then browse the Rust Book's error handling chapter with the headless browser. Search snippets and the book chapter will cover the same Result/Option/? patterns. Summarize, rewrite for beginners, and create a PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "rust-error-patterns",
+        "description": "Search for 'Rust anyhow vs thiserror', then search for 'Rust error handling best practices 2025'. Many of the same blog posts and docs will appear in both. Summarize the overlapping advice, log patterns to learnings, and output as markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "rust-error-propagation",
+        "description": "Search for 'Rust ? operator error propagation', then browse the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait patterns. Summarize, log to learnings, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "self-improving-agent", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "rust-custom-errors",
+        "description": "Search for 'Rust custom error types', then search for 'Rust implement Display Error trait'. Both return overlapping articles showing the same derive/impl patterns. Summarize the deduplicated examples, rewrite with clear annotations, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "rust-error-ecosystem",
+        "description": "Search for 'Rust error handling crates comparison', then search for 'Rust anyhow eyre snafu'. The same crate comparison articles will dominate both searches. Summarize, browse a top comparison article for full detail, and create a PDF decision guide.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # Docker Compose (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
+    {
+        "name": "docker-compose-guide",
+        "description": "Search for 'Docker Compose multi-service setup', then browse the Docker Compose documentation page with the headless browser. The search results and docs will contain the same YAML examples. Summarize, humanize for beginners, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "docker-compose-patterns",
+        "description": "Search for 'Docker Compose best practices', then search for 'Docker Compose production deployment'. Overlapping articles will cover the same topics (health checks, restart policies, volumes). Summarize, log to learnings, and create a markdown checklist.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "docker-compose-networking",
+        "description": "Search for 'Docker Compose networking between services', then browse the Docker networking docs page. The search results and docs will describe the same bridge network and service discovery concepts. Summarize the overlapping content, rewrite for clarity, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "docker-compose-volumes",
+        "description": "Search for 'Docker Compose volumes explained', then search for 'Docker named volumes vs bind mounts'. Both return the same volume documentation and comparison articles. Summarize, log storage patterns to learnings, and format as markdown reference.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "docker-compose-env",
+        "description": "Search for 'Docker Compose environment variables', then search for 'Docker Compose .env file secrets'. Both queries will return the same articles about env_file, variable substitution, and secret management. Summarize, browse top result for full examples, and create a PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # TypeScript (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
+    {
+        "name": "typescript-generics-tutorial",
+        "description": "Search for 'TypeScript generics tutorial', then browse the TypeScript Handbook generics page with the headless browser. The search results will reference the same handbook content. Summarize, rewrite with more examples, and compile into a PDF tutorial.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "typescript-utility-types",
+        "description": "Search for 'TypeScript utility types explained', then search for 'TypeScript Partial Pick Omit Record'. The results will overlap heavily since utility types documentation cross-references itself. Summarize, log type patterns to learnings, and format as markdown reference.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "typescript-type-narrowing",
+        "description": "Search for 'TypeScript type narrowing', then browse the TypeScript Handbook narrowing page. The search results and handbook will cover the same typeof/instanceof/in guard patterns. Summarize, log the narrowing techniques to learnings, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "self-improving-agent", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "typescript-conditional-types",
+        "description": "Search for 'TypeScript conditional types', then search for 'TypeScript infer keyword explained'. Both return overlapping articles about the same advanced type system features. Summarize the deduplicated content, rewrite with examples, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "typescript-decorators",
+        "description": "Search for 'TypeScript decorators tutorial', then browse the TC39 decorators proposal page. The search results and the proposal will describe the same decorator syntax and semantics. Summarize, browse for full spec detail, and create a PDF guide.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
+    },
+
+    # ══════════════════════════════════════════════════════════════════════
+    # CSS Grid / Layout (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
+    {
+        "name": "css-grid-deep-dive",
+        "description": "Search for 'CSS Grid layout tutorial', then browse the MDN CSS Grid page with the headless browser. Search snippets and the MDN page will contain the same grid-template examples. Summarize, apply frontend design guidelines, and create a PDF cheatsheet.",
         "skills_required": ["web-search", "agent-browser", "summarize", "superdesign", "nano-pdf"],
-        "category": "design",
-        "difficulty": "hard",
-        "expected_steps": 12,
+        "category": "design", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "css-grid-vs-flexbox",
+        "description": "Search for 'CSS Grid vs Flexbox when to use', then search for 'CSS layout best practices 2025'. Both will return the same comparison articles. Summarize, apply design guidelines for choosing layouts, and write a markdown decision guide.",
+        "skills_required": ["web-search", "summarize", "superdesign", "humanizer", "markdown-converter"],
+        "category": "design", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "css-grid-responsive",
+        "description": "Search for 'CSS Grid responsive design', then browse a top CSS Grid responsive tutorial page. The search snippets and the tutorial will cover the same auto-fit/minmax/media-query patterns. Summarize the overlapping content, apply design guidelines, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "superdesign", "nano-pdf"],
+        "category": "design", "difficulty": "hard", "expected_steps": 12,
+    },
+    {
+        "name": "css-grid-named-areas",
+        "description": "Search for 'CSS Grid template areas', then search for 'CSS Grid named grid lines'. Both return overlapping MDN docs and tutorials about the same grid naming features. Summarize, rewrite with visual examples, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "superdesign", "humanizer", "markdown-converter"],
+        "category": "design", "difficulty": "hard", "expected_steps": 10,
+    },
+    {
+        "name": "css-subgrid",
+        "description": "Search for 'CSS subgrid tutorial', then browse the MDN subgrid page. The search results and MDN docs will describe the same subgrid alignment features. Summarize the overlapping content, apply design best practices, and create a PDF reference.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "superdesign", "nano-pdf"],
+        "category": "design", "difficulty": "hard", "expected_steps": 12,
     },
 
-    # ── Agent Meta & Maintenance ───────────────────────────────────────────
+    # ══════════════════════════════════════════════════════════════════════
+    # Prompt Engineering (5 tasks)
+    # ══════════════════════════════════════════════════════════════════════
     {
-        "name": "full-skill-audit",
-        "description": "Find available skills on ClawHub, vet the top results for security, summarize each skill's capabilities, log evaluation notes to learnings, and generate an audit report PDF.",
-        "skills_required": ["find-skills", "skill-vetter", "summarize", "self-improving-agent", "nano-pdf"],
-        "category": "maintenance",
-        "difficulty": "medium",
-        "expected_steps": 10,
+        "name": "prompt-engineering-techniques",
+        "description": "Search for 'prompt engineering techniques', then search for 'chain of thought prompting best practices'. Results will overlap on the same techniques (CoT, few-shot, etc.). Summarize the overlapping advice, log effective patterns to learnings, and create a markdown playbook.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "self-improvement-research-cycle",
-        "description": "Review your recent error log, search for solutions to the top 3 issues online, summarize the fixes, update your learnings file, and create a summary report in markdown.",
-        "skills_required": ["self-improving-agent", "web-search", "summarize", "markdown-converter"],
-        "category": "agent_improvement",
-        "difficulty": "medium",
-        "expected_steps": 10,
+        "name": "prompt-engineering-few-shot",
+        "description": "Search for 'few-shot prompting examples', then browse the OpenAI prompting guide with the headless browser. The search results and the guide will describe the same few-shot patterns. Summarize the overlapping content, rewrite with concrete examples, and save as PDF.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "proactive-learning-setup",
-        "description": "Set up proactive mode so the agent logs learnings from every session, searches for solutions when errors occur, summarizes patterns, and generates weekly improvement reports in markdown.",
-        "skills_required": ["proactive-agent", "self-improving-agent", "web-search", "summarize", "markdown-converter"],
-        "category": "agent_improvement",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "prompt-engineering-system-prompts",
+        "description": "Search for 'system prompt best practices', then search for 'LLM system message design'. Both return the same articles about system prompt structure, role setting, and constraints. Summarize, log useful system prompt templates to learnings, and format as markdown.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "skill-discovery-and-test",
-        "description": "Search for skills related to 'PDF manipulation' on ClawHub, vet the top 3 for security, summarize capabilities, test the best one by creating a sample PDF, and log results.",
-        "skills_required": ["find-skills", "skill-vetter", "summarize", "nano-pdf", "self-improving-agent"],
-        "category": "maintenance",
-        "difficulty": "medium",
-        "expected_steps": 8,
+        "name": "prompt-engineering-structured-output",
+        "description": "Search for 'prompt engineering structured output JSON', then browse the Anthropic or OpenAI structured output docs. The search results and docs will cover the same JSON mode/schema patterns. Summarize the overlapping content, browse for full examples, and create a PDF guide.",
+        "skills_required": ["web-search", "agent-browser", "summarize", "humanizer", "nano-pdf"],
+        "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "create-custom-skill",
-        "description": "Follow skill creation best practices to package a local script as a proper skill with SKILL.md, vet it for security issues, summarize the skill's documentation, and log the creation process.",
-        "skills_required": ["skill-creator", "skill-vetter", "summarize", "self-improving-agent"],
-        "category": "maintenance",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-    {
-        "name": "proactive-error-monitor",
-        "description": "Set up proactive monitoring: automatically detect errors in log files, search for solutions online, summarize fixes, update learnings, and produce a weekly incident report PDF.",
-        "skills_required": ["proactive-agent", "web-search", "summarize", "self-improving-agent", "nano-pdf"],
-        "category": "agent_improvement",
-        "difficulty": "hard",
-        "expected_steps": 12,
-    },
-
-    # ── Daily Utility Workflows ────────────────────────────────────────────
-    {
-        "name": "morning-briefing",
-        "description": "Get today's weather from wttr.in, search for top tech news, summarize everything, rewrite in a friendly morning tone, and create a PDF daily briefing.",
-        "skills_required": ["weather", "web-search", "summarize", "humanizer", "nano-pdf"],
-        "category": "planning",
-        "difficulty": "medium",
-        "expected_steps": 10,
-    },
-    {
-        "name": "travel-planner",
-        "description": "Get the weather forecast for Tokyo next week, search for top tourist attractions, summarize findings, rewrite as a traveler-friendly guide, and create a travel itinerary PDF.",
-        "skills_required": ["weather", "web-search", "summarize", "humanizer", "nano-pdf"],
-        "category": "planning",
-        "difficulty": "medium",
-        "expected_steps": 10,
-    },
-    {
-        "name": "daily-news-digest",
-        "description": "Fetch today's weather and news from RSS feeds, search for deeper coverage on the top story, summarize all content, and create a morning digest PDF.",
-        "skills_required": ["weather", "news-summary", "summarize", "nano-pdf"],
-        "category": "planning",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-    {
-        "name": "weekly-review-doc",
-        "description": "Review this week's learnings log, search for improvements to your workflow online, summarize findings, rewrite as actionable advice, and create a weekly review in markdown.",
-        "skills_required": ["self-improving-agent", "web-search", "summarize", "humanizer", "markdown-converter"],
-        "category": "planning",
-        "difficulty": "medium",
-        "expected_steps": 10,
-    },
-    {
-        "name": "weather-activity-planner",
-        "description": "Get the weather for this weekend, search for outdoor activities suitable for the forecast, summarize options, log preferences to learnings, and output as a PDF plan.",
-        "skills_required": ["weather", "web-search", "summarize", "self-improving-agent", "nano-pdf"],
-        "category": "planning",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-
-    # ── Text Processing Pipelines ──────────────────────────────────────────
-    {
-        "name": "article-to-podcast-script",
-        "description": "Fetch an article via headless browser, summarize the key points, rewrite as a conversational podcast script in natural tone, format in markdown, and log interesting facts to learnings.",
-        "skills_required": ["agent-browser", "summarize", "humanizer", "markdown-converter", "self-improving-agent"],
-        "category": "text_processing",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-    {
-        "name": "technical-to-blog",
-        "description": "Read a technical PDF document, summarize the core concepts, rewrite in a beginner-friendly blog style, convert to clean markdown, and produce a blog-ready PDF.",
-        "skills_required": ["pdf", "summarize", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "text_processing",
-        "difficulty": "hard",
-        "expected_steps": 10,
-    },
-    {
-        "name": "translate-and-publish",
-        "description": "Search for a Chinese tech article about AI, summarize it, rewrite the summary for an English audience in natural tone, format as a markdown blog post, and create a PDF version.",
-        "skills_required": ["web-search", "summarize", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "text_processing",
-        "difficulty": "hard",
-        "expected_steps": 10,
-    },
-    {
-        "name": "readme-rewriter",
-        "description": "Read a project's README.md, summarize its structure, search for README best practices online, rewrite it in a friendlier more engaging tone, and output both markdown and PDF.",
-        "skills_required": ["summarize", "web-search", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "text_processing",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-    {
-        "name": "content-localization",
-        "description": "Browse an English documentation site with headless browser, summarize each page, rewrite the content for a non-technical audience, format all pages as markdown, and compile into a PDF handbook.",
-        "skills_required": ["agent-browser", "summarize", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "text_processing",
-        "difficulty": "hard",
-        "expected_steps": 12,
-    },
-    {
-        "name": "pdf-to-friendly-guide",
-        "description": "Extract text from a dense PDF manual, summarize each chapter, rewrite in plain language, log any jargon patterns found, and produce a simplified PDF guide.",
-        "skills_required": ["pdf", "summarize", "humanizer", "self-improving-agent", "nano-pdf"],
-        "category": "text_processing",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-
-    # ── Automation & Monitoring ────────────────────────────────────────────
-    {
-        "name": "web-monitor-and-report",
-        "description": "Set up proactive monitoring of a competitor's website using headless browser, summarize any changes detected, log changes to learnings, and create a markdown change report.",
-        "skills_required": ["proactive-agent", "agent-browser", "summarize", "self-improving-agent", "markdown-converter"],
-        "category": "automation",
-        "difficulty": "hard",
-        "expected_steps": 12,
-    },
-    {
-        "name": "scrape-analyze-report",
-        "description": "Navigate to a job board using headless browser, extract Python developer listings, summarize salary ranges and requirements, rewrite as a readable report, and compile into a PDF.",
-        "skills_required": ["agent-browser", "summarize", "humanizer", "nano-pdf"],
-        "category": "automation",
-        "difficulty": "hard",
-        "expected_steps": 10,
-    },
-    {
-        "name": "documentation-site-scraper",
-        "description": "Browse a framework's documentation site with headless browser, extract all tutorial pages, summarize each, convert to a unified markdown reference, and generate a downloadable PDF.",
-        "skills_required": ["agent-browser", "summarize", "markdown-converter", "nano-pdf"],
-        "category": "automation",
-        "difficulty": "hard",
-        "expected_steps": 10,
-    },
-    {
-        "name": "proactive-news-watcher",
-        "description": "Set up proactive mode to periodically fetch news via RSS, summarize new articles, detect trending topics, log trends to learnings, and generate a weekly trend report PDF.",
-        "skills_required": ["proactive-agent", "news-summary", "summarize", "self-improving-agent", "nano-pdf"],
-        "category": "automation",
-        "difficulty": "hard",
-        "expected_steps": 12,
-    },
-
-    # ── Skill Development ──────────────────────────────────────────────────
-    {
-        "name": "skill-comparison-report",
-        "description": "Find all skills on ClawHub related to 'web search', vet each for security, summarize their capabilities, rewrite as a comparison guide, and generate a recommendation PDF.",
-        "skills_required": ["find-skills", "skill-vetter", "summarize", "humanizer", "nano-pdf"],
-        "category": "skill_dev",
-        "difficulty": "medium",
-        "expected_steps": 8,
-    },
-    {
-        "name": "build-and-document-skill",
-        "description": "Create a new skill following best practices, vet it for security, write user-friendly documentation in markdown, summarize the skill's features, and produce a PDF spec sheet.",
-        "skills_required": ["skill-creator", "skill-vetter", "humanizer", "markdown-converter", "nano-pdf"],
-        "category": "skill_dev",
-        "difficulty": "hard",
-        "expected_steps": 10,
+        "name": "prompt-engineering-evaluation",
+        "description": "Search for 'prompt evaluation techniques', then search for 'how to test LLM prompts'. Both return overlapping articles about the same eval frameworks and metrics. Summarize, log evaluation patterns to learnings, and create a markdown checklist.",
+        "skills_required": ["web-search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
 ]
 
@@ -506,51 +390,40 @@ def main():
 
         task = build_task(tmpl)
         all_tasks.append(task)
-
-        task_file = TASKS_DIR / f"{task['name']}.json"
-        task_file.write_text(json.dumps(task, indent=2, ensure_ascii=False))
+        (TASKS_DIR / f"{task['name']}.json").write_text(
+            json.dumps(task, indent=2, ensure_ascii=False))
 
     (ROOT / "tasks_all.json").write_text(
         json.dumps(all_tasks, indent=2, ensure_ascii=False))
 
-    # Stats
-    print(f"Generated {len(all_tasks)} tasks\n")
+    print(f"Generated {len(all_tasks)} tasks across {len(set(t['name'].rsplit('-',2)[0] for t in all_tasks))} topic groups\n")
 
     skill_counter = Counter()
     for t in all_tasks:
         for s in t["skills_required"]:
             skill_counter[s] += 1
 
-    print("Skill overlap (appearances across tasks):")
+    print("Skill overlap:")
     for slug, count in skill_counter.most_common():
         pct = count / len(all_tasks) * 100
-        bar = "#" * count
-        print(f"  {slug:25s} {count:3d}/{len(all_tasks)} ({pct:4.0f}%) {bar}")
+        print(f"  {slug:25s} {count:3d}/{len(all_tasks)} ({pct:4.0f}%)")
 
-    from itertools import combinations
-    pair_counter = Counter()
+    # Topic groups
+    topics = {}
     for t in all_tasks:
-        for a, b in combinations(sorted(t["skills_required"]), 2):
-            pair_counter[(a, b)] += 1
+        # Group by prefix before last hyphen-word
+        prefix = t["name"].rsplit("-", 1)[0]
+        # Merge sub-prefixes
+        for p in ["python-async", "react-rsc", "rag-", "k8s-", "rust-error",
+                   "docker-compose", "typescript-", "css-grid", "css-", "prompt-engineering"]:
+            if t["name"].startswith(p.rstrip("-")):
+                prefix = p.rstrip("-")
+                break
+        topics.setdefault(prefix, []).append(t["name"])
 
-    print(f"\nTop 10 skill pairs (co-occurrence):")
-    for (a, b), count in pair_counter.most_common(10):
-        print(f"  {a:25s} + {b:25s} = {count:3d}")
-
-    print(f"\nBy category:")
-    by_cat = {}
-    for t in all_tasks:
-        by_cat.setdefault(t["category"], []).append(t["name"])
-    for cat, names in sorted(by_cat.items(), key=lambda x: -len(x[1])):
-        print(f"  {cat}: {len(names)}")
-
-    print(f"\nBy difficulty:")
-    for diff in ["medium", "hard"]:
-        print(f"  {diff}: {sum(1 for t in all_tasks if t['difficulty'] == diff)}")
-
-    print(f"\nBy skill count:")
-    for count in [4, 5]:
-        print(f"  {count} skills: {sum(1 for t in all_tasks if t['num_skills'] == count)}")
+    print(f"\nTopic groups ({len(topics)}):")
+    for topic, names in topics.items():
+        print(f"  {topic}: {len(names)} tasks")
 
     if warnings:
         print(f"\nWarnings:")
