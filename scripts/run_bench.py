@@ -223,10 +223,21 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
     if not dry_run:
         passed = sum(1 for r in results if r.get("success"))
         failed = len(results) - passed
-        total_time = sum(r.get("elapsed_seconds", 0) for r in results)
+        times = [r.get("elapsed_seconds", 0) for r in results]
+        total_time = sum(times)
+        avg_time = total_time / len(times) if times else 0
+        pass_times = [r["elapsed_seconds"] for r in results if r.get("success")]
+        avg_pass = sum(pass_times) / len(pass_times) if pass_times else 0
+        min_t = min(times) if times else 0
+        max_t = max(times) if times else 0
+
         print(f"\n{'='*60}")
-        print(f"{passed} passed, {failed} failed, {total_time:.1f}s total")
-        print(f"Results: {combined}")
+        print(f"Results: {passed} passed, {failed} failed")
+        print(f"Time:    {total_time:.1f}s total, {avg_time:.1f}s avg, "
+              f"{min_t:.1f}s min, {max_t:.1f}s max")
+        if pass_times:
+            print(f"         {avg_pass:.1f}s avg (passed only)")
+        print(f"Output:  {combined}")
         print(f"{'='*60}")
 
     return results
@@ -239,6 +250,8 @@ def main():
     parser.add_argument("--category", type=str)
     parser.add_argument("--difficulty", choices=["medium", "hard"])
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--limit", type=int, default=None,
+                       help="Only run first N tasks")
     parser.add_argument("--timeout", type=int, default=300)
     parser.add_argument("--runner", default="openclaw",
                        choices=["openclaw", "claude"])
@@ -255,6 +268,8 @@ def main():
             sys.exit(f"No tasks in category '{args.category}'")
     if args.difficulty:
         tasks = [t for t in tasks if t["difficulty"] == args.difficulty]
+    if args.limit:
+        tasks = tasks[:args.limit]
 
     run_benchmark(tasks, batch_size=args.batch_size, dry_run=args.dry_run,
                   timeout=args.timeout, runner=args.runner)
