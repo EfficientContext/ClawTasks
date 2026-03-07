@@ -1,7 +1,10 @@
 {
   "id": "757cbb83eb51",
   "name": "typescript-conditional-types",
-  "description": "Use the web_search tool to search for 'TypeScript conditional types tutorial'. Then use the web_search tool to search for 'TypeScript infer keyword examples'. Both return overlapping articles about the same advanced type features. Use summarize on overlapping sources. Rewrite with clear examples. Save as ts-conditional.md with URLs.",
+  "topic": "typescript",
+  "chain_position": 4,
+  "depends_on": "typescript-generics-tutorial",
+  "description": "Search for 'TypeScript generics tutorial 2025' again — the same articles from typescript-generics-tutorial will appear. Also search for 'TypeScript conditional types infer keyword'. Both return overlapping articles about advanced type features. Use summarize on overlapping sources. Rewrite with clear examples. Save as ts-conditional.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

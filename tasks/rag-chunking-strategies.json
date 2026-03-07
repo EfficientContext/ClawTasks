@@ -1,7 +1,10 @@
 {
   "id": "1fa5bc4f5f20",
   "name": "rag-chunking-strategies",
-  "description": "Use the web_search tool to search for 'RAG chunking strategies comparison'. Then use the web_search tool to search for 'text splitting methods for retrieval augmented generation'. Both searches will return overlapping articles about the same chunking techniques. List the overlapping URLs. Use summarize on them. Log the best chunking approach to your learnings. Save as rag-chunking.md with URLs.",
+  "topic": "rag",
+  "chain_position": 2,
+  "depends_on": "rag-architecture-guide",
+  "description": "Search for 'retrieval augmented generation architecture 2025' again — the same articles from your rag-architecture-guide research will appear. Also search for 'RAG chunking strategies comparison'. Many of the architecture articles discuss chunking approaches. Identify which URLs overlap. Use summarize on the overlapping sources. Log the best chunking approach to your learnings. Save as rag-chunking.md with URLs, noting which appeared in both searches.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

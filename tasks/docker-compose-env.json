@@ -1,7 +1,10 @@
 {
   "id": "c09fdc8f6929",
   "name": "docker-compose-env",
-  "description": "Use the web_search tool to search for 'Docker Compose environment variables .env file'. Then use agent-browser to visit the Docker docs page about environment variables in Compose. The search results and docs will cover the same env_file and variable substitution patterns. Use summarize. Save as docker-env.pdf with the actual config syntax from the docs.",
+  "topic": "docker-compose",
+  "chain_position": 5,
+  "depends_on": "docker-compose-guide",
+  "description": "Search for 'Docker Compose multi-service setup tutorial 2025' again to retrieve the same sources from docker-compose-guide. Then use agent-browser to visit the Docker docs page about environment variables in Compose. Compare env var patterns from the tutorials with the official docs. Use summarize. Save as docker-env.pdf with the actual config syntax from the docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

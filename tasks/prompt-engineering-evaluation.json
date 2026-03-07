@@ -1,7 +1,10 @@
 {
   "id": "c4da5bb94469",
   "name": "prompt-engineering-evaluation",
-  "description": "Use the web_search tool to search for 'how to evaluate LLM prompts'. Then use the web_search tool to search for 'prompt testing framework comparison'. Both return overlapping articles about the same eval tools. Use summarize on overlapping sources. Log evaluation patterns to your learnings. Save as prompt-eval.md with URLs.",
+  "topic": "prompt-engineering",
+  "chain_position": 5,
+  "depends_on": "prompt-engineering-techniques",
+  "description": "Search for 'prompt engineering techniques 2025' again — the same articles from prompt-engineering-techniques will appear. Also search for 'how to evaluate LLM prompts'. Identify articles that cover both techniques and evaluation. Use summarize on overlapping sources. Log evaluation patterns to your learnings. Save as prompt-eval.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

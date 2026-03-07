@@ -1,7 +1,10 @@
 {
   "id": "d25321383fa8",
   "name": "react-rsc-migration",
-  "description": "Use the web_search tool to search for 'migrate to React Server Components guide'. Then use the web_search tool to search for 'Next.js Pages Router to App Router migration steps'. The migration guides from both searches will reference the same breaking changes and code patterns. Use summarize on overlapping results. Rewrite as a step-by-step checklist. Save as react-migration.md with all source URLs.",
+  "topic": "react-rsc",
+  "chain_position": 4,
+  "depends_on": "react-rsc-research",
+  "description": "Search for 'React Server Components 2025' again — the same articles from react-rsc-research will appear. Also search for 'Next.js Pages Router to App Router migration steps'. The migration guides from both searches will reference the same breaking changes. Use summarize on overlapping results. Rewrite as a step-by-step checklist. Save as react-migration.md with all source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

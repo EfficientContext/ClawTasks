@@ -1,7 +1,10 @@
 {
   "id": "100233d54ef8",
   "name": "k8s-hpa-vs-vpa",
-  "description": "Use the web_search tool to search for 'Kubernetes HPA vs VPA comparison'. Then use the web_search tool to search for 'Kubernetes pod autoscaling best practices 2025'. Both will return overlapping docs about HPA, VPA, and KEDA. List overlapping URLs. Use summarize on them. Log the decision criteria to your learnings. Save as k8s-scaling.md with cited URLs.",
+  "topic": "k8s",
+  "chain_position": 2,
+  "depends_on": "k8s-autoscaling-research",
+  "description": "Search for 'Kubernetes HPA horizontal pod autoscaler tutorial' again — the same articles from your k8s-autoscaling-research will appear. Also search for 'Kubernetes VPA vertical pod autoscaler comparison'. Both will return overlapping docs about scaling strategies. List overlapping URLs. Use summarize on them. Log the decision criteria to your learnings. Save as k8s-scaling.md with cited URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

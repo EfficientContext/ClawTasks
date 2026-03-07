@@ -1,7 +1,10 @@
 {
   "id": "592f7a08a236",
   "name": "k8s-networking",
-  "description": "Use the web_search tool to search for 'Kubernetes networking Services Ingress explained'. Then use agent-browser to visit the kubernetes.io networking concepts page. The search results and docs page will cover the same Services, Ingress, and DNS content. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.pdf with URLs.",
+  "topic": "k8s",
+  "chain_position": 3,
+  "depends_on": "k8s-autoscaling-research",
+  "description": "Search for 'Kubernetes HPA horizontal pod autoscaler tutorial' again to retrieve the same sources from k8s-autoscaling-research. Then use agent-browser to visit the kubernetes.io networking concepts page. Compare networking mentions in the autoscaling articles with the dedicated networking docs. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

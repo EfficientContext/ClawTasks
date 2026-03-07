@@ -1,7 +1,10 @@
 {
   "id": "7275b78f07bc",
   "name": "python-async-patterns",
-  "description": "Use the web_search tool to search for 'Python async await patterns' and collect the top 5 URLs. Then use web-search again to search for 'Python asyncio vs threading comparison' and collect another 5 URLs. List which URLs appear in BOTH result sets (these are the overlapping documents). Use summarize on the overlapping URLs. Rewrite the summary in plain language and save as python-async-patterns.md with all URLs cited.",
+  "topic": "python-async",
+  "chain_position": 2,
+  "depends_on": "python-async-deep-dive",
+  "description": "Search for 'Python asyncio tutorial 2025' again — the same articles from your earlier python-async-deep-dive research will appear. Also search for 'Python async await design patterns'. Identify which URLs overlap between both result sets. Use summarize on the overlapping sources. Log the key async patterns to your learnings. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

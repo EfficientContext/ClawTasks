@@ -1,7 +1,10 @@
 {
   "id": "d232e789e183",
   "name": "rag-evaluation",
-  "description": "Use the web_search tool to search for 'RAG evaluation metrics RAGAS'. Then use agent-browser to visit the RAGAS documentation page. The search results and the docs will describe the same faithfulness/relevancy metrics. Use summarize to consolidate. Log the evaluation framework to your learnings. Save as rag-eval.pdf with metric definitions from the actual docs.",
+  "topic": "rag",
+  "chain_position": 5,
+  "depends_on": "rag-architecture-guide",
+  "description": "Search for 'retrieval augmented generation architecture 2025' again to retrieve the same sources from rag-architecture-guide. Then use agent-browser to visit the RAGAS documentation page. Compare evaluation criteria from the architecture articles with the RAGAS docs. Use summarize to consolidate. Log the evaluation framework to your learnings. Save as rag-eval.pdf with metric definitions from the docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

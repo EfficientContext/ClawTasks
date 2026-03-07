@@ -1,7 +1,10 @@
 {
   "id": "3d6fbc0f4628",
   "name": "prompt-engineering-system-prompts",
-  "description": "Use the web_search tool to search for 'system prompt best practices LLM'. Then use the web_search tool to search for 'system message design for AI agents'. Both return the same articles about system prompt structure. Use summarize on overlapping sources. Log useful system prompt templates to your learnings. Save as system-prompts.md.",
+  "topic": "prompt-engineering",
+  "chain_position": 3,
+  "depends_on": "prompt-engineering-techniques",
+  "description": "Search for 'prompt engineering techniques 2025' again — the same articles from prompt-engineering-techniques will appear. Also search for 'system prompt best practices LLM'. Many technique articles also cover system prompts. Identify overlapping content. Use summarize on the overlapping sources. Log useful system prompt templates to your learnings. Save as system-prompts.md.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

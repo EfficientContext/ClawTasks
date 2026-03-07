@@ -1,7 +1,10 @@
 {
   "id": "f1c2a62ddd08",
   "name": "python-async-real-world",
-  "description": "Use the web_search tool to search for 'Python asyncio real world examples aiohttp'. Then use the web_search tool to search for 'Python httpx async tutorial'. List the overlapping URLs and articles that appear in both searches. Use summarize to summarize each overlapping article. Rewrite as a practical cookbook in plain language. Save as python-async-cookbook.md with all source URLs.",
+  "topic": "python-async",
+  "chain_position": 4,
+  "depends_on": "python-async-deep-dive",
+  "description": "Search for 'Python asyncio tutorial 2025' again — you will get the same articles from python-async-deep-dive. Also search for 'Python httpx async tutorial'. Identify overlapping URLs between both result sets. Use summarize on each overlapping article. Rewrite as a practical cookbook in plain language. Save as python-async-cookbook.md with all source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

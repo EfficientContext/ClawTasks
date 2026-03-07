@@ -1,7 +1,10 @@
 {
   "id": "703aefb40293",
   "name": "prompt-engineering-few-shot",
-  "description": "Use the web_search tool to search for 'few-shot prompting guide 2025'. Then use agent-browser to visit the Anthropic or OpenAI prompting documentation page. The search results and the docs will describe the same few-shot patterns. Use summarize on the overlapping content. Save as prompt-few-shot.pdf with the actual examples from the docs page.",
+  "topic": "prompt-engineering",
+  "chain_position": 2,
+  "depends_on": "prompt-engineering-techniques",
+  "description": "Search for 'prompt engineering techniques 2025' again to retrieve the same sources from prompt-engineering-techniques. Then use agent-browser to visit the Anthropic or OpenAI prompting documentation page. Compare few-shot prompting content from the technique articles with the official docs. Use summarize on both. Save as prompt-few-shot.pdf with actual examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

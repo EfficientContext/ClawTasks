@@ -77,12 +77,29 @@ def build_skill_context(task: dict) -> str:
     return "\n\n".join(parts)
 
 
-def build_prompt(task: dict) -> str:
+def build_prompt(task: dict, prior_result: dict | None = None) -> str:
     ctx = build_skill_context(task)
+    prior_section = ""
+    if prior_result and prior_result.get("stdout"):
+        prior_name = prior_result["task_name"]
+        # Truncate to avoid blowing up context
+        prior_out = prior_result["stdout"][:8000]
+        prior_section = f"""
+---
+
+PRIOR TASK OUTPUT (from {prior_name}):
+The following is the output from a previous related task. The same search
+queries were used, so the same articles and URLs will appear again. Use this
+context to identify document overlap.
+
+<prior_task name="{prior_name}">
+{prior_out}
+</prior_task>
+"""
     return f"""You have the following skills available. You MUST use each skill at least once to complete the task.
 
 {ctx}
-
+{prior_section}
 ---
 
 TASK: {task['description']}
@@ -94,7 +111,8 @@ RULES:
 4. Show the tool commands you ran and their outputs."""
 
 
-def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
+def run_task_openclaw(task: dict, timeout: int = 300,
+                      prior_result: dict | None = None) -> dict:
     node_bin = get_node22_path()
     if not node_bin:
         return _error_result(task, "Node.js 22+ not found. Run: nvm install 22")
@@ -105,10 +123,9 @@ def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
             "openclaw not found. Install: npm install -g openclaw, "
             "or clone ~/openclaw and run pnpm install && pnpm build")
 
-    prompt = build_prompt(task)
+    prompt = build_prompt(task, prior_result)
     start_time = time.time()
 
-    # Fresh session every run — no memory carryover
     session_id = f"clawbench-{task['id']}-{int(time.time())}"
 
     if str(oc_bin).endswith(".mjs"):
@@ -131,8 +148,9 @@ def run_task_openclaw(task: dict, timeout: int = 300) -> dict:
         return _error_result(task, str(e))
 
 
-def run_task_claude(task: dict, timeout: int = 300) -> dict:
-    prompt = build_prompt(task)
+def run_task_claude(task: dict, timeout: int = 300,
+                    prior_result: dict | None = None) -> dict:
+    prompt = build_prompt(task, prior_result)
     start_time = time.time()
     try:
         result = subprocess.run(
@@ -184,21 +202,50 @@ def _error_result(task, msg):
     }
 
 
+def _sort_by_chain(tasks):
+    """Sort tasks so seeds run before their dependents."""
+    by_name = {t["name"]: t for t in tasks}
+    seeds = [t for t in tasks if not t.get("depends_on")]
+    deps = [t for t in tasks if t.get("depends_on")]
+    # Sort dependents by chain_position within each topic
+    deps.sort(key=lambda t: (t.get("topic", ""), t.get("chain_position", 99)))
+    # Seeds first, then dependents (only if their seed is in the run)
+    ordered = list(seeds)
+    for d in deps:
+        if d["depends_on"] in by_name:
+            ordered.append(d)
+        else:
+            # Seed not in this run — still run, just no prior context
+            ordered.append(d)
+    return ordered
+
+
 def run_benchmark(tasks, batch_size=1, dry_run=False,
                   timeout=300, runner="openclaw"):
     RESULTS_DIR.mkdir(exist_ok=True)
     results = []
+    # Track results by task name for dependency resolution
+    results_by_name = {}
+
+    # Sort so seeds run before dependents
+    tasks = _sort_by_chain(tasks)
 
     print(f"\n{'='*60}")
     print(f"ClawBench — {len(tasks)} tasks, batch_size={batch_size}, runner={runner}")
     print(f"{'='*60}\n")
 
     for i, task in enumerate(tasks):
+        dep = task.get("depends_on")
+        prior = results_by_name.get(dep) if dep else None
+
         print(f"[{i+1}/{len(tasks)}] {task['name']}")
         print(f"  Skills: {', '.join(task['skills_required'])}")
+        if dep:
+            has_prior = "yes" if prior else "no (seed not in run)"
+            print(f"  Chain: depends on {dep} (prior context: {has_prior})")
 
         if dry_run:
-            plen = len(build_prompt(task))
+            plen = len(build_prompt(task, prior))
             print(f"  [DRY RUN] Prompt: ~{plen} chars")
             print(f"  [DRY RUN] {task['description'][:80]}...")
             results.append({"task_id": task["id"], "task_name": task["name"],
@@ -207,8 +254,9 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
         print(f"  Running...")
         result = (run_task_openclaw if runner == "openclaw"
-                  else run_task_claude)(task, timeout)
+                  else run_task_claude)(task, timeout, prior)
         results.append(result)
+        results_by_name[task["name"]] = result
 
         status = "PASS" if result["success"] else "FAIL"
         print(f"  {status} ({result['elapsed_seconds']}s)")

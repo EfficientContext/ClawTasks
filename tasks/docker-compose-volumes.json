@@ -1,7 +1,10 @@
 {
   "id": "a5f0e806fb56",
   "name": "docker-compose-volumes",
-  "description": "Use the web_search tool to search for 'Docker Compose volumes explained'. Then use the web_search tool to search for 'Docker named volumes vs bind mounts performance'. Both return the same volume docs. Use summarize on overlapping sources. Log the storage recommendations to your learnings. Save as docker-volumes.md with URLs.",
+  "topic": "docker-compose",
+  "chain_position": 4,
+  "depends_on": "docker-compose-guide",
+  "description": "Search for 'Docker Compose multi-service setup tutorial 2025' again — you will get the same articles from docker-compose-guide. Also search for 'Docker named volumes vs bind mounts performance'. Both return articles covering volume management. Use summarize on overlapping sources. Log the storage recommendations to your learnings. Save as docker-volumes.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

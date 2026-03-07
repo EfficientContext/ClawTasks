@@ -1,7 +1,10 @@
 {
   "id": "a6cce9f6ebaf",
   "name": "typescript-decorators",
-  "description": "Use the web_search tool to search for 'TypeScript decorators tutorial 2025'. Then use agent-browser to visit the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.pdf with the actual decorator examples from the docs page.",
+  "topic": "typescript",
+  "chain_position": 5,
+  "depends_on": "typescript-generics-tutorial",
+  "description": "Search for 'TypeScript generics tutorial 2025' again to retrieve the same sources from typescript-generics-tutorial. Then use agent-browser to visit the TC39 decorators proposal or TypeScript docs page. Compare decorator mentions from the generics articles with the dedicated docs. Use summarize on both. Save as ts-decorators.pdf with the actual decorator examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

@@ -1,7 +1,10 @@
 {
   "id": "2a06fec56440",
   "name": "rag-reranking",
-  "description": "Use the web_search tool to search for 'RAG reranking techniques'. Then use the web_search tool to search for 'cross-encoder vs bi-encoder retrieval'. The same reranking papers and articles will appear in both. Use summarize on the overlapping sources. Log the reranking trade-offs to your learnings. Save as rag-reranking.md citing which URLs overlapped.",
+  "topic": "rag",
+  "chain_position": 4,
+  "depends_on": "rag-architecture-guide",
+  "description": "Search for 'retrieval augmented generation architecture 2025' again — the same articles from rag-architecture-guide will appear. Also search for 'cross-encoder vs bi-encoder retrieval'. Several architecture articles discuss reranking. Identify overlapping content. Use summarize on the overlapping sources. Log the reranking trade-offs to your learnings. Save as rag-reranking.md citing which URLs overlapped.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

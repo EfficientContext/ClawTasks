@@ -1,7 +1,10 @@
 {
   "id": "ddf4510a5c6b",
   "name": "python-async-performance",
-  "description": "Use the web_search tool to search for 'Python asyncio performance benchmark 2025'. Then use the web_search tool to search for 'Python async vs multiprocessing speed comparison'. Identify overlapping benchmark articles. Use agent-browser to visit the top overlapping article and extract full benchmark data. Use summarize to create a performance comparison. Save as python-async-perf.pdf with benchmark numbers and source URLs.",
+  "topic": "python-async",
+  "chain_position": 5,
+  "depends_on": "python-async-deep-dive",
+  "description": "Search for 'Python asyncio tutorial 2025' again to retrieve the same sources from python-async-deep-dive. Also search for 'Python asyncio performance benchmark 2025'. Use agent-browser to visit the top overlapping benchmark article and extract full data. Use summarize to create a performance comparison. Save as python-async-perf.pdf with benchmark numbers and source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

@@ -1,7 +1,10 @@
 {
   "id": "a9b4e5f244b9",
   "name": "typescript-utility-types",
-  "description": "Use the web_search tool to search for 'TypeScript utility types Partial Pick Omit'. Then use the web_search tool to search for 'TypeScript Record Exclude Extract'. Results will overlap because utility types docs cross-reference each other. List overlapping URLs. Use summarize. Log type patterns to your learnings. Save as ts-utility-types.md with URLs.",
+  "topic": "typescript",
+  "chain_position": 2,
+  "depends_on": "typescript-generics-tutorial",
+  "description": "Search for 'TypeScript generics tutorial 2025' again — the same articles from your typescript-generics-tutorial research will appear. Also search for 'TypeScript utility types Partial Pick Omit'. Many generics tutorials also cover utility types. List overlapping URLs. Use summarize on the overlapping content. Log type patterns to your learnings. Save as ts-utility-types.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

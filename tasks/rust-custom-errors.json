@@ -1,7 +1,10 @@
 {
   "id": "60108f93b8c8",
   "name": "rust-custom-errors",
-  "description": "Use the web_search tool to search for 'Rust custom error type implementation'. Then use the web_search tool to search for 'Rust implement Display Error trait example'. Both return the same articles showing derive/impl patterns. Use summarize on overlapping sources. Rewrite with annotated code examples. Save as rust-custom-errors.md with URLs.",
+  "topic": "rust-error",
+  "chain_position": 4,
+  "depends_on": "rust-error-handling-guide",
+  "description": "Search for 'Rust error handling Result Option tutorial' again — you will get the same articles from rust-error-handling-guide. Also search for 'Rust custom error type implementation'. Identify overlapping content about impl Error/Display patterns. Use summarize on overlapping sources. Rewrite with annotated code examples. Save as rust-custom-errors.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

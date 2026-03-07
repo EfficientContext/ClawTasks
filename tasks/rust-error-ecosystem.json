@@ -1,7 +1,10 @@
 {
   "id": "7102ccf68100",
   "name": "rust-error-ecosystem",
-  "description": "Use the web_search tool to search for 'Rust error handling ecosystem anyhow eyre snafu'. Then use agent-browser to visit the top comparison article. The search snippets and the full article will overlap heavily. Use summarize to consolidate. Rewrite as a decision guide. Save as rust-error-ecosystem.pdf with the actual crate download stats from the page.",
+  "topic": "rust-error",
+  "chain_position": 5,
+  "depends_on": "rust-error-handling-guide",
+  "description": "Search for 'Rust error handling Result Option tutorial' again to retrieve the same sources from rust-error-handling-guide. Then use agent-browser to visit the top article comparing Rust error crates. Compare ecosystem mentions in the tutorial articles with the comparison article. Use summarize to consolidate. Rewrite as a decision guide. Save as rust-error-ecosystem.pdf with the actual crate download stats from the page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

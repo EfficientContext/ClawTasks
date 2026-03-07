@@ -1,7 +1,10 @@
 {
   "id": "272d63f11e7d",
   "name": "prompt-engineering-techniques",
-  "description": "Use the web_search tool to search for 'prompt engineering techniques 2025'. Then use the web_search tool to search for 'chain of thought prompting examples'. Results will overlap on the same techniques. List overlapping URLs. Use summarize on them. Log effective patterns to your learnings. Save as prompt-techniques.md with all URLs.",
+  "topic": "prompt-engineering",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'prompt engineering techniques 2025'. Also search for 'chain of thought prompting examples'. Both will return overlapping articles about prompting methods. List overlapping URLs. Use summarize on them. Log effective patterns to your learnings. Save as prompt-techniques.md with all URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

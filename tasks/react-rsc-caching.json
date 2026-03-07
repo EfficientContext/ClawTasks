@@ -1,7 +1,10 @@
 {
   "id": "861cef466ae4",
   "name": "react-rsc-caching",
-  "description": "Use the web_search tool to search for 'React Server Components caching strategy'. Then use the web_search tool to search for 'Next.js cache revalidation'. Browse the top overlapping result with agent-browser for full content. Use summarize to consolidate all the caching info. Save as react-caching.pdf with URLs and cache configuration examples from the actual pages.",
+  "topic": "react-rsc",
+  "chain_position": 5,
+  "depends_on": "react-rsc-research",
+  "description": "Search for 'React Server Components 2025' again to retrieve the same sources from react-rsc-research. Also search for 'Next.js cache revalidation'. Use agent-browser to visit the top overlapping result for full content. Use summarize to consolidate all caching info. Save as react-caching.pdf with URLs and cache configuration examples from the pages.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
