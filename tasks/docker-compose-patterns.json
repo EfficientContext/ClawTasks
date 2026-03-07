@@ -4,7 +4,7 @@
   "topic": "docker-compose",
   "chain_position": 2,
   "depends_on": "docker-compose-guide",
-  "description": "Search for 'Docker Compose multi-service setup tutorial 2025' again — the same articles from your docker-compose-guide research will appear. Also search for 'Docker Compose health check restart policy'. Overlapping articles will cover the same best practices. List overlapping URLs. Use summarize on them. Log best practices to your learnings. Save as docker-compose-best.md with URLs.",
+  "description": "Use web_search to search for 'Docker Compose best practices production'. Also search for 'Docker Compose health check restart policy'. Overlapping articles will cover the same topics. List overlapping URLs. Use summarize on them. Log best practices to your learnings. Save as docker-compose-best.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

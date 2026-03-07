@@ -4,7 +4,7 @@
   "topic": "rust-error",
   "chain_position": 1,
   "depends_on": null,
-  "description": "Use web_search to search for 'Rust error handling Result Option tutorial'. Then use agent-browser to visit the Rust Book error handling chapter at doc.rust-lang.org. Use summarize on both the search snippets and the book chapter. Rewrite for beginners. Save as rust-errors.pdf with URLs.",
+  "description": "Use web_search to search for 'Rust error handling Result Option tutorial'. Then use agent-browser to visit the Rust Book error handling chapter at doc.rust-lang.org. The search results and the book chapter will cover the same patterns. Use summarize on both. Rewrite for beginners. Save as rust-errors.pdf with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

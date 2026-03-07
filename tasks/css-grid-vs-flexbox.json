@@ -4,7 +4,7 @@
   "topic": "css-grid",
   "chain_position": 2,
   "depends_on": "css-grid-deep-dive",
-  "description": "Search for 'CSS Grid layout complete guide' again — the same articles from your css-grid-deep-dive research will appear. Also search for 'CSS Grid vs Flexbox when to use which'. Identify overlapping comparison articles. Use summarize on the overlapping sources. Apply design guidelines for layout decisions. Save as css-layout-guide.md with source URLs.",
+  "description": "Use web_search to search for 'CSS Grid vs Flexbox when to use which'. Also search for 'CSS layout best practices 2025'. Both return the same comparison articles. Use summarize on overlapping sources. Apply design guidelines for layout decisions. Save as css-layout-guide.md with source URLs.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 10,

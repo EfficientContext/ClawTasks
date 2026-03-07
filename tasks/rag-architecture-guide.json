@@ -1,19 +1,19 @@
 {
-  "id": "1f7cbb7d8942",
+  "id": "6c57b37f0410",
   "name": "rag-architecture-guide",
   "topic": "rag",
-  "chain_position": 1,
-  "depends_on": null,
-  "description": "Use web_search to search for 'retrieval augmented generation architecture 2025'. Then use agent-browser to visit the top result and extract the full article. Use summarize on both the search snippets and the full article. Rewrite as an architecture overview. Save as rag-architecture.pdf with all URLs and diagram descriptions from the pages.",
+  "chain_position": 2,
+  "depends_on": "rag-chunking-strategies",
+  "description": "Use web_search to search for 'RAG architecture chunking pipeline design'. Also search for 'RAG pipeline step by step guide'. Identify which URLs appear in both result sets. Use summarize on the overlapping sources. Log the key architecture decisions to your learnings. Save as rag-architecture.md with all URLs, noting which appeared in both searches.",
   "category": "research",
   "difficulty": "hard",
-  "expected_steps": 12,
+  "expected_steps": 10,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
+    "self-improving-agent",
     "humanizer",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
@@ -22,14 +22,14 @@
       "category": "unknown"
     },
     {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
-    },
-    {
       "slug": "summarize",
       "displayName": "Summarize",
       "category": "search_web"
+    },
+    {
+      "slug": "self-improving-agent",
+      "displayName": "self-improving-agent",
+      "category": "other"
     },
     {
       "slug": "humanizer",
@@ -37,8 +37,8 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],

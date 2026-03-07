@@ -4,7 +4,7 @@
   "topic": "css-grid",
   "chain_position": 5,
   "depends_on": "css-grid-deep-dive",
-  "description": "Search for 'CSS Grid layout complete guide' again to retrieve the same sources from css-grid-deep-dive. Then use agent-browser to visit the MDN subgrid page. Compare subgrid mentions in the guide articles with the dedicated MDN docs. Use summarize on the overlapping content. Apply design best practices. Save as css-subgrid.pdf with browser support data from the actual MDN page.",
+  "description": "Use web_search to search for 'CSS subgrid browser support 2025'. Then use agent-browser to visit the MDN subgrid page. The search results and MDN docs will describe the same subgrid features. Use summarize on the overlapping content. Apply design best practices. Save as css-subgrid.pdf with browser support data from the actual MDN page.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,

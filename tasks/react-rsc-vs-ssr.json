@@ -4,7 +4,7 @@
   "topic": "react-rsc",
   "chain_position": 2,
   "depends_on": "react-rsc-research",
-  "description": "Search for 'React Server Components 2025' again — the same articles from your react-rsc-research will appear. Also search for 'Next.js App Router vs Pages Router'. Identify which articles and documentation pages appear in both result sets. Use summarize on the overlapping sources. Log the key architectural differences to your learnings. Save as react-rsc-vs-ssr.md with cited URLs.",
+  "description": "Use web_search to search for 'React Server Components vs SSR differences'. Also search for 'Next.js App Router vs Pages Router'. Identify which articles and documentation pages appear in both result sets. Use summarize on the overlapping sources. Log the key architectural differences to your learnings. Save as react-rsc-vs-ssr.md with cited URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

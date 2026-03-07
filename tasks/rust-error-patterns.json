@@ -4,7 +4,7 @@
   "topic": "rust-error",
   "chain_position": 2,
   "depends_on": "rust-error-handling-guide",
-  "description": "Search for 'Rust error handling Result Option tutorial' again — the same articles from your rust-error-handling-guide research will appear. Also search for 'Rust anyhow vs thiserror comparison 2025'. Many of the original error-handling articles also discuss these crates. List overlapping URLs. Use summarize on them. Log the patterns to your learnings. Save as rust-error-crates.md with URLs.",
+  "description": "Use web_search to search for 'Rust anyhow vs thiserror when to use'. Also search for 'Rust error handling crate comparison 2025'. The same comparison blog posts will appear in both. List overlapping URLs. Use summarize on them. Log the patterns to your learnings. Save as rust-error-crates.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

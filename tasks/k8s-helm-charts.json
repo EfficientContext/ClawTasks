@@ -4,7 +4,7 @@
   "topic": "k8s",
   "chain_position": 5,
   "depends_on": "k8s-autoscaling-research",
-  "description": "Search for 'Kubernetes HPA horizontal pod autoscaler tutorial' again to retrieve the same sources from k8s-autoscaling-research. Then use agent-browser to visit the official helm.sh getting-started page. Compare deployment patterns from the autoscaling articles with the Helm docs. Use summarize on both. Save as k8s-helm.pdf with the actual commands from the docs.",
+  "description": "Use web_search to search for 'Kubernetes Helm chart tutorial getting started'. Then use agent-browser to visit the official helm.sh getting-started page. The search snippets and the docs will describe the same chart structure and helm commands. Use summarize on both. Save as k8s-helm.pdf with the actual commands from the docs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
