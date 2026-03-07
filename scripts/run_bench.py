@@ -67,19 +67,25 @@ def get_node22_path():
     return None
 
 
-def build_skill_context(task: dict) -> str:
-    """Read each skill's SKILL.md and concatenate into prompt context."""
+def build_prompt_seed(task: dict) -> str:
+    """Build prompt for a seed task. Skills are NOT injected — OpenClaw
+    handles skill discovery and injection automatically via its system
+    prompt.  We only send the task description as the user message."""
+    return f"""{task['description']}
+
+Save the final output to a file (PDF or markdown as specified).
+Show the tool commands you ran and their outputs."""
+
+
+def build_prompt_claude(task: dict) -> str:
+    """Build prompt for Claude Code runner (no OpenClaw skill injection).
+    Falls back to manual skill context since Claude Code has no skill system."""
     parts = []
     for slug in task["skills_required"]:
         skill_md = SKILLS_DIR / slug / "SKILL.md"
         if skill_md.exists():
             parts.append(f"<skill name=\"{slug}\">\n{skill_md.read_text()}\n</skill>")
-    return "\n\n".join(parts)
-
-
-def build_prompt(task: dict) -> str:
-    """Build the full prompt for a seed task (includes skill context)."""
-    ctx = build_skill_context(task)
+    ctx = "\n\n".join(parts)
     return f"""You have the following skills available. Use them to complete the task.
 
 {ctx}
@@ -90,9 +96,8 @@ TASK: {task['description']}
 
 RULES:
 1. You MUST actually invoke the tools/commands described in each skill (web_search, agent-browser, summarize CLI, etc.). Do NOT skip any skill.
-2. You may use your memory and learnings alongside tool outputs.
-3. Save the final output to a file (PDF or markdown as specified).
-4. Show the tool commands you ran and their outputs."""
+2. Save the final output to a file (PDF or markdown as specified).
+3. Show the tool commands you ran and their outputs."""
 
 
 def run_task_openclaw(task: dict, timeout: int = 300,
@@ -228,9 +233,12 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             session_id = topic_sessions.get(topic,
                                             f"clawbench-{topic}-{run_ts}")
 
-        # Seed gets full prompt (skills + task); follow-ups get just the question
+        # Seed gets task prompt; follow-ups get just the question.
+        # For openclaw: no skill injection (OpenClaw handles it).
+        # For claude: manual skill injection (no skill system).
         if is_seed:
-            prompt = build_prompt(task)
+            prompt = (build_prompt_seed(task) if runner == "openclaw"
+                      else build_prompt_claude(task))
         else:
             prompt = task["description"]
 
