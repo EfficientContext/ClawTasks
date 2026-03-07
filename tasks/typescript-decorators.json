@@ -1,30 +1,24 @@
 {
-  "id": "a6cce9f6ebaf",
+  "id": "6e06bae7bce4",
   "name": "typescript-decorators",
   "topic": "typescript",
   "chain_position": 5,
   "depends_on": "typescript-generics-tutorial",
-  "description": "Use web_search to search for 'TypeScript decorators tutorial 2025'. Then use agent-browser to visit the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.pdf with the actual decorator examples from the docs page.",
+  "description": "Use web_search to search for 'TypeScript decorators tutorial 2025'. Then use web_fetch to fetch the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.md with the actual decorator examples from the docs page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "humanizer",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

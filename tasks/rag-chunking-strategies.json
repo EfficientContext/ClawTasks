@@ -1,30 +1,24 @@
 {
-  "id": "442d9bf828ab",
+  "id": "67b306ae9bc7",
   "name": "rag-chunking-strategies",
   "topic": "rag",
   "chain_position": 1,
   "depends_on": null,
-  "description": "Use web_search to search for 'RAG chunking embedding strategies optimize retrieval'. Then use agent-browser to visit the top result and extract the full article. Use summarize on both the search snippets and the article. Rewrite as a chunking best-practices guide. Save as rag-chunking.pdf with all source URLs.",
+  "description": "Use web_search to search for 'RAG chunking embedding strategies optimize retrieval'. Then use web_fetch to fetch the top result and extract the full article. Use summarize on both the search snippets and the article. Rewrite as a chunking best-practices guide. Save as rag-chunking.md with all source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "humanizer",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

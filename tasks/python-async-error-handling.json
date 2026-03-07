@@ -1,30 +1,24 @@
 {
-  "id": "c572f8e03aec",
+  "id": "132919ed9ed5",
   "name": "python-async-error-handling",
   "topic": "python-async",
   "chain_position": 3,
   "depends_on": "python-async-deep-dive",
-  "description": "Use web_search to search for 'Python asyncio exception handling try except'. Then use agent-browser to visit the official Python docs page for asyncio at docs.python.org and extract the error handling section. Compare which content appears in both the search results and the docs page. Use summarize to create a consolidated summary. Log the overlapping error patterns to your learnings. Save as python-async-errors.pdf.",
+  "description": "Use web_search to search for 'Python asyncio exception handling try except'. Then use web_fetch to fetch the official Python docs page for asyncio at docs.python.org and extract the error handling section. Compare which content appears in both the search results and the docs page. Use summarize to create a consolidated summary. Log the overlapping error patterns to your learnings. Save as python-async-errors.md.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "self-improving-agent",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

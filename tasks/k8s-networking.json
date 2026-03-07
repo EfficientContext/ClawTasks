@@ -1,30 +1,24 @@
 {
-  "id": "592f7a08a236",
+  "id": "0365b04605de",
   "name": "k8s-networking",
   "topic": "k8s",
   "chain_position": 3,
   "depends_on": "k8s-autoscaling-research",
-  "description": "Use web_search to search for 'Kubernetes networking Services Ingress explained'. Then use agent-browser to visit the kubernetes.io networking concepts page. The search results and docs page will cover the same Services, Ingress, and DNS content. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.pdf with URLs.",
+  "description": "Use web_search to search for 'Kubernetes networking Services Ingress explained'. Then use web_fetch to fetch the kubernetes.io networking concepts page. The search results and docs page will cover the same Services, Ingress, and DNS content. Use summarize to consolidate. Rewrite for DevOps beginners. Save as k8s-networking.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "humanizer",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

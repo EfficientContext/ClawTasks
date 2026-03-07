@@ -1,30 +1,24 @@
 {
-  "id": "3ba194ce3934",
+  "id": "f7876b643230",
   "name": "rag-reranking-evaluation",
   "topic": "rag",
   "chain_position": 5,
   "depends_on": "rag-chunking-strategies",
-  "description": "Use web_search to search for 'RAG reranking cross encoder evaluation RAGAS faithfulness'. Then use agent-browser to visit the RAGAS documentation or a top tutorial combining reranking with evaluation. Use summarize to consolidate. Save as rag-rerank-eval.pdf with concrete cross-encoder examples and RAGAS metric definitions from the pages.",
+  "description": "Use web_search to search for 'RAG reranking cross encoder evaluation RAGAS faithfulness'. Then use web_fetch to fetch the RAGAS documentation or a top tutorial combining reranking with evaluation. Use summarize to consolidate. Save as rag-rerank-eval.md with concrete cross-encoder examples and RAGAS metric definitions from the pages.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "humanizer",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

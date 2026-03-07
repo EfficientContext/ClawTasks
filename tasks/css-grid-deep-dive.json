@@ -1,30 +1,24 @@
 {
-  "id": "54906132ee61",
+  "id": "d2191ed09cbb",
   "name": "css-grid-deep-dive",
   "topic": "css-grid",
   "chain_position": 1,
   "depends_on": null,
-  "description": "Use web_search to search for 'CSS Grid layout complete guide'. Then use agent-browser to visit the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.pdf with the actual CSS snippets from MDN.",
+  "description": "Use web_search to search for 'CSS Grid layout complete guide'. Then use web_fetch to fetch the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.md with the actual CSS snippets from MDN.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "superdesign",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "design_frontend"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

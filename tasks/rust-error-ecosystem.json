@@ -1,30 +1,24 @@
 {
-  "id": "7102ccf68100",
+  "id": "87d962f10063",
   "name": "rust-error-ecosystem",
   "topic": "rust-error",
   "chain_position": 5,
   "depends_on": "rust-error-handling-guide",
-  "description": "Use web_search to search for 'Rust error handling ecosystem anyhow eyre snafu'. Then use agent-browser to visit the top comparison article. The search snippets and the full article will overlap heavily. Use summarize to consolidate. Rewrite as a decision guide. Save as rust-error-ecosystem.pdf with the actual crate download stats from the page.",
+  "description": "Use web_search to search for 'Rust error handling ecosystem anyhow eyre snafu'. Then use web_fetch to fetch the top comparison article. The search snippets and the full article will overlap heavily. Use summarize to consolidate. Rewrite as a decision guide. Save as rust-error-ecosystem.md with the actual crate download stats from the page.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
-    "agent-browser",
     "summarize",
     "humanizer",
-    "nano-pdf"
+    "markdown-converter"
   ],
   "skills_info": [
     {
       "slug": "web_search",
       "displayName": "web_search",
       "category": "unknown"
-    },
-    {
-      "slug": "agent-browser",
-      "displayName": "Agent Browser",
-      "category": "search_web"
     },
     {
       "slug": "summarize",
@@ -37,10 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "nano-pdf",
-      "displayName": "Nano Pdf",
+      "slug": "markdown-converter",
+      "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }
