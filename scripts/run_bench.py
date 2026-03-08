@@ -121,17 +121,23 @@ def run_task_openclaw(task: dict, timeout: int = 300,
     start_time = time.time()
 
     if str(oc_bin).endswith(".mjs"):
-        cmd = [node_bin, str(oc_bin), "agent", "--local",
+        cmd = [node_bin, str(oc_bin), "agent",
                "--session-id", session_id, "--message", prompt]
     else:
-        cmd = [str(oc_bin), "agent", "--local",
+        cmd = [str(oc_bin), "agent",
                "--session-id", session_id, "--message", prompt]
 
     try:
         result = subprocess.run(
             cmd, capture_output=True, text=True, timeout=timeout,
-            env={**os.environ, "NODE_NO_WARNINGS": "1"},
+            env={**os.environ, "NODE_NO_WARNINGS": "1",
+                 "OPENCLAW_LOG_LEVEL": os.environ.get("OPENCLAW_LOG_LEVEL", "info")},
         )
+        # Print compact-related stderr lines to terminal for debugging
+        if result.stderr:
+            for line in result.stderr.splitlines():
+                if any(kw in line.lower() for kw in ("compact", "guard", "overflow", "budget")):
+                    print(f"  [openclaw] {line}")
         return _build_result(task, result, time.time() - start_time,
                            prompt_length=len(prompt))
     except subprocess.TimeoutExpired:
@@ -169,7 +175,7 @@ def _build_result(task, result, elapsed, prompt_length=None):
         "success": result.returncode == 0,
         "exit_code": result.returncode,
         "stdout": result.stdout[:10000],
-        "stderr": result.stderr[:5000],
+        "stderr": result.stderr[:20000],
         "elapsed_seconds": round(elapsed, 2),
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "skills": task["skills_required"],
