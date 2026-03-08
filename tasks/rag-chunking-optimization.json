@@ -1,18 +1,17 @@
 {
-  "id": "6c57b37f0410",
-  "name": "rag-architecture-guide",
+  "id": "b5988a5c76fc",
+  "name": "rag-chunking-optimization",
   "topic": "rag",
-  "chain_position": 2,
-  "depends_on": "rag-chunking-strategies",
-  "description": "Use web_search to search for 'RAG architecture chunking pipeline design'. Also search for 'RAG pipeline step by step guide'. Identify which URLs appear in both result sets. Use summarize on the overlapping sources. Log the key architecture decisions to your learnings. Save as rag-architecture.md with all URLs, noting which appeared in both searches.",
+  "chain_position": 3,
+  "depends_on": "rag-chunking-overview",
+  "description": "Use web_search to search for 'optimize RAG chunking retrieval quality'. Then use web_fetch to fetch the top article about chunking optimization. Use summarize to consolidate both the search snippets and the article. Rewrite as an optimization checklist. Save as rag-chunking-optimize.md with source URLs.",
   "category": "research",
   "difficulty": "hard",
-  "expected_steps": 10,
+  "expected_steps": 12,
   "skills_required": [
     "web_search",
     "summarize",
     "self-improving-agent",
-    "humanizer",
     "markdown-converter"
   ],
   "skills_info": [
@@ -32,15 +31,10 @@
       "category": "other"
     },
     {
-      "slug": "humanizer",
-      "displayName": "Humanizer",
-      "category": "other"
-    },
-    {
       "slug": "markdown-converter",
       "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

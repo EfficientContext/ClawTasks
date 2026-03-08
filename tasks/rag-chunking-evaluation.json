@@ -1,17 +1,18 @@
 {
-  "id": "46fda2a41c1f",
-  "name": "rag-evaluation",
+  "id": "220240062e88",
+  "name": "rag-chunking-evaluation",
   "topic": "rag",
-  "chain_position": 3,
-  "depends_on": "rag-chunking-strategies",
-  "description": "Use web_search to search for 'RAG evaluation architecture design best practices'. Then use web_fetch to fetch the top evaluation guide and extract the full framework. Use summarize to consolidate both the search snippets and the article. Rewrite as an evaluation checklist. Save as rag-eval.md with metric definitions and source URLs.",
+  "chain_position": 4,
+  "depends_on": "rag-chunking-overview",
+  "description": "Use web_search to search for 'evaluate RAG chunking strategies metrics'. Also search for 'chunking impact on retrieval recall precision'. Identify overlapping articles between both result sets. Use summarize on them. Log the evaluation criteria to your learnings. Save as rag-chunking-eval.md citing which URLs overlapped.",
   "category": "research",
   "difficulty": "hard",
-  "expected_steps": 12,
+  "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
     "self-improving-agent",
+    "humanizer",
     "markdown-converter"
   ],
   "skills_info": [
@@ -31,10 +32,15 @@
       "category": "other"
     },
     {
+      "slug": "humanizer",
+      "displayName": "Humanizer",
+      "category": "other"
+    },
+    {
       "slug": "markdown-converter",
       "displayName": "Markdown Converter",
       "category": "document_processing"
     }
   ],
-  "num_skills": 4
+  "num_skills": 5
 }

@@ -125,56 +125,53 @@ TASK_TEMPLATES = [
     },
 
     # ══════════════════════════════════════════════════════════════════════
-    # RAG / Retrieval
+    # RAG Chunking (all 5 tasks ask about chunking from different angles)
     #
-    # Verified query chain with partial URL overlap (AB/BA pattern):
-    #   Q1→Q2: weaviate.io/chunking-strategies, databricks.com/chunking-guide
-    #   Q2→Q3: learn.microsoft.com/rag-solution-design-and-evaluation-guide
-    #   Q3→Q4: evidentlyai.com/llm-guide/rag-evaluation
-    #   Q4→Q5: careers.edicomgroup.com/llm-rag-reranking-and-evaluation-with-ragas
+    # Same narrow topic = high natural overlap in web_search results.
+    # ContextPilot dedup can detect repeated URLs across turns.
     # ══════════════════════════════════════════════════════════════════════
     {
-        "name": "rag-chunking-strategies",
+        "name": "rag-chunking-overview",
         "topic": "rag",
         "chain_position": 1,
         "depends_on": None,
-        "description": "Use web_search to search for 'RAG chunking embedding strategies optimize retrieval'. Then use web_fetch to fetch the top result and extract the full article. Use summarize on both the search snippets and the article. Rewrite as a chunking best-practices guide. Save as rag-chunking.md with all source URLs.",
+        "description": "Use web_search to search for 'RAG chunking strategies comparison 2025'. Then use web_fetch to fetch the top result and extract the full article. Use summarize on both the search snippets and the article. Rewrite as a chunking overview guide. Save as rag-chunking-overview.md with all source URLs.",
         "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "rag-architecture-guide",
+        "name": "rag-chunking-semantic",
         "topic": "rag",
         "chain_position": 2,
-        "depends_on": "rag-chunking-strategies",
-        "description": "Use web_search to search for 'RAG architecture chunking pipeline design'. Also search for 'RAG pipeline step by step guide'. Identify which URLs appear in both result sets. Use summarize on the overlapping sources. Log the key architecture decisions to your learnings. Save as rag-architecture.md with all URLs, noting which appeared in both searches.",
+        "depends_on": "rag-chunking-overview",
+        "description": "Use web_search to search for 'semantic chunking vs fixed size chunking RAG'. Also search for 'RAG chunking best practices production'. Identify which URLs appear in both result sets. Use summarize on the overlapping sources. Log the key differences to your learnings. Save as rag-chunking-semantic.md with all URLs, noting which appeared in both searches.",
         "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "rag-evaluation",
+        "name": "rag-chunking-optimization",
         "topic": "rag",
         "chain_position": 3,
-        "depends_on": "rag-chunking-strategies",
-        "description": "Use web_search to search for 'RAG evaluation architecture design best practices'. Then use web_fetch to fetch the top evaluation guide and extract the full framework. Use summarize to consolidate both the search snippets and the article. Rewrite as an evaluation checklist. Save as rag-eval.md with metric definitions and source URLs.",
+        "depends_on": "rag-chunking-overview",
+        "description": "Use web_search to search for 'optimize RAG chunking retrieval quality'. Then use web_fetch to fetch the top article about chunking optimization. Use summarize to consolidate both the search snippets and the article. Rewrite as an optimization checklist. Save as rag-chunking-optimize.md with source URLs.",
         "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
-        "name": "rag-reranking",
+        "name": "rag-chunking-evaluation",
         "topic": "rag",
         "chain_position": 4,
-        "depends_on": "rag-chunking-strategies",
-        "description": "Use web_search to search for 'RAG reranking evaluation metrics quality'. Also search for 'reranking improve RAG retrieval precision'. Identify overlapping articles between both result sets. Use summarize on them. Log the reranking trade-offs to your learnings. Save as rag-reranking.md citing which URLs overlapped.",
+        "depends_on": "rag-chunking-overview",
+        "description": "Use web_search to search for 'evaluate RAG chunking strategies metrics'. Also search for 'chunking impact on retrieval recall precision'. Identify overlapping articles between both result sets. Use summarize on them. Log the evaluation criteria to your learnings. Save as rag-chunking-eval.md citing which URLs overlapped.",
         "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
-        "name": "rag-reranking-evaluation",
+        "name": "rag-chunking-advanced",
         "topic": "rag",
         "chain_position": 5,
-        "depends_on": "rag-chunking-strategies",
-        "description": "Use web_search to search for 'RAG reranking cross encoder evaluation RAGAS faithfulness'. Then use web_fetch to fetch the RAGAS documentation or a top tutorial combining reranking with evaluation. Use summarize to consolidate. Save as rag-rerank-eval.md with concrete cross-encoder examples and RAGAS metric definitions from the pages.",
+        "depends_on": "rag-chunking-overview",
+        "description": "Use web_search to search for 'advanced RAG chunking techniques agentic late hierarchical'. Then use web_fetch to fetch the top article about advanced chunking methods. Use summarize to consolidate. Save as rag-chunking-advanced.md with concrete examples and source URLs.",
         "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
