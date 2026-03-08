@@ -4,7 +4,7 @@
   "topic": "react-rsc",
   "chain_position": 3,
   "depends_on": "react-rsc-research",
-  "description": "Use web_search to search for 'React Server Components data fetching patterns'. Then use web_fetch to fetch the Next.js docs page about data fetching. The search results and the docs page will describe the same fetch/cache patterns. Use summarize to consolidate. Log the overlapping patterns to your learnings. Save as react-data-fetching.md.",
+  "description": "Use web_search to search for 'React Server Components data fetching patterns'. Then use web_fetch to fetch the Next.js docs page about data fetching. The search results will overlap heavily with earlier turns — the same joshwcomeau.com, react.dev, and nextjs.org guides will appear. Use summarize to consolidate the overlapping content. Log patterns to your learnings. Save as react-data-fetching.md.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

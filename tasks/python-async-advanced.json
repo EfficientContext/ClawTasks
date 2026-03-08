@@ -1,10 +1,10 @@
 {
-  "id": "132919ed9ed5",
-  "name": "python-async-error-handling",
+  "id": "30ef8e8abecc",
+  "name": "python-async-advanced",
   "topic": "python-async",
   "chain_position": 3,
   "depends_on": "python-async-deep-dive",
-  "description": "Use web_search to search for 'Python asyncio exception handling try except'. Then use web_fetch to fetch the official Python docs page for asyncio at docs.python.org and extract the error handling section. Compare which content appears in both the search results and the docs page. Use summarize to create a consolidated summary. Log the overlapping error patterns to your learnings. Save as python-async-errors.md.",
+  "description": "Use web_search to search for 'Python asyncio advanced patterns production'. Then use web_fetch to fetch the official Python docs asyncio page at docs.python.org. The search results will overlap heavily with earlier turns — the same Real Python, Better Stack, and BBC guides will appear. Use summarize to consolidate the overlapping content. Log to your learnings. Save as python-async-advanced.md.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

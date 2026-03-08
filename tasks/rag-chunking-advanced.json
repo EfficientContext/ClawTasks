@@ -4,7 +4,7 @@
   "topic": "rag",
   "chain_position": 5,
   "depends_on": "rag-chunking-overview",
-  "description": "Use web_search to search for 'advanced RAG chunking techniques agentic late hierarchical'. Then use web_fetch to fetch the top article about advanced chunking methods. Use summarize to consolidate. Save as rag-chunking-advanced.md with concrete examples and source URLs.",
+  "description": "Use web_search to search for 'advanced RAG chunking techniques agentic hierarchical'. Then use web_fetch to fetch the top article about advanced chunking methods. The search results will again overlap with earlier turns. Use summarize to consolidate. Save as rag-chunking-advanced.md with concrete examples and source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

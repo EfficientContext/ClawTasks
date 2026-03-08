@@ -4,7 +4,7 @@
   "topic": "rag",
   "chain_position": 2,
   "depends_on": "rag-chunking-overview",
-  "description": "Use web_search to search for 'semantic chunking vs fixed size chunking RAG'. Also search for 'RAG chunking best practices production'. Identify which URLs appear in both result sets. Use summarize on the overlapping sources. Log the key differences to your learnings. Save as rag-chunking-semantic.md with all URLs, noting which appeared in both searches.",
+  "description": "Use web_search to search for 'semantic chunking vs fixed size chunking RAG'. Also search for 'RAG chunking best practices production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap. Use summarize on the overlapping sources. Log the key differences to your learnings. Save as rag-chunking-semantic.md with all URLs, noting which appeared in both searches.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

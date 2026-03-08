@@ -1,17 +1,17 @@
 {
-  "id": "a9b4e5f244b9",
-  "name": "typescript-utility-types",
-  "topic": "typescript",
+  "id": "3e9cf3be14fb",
+  "name": "css-grid-best-practices",
+  "topic": "css-grid",
   "chain_position": 2,
-  "depends_on": "typescript-generics-tutorial",
-  "description": "Use web_search to search for 'TypeScript utility types Partial Pick Omit'. Also search for 'TypeScript Record Exclude Extract'. Results will overlap because utility types docs cross-reference each other. List overlapping URLs. Use summarize. Log type patterns to your learnings. Save as ts-utility-types.md with URLs.",
-  "category": "research",
+  "depends_on": "css-grid-deep-dive",
+  "description": "Use web_search to search for 'CSS Grid best practices responsive design'. Also search for 'CSS Grid layout tips 2025'. The same MDN, CSS-Tricks, and web.dev articles from the previous search will appear again. Identify overlapping URLs. Use summarize on overlapping sources. Apply design guidelines. Save as css-grid-best.md with source URLs.",
+  "category": "design",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
+    "superdesign",
     "humanizer",
     "markdown-converter"
   ],
@@ -27,9 +27,9 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
-      "category": "other"
+      "slug": "superdesign",
+      "displayName": "SuperDesign",
+      "category": "design_frontend"
     },
     {
       "slug": "humanizer",

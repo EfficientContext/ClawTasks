@@ -4,7 +4,7 @@
   "topic": "python-async",
   "chain_position": 2,
   "depends_on": "python-async-deep-dive",
-  "description": "Use web_search to search for 'Python async await design patterns'. Also search for 'Python asyncio vs threading comparison'. Identify which URLs appear in both result sets. Use summarize on the overlapping sources. Log the key async patterns to your learnings. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
+  "description": "Use web_search to search for 'Python asyncio best practices concurrency'. Also search for 'Python asyncio patterns production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap with the previous turn's results. Use summarize on the overlapping sources. Log the key async patterns to your learnings. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,

@@ -1,17 +1,17 @@
 {
-  "id": "fd85eee53b36",
+  "id": "a96a220aab77",
   "name": "rust-error-propagation",
   "topic": "rust-error",
-  "chain_position": 3,
+  "chain_position": 5,
   "depends_on": "rust-error-handling-guide",
-  "description": "Use web_search to search for 'Rust question mark operator error propagation'. Then use web_fetch to fetch the Rust By Example error handling page. The search results and the tutorial will explain the same ? operator and From trait. Use summarize to consolidate the overlapping content. Log to your learnings. Save as rust-propagation.md.",
+  "description": "Use web_search to search for 'Rust error handling propagation question mark operator'. Then use web_fetch to fetch the Rust By Example error handling page. The search results will again overlap with earlier turns. Use summarize to consolidate. Save as rust-propagation.md with source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
+    "humanizer",
     "markdown-converter"
   ],
   "skills_info": [
@@ -26,8 +26,8 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
+      "slug": "humanizer",
+      "displayName": "Humanizer",
       "category": "other"
     },
     {

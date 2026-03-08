@@ -1,10 +1,10 @@
 {
-  "id": "6e06bae7bce4",
-  "name": "typescript-decorators",
+  "id": "4412591453bd",
+  "name": "typescript-generics-real-world",
   "topic": "typescript",
   "chain_position": 5,
   "depends_on": "typescript-generics-tutorial",
-  "description": "Use web_search to search for 'TypeScript decorators tutorial 2025'. Then use web_fetch to fetch the TC39 decorators proposal or TypeScript docs page. The search results and the docs will describe the same decorator syntax. Use summarize on both. Save as ts-decorators.md with the actual decorator examples from the docs page.",
+  "description": "Use web_search to search for 'TypeScript generics real world examples design patterns'. Then use web_fetch to fetch the top overlapping tutorial. The search results will again overlap with earlier turns. Use summarize to consolidate all generics info. Save as ts-generics-patterns.md with source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 12,

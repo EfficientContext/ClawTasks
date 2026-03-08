@@ -4,7 +4,7 @@
   "topic": "css-grid",
   "chain_position": 1,
   "depends_on": null,
-  "description": "Use web_search to search for 'CSS Grid layout complete guide'. Then use web_fetch to fetch the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.md with the actual CSS snippets from MDN.",
+  "description": "Use web_search to search for 'CSS Grid layout complete guide 2025'. Then use web_fetch to fetch the MDN CSS Grid page at developer.mozilla.org. The search snippets and MDN page will contain the same grid-template examples. Use summarize on both. Apply frontend design guidelines. Save as css-grid.md with the actual CSS snippets from MDN.",
   "category": "design",
   "difficulty": "hard",
   "expected_steps": 12,

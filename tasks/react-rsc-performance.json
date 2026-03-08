@@ -1,17 +1,16 @@
 {
-  "id": "a5f0e806fb56",
-  "name": "docker-compose-volumes",
-  "topic": "docker-compose",
+  "id": "d52a1cc22ed9",
+  "name": "react-rsc-performance",
+  "topic": "react-rsc",
   "chain_position": 4,
-  "depends_on": "docker-compose-guide",
-  "description": "Use web_search to search for 'Docker Compose volumes explained'. Also search for 'Docker named volumes vs bind mounts performance'. Both return the same volume docs. Use summarize on overlapping sources. Log the storage recommendations to your learnings. Save as docker-volumes.md with URLs.",
+  "depends_on": "react-rsc-research",
+  "description": "Use web_search to search for 'React Server Components performance optimization'. Also search for 'React Server Components caching strategy'. Both searches will return many of the same RSC articles seen in earlier turns. Use summarize on overlapping sources. Rewrite as a performance checklist. Save as react-rsc-perf.md with all source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
     "humanizer",
     "markdown-converter"
   ],
@@ -27,11 +26,6 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
-      "category": "other"
-    },
-    {
       "slug": "humanizer",
       "displayName": "Humanizer",
       "category": "other"
@@ -42,5 +36,5 @@
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }
