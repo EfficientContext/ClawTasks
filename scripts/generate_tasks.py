@@ -79,58 +79,6 @@ TASK_TEMPLATES = [
     },
 
     # ══════════════════════════════════════════════════════════════════════
-    # React Server Components — all turns search "React Server Components"
-    #
-    # Verified overlap: joshwcomeau.com, react.dev/reference/rsc,
-    # nextjs.org docs appear across all query variations.
-    # ══════════════════════════════════════════════════════════════════════
-    {
-        "name": "react-rsc-research",
-        "topic": "react-rsc",
-        "chain_position": 1,
-        "depends_on": None,
-        "description": "Use web_search to search for 'React Server Components tutorial guide 2025'. Then use web_fetch to fetch the react.dev Server Components documentation page. Use summarize on both the search snippets and the docs. Rewrite for a blog audience. Save as react-rsc-guide.md with all URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-    {
-        "name": "react-rsc-vs-client",
-        "topic": "react-rsc",
-        "chain_position": 2,
-        "depends_on": "react-rsc-research",
-        "description": "Use web_search to search for 'React Server Components vs client components best practices'. Also search for 'React Server Components when to use which'. The same Josh Comeau, react.dev, and Next.js articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as react-rsc-vs-client.md with cited URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 10,
-    },
-    {
-        "name": "react-rsc-data-fetching",
-        "topic": "react-rsc",
-        "chain_position": 3,
-        "depends_on": "react-rsc-research",
-        "description": "Use web_search to search for 'React Server Components data fetching patterns'. Then use web_fetch to fetch the Next.js docs page about data fetching. The search results will overlap heavily with earlier turns — the same joshwcomeau.com, react.dev, and nextjs.org guides will appear. Use summarize to consolidate the overlapping content. Save as react-data-fetching.md.",
-        "skills_required": ["web_search", "summarize", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-    {
-        "name": "react-rsc-performance",
-        "topic": "react-rsc",
-        "chain_position": 4,
-        "depends_on": "react-rsc-research",
-        "description": "Use web_search to search for 'React Server Components performance optimization'. Also search for 'React Server Components caching strategy'. Both searches will return many of the same RSC articles seen in earlier turns. Use summarize on overlapping sources. Rewrite as a performance checklist. Save as react-rsc-perf.md with all source URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 10,
-    },
-    {
-        "name": "react-rsc-production",
-        "topic": "react-rsc",
-        "chain_position": 5,
-        "depends_on": "react-rsc-research",
-        "description": "Use web_search to search for 'React Server Components production best practices 2025'. Then use web_fetch to fetch the Josh Comeau RSC guide at joshwcomeau.com. The search results will again overlap with earlier turns. Use summarize to consolidate all RSC info. Save as react-rsc-production.md with source URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-
-    # ══════════════════════════════════════════════════════════════════════
     # RAG Chunking — all turns search "RAG chunking" variations
     #
     # Same narrow topic = high natural overlap in web_search results.
@@ -234,55 +182,6 @@ TASK_TEMPLATES = [
     },
 
     # ══════════════════════════════════════════════════════════════════════
-    # Rust Error Handling — all turns search "Rust error handling"
-    # ══════════════════════════════════════════════════════════════════════
-    {
-        "name": "rust-error-handling-guide",
-        "topic": "rust-error",
-        "chain_position": 1,
-        "depends_on": None,
-        "description": "Use web_search to search for 'Rust error handling tutorial guide Result Option'. Then use web_fetch to fetch the Rust Book error handling chapter at doc.rust-lang.org. The search results and the book chapter will cover the same patterns. Use summarize on both. Rewrite for beginners. Save as rust-errors.md with URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-    {
-        "name": "rust-error-best-practices",
-        "topic": "rust-error",
-        "chain_position": 2,
-        "depends_on": "rust-error-handling-guide",
-        "description": "Use web_search to search for 'Rust error handling best practices production'. Also search for 'Rust error handling patterns tips'. The same Rust Book, Rust By Example, and blog articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as rust-error-best.md with URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 10,
-    },
-    {
-        "name": "rust-error-crates",
-        "topic": "rust-error",
-        "chain_position": 3,
-        "depends_on": "rust-error-handling-guide",
-        "description": "Use web_search to search for 'Rust error handling crates anyhow thiserror comparison'. Then use web_fetch to fetch the top comparison article. The search results will overlap heavily with earlier turns — the same error handling guides will appear. Use summarize to consolidate the overlapping content. Save as rust-error-crates.md.",
-        "skills_required": ["web_search", "summarize", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-    {
-        "name": "rust-error-custom",
-        "topic": "rust-error",
-        "chain_position": 4,
-        "depends_on": "rust-error-handling-guide",
-        "description": "Use web_search to search for 'Rust error handling custom error types implementation'. Also search for 'Rust error handling Display Error trait'. Both searches will return many of the same error handling articles seen in earlier turns. Use summarize on overlapping sources. Rewrite with annotated code examples. Save as rust-custom-errors.md with URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 10,
-    },
-    {
-        "name": "rust-error-propagation",
-        "topic": "rust-error",
-        "chain_position": 5,
-        "depends_on": "rust-error-handling-guide",
-        "description": "Use web_search to search for 'Rust error handling propagation question mark operator'. Then use web_fetch to fetch the Rust By Example error handling page. The search results will again overlap with earlier turns. Use summarize to consolidate. Save as rust-propagation.md with source URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-
-    # ══════════════════════════════════════════════════════════════════════
     # Docker Compose — all turns search "Docker Compose" variations
     # ══════════════════════════════════════════════════════════════════════
     {
@@ -327,58 +226,6 @@ TASK_TEMPLATES = [
         "chain_position": 5,
         "depends_on": "docker-compose-guide",
         "description": "Use web_search to search for 'Docker Compose production deployment optimization'. Then use web_fetch to fetch the Docker docs page about deploying Compose in production. The search results will again overlap with earlier turns. Use summarize to consolidate. Save as docker-compose-prod.md with actual config syntax from the docs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-
-    # ══════════════════════════════════════════════════════════════════════
-    # TypeScript Generics — all turns search "TypeScript generics"
-    #
-    # Verified overlap: typescriptlang.org, typescripttutorial.net
-    # appear across all query variations.
-    # ══════════════════════════════════════════════════════════════════════
-    {
-        "name": "typescript-generics-tutorial",
-        "topic": "typescript",
-        "chain_position": 1,
-        "depends_on": None,
-        "description": "Use web_search to search for 'TypeScript generics tutorial guide 2025'. Then use web_fetch to fetch the TypeScript Handbook generics page at typescriptlang.org. The search results will reference the same handbook content. Use summarize on both. Rewrite with more examples. Save as ts-generics.md with URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-    {
-        "name": "typescript-generics-constraints",
-        "topic": "typescript",
-        "chain_position": 2,
-        "depends_on": "typescript-generics-tutorial",
-        "description": "Use web_search to search for 'TypeScript generics advanced patterns constraints'. Also search for 'TypeScript generics best practices'. The same typescriptlang.org and typescripttutorial.net articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as ts-generics-constraints.md with URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 10,
-    },
-    {
-        "name": "typescript-generics-utility",
-        "topic": "typescript",
-        "chain_position": 3,
-        "depends_on": "typescript-generics-tutorial",
-        "description": "Use web_search to search for 'TypeScript generics utility types Partial Pick Omit'. Then use web_fetch to fetch the TypeScript Handbook utility types page. The search results will overlap heavily with earlier turns — the same TypeScript official docs and tutorial sites will appear. Use summarize to consolidate. Save as ts-generics-utility.md.",
-        "skills_required": ["web_search", "summarize", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 12,
-    },
-    {
-        "name": "typescript-generics-conditional",
-        "topic": "typescript",
-        "chain_position": 4,
-        "depends_on": "typescript-generics-tutorial",
-        "description": "Use web_search to search for 'TypeScript generics conditional types infer'. Also search for 'TypeScript generics mapped types examples'. Both searches will return many of the same generics articles seen in earlier turns. Use summarize on overlapping sources. Rewrite with clear examples. Save as ts-generics-conditional.md with URLs.",
-        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
-        "category": "research", "difficulty": "hard", "expected_steps": 10,
-    },
-    {
-        "name": "typescript-generics-real-world",
-        "topic": "typescript",
-        "chain_position": 5,
-        "depends_on": "typescript-generics-tutorial",
-        "description": "Use web_search to search for 'TypeScript generics real world examples design patterns'. Then use web_fetch to fetch the top overlapping tutorial. The search results will again overlap with earlier turns. Use summarize to consolidate all generics info. Save as ts-generics-patterns.md with source URLs.",
         "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
@@ -527,12 +374,11 @@ def main():
 
     (ROOT / "tasks_all.json").write_text(json.dumps(all_tasks, indent=2, ensure_ascii=False))
 
-    print(f"Generated {len(all_tasks)} tasks, 9 topics x 5 tasks\n")
-
     # Topic chain summary
     topics = {}
     for t in all_tasks:
         topics.setdefault(t["topic"], []).append(t)
+    print(f"Generated {len(all_tasks)} tasks, {len(topics)} topics x 5 tasks\n")
     print("Topic chains (seed → dependents):")
     for topic, tasks in topics.items():
         seed = [t for t in tasks if t["chain_position"] == 1][0]

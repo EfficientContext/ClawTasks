@@ -48,6 +48,9 @@ def find_openclaw_bin():
     return None
 
 
+CONTEXTPILOT_URL = "http://localhost:8765"
+
+
 def check_contextpilot_running(port: int = 8765) -> bool:
     try:
         import urllib.request
@@ -55,6 +58,29 @@ def check_contextpilot_running(port: int = 8765) -> bool:
         return resp.status == 200
     except Exception:
         return False
+
+
+def _get_proxy_ttft_count() -> int:
+    """Get current TTFT history count from ContextPilot proxy."""
+    try:
+        import urllib.request
+        resp = urllib.request.urlopen(f"{CONTEXTPILOT_URL}/metrics/ttft", timeout=3)
+        data = json.loads(resp.read())
+        return data.get("count", 0)
+    except Exception:
+        return 0
+
+
+def _get_proxy_ttft_last(n: int) -> list[float]:
+    """Get the last N TTFT values (in ms) from ContextPilot proxy."""
+    try:
+        import urllib.request
+        resp = urllib.request.urlopen(
+            f"{CONTEXTPILOT_URL}/metrics/ttft?last={n}", timeout=3)
+        data = json.loads(resp.read())
+        return data.get("ttft_ms", [])
+    except Exception:
+        return []
 
 
 def get_node22_path():
@@ -100,88 +126,6 @@ RULES:
 3. Show the tool commands you ran and their outputs."""
 
 
-def _run_with_ttft(cmd: list, timeout: int, env: dict | None = None) -> dict:
-    """Run a subprocess and measure TTFT (time to first stdout byte).
-
-    Returns dict with keys: returncode, stdout, stderr, elapsed, ttft.
-    ttft is None if no stdout was produced before the process ended.
-    """
-    start_time = time.time()
-    ttft = None
-    stdout_chunks = []
-    try:
-        proc = subprocess.Popen(
-            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            env=env, text=True,
-        )
-        import selectors
-        sel = selectors.DefaultSelector()
-        sel.register(proc.stdout, selectors.EVENT_READ)
-        sel.register(proc.stderr, selectors.EVENT_READ)
-        stderr_chunks = []
-        stdout_done = False
-        stderr_done = False
-
-        while not (stdout_done and stderr_done):
-            remaining = timeout - (time.time() - start_time) if timeout else None
-            if remaining is not None and remaining <= 0:
-                proc.kill()
-                proc.wait()
-                return {
-                    "returncode": -1,
-                    "stdout": "".join(stdout_chunks)[:10000],
-                    "stderr": f"Timeout after {timeout}s",
-                    "elapsed": time.time() - start_time,
-                    "ttft": ttft,
-                }
-            events = sel.select(timeout=min(remaining, 1.0) if remaining else 1.0)
-            for key, _ in events:
-                chunk = key.fileobj.read(4096)
-                if key.fileobj is proc.stdout:
-                    if chunk:
-                        if ttft is None:
-                            ttft = time.time() - start_time
-                        stdout_chunks.append(chunk)
-                    else:
-                        stdout_done = True
-                else:
-                    if chunk:
-                        stderr_chunks.append(chunk)
-                    else:
-                        stderr_done = True
-            # Also check if process has ended
-            if proc.poll() is not None:
-                # Drain remaining
-                rest_out = proc.stdout.read()
-                rest_err = proc.stderr.read()
-                if rest_out:
-                    if ttft is None:
-                        ttft = time.time() - start_time
-                    stdout_chunks.append(rest_out)
-                if rest_err:
-                    stderr_chunks.append(rest_err)
-                break
-        sel.close()
-        proc.wait()
-        return {
-            "returncode": proc.returncode,
-            "stdout": "".join(stdout_chunks)[:10000],
-            "stderr": "".join(stderr_chunks)[:20000],
-            "elapsed": time.time() - start_time,
-            "ttft": ttft,
-        }
-    except FileNotFoundError:
-        raise
-    except Exception as e:
-        return {
-            "returncode": -1,
-            "stdout": "".join(stdout_chunks)[:10000],
-            "stderr": str(e),
-            "elapsed": time.time() - start_time,
-            "ttft": ttft,
-        }
-
-
 def run_task_openclaw(task: dict, timeout: int = 800,
                       session_id: str | None = None,
                       prompt: str | None = None) -> dict:
@@ -210,14 +154,19 @@ def run_task_openclaw(task: dict, timeout: int = 800,
     env = {**os.environ, "NODE_NO_WARNINGS": "1",
            "OPENCLAW_LOG_LEVEL": os.environ.get("OPENCLAW_LOG_LEVEL", "info")}
 
+    start_time = time.time()
     try:
-        raw = _run_with_ttft(cmd, timeout, env=env)
-        # Print compact-related stderr lines to terminal for debugging
-        if raw["stderr"]:
-            for line in raw["stderr"].splitlines():
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=timeout, env=env,
+        )
+        if result.stderr:
+            for line in result.stderr.splitlines():
                 if any(kw in line.lower() for kw in ("compact", "guard", "overflow", "budget")):
                     print(f"  [openclaw] {line}")
-        return _build_result_from_raw(task, raw, prompt_length=len(prompt))
+        return _build_result(task, result, time.time() - start_time,
+                             prompt_length=len(prompt))
+    except subprocess.TimeoutExpired:
+        return _timeout_result(task, timeout, time.time() - start_time)
     except FileNotFoundError as e:
         return _error_result(task, str(e))
 
@@ -228,34 +177,51 @@ def run_task_claude(task: dict, timeout: int = 800,
                     resume: bool = False) -> dict:
     if prompt is None:
         prompt = build_prompt(task)
+    start_time = time.time()
     cmd = ["claude", "--print", "-p", prompt]
     if resume and session_id:
         cmd = ["claude", "--print", "--resume", session_id, "-p", prompt]
     try:
-        raw = _run_with_ttft(cmd, timeout)
-        return _build_result_from_raw(task, raw, prompt_length=len(prompt))
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=timeout,
+        )
+        return _build_result(task, result, time.time() - start_time,
+                             prompt_length=len(prompt))
+    except subprocess.TimeoutExpired:
+        return _timeout_result(task, timeout, time.time() - start_time)
     except FileNotFoundError:
         return _error_result(task, "claude CLI not found")
 
 
-def _build_result_from_raw(task, raw, prompt_length=None):
+def _build_result(task, result, elapsed, prompt_length=None):
     r = {
         "task_id": task["id"],
         "task_name": task["name"],
         "topic": task.get("topic", ""),
         "chain_position": task.get("chain_position", 1),
-        "success": raw["returncode"] == 0,
-        "exit_code": raw["returncode"],
-        "stdout": raw["stdout"],
-        "stderr": raw["stderr"],
-        "elapsed_seconds": round(raw["elapsed"], 2),
-        "ttft_seconds": round(raw["ttft"], 3) if raw["ttft"] is not None else None,
+        "success": result.returncode == 0,
+        "exit_code": result.returncode,
+        "stdout": result.stdout[:10000],
+        "stderr": result.stderr[:20000],
+        "elapsed_seconds": round(elapsed, 2),
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "skills": task["skills_required"],
     }
     if prompt_length:
         r["prompt_length"] = prompt_length
     return r
+
+
+def _timeout_result(task, timeout, elapsed):
+    return {
+        "task_id": task["id"], "task_name": task["name"],
+        "topic": task.get("topic", ""),
+        "chain_position": task.get("chain_position", 1),
+        "success": False, "exit_code": -1,
+        "stdout": "", "stderr": f"Timeout after {timeout}s",
+        "elapsed_seconds": round(elapsed, 2),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
 
 
 def _error_result(task, msg):
@@ -266,7 +232,6 @@ def _error_result(task, msg):
         "success": False, "exit_code": -1,
         "stdout": "", "stderr": msg,
         "elapsed_seconds": 0,
-        "ttft_seconds": None,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -330,6 +295,10 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             continue
 
         print(f"  Running{'...' if is_seed else ' (follow-up in same session)...'}")
+
+        # Snapshot proxy TTFT count before this task
+        ttft_before = _get_proxy_ttft_count()
+
         if runner == "openclaw":
             result = run_task_openclaw(task, timeout,
                                       session_id=session_id, prompt=prompt)
@@ -337,11 +306,33 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             result = run_task_claude(task, timeout,
                                     session_id=session_id, prompt=prompt,
                                     resume=not is_seed)
+
+        # Fetch proxy-side TTFTs that occurred during this task
+        ttft_after = _get_proxy_ttft_count()
+        n_new = ttft_after - ttft_before
+        if n_new > 0:
+            proxy_ttfts = _get_proxy_ttft_last(n_new)
+            # First TTFT = time to first token for the first LLM call
+            result["proxy_ttft_first_ms"] = round(proxy_ttfts[0], 2) if proxy_ttfts else None
+            # All TTFTs during this task (agent may make multiple LLM calls)
+            result["proxy_ttft_all_ms"] = [round(t, 2) for t in proxy_ttfts]
+            result["proxy_ttft_avg_ms"] = (
+                round(sum(proxy_ttfts) / len(proxy_ttfts), 2) if proxy_ttfts else None)
+            result["proxy_llm_calls"] = n_new
+        else:
+            result["proxy_ttft_first_ms"] = None
+            result["proxy_ttft_all_ms"] = []
+            result["proxy_ttft_avg_ms"] = None
+            result["proxy_llm_calls"] = 0
+
         results.append(result)
 
         status = "PASS" if result["success"] else "FAIL"
-        ttft_str = (f", TTFT={result['ttft_seconds']:.3f}s"
-                    if result.get("ttft_seconds") is not None else "")
+        ttft_str = ""
+        if result.get("proxy_ttft_first_ms") is not None:
+            ttft_str = f", TTFT={result['proxy_ttft_first_ms']:.0f}ms"
+            if n_new > 1:
+                ttft_str += f" ({n_new} calls, avg={result['proxy_ttft_avg_ms']:.0f}ms)"
         print(f"  {status} ({result['elapsed_seconds']}s{ttft_str})")
 
         (RESULTS_DIR / f"{task['name']}_result.json").write_text(
@@ -362,13 +353,18 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
         # ── Per-topic metrics ─────────────────────────────────────
         from collections import defaultdict
-        topic_ttfts = defaultdict(list)    # topic → [ttft per turn]
+        topic_ttfts = defaultdict(list)    # topic → [proxy TTFT first call, ms]
+        topic_ttft_avgs = defaultdict(list)  # topic → [proxy TTFT avg across calls, ms]
         topic_elapsed = defaultdict(list)  # topic → [elapsed per turn]
+        topic_llm_calls = defaultdict(list)  # topic → [LLM call count per turn]
         for r in results:
             topic = r.get("topic", "unknown")
             topic_elapsed[topic].append(r.get("elapsed_seconds", 0))
-            if r.get("ttft_seconds") is not None:
-                topic_ttfts[topic].append(r["ttft_seconds"])
+            if r.get("proxy_ttft_first_ms") is not None:
+                topic_ttfts[topic].append(r["proxy_ttft_first_ms"])
+            if r.get("proxy_ttft_avg_ms") is not None:
+                topic_ttft_avgs[topic].append(r["proxy_ttft_avg_ms"])
+            topic_llm_calls[topic].append(r.get("proxy_llm_calls", 0))
 
         # Per-topic averages
         topic_avg_ttft = {}
@@ -395,22 +391,24 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
         # Per-topic breakdown
         print(f"\n{'─'*60}")
-        print(f"{'Topic':<25} {'Avg TTFT':>10} {'Avg Elapsed':>12} {'Turns':>6}")
+        print(f"{'Topic':<25} {'Avg TTFT':>10} {'Avg Elapsed':>12} {'LLM Calls':>10}")
         print(f"{'─'*60}")
         for topic in sorted(topic_avg_elapsed.keys()):
-            ttft_str = (f"{topic_avg_ttft[topic]:.3f}s"
+            ttft_str = (f"{topic_avg_ttft[topic]:.0f}ms"
                         if topic_avg_ttft[topic] is not None else "n/a")
+            total_calls = sum(topic_llm_calls.get(topic, []))
             print(f"{topic:<25} {ttft_str:>10} "
                   f"{topic_avg_elapsed[topic]:>10.1f}s "
-                  f"{len(topic_elapsed[topic]):>6}")
+                  f"{total_calls:>10}")
         print(f"{'─'*60}")
 
         # Cross-topic summary
-        ttft_summary = (f"{avg_ttft_across_topics:.3f}s"
+        ttft_summary = (f"{avg_ttft_across_topics:.0f}ms"
                         if avg_ttft_across_topics is not None else "n/a")
+        all_calls = sum(sum(v) for v in topic_llm_calls.values())
         print(f"{'Avg across topics':<25} {ttft_summary:>10} "
               f"{avg_elapsed_across_topics:>10.1f}s "
-              f"{len(topic_avg_elapsed):>5}tp")
+              f"{all_calls:>10}")
         print(f"{'='*60}")
         print(f"Output:  {combined}")
         print(f"{'='*60}")
@@ -419,17 +417,19 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         combined_data = json.loads(combined.read_text())
         combined_data["topic_metrics"] = {
             topic: {
-                "avg_ttft_seconds": topic_avg_ttft.get(topic),
+                "avg_ttft_ms": round(topic_avg_ttft[topic], 2) if topic_avg_ttft.get(topic) is not None else None,
                 "avg_elapsed_seconds": round(topic_avg_elapsed[topic], 2),
                 "turns": len(topic_elapsed[topic]),
+                "total_llm_calls": sum(topic_llm_calls.get(topic, [])),
             }
             for topic in sorted(topic_avg_elapsed.keys())
         }
         combined_data["summary"] = {
-            "avg_ttft_across_topics": (round(avg_ttft_across_topics, 3)
-                                       if avg_ttft_across_topics is not None else None),
+            "avg_ttft_ms_across_topics": (round(avg_ttft_across_topics, 2)
+                                          if avg_ttft_across_topics is not None else None),
             "avg_elapsed_across_topics": round(avg_elapsed_across_topics, 2),
             "num_topics": len(topic_avg_elapsed),
+            "total_llm_calls": all_calls,
             "passed": passed,
             "failed": failed,
         }
