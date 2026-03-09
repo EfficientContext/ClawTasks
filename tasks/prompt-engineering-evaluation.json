@@ -1,17 +1,16 @@
 {
-  "id": "c4da5bb94469",
+  "id": "4edeb8dc9de6",
   "name": "prompt-engineering-evaluation",
   "topic": "prompt-engineering",
   "chain_position": 5,
   "depends_on": "prompt-engineering-techniques",
-  "description": "Use web_search to search for 'prompt engineering evaluation testing optimization'. Also search for 'prompt engineering iterative improvement'. The search results will again overlap with earlier turns. Use summarize on overlapping sources. Log evaluation patterns to your learnings. Save as prompt-eval.md with URLs.",
+  "description": "Use web_search to search for 'prompt engineering evaluation testing optimization'. Also search for 'prompt engineering iterative improvement'. The search results will again overlap with earlier turns. Use summarize on overlapping sources. Save as prompt-eval.md with URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
     "humanizer",
     "markdown-converter"
   ],
@@ -27,11 +26,6 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
-      "category": "other"
-    },
-    {
       "slug": "humanizer",
       "displayName": "Humanizer",
       "category": "other"
@@ -42,5 +36,5 @@
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

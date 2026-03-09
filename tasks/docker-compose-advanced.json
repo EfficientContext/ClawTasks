@@ -1,17 +1,16 @@
 {
-  "id": "97cb260cd004",
+  "id": "2ccafdaea133",
   "name": "docker-compose-advanced",
   "topic": "docker-compose",
   "chain_position": 4,
   "depends_on": "docker-compose-guide",
-  "description": "Use web_search to search for 'Docker Compose advanced features profiles extends'. Also search for 'Docker Compose health check restart policy'. Both searches will return many of the same Docker Compose articles seen in earlier turns. Use summarize on overlapping sources. Log recommendations to your learnings. Save as docker-compose-advanced.md with source URLs.",
+  "description": "Use web_search to search for 'Docker Compose advanced features profiles extends'. Also search for 'Docker Compose health check restart policy'. Both searches will return many of the same Docker Compose articles seen in earlier turns. Use summarize on overlapping sources. Save as docker-compose-advanced.md with source URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
     "humanizer",
     "markdown-converter"
   ],
@@ -27,11 +26,6 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
-      "category": "other"
-    },
-    {
       "slug": "humanizer",
       "displayName": "Humanizer",
       "category": "other"
@@ -42,5 +36,5 @@
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

@@ -1,17 +1,16 @@
 {
-  "id": "7275b78f07bc",
+  "id": "aef10fc07dd0",
   "name": "python-async-patterns",
   "topic": "python-async",
   "chain_position": 2,
   "depends_on": "python-async-deep-dive",
-  "description": "Use web_search to search for 'Python asyncio best practices concurrency'. Also search for 'Python asyncio patterns production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap with the previous turn's results. Use summarize on the overlapping sources. Log the key async patterns to your learnings. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
+  "description": "Use web_search to search for 'Python asyncio best practices concurrency'. Also search for 'Python asyncio patterns production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap with the previous turn's results. Use summarize on the overlapping sources. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
     "humanizer",
     "markdown-converter"
   ],
@@ -27,11 +26,6 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
-      "category": "other"
-    },
-    {
       "slug": "humanizer",
       "displayName": "Humanizer",
       "category": "other"
@@ -42,5 +36,5 @@
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

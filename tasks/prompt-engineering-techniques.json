@@ -1,17 +1,16 @@
 {
-  "id": "272d63f11e7d",
+  "id": "fa9d1baea36e",
   "name": "prompt-engineering-techniques",
   "topic": "prompt-engineering",
   "chain_position": 1,
   "depends_on": null,
-  "description": "Use web_search to search for 'prompt engineering techniques guide 2025'. Then use web_fetch to fetch the top result about prompt engineering fundamentals. Use summarize on both the search snippets and the article. Log effective patterns to your learnings. Save as prompt-techniques.md with all URLs.",
+  "description": "Use web_search to search for 'prompt engineering techniques guide 2025'. Then use web_fetch to fetch the top result about prompt engineering fundamentals. Use summarize on both the search snippets and the article. Save as prompt-techniques.md with all URLs.",
   "category": "research",
   "difficulty": "hard",
   "expected_steps": 10,
   "skills_required": [
     "web_search",
     "summarize",
-    "self-improving-agent",
     "humanizer",
     "markdown-converter"
   ],
@@ -27,11 +26,6 @@
       "category": "search_web"
     },
     {
-      "slug": "self-improving-agent",
-      "displayName": "self-improving-agent",
-      "category": "other"
-    },
-    {
       "slug": "humanizer",
       "displayName": "Humanizer",
       "category": "other"
@@ -42,5 +36,5 @@
       "category": "document_processing"
     }
   ],
-  "num_skills": 5
+  "num_skills": 4
 }

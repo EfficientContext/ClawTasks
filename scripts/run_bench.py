@@ -182,7 +182,7 @@ def _run_with_ttft(cmd: list, timeout: int, env: dict | None = None) -> dict:
         }
 
 
-def run_task_openclaw(task: dict, timeout: int = 300,
+def run_task_openclaw(task: dict, timeout: int = 800,
                       session_id: str | None = None,
                       prompt: str | None = None) -> dict:
     node_bin = get_node22_path()
@@ -222,7 +222,7 @@ def run_task_openclaw(task: dict, timeout: int = 300,
         return _error_result(task, str(e))
 
 
-def run_task_claude(task: dict, timeout: int = 300,
+def run_task_claude(task: dict, timeout: int = 800,
                     session_id: str | None = None,
                     prompt: str | None = None,
                     resume: bool = False) -> dict:
@@ -277,7 +277,7 @@ def _sort_by_topic_chain(tasks):
 
 
 def run_benchmark(tasks, batch_size=1, dry_run=False,
-                  timeout=300, runner="openclaw"):
+                  timeout=800, runner="openclaw"):
     RESULTS_DIR.mkdir(exist_ok=True)
     results = []
 

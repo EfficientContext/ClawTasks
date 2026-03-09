@@ -46,8 +46,8 @@ TASK_TEMPLATES = [
         "topic": "python-async",
         "chain_position": 2,
         "depends_on": "python-async-deep-dive",
-        "description": "Use web_search to search for 'Python asyncio best practices concurrency'. Also search for 'Python asyncio patterns production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap with the previous turn's results. Use summarize on the overlapping sources. Log the key async patterns to your learnings. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'Python asyncio best practices concurrency'. Also search for 'Python asyncio patterns production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap with the previous turn's results. Use summarize on the overlapping sources. Save as python-async-patterns.md with all URLs, noting which appeared in both searches.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -55,8 +55,8 @@ TASK_TEMPLATES = [
         "topic": "python-async",
         "chain_position": 3,
         "depends_on": "python-async-deep-dive",
-        "description": "Use web_search to search for 'Python asyncio advanced patterns production'. Then use web_fetch to fetch the official Python docs asyncio page at docs.python.org. The search results will overlap heavily with earlier turns — the same Real Python, Better Stack, and BBC guides will appear. Use summarize to consolidate the overlapping content. Log to your learnings. Save as python-async-advanced.md.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
+        "description": "Use web_search to search for 'Python asyncio advanced patterns production'. Then use web_fetch to fetch the official Python docs asyncio page at docs.python.org. The search results will overlap heavily with earlier turns — the same Real Python, Better Stack, and BBC guides will appear. Use summarize to consolidate the overlapping content. Save as python-async-advanced.md.",
+        "skills_required": ["web_search", "summarize", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
@@ -98,8 +98,8 @@ TASK_TEMPLATES = [
         "topic": "react-rsc",
         "chain_position": 2,
         "depends_on": "react-rsc-research",
-        "description": "Use web_search to search for 'React Server Components vs client components best practices'. Also search for 'React Server Components when to use which'. The same Josh Comeau, react.dev, and Next.js articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Log the key differences to your learnings. Save as react-rsc-vs-client.md with cited URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'React Server Components vs client components best practices'. Also search for 'React Server Components when to use which'. The same Josh Comeau, react.dev, and Next.js articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as react-rsc-vs-client.md with cited URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -107,8 +107,8 @@ TASK_TEMPLATES = [
         "topic": "react-rsc",
         "chain_position": 3,
         "depends_on": "react-rsc-research",
-        "description": "Use web_search to search for 'React Server Components data fetching patterns'. Then use web_fetch to fetch the Next.js docs page about data fetching. The search results will overlap heavily with earlier turns — the same joshwcomeau.com, react.dev, and nextjs.org guides will appear. Use summarize to consolidate the overlapping content. Log patterns to your learnings. Save as react-data-fetching.md.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
+        "description": "Use web_search to search for 'React Server Components data fetching patterns'. Then use web_fetch to fetch the Next.js docs page about data fetching. The search results will overlap heavily with earlier turns — the same joshwcomeau.com, react.dev, and nextjs.org guides will appear. Use summarize to consolidate the overlapping content. Save as react-data-fetching.md.",
+        "skills_required": ["web_search", "summarize", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
@@ -149,8 +149,8 @@ TASK_TEMPLATES = [
         "topic": "rag",
         "chain_position": 2,
         "depends_on": "rag-chunking-overview",
-        "description": "Use web_search to search for 'semantic chunking vs fixed size chunking RAG'. Also search for 'RAG chunking best practices production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap. Use summarize on the overlapping sources. Log the key differences to your learnings. Save as rag-chunking-semantic.md with all URLs, noting which appeared in both searches.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'semantic chunking vs fixed size chunking RAG'. Also search for 'RAG chunking best practices production'. Many of the same URLs from the previous search will appear again. Identify which URLs overlap. Use summarize on the overlapping sources. Save as rag-chunking-semantic.md with all URLs, noting which appeared in both searches.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -159,7 +159,7 @@ TASK_TEMPLATES = [
         "chain_position": 3,
         "depends_on": "rag-chunking-overview",
         "description": "Use web_search to search for 'optimize RAG chunking retrieval quality'. Then use web_fetch to fetch the top article about chunking optimization. The search results will overlap heavily with earlier turns. Use summarize to consolidate both the search snippets and the article. Rewrite as an optimization checklist. Save as rag-chunking-optimize.md with source URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
+        "skills_required": ["web_search", "summarize", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
@@ -167,8 +167,8 @@ TASK_TEMPLATES = [
         "topic": "rag",
         "chain_position": 4,
         "depends_on": "rag-chunking-overview",
-        "description": "Use web_search to search for 'evaluate RAG chunking strategies metrics'. Also search for 'RAG chunking impact on retrieval recall precision'. The same RAG chunking articles from earlier turns will appear again. Use summarize on the overlapping sources. Log the evaluation criteria to your learnings. Save as rag-chunking-eval.md citing which URLs overlapped.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'evaluate RAG chunking strategies metrics'. Also search for 'RAG chunking impact on retrieval recall precision'. The same RAG chunking articles from earlier turns will appear again. Use summarize on the overlapping sources. Save as rag-chunking-eval.md citing which URLs overlapped.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -201,8 +201,8 @@ TASK_TEMPLATES = [
         "topic": "k8s",
         "chain_position": 2,
         "depends_on": "k8s-hpa-guide",
-        "description": "Use web_search to search for 'Kubernetes HPA autoscaling best practices production'. Also search for 'Kubernetes HPA configuration tips'. The same kubernetes.io, Spacelift, and kubecost articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Log the best practices to your learnings. Save as k8s-hpa-best.md with cited URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'Kubernetes HPA autoscaling best practices production'. Also search for 'Kubernetes HPA configuration tips'. The same kubernetes.io, Spacelift, and kubecost articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as k8s-hpa-best.md with cited URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -210,8 +210,8 @@ TASK_TEMPLATES = [
         "topic": "k8s",
         "chain_position": 3,
         "depends_on": "k8s-hpa-guide",
-        "description": "Use web_search to search for 'Kubernetes HPA custom metrics autoscaling'. Then use web_fetch to fetch the kubernetes.io HPA concepts page. The search results will overlap heavily with earlier turns — the same HPA docs and guides will appear. Use summarize to consolidate the overlapping content. Log to your learnings. Save as k8s-hpa-metrics.md.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
+        "description": "Use web_search to search for 'Kubernetes HPA custom metrics autoscaling'. Then use web_fetch to fetch the kubernetes.io HPA concepts page. The search results will overlap heavily with earlier turns — the same HPA docs and guides will appear. Use summarize to consolidate the overlapping content. Save as k8s-hpa-metrics.md.",
+        "skills_required": ["web_search", "summarize", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
@@ -250,8 +250,8 @@ TASK_TEMPLATES = [
         "topic": "rust-error",
         "chain_position": 2,
         "depends_on": "rust-error-handling-guide",
-        "description": "Use web_search to search for 'Rust error handling best practices production'. Also search for 'Rust error handling patterns tips'. The same Rust Book, Rust By Example, and blog articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Log the patterns to your learnings. Save as rust-error-best.md with URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'Rust error handling best practices production'. Also search for 'Rust error handling patterns tips'. The same Rust Book, Rust By Example, and blog articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as rust-error-best.md with URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -259,8 +259,8 @@ TASK_TEMPLATES = [
         "topic": "rust-error",
         "chain_position": 3,
         "depends_on": "rust-error-handling-guide",
-        "description": "Use web_search to search for 'Rust error handling crates anyhow thiserror comparison'. Then use web_fetch to fetch the top comparison article. The search results will overlap heavily with earlier turns — the same error handling guides will appear. Use summarize to consolidate the overlapping content. Log to your learnings. Save as rust-error-crates.md.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
+        "description": "Use web_search to search for 'Rust error handling crates anyhow thiserror comparison'. Then use web_fetch to fetch the top comparison article. The search results will overlap heavily with earlier turns — the same error handling guides will appear. Use summarize to consolidate the overlapping content. Save as rust-error-crates.md.",
+        "skills_required": ["web_search", "summarize", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
@@ -299,8 +299,8 @@ TASK_TEMPLATES = [
         "topic": "docker-compose",
         "chain_position": 2,
         "depends_on": "docker-compose-guide",
-        "description": "Use web_search to search for 'Docker Compose best practices production'. Also search for 'Docker Compose configuration tips 2025'. The same Docker docs and tutorial articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Log best practices to your learnings. Save as docker-compose-best.md with URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'Docker Compose best practices production'. Also search for 'Docker Compose configuration tips 2025'. The same Docker docs and tutorial articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as docker-compose-best.md with URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -317,8 +317,8 @@ TASK_TEMPLATES = [
         "topic": "docker-compose",
         "chain_position": 4,
         "depends_on": "docker-compose-guide",
-        "description": "Use web_search to search for 'Docker Compose advanced features profiles extends'. Also search for 'Docker Compose health check restart policy'. Both searches will return many of the same Docker Compose articles seen in earlier turns. Use summarize on overlapping sources. Log recommendations to your learnings. Save as docker-compose-advanced.md with source URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'Docker Compose advanced features profiles extends'. Also search for 'Docker Compose health check restart policy'. Both searches will return many of the same Docker Compose articles seen in earlier turns. Use summarize on overlapping sources. Save as docker-compose-advanced.md with source URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -351,8 +351,8 @@ TASK_TEMPLATES = [
         "topic": "typescript",
         "chain_position": 2,
         "depends_on": "typescript-generics-tutorial",
-        "description": "Use web_search to search for 'TypeScript generics advanced patterns constraints'. Also search for 'TypeScript generics best practices'. The same typescriptlang.org and typescripttutorial.net articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Log type patterns to your learnings. Save as ts-generics-constraints.md with URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'TypeScript generics advanced patterns constraints'. Also search for 'TypeScript generics best practices'. The same typescriptlang.org and typescripttutorial.net articles from the previous search will appear again. Identify overlapping URLs. Use summarize on them. Save as ts-generics-constraints.md with URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -360,8 +360,8 @@ TASK_TEMPLATES = [
         "topic": "typescript",
         "chain_position": 3,
         "depends_on": "typescript-generics-tutorial",
-        "description": "Use web_search to search for 'TypeScript generics utility types Partial Pick Omit'. Then use web_fetch to fetch the TypeScript Handbook utility types page. The search results will overlap heavily with earlier turns — the same TypeScript official docs and tutorial sites will appear. Use summarize to consolidate. Log to learnings. Save as ts-generics-utility.md.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "markdown-converter"],
+        "description": "Use web_search to search for 'TypeScript generics utility types Partial Pick Omit'. Then use web_fetch to fetch the TypeScript Handbook utility types page. The search results will overlap heavily with earlier turns — the same TypeScript official docs and tutorial sites will appear. Use summarize to consolidate. Save as ts-generics-utility.md.",
+        "skills_required": ["web_search", "summarize", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 12,
     },
     {
@@ -440,8 +440,8 @@ TASK_TEMPLATES = [
         "topic": "prompt-engineering",
         "chain_position": 1,
         "depends_on": None,
-        "description": "Use web_search to search for 'prompt engineering techniques guide 2025'. Then use web_fetch to fetch the top result about prompt engineering fundamentals. Use summarize on both the search snippets and the article. Log effective patterns to your learnings. Save as prompt-techniques.md with all URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'prompt engineering techniques guide 2025'. Then use web_fetch to fetch the top result about prompt engineering fundamentals. Use summarize on both the search snippets and the article. Save as prompt-techniques.md with all URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -458,8 +458,8 @@ TASK_TEMPLATES = [
         "topic": "prompt-engineering",
         "chain_position": 3,
         "depends_on": "prompt-engineering-techniques",
-        "description": "Use web_search to search for 'prompt engineering advanced patterns chain of thought'. Also search for 'prompt engineering few-shot examples'. The search results will overlap heavily with earlier turns — the same prompt engineering guides will appear. Use summarize on overlapping sources. Log useful templates to your learnings. Save as prompt-advanced.md.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'prompt engineering advanced patterns chain of thought'. Also search for 'prompt engineering few-shot examples'. The search results will overlap heavily with earlier turns — the same prompt engineering guides will appear. Use summarize on overlapping sources. Save as prompt-advanced.md.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
     {
@@ -476,8 +476,8 @@ TASK_TEMPLATES = [
         "topic": "prompt-engineering",
         "chain_position": 5,
         "depends_on": "prompt-engineering-techniques",
-        "description": "Use web_search to search for 'prompt engineering evaluation testing optimization'. Also search for 'prompt engineering iterative improvement'. The search results will again overlap with earlier turns. Use summarize on overlapping sources. Log evaluation patterns to your learnings. Save as prompt-eval.md with URLs.",
-        "skills_required": ["web_search", "summarize", "self-improving-agent", "humanizer", "markdown-converter"],
+        "description": "Use web_search to search for 'prompt engineering evaluation testing optimization'. Also search for 'prompt engineering iterative improvement'. The search results will again overlap with earlier turns. Use summarize on overlapping sources. Save as prompt-eval.md with URLs.",
+        "skills_required": ["web_search", "summarize", "humanizer", "markdown-converter"],
         "category": "research", "difficulty": "hard", "expected_steps": 10,
     },
 ]
@@ -517,7 +517,7 @@ def main():
     all_tasks, warnings = [], []
     for tmpl in TASK_TEMPLATES:
         n = len(tmpl["skills_required"])
-        assert 4 <= n <= 5, f"Task '{tmpl['name']}' has {n} skills (need 4-5)"
+        assert 3 <= n <= 5, f"Task '{tmpl['name']}' has {n} skills (need 3-5)"
         missing = validate_skills(tmpl)
         if missing:
             warnings.append(f"Task '{tmpl['name']}': unknown skills {missing}")
