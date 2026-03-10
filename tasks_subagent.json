@@ -1,0 +1,452 @@
+[
+  {
+    "id": "sa01-parallel-research",
+    "name": "parallel-lang-comparison",
+    "topic": "parallel-research",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Research three programming language concurrency models independently and in parallel: (1) Python asyncio, (2) Rust Tokio, and (3) Go goroutines. For each topic, use web_search to find recent articles, then use web_fetch to get the top result's full page, then use the summarize CLI tool to produce a structured summary of that page. Each topic should be researched as a separate independent task. After all three are complete, synthesize a comparison table in markdown covering: paradigm, learning curve, performance characteristics, and ecosystem maturity. Save as lang-concurrency-comparison.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 20,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_subagent_skill_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "3 subagents each reading summarize/SKILL.md → cross-session SKILL.md dedup. 3 subagents with different Subagent Context → main→subagent prefix divergence at Tooling. Overlapping web_search results across concurrency topics."
+    }
+  },
+  {
+    "id": "sa02-parallel-research",
+    "name": "parallel-lang-ecosystem",
+    "topic": "parallel-research",
+    "chain_position": 2,
+    "depends_on": "parallel-lang-comparison",
+    "description": "Extend the previous comparison by researching the ecosystem tooling for each language independently: (1) Python's testing and packaging ecosystem (pytest, pip, poetry), (2) Rust's cargo and crate ecosystem, and (3) Go's module system and testing. Each should be researched as a separate independent task using web_search and the summarize tool. Many search results will overlap with the previous turn's concurrency research — note which URLs appear in both. Merge findings into the existing comparison document. Save as lang-ecosystem-comparison.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Same session as task 1 → cross-turn dedup of overlapping search results. 3 more subagents → more main→subagent prefix reorder. Subagents re-read summarize/SKILL.md → cross-session dedup."
+    }
+  },
+  {
+    "id": "sa03-parallel-research",
+    "name": "parallel-lang-performance",
+    "topic": "parallel-research",
+    "chain_position": 3,
+    "depends_on": "parallel-lang-comparison",
+    "description": "Deep dive into performance benchmarks independently for each language: (1) Python asyncio throughput benchmarks, (2) Rust Tokio latency benchmarks, (3) Go goroutine scheduling benchmarks. Use web_search for each, fetch benchmark articles with web_fetch, and use the summarize tool on each. The search results will overlap heavily with earlier turns. Compile performance data into a structured comparison. Save as lang-performance-benchmarks.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Heavy cross-turn overlap with turns 1-2. 3 subagents with prefix reorder."
+    }
+  },
+  {
+    "id": "sa04-parallel-research",
+    "name": "parallel-lang-realworld",
+    "topic": "parallel-research",
+    "chain_position": 4,
+    "depends_on": "parallel-lang-comparison",
+    "description": "Research real-world production usage independently for each language: (1) Python asyncio in production (Discord, Instagram), (2) Rust in production (Cloudflare, AWS), (3) Go in production (Kubernetes, Docker). Each topic researched as a separate independent task using web_search and summarize. Save as lang-production-usage.md with source URLs.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "notes": "Turn 4 in same session. Heavy cross-turn overlap."
+    }
+  },
+  {
+    "id": "sa05-parallel-research",
+    "name": "parallel-lang-final-report",
+    "topic": "parallel-research",
+    "chain_position": 5,
+    "depends_on": "parallel-lang-comparison",
+    "description": "Create a final comprehensive comparison report. Research the latest 2025 developments for each language independently: (1) Python 3.13 changes, (2) Rust 2024 edition, (3) Go 1.23 features. Use web_search and summarize for each. Then synthesize everything from turns 1-4 into a polished final report with executive summary, detailed comparisons, and recommendations. Save as lang-comparison-final.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 22,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Turn 5. Maximum cross-turn overlap. Final synthesis."
+    }
+  },
+
+  {
+    "id": "sa06-multi-skill",
+    "name": "multiskill-news-briefing",
+    "topic": "multi-skill-parallel",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Create a comprehensive morning briefing by processing four independent information streams in parallel: (1) Fetch and summarize today's top tech news headlines using the news-summary skill (curl RSS feeds from BBC Tech, Reuters Tech), (2) Get the current weather forecast for San Francisco, New York, and London using the weather skill, (3) Search for and summarize the top 3 trending AI/ML papers or blog posts using web_search and the summarize tool, (4) Search for and summarize top 3 trending open-source projects using web_search and the summarize tool. Each stream should be processed as a separate independent task. Combine all four into a single morning briefing document. Save as morning-briefing.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 25,
+    "expected_subagents": 4,
+    "skills_required": [
+      "news-summary",
+      "weather",
+      "web_search",
+      "summarize",
+      "humanizer"
+    ],
+    "skills_info": [
+      {"slug": "news-summary", "displayName": "News Summary", "category": "search_web"},
+      {"slug": "weather", "displayName": "Weather", "category": "other"},
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"}
+    ],
+    "num_skills": 5,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_subagent_skill_dedup": true,
+      "notes": "4 subagents using 4 different skills. Multiple SKILL.md reads (news-summary, weather, summarize, humanizer). Main→subagent prefix reorder for all 4."
+    }
+  },
+  {
+    "id": "sa07-multi-skill",
+    "name": "multiskill-news-deepdive",
+    "topic": "multi-skill-parallel",
+    "chain_position": 2,
+    "depends_on": "multiskill-news-briefing",
+    "description": "Take the top AI/ML story from the morning briefing and do a deep dive. Research three aspects independently in parallel: (1) the technical details of the paper/project using web_search and summarize, (2) the broader industry implications and competing approaches using web_search and summarize, (3) community reaction and expert opinions using web_search. Many search results will overlap with the morning briefing's AI/ML research. Combine into a deep-dive article. Save as ai-deep-dive.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Cross-turn overlap with morning briefing AI/ML results. 3 subagents re-reading summarize/SKILL.md."
+    }
+  },
+  {
+    "id": "sa08-multi-skill",
+    "name": "multiskill-competitor-analysis",
+    "topic": "multi-skill-parallel",
+    "chain_position": 3,
+    "depends_on": "multiskill-news-briefing",
+    "description": "Do a competitive landscape analysis for the AI/ML space. Research four companies independently in parallel: (1) OpenAI recent developments, (2) Anthropic recent developments, (3) Google DeepMind recent developments, (4) Meta AI recent developments. For each, use web_search and the summarize tool on the top results. Many URLs will overlap across companies (same news articles cover multiple companies). Compile into a competitive analysis. Save as ai-competitive-analysis.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 22,
+    "expected_subagents": 4,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "4 subagents. Heavy URL overlap between companies (same news articles). Cross-turn overlap with previous turns."
+    }
+  },
+  {
+    "id": "sa09-multi-skill",
+    "name": "multiskill-trend-forecast",
+    "topic": "multi-skill-parallel",
+    "chain_position": 4,
+    "depends_on": "multiskill-news-briefing",
+    "description": "Based on the competitive analysis, forecast trends in three areas independently in parallel: (1) LLM scaling and architecture trends, (2) AI agent and tool-use trends, (3) AI safety and regulation trends. For each, use web_search and the summarize tool. The search results will heavily overlap with earlier turns' AI company research. Synthesize into a trend forecast. Save as ai-trend-forecast.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Maximum cross-turn overlap. Turn 4 in same session."
+    }
+  },
+  {
+    "id": "sa10-multi-skill",
+    "name": "multiskill-weekly-report",
+    "topic": "multi-skill-parallel",
+    "chain_position": 5,
+    "depends_on": "multiskill-news-briefing",
+    "description": "Compile everything from turns 1-4 into a polished weekly AI industry report. Use web_search to find any updates since the morning briefing. Use the summarize tool on new articles. Combine the morning briefing, deep dive, competitive analysis, and trend forecast into a comprehensive report with executive summary, key findings, and outlook. Apply the humanizer guidelines. Save as weekly-ai-report.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 15,
+    "expected_subagents": 0,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Final synthesis turn. Heavy cross-turn dedup. No new subagents but maximum context reuse."
+    }
+  },
+
+  {
+    "id": "sa11-infra-compare",
+    "name": "infra-cloud-k8s-comparison",
+    "topic": "infra-parallel-compare",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Compare Kubernetes offerings from four cloud providers independently in parallel: (1) AWS EKS features, pricing, and limitations, (2) Google GKE features, pricing, and limitations, (3) Azure AKS features, pricing, and limitations, (4) DigitalOcean DOKS features, pricing, and limitations. For each provider, use web_search to find recent comparison articles and pricing pages, use web_fetch to get the full documentation pages, and use the summarize tool to extract key data. Each provider should be researched as a completely independent task. Compile results into a structured comparison matrix. Save as k8s-cloud-comparison.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 25,
+    "expected_subagents": 4,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_subagent_skill_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "4 subagents for 4 providers. Heavy URL overlap (comparison articles mention all providers). All subagents read summarize/SKILL.md → cross-session dedup."
+    }
+  },
+  {
+    "id": "sa12-infra-compare",
+    "name": "infra-cloud-networking",
+    "topic": "infra-parallel-compare",
+    "chain_position": 2,
+    "depends_on": "infra-cloud-k8s-comparison",
+    "description": "Deep dive into networking features for each cloud provider independently in parallel: (1) AWS VPC + EKS networking, (2) GCP VPC + GKE networking, (3) Azure VNet + AKS networking. Use web_search and the summarize tool for each. The search results will overlap heavily with the K8s comparison — many of the same cloud documentation pages and comparison articles will appear. Note overlapping URLs. Save as cloud-networking-comparison.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Cross-turn overlap with K8s comparison. Same cloud docs, same comparison sites."
+    }
+  },
+  {
+    "id": "sa13-infra-compare",
+    "name": "infra-cloud-security",
+    "topic": "infra-parallel-compare",
+    "chain_position": 3,
+    "depends_on": "infra-cloud-k8s-comparison",
+    "description": "Compare security features independently in parallel: (1) AWS IAM + EKS RBAC + Pod Security, (2) GCP IAM + GKE Workload Identity, (3) Azure AD + AKS Pod Identity. Use web_search and summarize for each. Many results will overlap with previous turns' cloud documentation. Save as cloud-security-comparison.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"}
+    ],
+    "num_skills": 3,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Heavy cross-turn overlap with turns 1-2."
+    }
+  },
+  {
+    "id": "sa14-infra-compare",
+    "name": "infra-cloud-cost",
+    "topic": "infra-parallel-compare",
+    "chain_position": 4,
+    "depends_on": "infra-cloud-k8s-comparison",
+    "description": "Research cost optimization strategies independently in parallel: (1) AWS Spot Instances + Savings Plans for EKS, (2) GCP Preemptible VMs + Committed Use for GKE, (3) Azure Spot VMs + Reserved Instances for AKS. Use web_search and summarize for each. Pricing pages will heavily overlap with earlier turns' provider research. Save as cloud-cost-optimization.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 18,
+    "expected_subagents": 3,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "main_to_subagent_prefix_reorder": true,
+      "cross_turn_dedup": true,
+      "notes": "Turn 4. Heavy overlap with all previous provider research."
+    }
+  },
+  {
+    "id": "sa15-infra-compare",
+    "name": "infra-cloud-final-recommendation",
+    "topic": "infra-parallel-compare",
+    "chain_position": 5,
+    "depends_on": "infra-cloud-k8s-comparison",
+    "description": "Create a final decision framework and recommendation report. Search for the latest cloud provider announcements and updates using web_search. Use summarize on new findings. Synthesize all research from turns 1-4 (K8s features, networking, security, cost) into a structured decision matrix with scored criteria, trade-off analysis, and recommended provider for different use cases (startup, enterprise, cost-sensitive, security-critical). Apply humanizer guidelines for readability. Save as cloud-k8s-recommendation.md.",
+    "category": "research",
+    "difficulty": "hard",
+    "expected_steps": 15,
+    "expected_subagents": 0,
+    "skills_required": [
+      "web_search",
+      "summarize",
+      "humanizer",
+      "markdown-converter"
+    ],
+    "skills_info": [
+      {"slug": "web_search", "displayName": "web_search", "category": "unknown"},
+      {"slug": "summarize", "displayName": "Summarize", "category": "search_web"},
+      {"slug": "humanizer", "displayName": "Humanizer", "category": "other"},
+      {"slug": "markdown-converter", "displayName": "Markdown Converter", "category": "document_processing"}
+    ],
+    "num_skills": 4,
+    "contextpilot_targets": {
+      "cross_turn_dedup": true,
+      "tool_result_reorder": true,
+      "notes": "Final synthesis. Maximum cross-turn dedup. Largest context window usage."
+    }
+  }
+]

@@ -23,6 +23,7 @@ from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TASKS_FILE = ROOT / "tasks_all.json"
+TASKS_SUBAGENT_FILE = ROOT / "tasks_subagent.json"
 SKILLS_DIR = ROOT / "skills"
 RESULTS_DIR = ROOT / "results"
 def find_openclaw_bin():
@@ -286,12 +287,22 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
         if dry_run:
             plen = len(prompt)
+            expected_sa = task.get("expected_subagents", 0)
+            sa_str = f", expected_subagents={expected_sa}" if expected_sa else ""
             print(f"  [DRY RUN] Prompt: ~{plen} chars"
-                  f"{' (full w/ skills)' if is_seed else ' (follow-up)'}")
+                  f"{' (full w/ skills)' if is_seed else ' (follow-up)'}"
+                  f"{sa_str}")
             print(f"  [DRY RUN] {task['description'][:80]}...")
+            cp_targets = task.get("contextpilot_targets", {})
+            if cp_targets:
+                targets = [k for k, v in cp_targets.items()
+                          if v is True]
+                if targets:
+                    print(f"  [DRY RUN] ContextPilot targets: {', '.join(targets)}")
             results.append({"task_id": task["id"], "task_name": task["name"],
                            "topic": topic, "chain_position": chain_pos,
-                           "dry_run": True, "prompt_length": plen})
+                           "dry_run": True, "prompt_length": plen,
+                           "expected_subagents": expected_sa})
             continue
 
         print(f"  Running{'...' if is_seed else ' (follow-up in same session)...'}")
@@ -444,8 +455,9 @@ def main():
     parser.add_argument("--task", type=str)
     parser.add_argument("--category", type=str)
     parser.add_argument("--topic", type=str,
-                       help="Filter by topic prefix, e.g. python-async, react-rsc, rag, k8s, "
-                            "rust-error, docker-compose, typescript, css-grid, prompt-engineering")
+                       help="Filter by topic prefix, e.g. python-async, rag, k8s, "
+                            "docker-compose, css-grid, prompt-engineering, "
+                            "parallel-research, multi-skill-parallel, infra-parallel-compare")
     parser.add_argument("--difficulty", choices=["medium", "hard"])
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit", type=int, default=None,
@@ -454,9 +466,19 @@ def main():
                        help="Timeout per task in seconds (default: no limit)")
     parser.add_argument("--runner", default="openclaw",
                        choices=["openclaw", "claude"])
+    parser.add_argument("--task-file", default=None,
+                       help="Task JSON file (default: tasks_all.json). "
+                            "Use 'subagent' for tasks_subagent.json")
     args = parser.parse_args()
 
-    tasks = json.loads(TASKS_FILE.read_text())
+    # Select task file
+    if args.task_file == "subagent":
+        task_file = TASKS_SUBAGENT_FILE
+    elif args.task_file:
+        task_file = ROOT / args.task_file
+    else:
+        task_file = TASKS_FILE
+    tasks = json.loads(task_file.read_text())
     if args.task:
         tasks = [t for t in tasks if t["name"] == args.task]
         if not tasks:
