@@ -69,7 +69,7 @@ def _call_openai(prompt: str, system: str, model: str) -> str:
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
     response = client.chat.completions.create(
         model=model,
-        max_tokens=300,
+        max_completion_tokens=300,
         messages=[
             {"role": "system", "content": system},
             {"role": "user", "content": prompt},
