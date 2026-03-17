@@ -193,6 +193,96 @@ def run_task_claude(task: dict, timeout: int = 800,
         return _error_result(task, "claude CLI not found")
 
 
+# ── OpenAI-compatible runner (works with any model via ContextPilot proxy) ──
+
+# Conversation history per session for multi-turn
+_openai_sessions: dict[str, list[dict]] = {}
+
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini")
+
+
+def _get_openai_base_url() -> str:
+    """Auto-detect: use ContextPilot proxy if running, otherwise direct OpenAI."""
+    if check_contextpilot_running():
+        return "http://localhost:8765/v1"
+    return "https://api.openai.com/v1"
+
+
+def run_task_openai(task: dict, timeout: int = 800,
+                    session_id: str | None = None,
+                    prompt: str | None = None,
+                    model: str | None = None) -> dict:
+    """Run a task using the OpenAI API, routing through ContextPilot if available."""
+    try:
+        from openai import OpenAI
+    except ImportError:
+        return _error_result(task, "openai package not installed. Run: pip install openai")
+
+    if prompt is None:
+        prompt = task["description"]
+    if model is None:
+        model = OPENAI_MODEL
+    if session_id is None:
+        session_id = f"clawbench-{task['id']}-{int(time.time())}"
+
+    base_url = _get_openai_base_url()
+    client = OpenAI(base_url=base_url, api_key=os.environ.get("OPENAI_API_KEY", ""))
+
+    # Retrieve or create conversation history for this session
+    if session_id not in _openai_sessions:
+        _openai_sessions[session_id] = [
+            {"role": "system", "content": (
+                "You are a research assistant. Answer questions concisely based on "
+                "your knowledge. Keep responses under 100 words unless told otherwise. "
+                "Use bullet points when asked."
+            )}
+        ]
+    messages = _openai_sessions[session_id]
+    messages.append({"role": "user", "content": prompt})
+
+    start_time = time.time()
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            max_tokens=300,
+            timeout=timeout,
+        )
+        output = response.choices[0].message.content or ""
+        messages.append({"role": "assistant", "content": output})
+        elapsed = time.time() - start_time
+
+        return {
+            "task_id": task["id"],
+            "task_name": task["name"],
+            "topic": task.get("topic", ""),
+            "chain_position": task.get("chain_position", 1),
+            "success": True,
+            "exit_code": 0,
+            "stdout": output[:10000],
+            "stderr": "",
+            "elapsed_seconds": round(elapsed, 2),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "skills": task["skills_required"],
+            "prompt_length": sum(len(m["content"]) for m in messages),
+            "model": model,
+        }
+    except Exception as e:
+        elapsed = time.time() - start_time
+        return {
+            "task_id": task["id"],
+            "task_name": task["name"],
+            "topic": task.get("topic", ""),
+            "chain_position": task.get("chain_position", 1),
+            "success": False,
+            "exit_code": -1,
+            "stdout": "",
+            "stderr": str(e)[:20000],
+            "elapsed_seconds": round(elapsed, 2),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+
+
 def _build_result(task, result, elapsed, prompt_length=None):
     r = {
         "task_id": task["id"],
@@ -242,7 +332,8 @@ def _sort_by_topic_chain(tasks):
 
 
 def run_benchmark(tasks, batch_size=1, dry_run=False,
-                  timeout=800, runner="openclaw"):
+                  timeout=800, runner="openclaw",
+                  model=None):
     RESULTS_DIR.mkdir(exist_ok=True)
     results = []
 
@@ -275,6 +366,10 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         # For claude: manual skill injection for ALL tasks (no skill system).
         if runner == "claude":
             prompt = build_prompt_claude(task)
+        elif runner == "openai":
+            # OpenAI runner: just the task description, no skill injection.
+            # Multi-turn context is maintained in _openai_sessions.
+            prompt = task["description"]
         elif is_seed:
             prompt = build_prompt_seed(task)
         else:
@@ -304,6 +399,10 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         if runner == "openclaw":
             result = run_task_openclaw(task, timeout,
                                       session_id=session_id, prompt=prompt)
+        elif runner == "openai":
+            result = run_task_openai(task, timeout,
+                                    session_id=session_id, prompt=prompt,
+                                    model=model)
         else:
             # Claude runner: no session resume (each task runs independently;
             # document overlap comes from searching the same topic)
@@ -457,7 +556,9 @@ def main():
     parser.add_argument("--timeout", type=int, default=None,
                        help="Timeout per task in seconds (default: no limit)")
     parser.add_argument("--runner", default="openclaw",
-                       choices=["openclaw", "claude"])
+                       choices=["openclaw", "claude", "openai"])
+    parser.add_argument("--model", type=str, default=None,
+                       help="Model name for openai runner (default: $OPENAI_MODEL or gpt-5.4-mini)")
     parser.add_argument("--tasks-file", type=str, default=None,
                        help="Path to tasks JSON file (default: tasks_all.json)")
     parser.add_argument("--evaluate", action="store_true",
@@ -494,15 +595,17 @@ def main():
         return
 
     results = run_benchmark(tasks, batch_size=args.batch_size, dry_run=args.dry_run,
-                            timeout=args.timeout, runner=args.runner)
+                            timeout=args.timeout, runner=args.runner,
+                            model=args.model)
 
     if args.evaluate and not args.dry_run:
-        # Score each task against ground truth
+        # Score each task against ground truth using the same model
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
         from evaluate_openclaw import evaluate_results
         all_tasks = json.loads(tasks_file.read_text())
         task_map = {t["name"]: t for t in all_tasks}
-        evaluate_results(results, task_map, RESULTS_DIR)
+        judge_model = args.model or OPENAI_MODEL if args.runner == "openai" else None
+        evaluate_results(results, task_map, RESULTS_DIR, model=judge_model)
 
 
 if __name__ == "__main__":

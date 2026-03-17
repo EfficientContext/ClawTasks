@@ -15,9 +15,9 @@ Usage:
     python scripts/evaluate_openclaw.py results/run_20260317_001457.json \
         --tasks-file openclaw_tasks_all.json
 
-    # Evaluate with a specific model
+    # Evaluate with a specific model (Anthropic or OpenAI)
     python scripts/evaluate_openclaw.py results/run_20260317_001457.json \
-        --tasks-file openclaw_tasks_all.json --model claude-3-5-haiku-20241022
+        --tasks-file openclaw_tasks_all.json --model gpt-5.4-mini
 """
 
 import argparse
@@ -30,7 +30,19 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
-def _call_anthropic(prompt: str, system: str, model: str = "claude-3-5-haiku-20241022") -> str:
+def _is_openai_model(model: str) -> bool:
+    """Check if a model name is an OpenAI model (not Anthropic)."""
+    return not model.startswith("claude")
+
+
+def _call_llm(prompt: str, system: str, model: str = "claude-3-5-haiku-20241022") -> str:
+    """Call the LLM API for judge evaluation. Auto-detects provider from model name."""
+    if _is_openai_model(model):
+        return _call_openai(prompt, system, model)
+    return _call_anthropic(prompt, system, model)
+
+
+def _call_anthropic(prompt: str, system: str, model: str) -> str:
     """Call the Anthropic API for LLM-as-judge evaluation."""
     try:
         import anthropic
@@ -45,6 +57,25 @@ def _call_anthropic(prompt: str, system: str, model: str = "claude-3-5-haiku-202
         messages=[{"role": "user", "content": prompt}],
     )
     return response.content[0].text
+
+
+def _call_openai(prompt: str, system: str, model: str) -> str:
+    """Call the OpenAI API for LLM-as-judge evaluation."""
+    try:
+        from openai import OpenAI
+    except ImportError:
+        sys.exit("openai package not installed. Run: pip install openai")
+
+    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
+    response = client.chat.completions.create(
+        model=model,
+        max_tokens=300,
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": prompt},
+        ],
+    )
+    return response.choices[0].message.content or ""
 
 
 JUDGE_SYSTEM = """You are an evaluation judge for a benchmark. You score model outputs against reference answers.
@@ -84,7 +115,7 @@ def judge_single(output: str, reference_answer: str, key_facts: list[str],
 
 Score the model output. Respond with ONLY a JSON object."""
 
-    raw = _call_anthropic(prompt, JUDGE_SYSTEM, model)
+    raw = _call_llm(prompt, JUDGE_SYSTEM, model)
 
     # Parse JSON from response (handle potential markdown wrapping)
     raw = raw.strip()
@@ -164,7 +195,7 @@ def evaluate_results(results: list[dict], task_map: dict[str, dict],
         results: List of result dicts from run_bench
         task_map: Dict mapping task name -> task dict (with ground_truth)
         results_dir: Optional directory to save per-task eval results
-        model: Anthropic model to use for judging
+        model: Model to use for judging (auto-detects Anthropic vs OpenAI from name)
     """
     evals = []
     tasks_with_gt = 0
@@ -268,7 +299,7 @@ def main():
                        help="Path to tasks JSON with ground truth")
     parser.add_argument("--model", type=str,
                        default="claude-3-5-haiku-20241022",
-                       help="Anthropic model for judging")
+                       help="Model for judging (auto-detects provider: claude-* → Anthropic, else → OpenAI)")
     args = parser.parse_args()
 
     evaluate_results_file(
