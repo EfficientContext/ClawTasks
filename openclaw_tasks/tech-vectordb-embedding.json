@@ -1,0 +1,39 @@
+{
+  "id": "107f4131ddda",
+  "name": "tech-vectordb-embedding",
+  "topic": "tech-vectordb",
+  "chain_position": 6,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'embedding models for vector databases OpenAI ada Cohere voyage comparison 2025'. Results will overlap with earlier vector DB searches. Compare the leading embedding models used with vector databases. List 3 models with one sentence each. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "OpenAI's text-embedding-3-large (3072 dimensions, $0.13/1M tokens) wins the most head-to-head retrieval benchmarks and is the most widely adopted production embedding model, offering balanced speed and accuracy across diverse domains. Cohere's embed-v4 leads MTEB scores at 65.2 with strong multilingual support across 100+ languages, a reranking API, and lower latency than competitors in North America. Voyage AI's voyage-3-large, developed by Stanford researchers, achieves 9.74% higher accuracy than OpenAI on average across 100 datasets while offering Matryoshka dimensionality reduction and int8/binary quantization that delivers comparable quality at 12-200x less storage cost.",
+    "key_facts": [
+      "OpenAI text-embedding-3-large supports up to 3072 dimensions at $0.13 per million tokens",
+      "Cohere embed-v4 leads MTEB benchmarks at 65.2 and supports 100+ languages",
+      "Voyage-3-large outperforms OpenAI by 9.74% on average across 100 datasets",
+      "Voyage-3-large with int8 quantization uses 12x less storage while maintaining higher accuracy than OpenAI at full precision",
+      "Latency hierarchy in North America: Cohere > Google > Voyage > OpenAI > AWS Bedrock"
+    ],
+    "source_urls": [
+      "https://elephas.app/blog/best-embedding-models",
+      "https://reintech.io/blog/embedding-models-comparison-2026-openai-cohere-voyage-bge",
+      "https://blog.voyageai.com/2025/01/07/voyage-3-large/",
+      "https://document360.com/blog/text-embedding-model-analysis/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

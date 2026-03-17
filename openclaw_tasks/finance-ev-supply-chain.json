@@ -1,0 +1,38 @@
+{
+  "id": "e6d2568b0030",
+  "name": "finance-ev-supply-chain",
+  "topic": "finance-ev-market",
+  "chain_position": 9,
+  "depends_on": "finance-ev-overview",
+  "description": "Use web_search to search for 'EV supply chain lithium cobalt nickel mining critical minerals shortage'. Results will overlap with earlier EV searches. What are the critical mineral supply chain risks for EVs? List 3 key minerals and their supply constraints. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Lithium faces the most severe supply gap, with a projected 40% deficit between supply and demand by 2035 as demand grows fivefold by 2040. Cobalt is heavily concentrated in the DRC (75% of mining) and China (75% of refining), though demand pressure is easing as LFP and sodium-ion batteries reduce cobalt dependence. Nickel supply is dominated by Indonesia (50% of global output), with the top three producing countries projected to control 85% of supply by 2035. All three minerals face geographic concentration risk, with China controlling over 60% of refined lithium, cobalt, and graphite processing.",
+    "key_facts": [
+      "Lithium demand is projected to grow fivefold by 2040, with a potential 40% supply-demand gap by 2035",
+      "The DRC produces nearly 75% of global cobalt, with China refining 75% of it",
+      "Indonesia produces 50% of global nickel, with top three countries projected to supply 85% by 2035",
+      "China controls over 60% of refined lithium, cobalt, and graphite processing",
+      "Recycled materials are expected to supply 34% of lithium demand, 40% of cobalt, and 12% of nickel by 2040"
+    ],
+    "source_urls": [
+      "https://www.iea.org/reports/global-critical-minerals-outlook-2025",
+      "https://www.batterytechonline.com/industry-outlook/how-critical-mineral-supply-chains-became-the-ev-industry-s-achilles-heel",
+      "https://about.bnef.com/insights/commodities/supply-chains-struggle-as-energy-transition-drives-surging-demand-for-metals-bloombergnef-finds/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

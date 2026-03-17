@@ -1,0 +1,38 @@
+{
+  "id": "980bb373f71b",
+  "name": "paper-attnres-kimi",
+  "topic": "paper-attnres",
+  "chain_position": 6,
+  "depends_on": "paper-attnres-overview",
+  "description": "Use web_search to search for 'Kimi Linear architecture 48B parameters 3B activated MoE sparse model'. Results overlap with earlier searches. Describe the Kimi Linear architecture where AttnRes was implemented: model size, activation ratio, and training details. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Kimi Linear is a hybrid linear attention architecture by Moonshot AI with 48B total and 3B activated parameters. It uses 54 layers with a Mixture-of-Experts (MoE) design: 8 out of 256 routed experts plus 1 shared expert per layer. The first layer is dense (no MoE) for training stability. It combines Kimi Delta Attention (KDA) linear attention layers with Multi-Head Latent Attention (MLA) full attention layers in a 3:1 ratio, reducing KV cache by up to 75% and achieving up to 6x decoding throughput at 1M context. The AttnRes paper uses this architecture as its large-scale validation platform, pre-training on 1.4T tokens with a 4096-token context window and the Muon optimizer.",
+    "key_facts": [
+      "48B total parameters, 3B activated per forward pass with MoE (8 of 256 routed experts + 1 shared)",
+      "54 layers with 3:1 ratio of KDA linear attention to MLA full attention layers",
+      "Up to 75% KV cache reduction and 6x decoding throughput at 1M context",
+      "Pre-trained on 1.4T tokens with 4096-token context window and Muon optimizer",
+      "First layer is dense (no MoE) for training stability"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2510.26692",
+      "https://arxiv.org/abs/2603.15031",
+      "https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct"
+    ],
+    "max_expected_tokens": 120
+  }
+}

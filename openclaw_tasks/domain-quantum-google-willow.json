@@ -1,0 +1,38 @@
+{
+  "id": "b2e636a8a13f",
+  "name": "domain-quantum-google-willow",
+  "topic": "domain-quantum",
+  "chain_position": 6,
+  "depends_on": "domain-quantum-overview",
+  "description": "Use web_search to search for 'Google Willow quantum chip error correction breakthrough details'. Results will overlap with earlier quantum searches. What did Google achieve with the Willow quantum chip? Describe the key breakthrough and its significance. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Google's Willow chip is a 105-qubit superconducting processor that achieved the first demonstration of quantum error correction operating below the critical threshold -- a goal pursued for nearly 30 years. As the code distance increased from 3x3 to 5x5 to 7x7, the logical error rate halved each time, with the distance-7 code achieving 0.143% error per cycle. The logical qubit memory lifetime exceeded the best physical qubit by a factor of 2.4x, demonstrating \"beyond breakeven\" performance. In a random circuit sampling benchmark, Willow completed in 5 minutes a computation estimated to take classical supercomputers 10^25 years. Key hardware improvements over Sycamore include 5x longer coherence times (T1 of 68 microseconds) and 2x lower physical error rates.",
+    "key_facts": [
+      "Willow has 105 qubits and achieved below-threshold error correction, halving logical errors with each code distance increase (Lambda = 2.14)",
+      "The distance-7 surface code achieved 0.143% error per cycle of error correction",
+      "Logical qubit lifetime exceeded the best physical qubit by a factor of 2.4x (beyond breakeven)",
+      "Completed a random circuit sampling benchmark in 5 minutes versus an estimated 10^25 years classically",
+      "Hardware improvements include 5x longer T1 coherence (68 microseconds) and 2x better physical error rates compared to Sycamore"
+    ],
+    "source_urls": [
+      "https://blog.google/technology/research/google-willow-quantum-chip/",
+      "https://www.nature.com/articles/s41586-024-08449-y",
+      "https://www.hpcwire.com/2024/12/09/google-debuts-new-quantum-chip-error-correction-breakthrough-and-roadmap-details/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

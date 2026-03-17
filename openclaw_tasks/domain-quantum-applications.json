@@ -1,0 +1,38 @@
+{
+  "id": "07abbaa777bc",
+  "name": "domain-quantum-applications",
+  "topic": "domain-quantum",
+  "chain_position": 7,
+  "depends_on": "domain-quantum-overview",
+  "description": "Use web_search to search for 'quantum computing applications cryptography drug discovery optimization use cases'. Results will overlap with earlier searches. What are the 3 most promising near-term applications for quantum computing? One sentence each. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Cryptography: quantum computers threaten current RSA and ECC encryption via Shor's algorithm, driving urgent migration to post-quantum cryptography standards, while quantum key distribution offers theoretically unbreakable communication channels. Drug discovery: quantum simulation of molecular behavior at the quantum level could dramatically accelerate identification of drug candidates by accurately modeling protein folding and molecular interactions, reducing the decade-long, billion-dollar development pipeline. Optimization: quantum algorithms like QAOA can tackle combinatorial problems in logistics, portfolio optimization, and supply chain management by evaluating vast solution spaces simultaneously, with IonQ and Ansys already demonstrating a 12% speedup on a medical-device simulation in 2025.",
+    "key_facts": [
+      "Quantum computers can break RSA and ECC encryption, driving adoption of NIST-approved post-quantum cryptography standards",
+      "Quantum simulation of molecular interactions could accelerate drug discovery by modeling protein folding and molecular behavior at the quantum level",
+      "Quantum optimization algorithms like QAOA can solve combinatorial problems in logistics, finance, and supply chains",
+      "IonQ and Ansys achieved a documented 12% speedup over classical HPC on a medical-device simulation in March 2025",
+      "Finance and pharmaceuticals are expected to be early adopters within 3-5 years"
+    ],
+    "source_urls": [
+      "https://www.bluequbit.io/quantum-computing-use-cases",
+      "https://www.scquantum.org/about/why-quantum/quantum-computing-applications-8-real-world-use-cases-2026",
+      "https://www.spinquanta.com/news-detail/top-quantum-computing-applications-in-key-industries20250124060002"
+    ],
+    "max_expected_tokens": 120
+  }
+}

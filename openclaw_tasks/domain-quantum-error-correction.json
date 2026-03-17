@@ -1,0 +1,39 @@
+{
+  "id": "4f56e6631c21",
+  "name": "domain-quantum-error-correction",
+  "topic": "domain-quantum",
+  "chain_position": 3,
+  "depends_on": "domain-quantum-overview",
+  "description": "Use web_search to search for 'quantum error correction surface code topological codes overhead explained'. Many results will overlap with earlier quantum searches. Explain quantum error correction: why it's needed and how surface codes work. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Quantum error correction (QEC) encodes one logical qubit across many physical qubits so errors can be detected via syndrome measurements without collapsing the quantum state. The surface code arranges qubits on a 2D lattice where stabilizer operators check parity of neighboring data qubits; a distance-d code can correct up to floor((d-1)/2) errors and has a high error threshold of approximately 1%. The key trade-off is qubit overhead: surface codes require O(d^2) physical qubits per logical qubit and need costly magic state distillation for non-Clifford gates. Newer quantum LDPC codes promise to reduce this overhead significantly while maintaining fault tolerance.",
+    "key_facts": [
+      "Surface codes have an error threshold of approximately 1%, far higher than earlier codes which required physical error rates below 0.01%",
+      "A distance-d surface code requires roughly 2d^2 physical qubits and can correct up to floor((d-1)/2) errors",
+      "Non-Clifford gates (like the T-gate) require expensive magic state distillation in surface codes",
+      "Google demonstrated below-threshold surface code operation on Willow with a distance-7 code achieving 0.143% error per cycle",
+      "Quantum LDPC codes are emerging as alternatives that could reduce qubit overhead by an order of magnitude"
+    ],
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Surface_code",
+      "https://www.nature.com/articles/s41586-024-08449-y",
+      "https://www.quera.com/glossary/surface-codes",
+      "https://postquantum.com/quantum-computing/surface-code-qec/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

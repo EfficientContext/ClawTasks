@@ -1,0 +1,38 @@
+{
+  "id": "67871799d352",
+  "name": "finance-semiconductor-ai-demand",
+  "topic": "finance-semiconductor",
+  "chain_position": 6,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'AI chip demand semiconductor industry growth driver HBM packaging 2026'. Results will overlap with earlier semiconductor searches. How is AI demand reshaping the semiconductor industry? What role does HBM and advanced packaging play? Answer in 3 sentences. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "AI infrastructure spending is the dominant force reshaping the semiconductor industry, with the top four hyperscalers expected to invest roughly $500 billion in 2026 and the HBM market projected to reach $54.6 billion (up 58% YoY), as HBM's share surpasses 30% of all DRAM revenue. Advanced packaging techniques like CoWoS and 3D stacking have become the primary supply bottleneck, as even when wafer fabrication capacity exists, packaging throughput and HBM availability cap how many AI accelerators can ship. The memory industry has undergone a structural shift from cyclical boom-and-bust to sustained AI-driven demand premiums, with SK hynix's entire HBM capacity sold out through 2026 and memory manufacturers reporting record margins exceeding 50%.",
+    "key_facts": [
+      "HBM market projected at $54.6 billion in 2026, up 58% YoY per Bank of America",
+      "Advanced packaging (CoWoS, 3D stacking) is now the primary AI chip supply bottleneck",
+      "HBM revenue share expected to surpass 30% of all DRAM revenue by 2026",
+      "SK hynix's entire HBM capacity is sold out through 2026",
+      "Top four hyperscalers expected to invest ~$500 billion in AI infrastructure in 2026"
+    ],
+    "source_urls": [
+      "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/",
+      "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html",
+      "https://www.techinsights.com/outlook-reports-2026/advanced-packaging-outlook-report"
+    ],
+    "max_expected_tokens": 120
+  }
+}

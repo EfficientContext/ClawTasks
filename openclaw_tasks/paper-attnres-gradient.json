@@ -1,0 +1,37 @@
+{
+  "id": "2dd9565d14ed",
+  "name": "paper-attnres-gradient",
+  "topic": "paper-attnres",
+  "chain_position": 8,
+  "depends_on": "paper-attnres-overview",
+  "description": "Use web_search to search for 'Attention Residuals gradient distribution output uniformity depth analysis'. Results overlap heavily with earlier searches. How does AttnRes improve gradient distribution and output uniformity across depth? Summarize the analysis findings. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "The baseline PreNorm model suffers from hidden-state magnitudes growing monotonically with depth, forcing deeper layers to produce increasingly large outputs. AttnRes mitigates this: output magnitudes remain tightly bounded across depth rather than growing unboundedly. Gradient norms distribute more uniformly across layers with AttnRes, avoiding the concentration seen in baseline models. Block AttnRes confines hidden-state growth within each block, as selective aggregation at block boundaries resets the accumulation, yielding a bounded periodic pattern. These improvements in gradient and output uniformity contribute to better training dynamics and downstream performance.",
+    "key_facts": [
+      "Baseline PreNorm shows monotonically growing hidden-state magnitudes with depth",
+      "AttnRes keeps output magnitudes tightly bounded across depth",
+      "Gradient norms distribute more uniformly across layers with AttnRes",
+      "Block AttnRes produces a bounded periodic pattern due to selective aggregation at block boundaries",
+      "Improved gradient and output uniformity contributes to better training dynamics"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2603.15031",
+      "https://arxiv.org/pdf/2603.15031"
+    ],
+    "max_expected_tokens": 100
+  }
+}

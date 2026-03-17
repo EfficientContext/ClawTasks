@@ -1,0 +1,38 @@
+{
+  "id": "602b3dbb5670",
+  "name": "paper-mamba-benchmarks",
+  "topic": "paper-mamba",
+  "chain_position": 8,
+  "depends_on": "paper-mamba-overview",
+  "description": "Use web_search to search for 'Mamba SSM benchmark results language modeling long context performance'. Results overlap heavily with earlier searches. How does Mamba perform on standard language modeling benchmarks vs transformers? Summarize in 3 sentences. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "On language modeling, Mamba-3B outperforms Pythia-3B by 4 points on average across common-sense reasoning benchmarks and matches Pythia-7B, making it the first attention-free model to match strong Transformer baselines under Chinchilla scaling laws at sizes from 125M to 1.3B parameters. Hybrid Mamba models push further: Jamba-1.5 surpasses Llama 3.1 70B while being more efficient, and Mamba-2-Hybrid beats Transformers on all 12 benchmarks tested by NVIDIA. On genomics, Mamba sets a new state-of-the-art on the HG38 human genome benchmark, scaling better than alternatives with increasing context length. The Hymba-1.5B hybrid beats Llama-3.2-3B while using 11.67x less memory cache and running 3.49x faster.",
+    "key_facts": [
+      "Mamba-3B outperforms Pythia-3B by 4 points on common-sense reasoning and matches Pythia-7B",
+      "First attention-free model to match Transformer++ under Chinchilla scaling laws (125M-1.3B)",
+      "Jamba-1.5 surpasses Llama 3.1 70B while being more efficient",
+      "Hymba-1.5B beats Llama-3.2-3B with 11.67x less memory cache and 3.49x faster inference",
+      "Mamba-2-Hybrid beats Transformers on all 12 benchmarks tested by NVIDIA"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2312.00752",
+      "https://arxiv.org/abs/2403.19887",
+      "https://en.wikipedia.org/wiki/Mamba_(deep_learning_architecture)"
+    ],
+    "max_expected_tokens": 120
+  }
+}

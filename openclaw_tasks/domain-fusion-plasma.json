@@ -1,0 +1,38 @@
+{
+  "id": "85152ec137fe",
+  "name": "domain-fusion-plasma",
+  "topic": "domain-fusion",
+  "chain_position": 3,
+  "depends_on": "domain-fusion-overview",
+  "description": "Use web_search to search for 'fusion plasma containment magnetic confinement temperature pressure conditions'. Many results will overlap with earlier fusion searches. What conditions are needed for sustained fusion? Explain plasma temperature, pressure, and confinement time requirements. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Sustained fusion requires the Lawson criterion (triple product) to be met: plasma temperatures of at least 100 million Kelvin (about 10 keV) to overcome electrostatic repulsion between nuclei, plasma densities on the order of 10^20 particles per cubic meter, and energy confinement times of several seconds. Magnetic fields of 5-10 Tesla (or higher with modern HTS magnets) confine the plasma away from material walls. The plasma pressure must be balanced by magnetic pressure at every point for stable equilibrium, and the configuration must be macroscopically stable against instabilities and turbulence that cause energy leakage.",
+    "key_facts": [
+      "Fusion plasma must reach temperatures of at least 100 million Kelvin (~10 keV)",
+      "Required plasma density is on the order of 10^20 particles per cubic meter",
+      "Energy confinement time must be on the order of several seconds for magnetic fusion",
+      "Magnetic fields of 5-10 Tesla are used to keep plasma away from material walls",
+      "The Lawson criterion (triple product of temperature, density, and confinement time) must be satisfied"
+    ],
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Magnetic_confinement_fusion",
+      "https://www.energy.gov/science/doe-explainsplasma-confinement",
+      "https://www.britannica.com/technology/fusion-reactor/Principles-of-magnetic-confinement"
+    ],
+    "max_expected_tokens": 120
+  }
+}

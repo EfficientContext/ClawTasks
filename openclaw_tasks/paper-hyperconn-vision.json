@@ -1,0 +1,37 @@
+{
+  "id": "35d195f5b412",
+  "name": "paper-hyperconn-vision",
+  "topic": "paper-hyperconn",
+  "chain_position": 7,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'hyper-connections computer vision image classification performance results'. Results overlap with earlier searches. How do hyper-connections perform on vision tasks? Summarize results and compare to residual baselines. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Image Classification (ImageNet, ViT/16): With expansion rate n=2, ViT/16-Base (85M params) improved from 76.38% to 77.60% (SHC) and 77.26% (DHC). ViT/16-Large (307M params) improved from 77.25% to 78.38% (SHC) and 79.94% (DHC), a substantial +2.69% gain. DHC outperformed SHC on the larger model, suggesting dynamic connections benefit more at scale.\n\nImage Generation (DiT-XL/2): SHC x2 improved FID from 2.36 to 2.18, achieving comparable performance to DiT models with 50% more parameters. The gains in vision classification diminished with more training epochs over the same dataset, suggesting hyper-connections provide the most benefit in data-rich regimes.",
+    "key_facts": [
+      "ViT/16-Base accuracy improved from 76.38% to 77.60% (SHC) and 77.26% (DHC) with n=2",
+      "ViT/16-Large accuracy improved from 77.25% to 79.94% (DHC), a +2.69% gain",
+      "DiT-XL/2 image generation FID improved from 2.36 to 2.18 with SHC x2",
+      "DHC outperformed SHC on larger ViT model, with SHC better on smaller model",
+      "Vision classification gains diminished with more epochs over the same dataset"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2409.19606v1",
+      "https://arxiv.org/abs/2409.19606"
+    ],
+    "max_expected_tokens": 120
+  }
+}

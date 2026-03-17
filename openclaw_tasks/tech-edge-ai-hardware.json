@@ -1,0 +1,37 @@
+{
+  "id": "43098a47b67d",
+  "name": "tech-edge-ai-hardware",
+  "topic": "tech-edge-ai",
+  "chain_position": 5,
+  "depends_on": "tech-edge-ai-overview",
+  "description": "Use web_search to search for 'edge AI hardware NPU Apple Neural Engine Qualcomm Snapdragon comparison'. Same edge AI articles will appear. Compare the major edge AI hardware: Apple Neural Engine, Qualcomm Snapdragon NPU, and Google Tensor TPU. One sentence each. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Apple's Neural Engine in the A19 Bionic delivers ~35 TOPS at 2-5W, tightly integrated with Core ML and the Apple Silicon ecosystem for optimized on-device inference on iPhones and Macs. Qualcomm's Hexagon NPU in the Snapdragon 8 Gen 3 achieves ~45 TOPS with a 45% energy efficiency improvement over its predecessor, powering on-device AI across hundreds of millions of Android smartphones and robotics platforms. Google's Edge TPU provides 4 TOPS at just 2W for TensorFlow Lite models on IoT and embedded systems, while its cloud TPUs (Ironwood/v7) deliver datacenter-scale performance at 4,614 TFLOPS for training and inference workloads.",
+    "key_facts": [
+      "Apple A19 Neural Engine delivers ~35 TOPS at 2-5W, integrated with Core ML",
+      "Qualcomm Snapdragon 8 Gen 3 Hexagon NPU achieves ~45 TOPS with 45% energy efficiency improvement over prior generation",
+      "Google Edge TPU provides 4 TOPS at 2W for TensorFlow Lite models on embedded/IoT devices",
+      "Next-generation mobile NPUs may reach 100-200 TOPS, enabling multi-billion parameter on-device LLMs"
+    ],
+    "source_urls": [
+      "https://www.thepurplestruct.com/blog/cpu-vs-gpu-vs-tpu-vs-npu-ai-hardware-architecture-guide-2025",
+      "https://research.aimultiple.com/edge-ai-chips/",
+      "https://www.edge-ai-vision.com/2025/11/ai-at-the-edge-low-power-high-stakes/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

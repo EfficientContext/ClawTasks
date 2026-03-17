@@ -1,0 +1,38 @@
+{
+  "id": "b57fba47143c",
+  "name": "paper-transformer-self-attention",
+  "topic": "paper-transformer",
+  "chain_position": 3,
+  "depends_on": "paper-transformer-overview",
+  "description": "Use web_search to search for 'transformer self-attention mechanism query key value computation explained'. Many results will overlap with earlier transformer searches. Explain how self-attention computes query, key, and value matrices, and how attention scores work. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "In self-attention, each input embedding is multiplied by three learned weight matrices (WQ, WK, WV) to produce Query, Key, and Value vectors. The Query represents what a token is searching for, the Key represents what a token offers for matching, and the Value carries the actual content to be aggregated. Attention scores are computed as the dot product of Q and K, scaled by the square root of the key dimension (sqrt(d_k)) to prevent gradient issues, then passed through softmax to obtain probability weights. The final output is the weighted sum of Value vectors, producing context-aware representations for each token.",
+    "key_facts": [
+      "Q, K, V vectors are produced by multiplying input embeddings by learned weight matrices WQ, WK, WV",
+      "Attention score is computed as dot product of Query and Key vectors",
+      "Scores are scaled by sqrt(d_k) to prevent softmax saturation and gradient vanishing",
+      "Softmax converts scaled scores into a probability distribution used as weights",
+      "Output is the weighted sum of Value vectors, yielding context-aware token representations"
+    ],
+    "source_urls": [
+      "https://jalammar.github.io/illustrated-transformer/",
+      "https://d2l.ai/chapter_attention-mechanisms-and-transformers/queries-keys-values.html",
+      "https://epichka.com/blog/2023/qkv-transformer/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

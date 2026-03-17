@@ -1,0 +1,39 @@
+{
+  "id": "22f77dc5ed01",
+  "name": "domain-quantum-overview",
+  "topic": "domain-quantum",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'quantum computing progress 2025 2026 logical qubits error correction'. Summarize the current state of quantum computing in 3 bullet points. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- Google's 105-qubit Willow chip demonstrated error correction below threshold, halving logical error rates with each increase in code distance, and completed a benchmark in 5 minutes that would take classical supercomputers 10^25 years.\n- The industry is shifting from NISQ to early fault tolerance, with IBM planning a 4,158-qubit Kookaburra system in 2026 and Microsoft/Atom Computing targeting 50 logical qubits by 2027 using neutral atoms.\n- Quantum LDPC codes are emerging as successors to surface codes, potentially reducing physical-to-logical qubit overhead by an order of magnitude, with companies like Iceberg Quantum claiming 10x reductions for practical cryptographic tasks.",
+    "key_facts": [
+      "Google's Willow chip achieved below-threshold error correction with a 105-qubit superconducting processor, reducing logical error rates by a factor of 2.14 per code distance increase",
+      "IBM plans to introduce the 4,158-qubit Kookaburra system in 2026 by linking three 1,386-qubit processor modules",
+      "The industry is transitioning from surface codes to quantum LDPC codes, which could reduce qubit overhead by 10x or more",
+      "Microsoft and Atom Computing plan a 50 logical qubit neutral-atom machine (Magne) operational by early 2027",
+      "Quantum companies raised $3.77 billion in equity funding in the first nine months of 2025, nearly triple the 2024 total"
+    ],
+    "source_urls": [
+      "https://www.riverlane.com/blog/quantum-error-correction-our-2025-trends-and-2026-predictions",
+      "https://www.nature.com/articles/s41586-024-08449-y",
+      "https://www.ibm.com/quantum/blog/large-scale-ftqc",
+      "https://www.spinquanta.com/news-detail/quantum-computing-industry-trends-2025-breakthrough-milestones-commercial-transition"
+    ],
+    "max_expected_tokens": 120
+  }
+}

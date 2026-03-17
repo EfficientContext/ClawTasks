@@ -1,0 +1,38 @@
+{
+  "id": "f4e2801c4a20",
+  "name": "finance-ev-overview",
+  "topic": "finance-ev-market",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'electric vehicle market size growth 2025 2026 global sales'. Summarize the global EV market in 3 bullet points. Include total sales figures. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- Global EV sales reached approximately 20.7 million units in 2025, a ~20-25% increase year-over-year, with more than one in four cars sold being electric.\n- China dominates with over 14 million EV sales (60% of global volume), while the US grew just 1% after federal tax credit expiration; Europe became the fastest-growing major region.\n- The market is projected to reach 27.5% of global vehicle sales in 2026, with over 1,000 EV models expected to be available.",
+    "key_facts": [
+      "Global EV sales reached approximately 20.7 million units in 2025, up about 20-25% year-over-year",
+      "China accounts for roughly 60% of global EV sales and produces 71% of all EVs sold worldwide",
+      "More than one in four cars sold globally in 2025 was electric",
+      "EV market share is projected to reach 27.5% in 2026",
+      "US EV sales grew only 1% in 2025 after the September 2025 federal tax credit expiration"
+    ],
+    "source_urls": [
+      "https://source.benchmarkminerals.com/article/global-ev-sales-reach-20-7-million-units-in-2025-growing-by-20",
+      "https://www.iea.org/reports/global-ev-outlook-2025",
+      "https://ev-volumes.com/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

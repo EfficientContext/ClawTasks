@@ -1,0 +1,38 @@
+{
+  "id": "b75fe9e5e930",
+  "name": "domain-crispr-companies",
+  "topic": "domain-crispr",
+  "chain_position": 7,
+  "depends_on": "domain-crispr-overview",
+  "description": "Use web_search to search for 'CRISPR therapeutics companies Editas Intellia Beam pipeline market'. Results will overlap with earlier searches. List the top 3 CRISPR therapy companies and their lead programs. One sentence each. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. CRISPR Therapeutics (CRSP), partnered with Vertex, is the only company with an approved CRISPR product (Casgevy for sickle cell disease and beta-thalassemia), and has a broad pipeline including CTX112 for B-cell malignancies and CTX310/CTX320 for cardiovascular disease, with $1.855 billion in cash reserves.\n2. Intellia Therapeutics (NTLA), partnered with Regeneron, leads in vivo CRISPR therapy with two Phase III programs: lonvoguran ziclumeran for hereditary angioedema (regulatory filing expected 2026) and nexiguran ziclumeran for transthyretin amyloidosis cardiomyopathy.\n3. Beam Therapeutics (BEAM) pioneers clinical base editing with its lead program BEAM-101 for sickle cell disease/beta-thalassemia and achieved the first-ever clinical correction of a disease-causing mutation for alpha-1 antitrypsin deficiency.",
+    "key_facts": [
+      "CRISPR Therapeutics is the only CRISPR company with an approved commercial product (Casgevy)",
+      "Intellia has two candidates in three Phase III trials and expects regulatory filing for lonvo-z as early as 2026",
+      "Beam Therapeutics achieved the first clinical genetic correction of a disease-causing mutation via base editing",
+      "Eli Lilly acquired Verve Therapeutics in July 2025, signaling big pharma interest in gene editing",
+      "The global CRISPR market was valued at $3.8 billion in 2024, projected to reach $7.5 billion by 2029"
+    ],
+    "source_urls": [
+      "https://www.fool.com/investing/stock-market/market-sectors/healthcare/genomics-stocks/crispr-companies/",
+      "https://www.genengnews.com/topics/genome-editing/top-10-publicly-owned-editing-therapy-companies/",
+      "https://www.labiotech.eu/best-biotech/crispr-companies/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

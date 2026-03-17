@@ -1,0 +1,37 @@
+{
+  "id": "242cbcf20728",
+  "name": "paper-hyperconn-residual",
+  "topic": "paper-hyperconn",
+  "chain_position": 3,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'residual connections deep learning problems gradient vanishing representation collapse'. Many results overlap with earlier hyper-connections searches. Explain the seesaw effect between gradient vanishing and representation collapse in residual connections. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "The seesaw effect describes a fundamental trade-off in residual connection variants. Pre-Norm applies normalization before each residual block, effectively preventing gradient vanishing but causing representation collapse where deeper layer features become increasingly similar and redundant. Post-Norm normalizes after the residual block, weakening residual strength, which alleviates representation collapse but reintroduces gradient vanishing. These two problems sit at opposite ends of a seesaw: fixing one worsens the other. The root cause is that both variants predefine fixed, non-trainable connection strengths between layer inputs and outputs, preventing the network from learning optimal residual scaling.",
+    "key_facts": [
+      "Pre-Norm prevents gradient vanishing but causes representation collapse where deep layer features become highly similar",
+      "Post-Norm alleviates representation collapse but reintroduces gradient vanishing by weakening residual strength",
+      "The two problems are like opposite ends of a seesaw, creating an inherent trade-off",
+      "Both variants predefine fixed non-trainable connection strengths between layer inputs and outputs",
+      "Hyper-connections resolve this by making connection strengths learnable"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2409.19606v1",
+      "https://arxiv.org/abs/2409.19606"
+    ],
+    "max_expected_tokens": 120
+  }
+}

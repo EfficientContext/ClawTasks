@@ -1,0 +1,37 @@
+{
+  "id": "33c935e7abdb",
+  "name": "paper-attnres-vs-alternatives",
+  "topic": "paper-attnres",
+  "chain_position": 5,
+  "depends_on": "paper-attnres-overview",
+  "description": "Use web_search to search for 'Attention Residuals vs hyper-connections vs standard residual connections comparison'. Results overlap with earlier searches. Compare AttnRes with standard residual connections and hyper-connections. One key difference per approach. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Standard residual connections use fixed unit weights to sum all layer outputs, corresponding to depth-wise linear attention. DenseFormer grants each layer access to all previous outputs but uses fixed, input-independent scalar coefficients; it shows no gain over the baseline (loss 1.767 vs 1.766). Hyper-connections (mHC) introduce input dependence through m parallel streams with learned mixing matrices, improving loss to 1.747 but requiring 34d memory I/O per layer (m=4). Full AttnRes achieves the best loss (1.737) with explicit content-dependent softmax selection. Block AttnRes achieves 1.746, matching mHC performance but with only 5.5d memory I/O per layer. AttnRes thus provides superior or equivalent performance with substantially lower memory overhead compared to hyper-connections.",
+    "key_facts": [
+      "DenseFormer uses fixed input-independent coefficients and shows no gain over baseline (1.767 vs 1.766)",
+      "Hyper-connections (mHC) with m=4 streams achieves 1.747 loss but requires 34d memory I/O per layer",
+      "Full AttnRes achieves best loss at 1.737 with content-dependent softmax selection",
+      "Block AttnRes matches mHC at 1.746 loss with only 5.5d memory I/O per layer",
+      "Standard residuals correspond to depth-wise linear attention; AttnRes generalizes to softmax attention"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2603.15031",
+      "https://arxiv.org/pdf/2603.15031"
+    ],
+    "max_expected_tokens": 120
+  }
+}

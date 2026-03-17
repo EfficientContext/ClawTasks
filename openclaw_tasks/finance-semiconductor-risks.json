@@ -1,0 +1,37 @@
+{
+  "id": "38fb0e338996",
+  "name": "finance-semiconductor-risks",
+  "topic": "finance-semiconductor",
+  "chain_position": 4,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'semiconductor supply chain risks geopolitics Taiwan China export controls'. Many results overlap with earlier semiconductor searches. What are the top 3 geopolitical risks to the semiconductor supply chain? One sentence each. Keep response under 80 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Taiwan Strait tensions pose the greatest risk, as TSMC produces ~90% of the world's most advanced chips, making any conflict or blockade catastrophic for global supply chains. U.S. export controls on advanced chips and equipment to China have created a tech trade barrier, restricting access to EUV lithography and cutting-edge semiconductors while risking retaliatory material restrictions on germanium and gallium. China's accelerating self-sufficiency drive and potential supply-chain fragmentation threaten to split the global semiconductor ecosystem into competing blocs, raising costs and slowing innovation.",
+    "key_facts": [
+      "TSMC produces approximately 90% of the world's most advanced chips, concentrating risk in Taiwan",
+      "U.S. export controls restrict China's access to EUV lithography and advanced chipmaking equipment",
+      "China has retaliated by limiting exports of germanium and gallium, critical semiconductor materials",
+      "Supply chain fragmentation risks raising costs and slowing global chip innovation"
+    ],
+    "source_urls": [
+      "https://moderndiplomacy.eu/2025/03/08/the-geopolitics-of-semiconductor-supply-chains/",
+      "https://www.congress.gov/crs-product/R48642",
+      "https://itif.org/publications/2025/11/10/decoupling-risks-semiconductor-export-controls-harm-us-chipmakers-innovation/"
+    ],
+    "max_expected_tokens": 100
+  }
+}

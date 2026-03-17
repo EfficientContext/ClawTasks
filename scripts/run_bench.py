@@ -22,7 +22,7 @@ import time
 from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TASKS_FILE = ROOT / "tasks_all.json"
+TASKS_FILE = ROOT / "tasks_all.json"  # default; override with --tasks-file
 SKILLS_DIR = ROOT / "skills"
 RESULTS_DIR = ROOT / "results"
 def find_openclaw_bin():
@@ -272,15 +272,17 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
         # Seed gets task prompt; follow-ups get just the question.
         # For openclaw: no skill injection (OpenClaw handles it).
-        # For claude: manual skill injection (no skill system).
-        if is_seed:
-            prompt = (build_prompt_seed(task) if runner == "openclaw"
-                      else build_prompt_claude(task))
+        # For claude: manual skill injection for ALL tasks (no skill system).
+        if runner == "claude":
+            prompt = build_prompt_claude(task)
+        elif is_seed:
+            prompt = build_prompt_seed(task)
         else:
             prompt = task["description"]
 
         print(f"[{i+1}/{len(tasks)}] {task['name']}")
-        print(f"  Topic: {topic} | position {chain_pos}/5 | "
+        max_pos = max(t.get("chain_position", 1) for t in tasks if t.get("topic") == topic)
+        print(f"  Topic: {topic} | position {chain_pos}/{max_pos} | "
               f"session: ...{session_id[-12:]}")
         print(f"  Skills: {', '.join(task['skills_required'])}")
 
@@ -303,9 +305,11 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             result = run_task_openclaw(task, timeout,
                                       session_id=session_id, prompt=prompt)
         else:
+            # Claude runner: no session resume (each task runs independently;
+            # document overlap comes from searching the same topic)
             result = run_task_claude(task, timeout,
                                     session_id=session_id, prompt=prompt,
-                                    resume=not is_seed)
+                                    resume=False)
 
         # Fetch proxy-side TTFTs that occurred during this task
         ttft_after = _get_proxy_ttft_count()
@@ -454,9 +458,16 @@ def main():
                        help="Timeout per task in seconds (default: no limit)")
     parser.add_argument("--runner", default="openclaw",
                        choices=["openclaw", "claude"])
+    parser.add_argument("--tasks-file", type=str, default=None,
+                       help="Path to tasks JSON file (default: tasks_all.json)")
+    parser.add_argument("--evaluate", action="store_true",
+                       help="Score each task against ground truth after execution")
+    parser.add_argument("--eval-only", type=str, default=None,
+                       help="Re-evaluate existing results JSON without re-running")
     args = parser.parse_args()
 
-    tasks = json.loads(TASKS_FILE.read_text())
+    tasks_file = pathlib.Path(args.tasks_file) if args.tasks_file else TASKS_FILE
+    tasks = json.loads(tasks_file.read_text())
     if args.task:
         tasks = [t for t in tasks if t["name"] == args.task]
         if not tasks:
@@ -466,7 +477,8 @@ def main():
         if not tasks:
             sys.exit(f"No tasks in category '{args.category}'")
     if args.topic:
-        tasks = [t for t in tasks if t["name"].startswith(args.topic)]
+        tasks = [t for t in tasks if t.get("topic", "").startswith(args.topic)
+                 or t["name"].startswith(args.topic)]
         if not tasks:
             sys.exit(f"No tasks matching topic '{args.topic}'")
     if args.difficulty:
@@ -474,8 +486,23 @@ def main():
     if args.limit:
         tasks = tasks[:args.limit]
 
-    run_benchmark(tasks, batch_size=args.batch_size, dry_run=args.dry_run,
-                  timeout=args.timeout, runner=args.runner)
+    if args.eval_only:
+        # Re-evaluate existing results without re-running
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        from evaluate_openclaw import evaluate_results_file
+        evaluate_results_file(pathlib.Path(args.eval_only), tasks_file)
+        return
+
+    results = run_benchmark(tasks, batch_size=args.batch_size, dry_run=args.dry_run,
+                            timeout=args.timeout, runner=args.runner)
+
+    if args.evaluate and not args.dry_run:
+        # Score each task against ground truth
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        from evaluate_openclaw import evaluate_results
+        all_tasks = json.loads(tasks_file.read_text())
+        task_map = {t["name"]: t for t in all_tasks}
+        evaluate_results(results, task_map, RESULTS_DIR)
 
 
 if __name__ == "__main__":

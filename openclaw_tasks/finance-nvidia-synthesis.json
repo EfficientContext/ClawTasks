@@ -1,0 +1,38 @@
+{
+  "id": "9736f580af0f",
+  "name": "finance-nvidia-synthesis",
+  "topic": "finance-nvidia",
+  "chain_position": 10,
+  "depends_on": "finance-nvidia-overview",
+  "description": "Use web_search to search for 'NVIDIA investment thesis summary strengths weaknesses outlook'. Results will heavily overlap with earlier searches. Synthesize the overall NVIDIA investment thesis: key strengths, main risks, and outlook. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "NVIDIA's investment thesis rests on its dominant position in AI infrastructure with 80%+ market share in AI accelerators, reinforced by the CUDA ecosystem's deep developer lock-in (4M+ developers), exceptional financials ($215.9B FY2026 revenue, 75% gross margins, 50%+ net margins), and a clear product roadmap from Blackwell through Vera Rubin. Key risks include elevated valuation multiples, U.S. export controls that eliminated China revenue, intensifying competition from hyperscaler custom silicon and AMD, and dependency on sustained AI capex growth that currently consumes nearly 100% of hyperscaler operating cash flows. The outlook remains positive near-term given $350B+ in unfulfilled orders and $78B Q1 FY2027 guidance, but long-term sustainability hinges on whether enterprise AI adoption delivers sufficient ROI to justify continued infrastructure spending.",
+    "key_facts": [
+      "NVIDIA holds 80%+ market share in AI accelerators",
+      "FY2026 revenue reached $215.9 billion with 75% gross margins",
+      "CUDA ecosystem includes 4+ million developers creating strong switching costs",
+      "China revenue effectively zeroed out due to export controls",
+      "$350+ billion in unfulfilled purchase commitments provide revenue visibility"
+    ],
+    "source_urls": [
+      "https://artificall.com/analysis/companies/nvidia-corporation/",
+      "https://www.deepresearchglobal.com/p/nvidia-swot-analysis",
+      "https://www.ainvest.com/news/nvidia-70-05-profit-margin-powers-ai-moat-4-6t-valuation-proof-peril-2603/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

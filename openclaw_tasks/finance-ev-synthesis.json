@@ -1,0 +1,38 @@
+{
+  "id": "ef10f608c07f",
+  "name": "finance-ev-synthesis",
+  "topic": "finance-ev-market",
+  "chain_position": 10,
+  "depends_on": "finance-ev-overview",
+  "description": "Use web_search to search for 'electric vehicle market forecast 2030 penetration rate projection outlook'. Results overlap with earlier EV searches. Synthesize: what is the consensus EV market forecast for 2030? Growth drivers, headwinds, and market share projections. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Consensus forecasts project EVs will capture 40-50% of global new car sales by 2030, with more aggressive S-curve models projecting 60-86%. Key growth drivers include falling battery costs (targeting sub-$100/kWh packs), expanding model availability, and China's continued dominance at 60%+ of global production. Major headwinds include US policy rollbacks (BNEF cut its US 2030 forecast by 14 million cumulative units), critical mineral supply constraints for lithium and copper, trade fragmentation via tariffs, and uneven charging infrastructure. The trajectory remains firmly upward globally but with significant regional divergence.",
+    "key_facts": [
+      "Consensus forecasts project 40-50% global EV market share by 2030; S-curve models suggest 60-86%",
+      "BNEF cut its cumulative US EV sales forecast through 2030 by 14 million units",
+      "Battery cost parity with ICE vehicles is expected by 2025-2027 depending on region",
+      "EV Volumes projects 43.2% global EV market share by 2030",
+      "Oil demand for cars peaked in 2019 and is projected to fall by 1 million barrels per day annually after 2030"
+    ],
+    "source_urls": [
+      "https://www.iea.org/reports/global-ev-outlook-2025",
+      "https://rmi.org/press-release/evs-to-surpass-two-thirds-of-global-car-sales-by-2030-putting-at-risk-nearly-half-of-oil-demand-new-research-finds/",
+      "https://www.morningstar.com/stocks/we-forecast-40-global-ev-adoption-rate-by-2030-up-10-2022"
+    ],
+    "max_expected_tokens": 120
+  }
+}

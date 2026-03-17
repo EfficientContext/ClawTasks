@@ -1,0 +1,38 @@
+{
+  "id": "2684b2c538dd",
+  "name": "finance-semiconductor-equipment",
+  "topic": "finance-semiconductor",
+  "chain_position": 7,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'semiconductor equipment ASML EUV lithography market monopoly'. Results will overlap with earlier searches. Explain ASML's role in the semiconductor supply chain and EUV lithography. Why is it a chokepoint? Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "ASML holds a 100% monopoly on EUV lithography systems, the machines essential for manufacturing chips at 3nm, 2nm, and beyond. EUV uses 13.5nm wavelength light in a vacuum chamber with atomically smooth mirrors (supplied by Zeiss) to pattern the finest chip features. This monopoly was built over 30 years and $9 billion in R&D, with over 800 component suppliers, making replication virtually impossible. ASML is a critical chokepoint because every leading-edge chipmaker (TSMC, Samsung, Intel) depends entirely on its machines, which cost up to $400 million each and take years to build. Export controls restricting EUV sales to China further weaponize this dependency as a geopolitical lever.",
+    "key_facts": [
+      "ASML holds 100% market share in EUV lithography, with no competitors",
+      "EUV machines cost up to $400 million each and required 30 years and $9 billion in R&D",
+      "Over 800 suppliers contribute components, with Zeiss providing critical mirror optics",
+      "All leading chipmakers (TSMC, Samsung, Intel) depend on ASML for advanced node production",
+      "Export controls restrict EUV machine sales to China, making ASML a geopolitical chokepoint"
+    ],
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/ASML_Holding",
+      "https://thereview.strangevc.com/p/asmls-30-year-monopoly-the-moonshot",
+      "https://finance.yahoo.com/news/asml-silent-monopoly-behind-entire-200526637.html"
+    ],
+    "max_expected_tokens": 120
+  }
+}

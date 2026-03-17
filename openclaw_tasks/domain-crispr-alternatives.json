@@ -1,0 +1,38 @@
+{
+  "id": "436ca84c9c08",
+  "name": "domain-crispr-alternatives",
+  "topic": "domain-crispr",
+  "chain_position": 5,
+  "depends_on": "domain-crispr-overview",
+  "description": "Use web_search to search for 'CRISPR vs base editing prime editing gene therapy comparison accuracy'. Same gene editing articles will appear. Compare CRISPR, base editing, and prime editing. One sentence each on the key advantage. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "CRISPR-Cas9 creates double-strand breaks to disrupt genes efficiently but relies on error-prone NHEJ repair, yielding low precision for insertions (HDR <10%), and carries higher off-target and indel risks. Base editing uses a catalytically impaired Cas9 fused to a deaminase enzyme to convert single nucleotides (C-to-T or A-to-G) without double-strand breaks, achieving up to 92% efficiency within its editing window, but is limited to four transition mutations and prone to bystander edits at nearby bases. Prime editing uses a Cas9 nickase fused to a reverse transcriptase guided by a prime editing guide RNA (pegRNA) to perform all 12 base-to-base conversions plus small insertions and deletions without double-strand breaks, potentially correcting up to 89% of known disease variants, but with lower efficiency (20-50%) that requires further optimization.",
+    "key_facts": [
+      "CRISPR-Cas9 creates double-strand breaks; base editing and prime editing do not",
+      "Base editing achieves up to 92% efficiency but is limited to 4 transition mutations (C>T, G>A, A>G, T>C)",
+      "Prime editing can make all 12 base-to-base conversions plus small indels, potentially correcting 89% of known disease variants",
+      "Prime editing has the lowest off-target risk but moderate efficiency of 20-50%",
+      "Base editors are prone to bystander editing of nearby untargeted bases within the editing window"
+    ],
+    "source_urls": [
+      "https://kactusbio.com/blogs/gene-editing/base-editing-vs-crispr-navigating-precision-gene-therapy",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7503568/",
+      "https://www.synthego.com/guide/crispr-methods/prime-editing/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

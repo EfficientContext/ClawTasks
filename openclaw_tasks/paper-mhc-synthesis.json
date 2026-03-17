@@ -1,0 +1,39 @@
+{
+  "id": "714914678502",
+  "name": "paper-mhc-synthesis",
+  "topic": "paper-mhc",
+  "chain_position": 10,
+  "depends_on": "paper-mhc-overview",
+  "description": "Use web_search to search for 'residual connection alternatives future hyper-connections attention residuals mHC outlook'. Results heavily overlap with earlier searches. Synthesize the residual connection innovation landscape: HC, mHC, AttnRes — which approach is most promising and why? Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "The residual connection landscape is evolving from fixed single-stream designs toward learnable multi-stream architectures. Standard residual connections (since ResNet 2015) guarantee identity mapping but limit expressivity to a single additive path. HC (ByteDance, ICLR 2025) introduced n parallel streams with learnable mixing, improving performance but sacrificing stability at scale. mHC (DeepSeek, 2025) resolves HC's instability via doubly stochastic manifold constraints while preserving multi-stream expressivity. DeepCrossAttention offers a complementary attention-based approach to inter-layer connectivity. Future directions include exploring alternative manifolds (orthogonal, unitary, simplex-constrained) and applying topological architecture design principles beyond language models. The broader insight is that constraining learnable parameters to geometric manifolds can restore stability without sacrificing expressivity -- a pattern applicable across architecture design.",
+    "key_facts": [
+      "Standard residual connections guarantee identity mapping but limit expressivity to a single additive path",
+      "HC (ICLR 2025) introduced multi-stream learnable mixing but broke identity mapping and caused instability at scale",
+      "mHC resolves HC's instability via doubly stochastic manifold constraints while preserving expressivity",
+      "Future directions include alternative manifolds (orthogonal, unitary, simplex-constrained) and topological architecture design",
+      "The key insight is that constraining learnable parameters to geometric manifolds restores stability without sacrificing expressivity"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2512.24880",
+      "https://arxiv.org/abs/2502.06785",
+      "https://medium.com/@yugank.aman/beyond-residuals-deepseeks-hyper-connections-and-the-next-phase-of-transformer-design-43390009a805",
+      "https://silkeplessers.github.io/deep-learning/transformers/2026/01/13/Manifold_Constrained_Hyperconnections.html"
+    ],
+    "max_expected_tokens": 120
+  }
+}

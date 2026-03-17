@@ -1,0 +1,39 @@
+{
+  "id": "81a02c4d05c9",
+  "name": "tech-vectordb-rag",
+  "topic": "tech-vectordb",
+  "chain_position": 5,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'vector database RAG retrieval augmented generation architecture best practices'. Same vector DB articles will appear. How are vector databases used in RAG pipelines? Describe the typical architecture in 3 sentences. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "In a RAG architecture, documents are chunked, converted into vector embeddings using models like OpenAI or Cohere, and stored in a vector database such as Pinecone, Weaviate, or Milvus for fast similarity search. When a user query arrives, it is embedded and used to retrieve the top-k most relevant document chunks from the vector database, which are then injected into the LLM prompt as context for grounded generation. Best practices include overlapping chunk strategies, hybrid search combining BM25 keyword matching with dense vectors, metadata filtering, hierarchical indexing, and reranking retrieved results before passing them to the LLM to reduce hallucination.",
+    "key_facts": [
+      "RAG has four core stages: ingestion, retrieval, augmentation, and generation",
+      "Documents are chunked and embedded into vectors stored in a vector database for similarity search",
+      "Retrieved top-k chunks are injected into the LLM prompt as context to ground generation",
+      "Hybrid search combining BM25 and dense vectors improves retrieval quality",
+      "RAG reduces but does not eliminate LLM hallucinations"
+    ],
+    "source_urls": [
+      "https://www.pinecone.io/learn/retrieval-augmented-generation/",
+      "https://github.com/microsoft/generative-ai-for-beginners/blob/main/15-rag-and-vector-databases/README.md",
+      "https://learn.microsoft.com/en-us/azure/developer/ai/advanced-retrieval-augmented-generation",
+      "https://www.databricks.com/glossary/retrieval-augmented-generation-rag"
+    ],
+    "max_expected_tokens": 120
+  }
+}

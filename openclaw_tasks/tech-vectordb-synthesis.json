@@ -1,0 +1,39 @@
+{
+  "id": "2c59c3295505",
+  "name": "tech-vectordb-synthesis",
+  "topic": "tech-vectordb",
+  "chain_position": 10,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'vector database future trends market outlook embedded serverless'. Results overlap with earlier vector DB searches. Synthesize: where is the vector database market heading? Key trends, consolidation, and outlook. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "The vector database market is projected to grow from $2.65B in 2025 to $8.95B by 2030 (27.5% CAGR), driven by enterprise RAG adoption, generative AI workloads, and agentic AI applications. Key trends include serverless architectures (Pinecone, LanceDB) that decouple storage and compute for pay-per-use economics, embedded vector databases for edge/IoT with sub-10ms latency requirements, and convergence where traditional databases (PostgreSQL pgvector, MongoDB Atlas) absorb vector search as a native capability rather than a separate system. Consolidation is accelerating through strategic acquisitions: MongoDB acquired Voyage AI ($220M), IBM acquired DataStax, and Databricks acquired Neon, signaling that vector search is becoming a default database feature rather than a standalone category.",
+    "key_facts": [
+      "Market projected to grow from $2.65B (2025) to $8.95B (2030) at 27.5% CAGR",
+      "Serverless vector databases decouple storage and compute for pay-per-use pricing models",
+      "Traditional databases are absorbing vector search as a native capability (pgvector, MongoDB Atlas)",
+      "MongoDB acquired Voyage AI for $220M; IBM acquired DataStax; Databricks acquired Neon",
+      "Embedded vector databases like LanceDB enable edge computing and IoT with sub-10ms latency"
+    ],
+    "source_urls": [
+      "https://www.fortunebusinessinsights.com/vector-database-market-112428",
+      "https://www.marketsandmarkets.com/ResearchInsight/vector-database-market.asp",
+      "https://www.clouddatainsights.com/2025-cloud-database-market-the-year-in-review/",
+      "https://lakefs.io/blog/12-vector-databases-2023/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

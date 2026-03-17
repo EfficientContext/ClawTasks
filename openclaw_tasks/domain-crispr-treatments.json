@@ -1,0 +1,38 @@
+{
+  "id": "02cd87ed687b",
+  "name": "domain-crispr-treatments",
+  "topic": "domain-crispr",
+  "chain_position": 2,
+  "depends_on": "domain-crispr-overview",
+  "description": "Use web_search to search for 'CRISPR approved treatments Casgevy sickle cell beta thalassemia gene therapy'. Same CRISPR articles from previous turn will appear. List the top 3 approved or late-stage CRISPR treatments. One sentence each on the target disease. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. Casgevy (exagamglogene autotemcel), developed by Vertex/CRISPR Therapeutics, is the first FDA- and EMA-approved CRISPR therapy, treating sickle cell disease and transfusion-dependent beta-thalassemia by editing the BCL11A gene to reactivate fetal hemoglobin production.\n2. Intellia's lonvoguran ziclumeran (lonvo-z) is in Phase III trials for hereditary angioedema, with enrollment completed in 2025 and regulatory filing expected as early as 2026, using in vivo LNP-delivered CRISPR to the liver.\n3. Intellia/Regeneron's nexiguran ziclumeran (nex-z) is in Phase III for transthyretin amyloidosis with cardiomyopathy, representing one of the most advanced in vivo CRISPR programs targeting a progressive and fatal cardiac disease.",
+    "key_facts": [
+      "Casgevy is the only fully approved CRISPR therapy, priced at $2.2 million, approved in 8+ countries since late 2023",
+      "Lonvoguran ziclumeran (lonvo-z) for hereditary angioedema completed Phase III enrollment in 2025 with 8 of 11 high-dose patients attack-free",
+      "Nexiguran ziclumeran (nex-z) for transthyretin amyloidosis cardiomyopathy is in Phase III co-developed with Regeneron",
+      "Casgevy works by editing the BCL11A gene to reactivate fetal hemoglobin production",
+      "Over 50 patients globally had begun the Casgevy treatment process by end of 2024"
+    ],
+    "source_urls": [
+      "https://news.vrtx.com/news-releases/news-release-details/vertex-and-crispr-therapeutics-announce-us-fda-approval",
+      "https://innovativegenomics.org/news/crispr-clinical-trials-2025/",
+      "https://www.ema.europa.eu/en/news/first-gene-editing-therapy-treat-beta-thalassemia-and-severe-sickle-cell-disease"
+    ],
+    "max_expected_tokens": 120
+  }
+}

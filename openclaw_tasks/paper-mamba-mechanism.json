@@ -1,0 +1,38 @@
+{
+  "id": "4811f63e67cc",
+  "name": "paper-mamba-mechanism",
+  "topic": "paper-mamba",
+  "chain_position": 2,
+  "depends_on": "paper-mamba-overview",
+  "description": "Use web_search to search for 'Mamba selective state space model mechanism hardware-aware design'. Same SSM/Mamba articles from previous turn will appear. Explain the selective scan mechanism and hardware-aware design in 2-3 sentences each. Keep response under 120 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Mamba's selection mechanism makes SSM parameters (B, C, and discretization step delta) functions of the input at each position, transitioning from time-invariant to time-varying dynamics. This allows the model to selectively propagate or forget information depending on content, unlike fixed-parameter SSMs. The hardware-aware algorithm computes the recurrence via parallel scan without materializing expanded states in GPU HBM, using kernel fusion to minimize memory transfers between SRAM and DRAM. The architecture merges the SSM block with MLP into a single homogeneous block with gated linear projections, eliminating separate attention and MLP layers entirely.",
+    "key_facts": [
+      "Parameters B, C, and delta become input-dependent functions, enabling content-aware filtering",
+      "Parallel scan replaces convolution since time-varying parameters break the convolution shortcut",
+      "Kernel fusion minimizes data movement between GPU SRAM and DRAM, similar to FlashAttention",
+      "The Mamba block combines SSM and MLP into a single homogeneous architecture with gated projections",
+      "Up to 3x faster than previous SSMs on A100 GPUs due to hardware-aware implementation"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2312.00752",
+      "https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-mamba-and-state",
+      "https://thegradient.pub/mamba-explained/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

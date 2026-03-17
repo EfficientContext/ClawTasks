@@ -1,0 +1,38 @@
+{
+  "id": "ff7159f49be1",
+  "name": "paper-transformer-overview",
+  "topic": "paper-transformer",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'Attention Is All You Need transformer paper summary'. Summarize the paper's main contribution in 3 bullet points. Keep your response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- The 2017 paper \"Attention Is All You Need\" by Vaswani et al. introduced the Transformer, a novel architecture based solely on attention mechanisms, eliminating recurrence and convolutions entirely.\n- The Transformer uses multi-head self-attention and an encoder-decoder structure, enabling significantly more parallelizable training than RNNs while capturing long-range dependencies.\n- It achieved state-of-the-art BLEU scores on English-to-German (28.4) and English-to-French (41.8) translation benchmarks, and became the foundation for GPT, BERT, and virtually all modern large language models.",
+    "key_facts": [
+      "Published in 2017 by eight Google researchers at NeurIPS",
+      "Replaces recurrence and convolutions entirely with self-attention mechanisms",
+      "Uses encoder-decoder architecture with multi-head attention, positional encoding, and feed-forward layers",
+      "Achieved 28.4 BLEU on WMT 2014 English-to-German and 41.8 BLEU on English-to-French translation",
+      "Became the foundational architecture for GPT, BERT, T5, and all modern LLMs"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/1706.03762",
+      "https://en.wikipedia.org/wiki/Attention_Is_All_You_Need",
+      "https://papers.neurips.cc/paper/7181-attention-is-all-you-need.pdf"
+    ],
+    "max_expected_tokens": 120
+  }
+}

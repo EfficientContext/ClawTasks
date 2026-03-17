@@ -1,0 +1,38 @@
+{
+  "id": "24c0a175cc06",
+  "name": "domain-crispr-cancer",
+  "topic": "domain-crispr",
+  "chain_position": 9,
+  "depends_on": "domain-crispr-overview",
+  "description": "Use web_search to search for 'CRISPR cancer treatment CAR-T cell therapy clinical trials results'. Results will overlap with earlier CRISPR searches. How is CRISPR being used in cancer immunotherapy? Describe the CAR-T connection and latest trial results. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "CRISPR is transforming cancer immunotherapy primarily through engineered CAR-T cells, where Cas9 multiplex editing knocks out endogenous TCR (TRAC), MHC class I (B2M), and immune checkpoints (PD-1) to create universal, allogeneic CAR-T products with enhanced persistence and reduced graft-versus-host disease. Clinical trials of CRISPR-edited CD19-targeting CAR-T cells for B-cell malignancies report complete remission rates of 60-85% in refractory leukemia and lymphoma patients, with over 10 CRISPR-edited products in clinical studies. For solid tumors, early Phase I trials of PD-1-disrupted mesothelin-targeting CAR-T cells demonstrated safety in 15 patients with stable disease in two, though persistence remains a challenge. A University of Minnesota trial of CRISPR-edited T cells for advanced GI cancers showed one complete response lasting over two years among 12 end-stage patients.",
+    "key_facts": [
+      "CRISPR-edited CD19-targeting CAR-T cells achieve 60-85% complete remission in refractory B-cell malignancies",
+      "Multiplex CRISPR editing knocks out TRAC, B2M, and PD-1 to create universal allogeneic CAR-T cells",
+      "Over 10 CRISPR-edited CAR-T products have entered clinical studies",
+      "A University of Minnesota CRISPR trial for GI cancers showed one complete response lasting over 2 years",
+      "Solid tumor CAR-T therapy remains challenging due to poor CAR-T cell persistence in the tumor microenvironment"
+    ],
+    "source_urls": [
+      "https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2024.1354825/full",
+      "https://www.nature.com/articles/s41375-024-02444-y",
+      "https://med.umn.edu/news/new-gene-editing-therapy-shows-early-success-fighting-advanced-gi-cancers"
+    ],
+    "max_expected_tokens": 120
+  }
+}

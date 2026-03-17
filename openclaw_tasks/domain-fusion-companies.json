@@ -1,0 +1,38 @@
+{
+  "id": "e2a279e756f8",
+  "name": "domain-fusion-companies",
+  "topic": "domain-fusion",
+  "chain_position": 5,
+  "depends_on": "domain-fusion-overview",
+  "description": "Use web_search to search for 'private fusion companies Commonwealth Fusion TAE Helion funding milestones'. Same fusion articles will appear. List the top 3 private fusion companies and their approach. One sentence each. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Commonwealth Fusion Systems (~$3B raised) is building SPARC, a compact high-field tokamak using HTS magnets, targeting net energy by 2027 and a commercial ARC plant in Virginia in the early 2030s with a 200 MW Google power purchase agreement. TAE Technologies (~$1.8B raised, merged with Trump Media in a $6B deal) pursues aneutronic hydrogen-boron fusion using field-reversed configuration, planning a utility-scale Da Vinci plant grid-ready in the early 2030s. Helion Energy (~$1B raised, backed by Sam Altman) uses a pulsed field-reversed configuration approach and has begun constructing its 50 MW Orion reactor in Washington state under the world's first fusion power purchase agreement with Microsoft, targeting 2028 delivery.",
+    "key_facts": [
+      "CFS has raised ~$3 billion and is building SPARC, a compact tokamak using HTS magnets",
+      "TAE Technologies pursues aneutronic hydrogen-boron fusion and merged with Trump Media in a $6B deal",
+      "Helion has the world's first fusion power purchase agreement with Microsoft for 50 MW by 2028",
+      "CFS secured a 200 MW power purchase agreement with Google for its ARC plant",
+      "Helion began construction of its Orion reactor in Washington state in 2025"
+    ],
+    "source_urls": [
+      "https://www.nuclearbusiness-platform.com/media/insights/top-3-fusion-energy-players-investments",
+      "https://www.cfs.energy/news-and-media/commonwealth-fusion-systems-raises-863-million-series-b2-round-to-accelerate-the-commercialization-of-fusion-energy/",
+      "https://techcrunch.com/2025/09/01/every-fusion-startup-that-has-raised-over-100m/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

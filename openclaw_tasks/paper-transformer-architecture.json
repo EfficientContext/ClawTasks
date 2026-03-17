@@ -1,0 +1,38 @@
+{
+  "id": "874cedd95722",
+  "name": "paper-transformer-architecture",
+  "topic": "paper-transformer",
+  "chain_position": 2,
+  "depends_on": "paper-transformer-overview",
+  "description": "Use web_search to search for 'transformer architecture encoder decoder multi-head attention details'. Based on the search results and previous context, list the 5 key components of the transformer architecture (encoder, decoder, attention heads, positional encoding, feed-forward layers). One sentence per component. Keep response under 120 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. **Multi-Head Self-Attention**: Splits queries, keys, and values into multiple parallel heads (originally 8), allowing the model to attend to information from different representation subspaces simultaneously.\n2. **Encoder-Decoder Structure**: The encoder processes all input tokens in parallel to produce contextual representations, while the decoder generates output tokens auto-regressively using both self-attention and cross-attention to the encoder output.\n3. **Positional Encoding**: Since the architecture lacks recurrence, sinusoidal positional encodings inject sequence-order information into input embeddings.\n4. **Feed-Forward Networks**: Each layer contains a position-wise two-layer MLP applied identically to each token, which holds the majority of the model's parameters.\n5. **Residual Connections and Layer Normalization**: Every sublayer (attention and feed-forward) is wrapped with a residual connection followed by layer normalization, stabilizing gradient flow during training.",
+    "key_facts": [
+      "Multi-head attention uses 8 parallel heads in the original paper with d_k = d_v = 64",
+      "The encoder maps input to continuous representations; the decoder generates output auto-regressively",
+      "Sinusoidal positional encodings replace recurrence for capturing token order",
+      "Feed-forward networks contain the majority of the model's parameters",
+      "Residual connections with layer normalization wrap every sublayer"
+    ],
+    "source_urls": [
+      "https://jalammar.github.io/illustrated-transformer/",
+      "https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)",
+      "https://arxiv.org/abs/1706.03762"
+    ],
+    "max_expected_tokens": 150
+  }
+}

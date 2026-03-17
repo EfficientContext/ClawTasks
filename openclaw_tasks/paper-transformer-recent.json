@@ -1,0 +1,38 @@
+{
+  "id": "7b2adb61faed",
+  "name": "paper-transformer-recent",
+  "topic": "paper-transformer",
+  "chain_position": 6,
+  "depends_on": "paper-transformer-overview",
+  "description": "Use web_search to search for 'transformer architecture latest developments 2025 2026 long context scaling'. Results will overlap with earlier transformer searches. What are the most important recent advances in transformer architectures? List 3 developments with one sentence each. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. **State-Space Models (Mamba)**: Mamba and other SSMs have reached parity with Transformers on key benchmarks while offering linear-time inference, with Mamba's 3B model matching Transformer accuracy at double the parameter count.\n2. **Hybrid Architectures**: Models like Jamba combine Transformer attention layers with Mamba SSM layers and Mixture-of-Experts, achieving comparable performance with 2-7x longer context windows and significantly improved efficiency.\n3. **Hardware-Aware Scaling**: NVIDIA's Blackwell architecture (B200/B300 GPUs) delivers 3x training and 15x inference performance over H100, with 192 GB HBM3e memory enabling longer context windows and larger models at practical cost.",
+    "key_facts": [
+      "Mamba SSMs achieve Transformer-level accuracy with half the parameters and linear-time inference",
+      "Hybrid architectures (Jamba) combine Transformer, Mamba, and MoE layers for 2-7x longer context",
+      "xLSTM-7B achieves 3.5x faster training than equivalent-size Transformers",
+      "NVIDIA Blackwell GPUs offer 3x training and 15x inference speedup over H100",
+      "As of 2026, Transformers remain the core architecture but are increasingly augmented with SSM and recurrent components"
+    ],
+    "source_urls": [
+      "https://www.rohan-paul.com/p/post-transformer-architectures-innovations",
+      "https://borealtimes.org/transformer-ai/",
+      "https://arxiv.org/abs/2311.12351"
+    ],
+    "max_expected_tokens": 120
+  }
+}

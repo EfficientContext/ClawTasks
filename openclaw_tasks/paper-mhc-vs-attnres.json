@@ -1,0 +1,39 @@
+{
+  "id": "ac2dec179dd0",
+  "name": "paper-mhc-vs-attnres",
+  "topic": "paper-mhc",
+  "chain_position": 5,
+  "depends_on": "paper-mhc-overview",
+  "description": "Use web_search to search for 'mHC vs attention residuals vs standard residual connections architecture comparison'. Results overlap with earlier searches. Compare mHC with Attention Residuals and standard residual connections. Key tradeoffs between the approaches. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Standard residual connections use a single additive skip path (x + F(x)), guaranteeing identity mapping but limiting expressivity -- the same design since ResNet (2015). Hyper-Connections (HC) widen this to n parallel streams with learnable mixing, increasing expressivity but breaking identity mapping and causing training instability at scale. mHC retains HC's multi-stream expressivity while restoring identity mapping via doubly stochastic manifold constraints. DeepCrossAttention (DCA) takes a different approach, using learnable input-dependent weights and depth-wise cross-attention for richer inter-layer interactions, claiming up to 3x faster convergence. Unlike mHC's manifold projection, DCA uses attention-based dynamic weighting to selectively combine previous layer outputs.",
+    "key_facts": [
+      "Standard residual connections guarantee identity mapping but are limited to a single stream with fixed additive structure",
+      "HC expands to n parallel streams with learnable mixing but breaks identity mapping and causes instability",
+      "mHC restores identity mapping while preserving multi-stream expressivity via Birkhoff polytope projection",
+      "DeepCrossAttention (DCA) uses learnable input-dependent weights and depth-wise cross-attention for inter-layer interactions",
+      "Pre-Norm and Post-Norm residual variants trade off between gradient vanishing and representation collapse"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2512.24880",
+      "https://arxiv.org/abs/2502.06785",
+      "https://arxiv.org/abs/2304.14802",
+      "https://medium.com/@yugank.aman/beyond-residuals-deepseeks-hyper-connections-and-the-next-phase-of-transformer-design-43390009a805"
+    ],
+    "max_expected_tokens": 120
+  }
+}

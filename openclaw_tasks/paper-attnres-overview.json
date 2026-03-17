@@ -1,0 +1,37 @@
+{
+  "id": "a0fcf2cd8662",
+  "name": "paper-attnres-overview",
+  "topic": "paper-attnres",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'Attention Residuals AttnRes paper Kimi Team residual connections softmax'. Summarize the paper's main contribution in 3 bullet points. Keep your response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- Attention Residuals (AttnRes), proposed by the Kimi Team (Moonshot AI), replaces standard fixed-weight residual connections in Transformers with softmax attention over preceding layer outputs, enabling each layer to selectively aggregate earlier representations with learned, input-dependent weights.\n- Block AttnRes partitions layers into blocks and attends over block-level representations, reducing memory from O(Ld) to O(Nd). With approximately 8 blocks it recovers most gains of Full AttnRes, serving as a practical drop-in replacement.\n- Validated on Kimi Linear (48B total / 3B activated parameters) pre-trained on 1.4T tokens, AttnRes matches a baseline trained with 1.25x more compute, boosting GPQA-Diamond by +7.5 and HumanEval by +3.1 with under 2% inference overhead.",
+    "key_facts": [
+      "AttnRes replaces fixed unit-weight residual connections with softmax attention over preceding layer outputs for input-dependent depth-wise aggregation",
+      "Block AttnRes partitions layers into blocks to reduce memory from O(Ld) to O(Nd), with ~8 blocks recovering most gains",
+      "Implemented in Kimi Linear (48B total / 3B activated MoE), pre-trained on 1.4T tokens",
+      "Block AttnRes matches baseline trained with 1.25x more compute",
+      "Inference overhead is under 2% and training overhead under 4% with pipeline parallelism"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2603.15031",
+      "https://github.com/MoonshotAI/Attention-Residuals"
+    ],
+    "max_expected_tokens": 120
+  }
+}

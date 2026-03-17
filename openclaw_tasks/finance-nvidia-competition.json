@@ -1,0 +1,38 @@
+{
+  "id": "1c14a6974277",
+  "name": "finance-nvidia-competition",
+  "topic": "finance-nvidia",
+  "chain_position": 5,
+  "depends_on": "finance-nvidia-overview",
+  "description": "Use web_search to search for 'NVIDIA vs AMD MI300X vs Google TPU v5 AI training inference'. Same AI chip articles will appear again. Compare NVIDIA, AMD, and Google TPU on training and inference capabilities. One sentence per competitor. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "NVIDIA dominates AI training with its H100/B200 GPUs backed by the mature CUDA ecosystem, maintaining a 3-5 year sustainable lead in large-scale training workloads and ~80% market share in AI accelerators. AMD's MI300X competes on inference with 192GB HBM3 memory (2.4x H100) and 5.3 TB/s bandwidth at a lower price point (~$15,000 vs $25,000-30,000), making it attractive for memory-bound LLM serving, though ROCm software still lags CUDA. Google's TPU v5 excels in cost-efficient training and inference tightly integrated with GCP and JAX/TensorFlow, running workloads like Gemini at ~$4.20/hr per chip versus ~$12/hr for H100, but remains limited to Google Cloud.",
+    "key_facts": [
+      "NVIDIA holds approximately 80% of the AI accelerator GPU market",
+      "AMD MI300X has 192GB HBM3 memory vs H100's 80GB HBM3",
+      "MI300X priced at ~$15,000 vs NVIDIA H100 at ~$25,000-30,000",
+      "Google TPU v5p costs ~$4.20/hr per chip on GCP vs ~$12/hr for H100",
+      "TPUs are limited to TensorFlow/JAX and Google Cloud availability"
+    ],
+    "source_urls": [
+      "https://app.siliconanalysts.com/tools/frontier",
+      "https://www.onoff.gr/blog/en/ai/gpu-vs-tpu-chip-ai/",
+      "https://www.perarduaconsulting.com/post/comparing-google-tensor-processor-tpu-with-nvidia-amd-instinct-mi-and-amazon-tranium-and-inferen"
+    ],
+    "max_expected_tokens": 120
+  }
+}

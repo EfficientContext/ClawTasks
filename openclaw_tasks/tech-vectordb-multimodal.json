@@ -1,0 +1,39 @@
+{
+  "id": "0e32832ab182",
+  "name": "tech-vectordb-multimodal",
+  "topic": "tech-vectordb",
+  "chain_position": 9,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'multimodal vector database image text cross-modal search CLIP'. Results will overlap with earlier vector DB searches. How are vector databases supporting multimodal search? List 3 approaches. One sentence each. Keep response under 80 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "CLIP-based cross-modal search encodes both text and images into a shared 512-dimensional embedding space using jointly trained text and image encoders, enabling text-to-image and image-to-image retrieval via cosine similarity in a vector database. Multi-vector per record storage allows databases like Milvus, Weaviate, and Pinecone to maintain separate text and image embedding fields per document, querying both indices simultaneously and deduplicating results for unified cross-modal retrieval. Beyond CLIP, models like ImageBind extend multimodal search to audio and video modalities in a common vector space, enabling cross-modal queries between any combination of text, images, audio, and video without converting everything to text.",
+    "key_facts": [
+      "CLIP maps text and images into a shared 512-dimensional embedding space using dual encoders",
+      "Cross-modal search uses cosine similarity between text queries and image embeddings in the shared space",
+      "Vector databases can store multiple embedding fields per record for separate text and image vectors",
+      "ImageBind extends multimodal search to audio and video in addition to text and images",
+      "Weaviate, Milvus, Qdrant, and Pinecone all support multimodal vector storage and search"
+    ],
+    "source_urls": [
+      "https://milvus.io/ai-quick-reference/what-is-a-multimodal-vector-database",
+      "https://medium.com/@rzakizadeh/getting-started-with-multimodal-vector-search-using-weaviate-and-clip-for-text-and-image-cacabcbab289",
+      "https://medium.com/@tenyks_blogger/multi-modal-image-search-with-embeddings-vector-dbs-cee61c70a88a",
+      "https://blog.4geeks.io/implementing-a-multi-modal-search-engine-using-clip-and-a-vector-database/"
+    ],
+    "max_expected_tokens": 100
+  }
+}

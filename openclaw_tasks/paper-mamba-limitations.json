@@ -1,0 +1,38 @@
+{
+  "id": "49b3fc3be38d",
+  "name": "paper-mamba-limitations",
+  "topic": "paper-mamba",
+  "chain_position": 4,
+  "depends_on": "paper-mamba-overview",
+  "description": "Use web_search to search for 'Mamba SSM limitations in-context learning recall associative memory'. Many results overlap with earlier Mamba searches. List the top 3 limitations of Mamba compared to transformers. One sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. Mamba struggles with in-context learning and associative recall: on few-shot MMLU it scores ~15 points below Transformers, and accuracy degrades beyond ~500 token input lengths on phonebook retrieval tasks where Transformers maintain near-perfect recall to 4,096 tokens.\n2. Pure SSMs face optimization instability: success requires an extremely narrow learning rate window, causing scaling to favor width over depth, unlike the robust optimization landscape of Transformers.\n3. The finite recurrent state acts as an information bottleneck, limiting precise multi-hop reasoning and global context comparisons that attention handles naturally.",
+    "key_facts": [
+      "Mamba scores ~15 points lower than Transformers on few-shot MMLU even after 1.1T tokens of training",
+      "Accuracy degrades beyond ~500 token inputs on phonebook recall, while Transformers maintain near-perfect recall to 4,096 tokens",
+      "Optimization requires extremely narrow learning rate windows, causing critical instability",
+      "The finite recurrent state is an information bottleneck for precise retrieval tasks",
+      "Scaling laws favor width over depth for SSMs due to optimization landscape differences"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2406.07887v1",
+      "https://arxiv.org/abs/2506.11891",
+      "https://arxiv.org/html/2508.19029v1"
+    ],
+    "max_expected_tokens": 100
+  }
+}

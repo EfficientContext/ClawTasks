@@ -1,0 +1,38 @@
+{
+  "id": "9fa9c81614be",
+  "name": "finance-semiconductor-reshoring",
+  "topic": "finance-semiconductor",
+  "chain_position": 5,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'CHIPS Act semiconductor reshoring US Europe Japan fab construction'. Same semiconductor articles will appear. Compare reshoring efforts in US, EU, and Japan. One sentence per region on current progress.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "The U.S. CHIPS Act provides $52.7 billion in incentives, spurring over $500 billion in private investment announcements including TSMC's $100+ billion Arizona expansion, Intel's $8.5 billion for new fabs in Arizona and Ohio, and Samsung's $6.4 billion Texas project. The EU's European Chips Act targets €45.75 billion in public-private investment to double Europe's global chip market share to 20% by 2030, anchored by TSMC's €10 billion Dresden fab and Intel's planned Magdeburg facility, though slow subsidy approvals have hampered progress. Japan leverages its dominance in semiconductor materials (24% share) and equipment (31% share) with substantial subsidies supporting Rapidus's 2nm fab and TSMC's Kumamoto facility, aiming to rebuild domestic fabrication capacity.",
+    "key_facts": [
+      "U.S. CHIPS Act provides $52.7 billion, triggering over $500 billion in private investment across 28 states",
+      "EU Chips Act targets €45.75 billion investment to double EU chip market share to 20% by 2030",
+      "Japan dominates semiconductor materials (24%) and equipment (31%) and is subsidizing domestic fab construction",
+      "Building a fab in the U.S. can cost twice as much and take 50 months vs. 28-32 months in Taiwan",
+      "TSMC committed $100+ billion to its Arizona site including fabs, packaging, and R&D"
+    ],
+    "source_urls": [
+      "https://carnegieendowment.org/2022/11/22/after-chips-act-limits-of-reshoring-and-next-steps-for-u.s.-semiconductor-policy-pub-88439",
+      "https://www.csis.org/analysis/world-chips-acts-future-us-eu-semiconductor-collaboration",
+      "https://www.pwc.com/us/en/library/chips-act.html"
+    ],
+    "max_expected_tokens": 120
+  }
+}

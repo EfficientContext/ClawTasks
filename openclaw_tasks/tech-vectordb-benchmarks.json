@@ -1,0 +1,39 @@
+{
+  "id": "94da572208db",
+  "name": "tech-vectordb-benchmarks",
+  "topic": "tech-vectordb",
+  "chain_position": 8,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'vector database benchmark ann-benchmarks performance comparison 2025 2026'. Results overlap heavily with earlier searches. What do benchmarks show about vector database performance? Which databases lead on latency, recall, and throughput? Summarize in 3 sentences. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "ANN-Benchmarks evaluates algorithm-level recall vs speed tradeoffs on standardized datasets, while VectorDBBench from Zilliz tests end-to-end database performance including ingestion, filtering, and throughput. In recent benchmarks, pgvectorscale on PostgreSQL achieved 471 QPS at 99% recall on 50M vectors (11.4x Qdrant's 41 QPS at the same recall), and outperformed Pinecone's storage-optimized index with 28x lower p95 latency at 75% lower cost; HNSW achieves 95% recall at 1,200 QPS for 768-dim embeddings. The key insight is that comparisons are only valid at equivalent recall levels, and p99 tail latency matters more than median for production workloads.",
+    "key_facts": [
+      "ANN-Benchmarks tests algorithm-level performance while VectorDBBench tests end-to-end database systems",
+      "pgvectorscale achieves 471 QPS at 99% recall on 50M vectors, 11.4x better than Qdrant at same recall",
+      "pgvectorscale outperforms Pinecone s1 with 28x lower p95 latency at 75% lower cost",
+      "HNSW achieves 95% recall at 1,200 QPS for 768-dim text embeddings",
+      "P99 tail latency matters more than median for production user experience"
+    ],
+    "source_urls": [
+      "https://github.com/zilliztech/VectorDBBench",
+      "https://qdrant.tech/benchmarks/",
+      "https://www.tigerdata.com/blog/pgvector-vs-qdrant",
+      "https://medium.com/@vkmauryavk/vector-database-benchmarks-a-definitive-guide-to-tools-metrics-and-top-performers-4c4110e61f73"
+    ],
+    "max_expected_tokens": 120
+  }
+}

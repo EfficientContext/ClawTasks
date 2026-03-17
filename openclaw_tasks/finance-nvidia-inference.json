@@ -1,0 +1,38 @@
+{
+  "id": "417afbaa4658",
+  "name": "finance-nvidia-inference",
+  "topic": "finance-nvidia",
+  "chain_position": 9,
+  "depends_on": "finance-nvidia-overview",
+  "description": "Use web_search to search for 'NVIDIA inference optimization TensorRT deployment edge vs cloud'. Results will overlap with earlier NVIDIA searches. How is NVIDIA positioning for the inference market vs training? What role does TensorRT play? Answer in 3 sentences. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "NVIDIA dominates the inference market through its TensorRT ecosystem, which optimizes trained neural networks for deployment and can deliver up to 36x speedup over CPU-only platforms using techniques like quantization, layer fusion, and kernel tuning. TensorRT-LLM specifically targets large language model serving in data centers with features like in-flight batching, paged KV caching, and FP8/INT4 quantization, while TensorRT Edge-LLM extends inference to embedded platforms like Jetson Thor for automotive and robotics use cases. NVIDIA's Triton Inference Server unifies serving across cloud, data center, and edge, supporting multiple frameworks and enabling Kubernetes-native deployment at scale.",
+    "key_facts": [
+      "TensorRT can achieve up to 36x inference speedup over CPU-only platforms",
+      "TensorRT-LLM supports in-flight batching, paged KV caching, and FP8/INT4 quantization for LLM serving",
+      "TensorRT Edge-LLM enables inference on embedded platforms like Jetson Thor",
+      "Triton Inference Server supports deployment across cloud, data center, and edge",
+      "Blackwell shows 10x inference performance lead over Hopper architecture"
+    ],
+    "source_urls": [
+      "https://developer.nvidia.com/tensorrt",
+      "https://developer.nvidia.com/blog/accelerating-llm-and-vlm-inference-for-automotive-and-robotics-with-nvidia-tensorrt-edge-llm",
+      "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html"
+    ],
+    "max_expected_tokens": 120
+  }
+}

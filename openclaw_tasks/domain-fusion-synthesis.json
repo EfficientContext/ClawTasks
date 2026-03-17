@@ -1,0 +1,38 @@
+{
+  "id": "bf7ae644e4fb",
+  "name": "domain-fusion-synthesis",
+  "topic": "domain-fusion",
+  "chain_position": 10,
+  "depends_on": "domain-fusion-overview",
+  "description": "Use web_search to search for 'fusion energy timeline commercial power grid 2030 2035 outlook realistic'. Results overlap with earlier fusion searches. Synthesize: when will fusion reach commercial viability? Key milestones ahead, main barriers, and realistic timeline. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Commercial fusion energy is most likely to reach the grid in the mid-2030s, with 35 of 45 companies surveyed by the IAEA targeting pilot plants between 2030 and 2035. Key near-term milestones include CFS achieving net energy from SPARC (~2027), Helion delivering 50 MW to Microsoft (~2028), and several companies beginning pilot plant construction. However, significant barriers remain: unproven materials that can survive intense neutron bombardment, insufficient global tritium supply, plasma stability at reactor scale, and projected costs well above current renewables. ITER's D-T operations are not expected until 2039. Realistically, while first-of-kind grid connections may occur by the mid-2030s, widespread commercial deployment contributing meaningfully to global electricity supply is more likely a 2040s-2050s prospect.",
+    "key_facts": [
+      "35 of 45 fusion companies surveyed target pilot plants between 2030 and 2035",
+      "First grid-connected fusion plants are most likely in the mid-2030s",
+      "Key barriers include materials durability, tritium supply, plasma stability, and high initial costs",
+      "Widespread commercial deployment is more realistically a 2040s-2050s prospect",
+      "ITER D-T operations not expected until 2039"
+    ],
+    "source_urls": [
+      "https://fortune.com/2025/10/02/nuclear-fusion-online-commercial-ai-power/",
+      "https://finance.yahoo.com/news/global-nuclear-fusion-energy-market-080300909.html",
+      "https://www.energy.gov/articles/energy-department-announces-fusion-science-and-technology-roadmap-accelerate-commercial"
+    ],
+    "max_expected_tokens": 120
+  }
+}

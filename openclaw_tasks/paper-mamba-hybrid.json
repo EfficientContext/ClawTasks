@@ -1,0 +1,38 @@
+{
+  "id": "650d2cd11c8d",
+  "name": "paper-mamba-hybrid",
+  "topic": "paper-mamba",
+  "chain_position": 7,
+  "depends_on": "paper-mamba-overview",
+  "description": "Use web_search to search for 'hybrid SSM transformer models Jamba Zamba architecture design'. Results will overlap with earlier searches. What are hybrid SSM-transformer architectures and why are they promising? Name 2 examples and explain the design rationale. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Jamba (AI21 Labs) interleaves Transformer attention and Mamba layers in a 1:7 ratio with Mixture-of-Experts (16 experts, top-2 routing) applied every other layer, achieving 256K effective context on a single GPU with 94B total parameters (Jamba-1.5-Large). Zamba (Zyphra) uses a Mamba-only backbone augmented with a single globally-shared attention block reused every N layers, testing the hypothesis that 'one attention layer is all you need' while keeping KV cache minimal. Both architectures demonstrate that combining SSM efficiency with targeted attention for retrieval tasks outperforms either approach alone, with Jamba excelling at scale and Zamba proving competitive at 7B parameters despite using only one attention layer.",
+    "key_facts": [
+      "Jamba uses 1:7 attention-to-Mamba ratio with MoE (16 experts, top-2), supporting 256K context",
+      "Zamba uses a single shared attention block reused globally across a Mamba backbone",
+      "Jamba-1.5-Large has 94B active parameters with 256K effective context length",
+      "Zamba-7B matches leading 7B Transformers despite using just one attention layer",
+      "Both confirm that hybrid SSM-attention outperforms pure approaches of either type"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2403.19887",
+      "https://arxiv.org/html/2405.16712v1",
+      "https://www.ai21.com/blog/rise-of-hybrid-llms/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

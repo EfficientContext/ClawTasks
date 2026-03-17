@@ -1,0 +1,37 @@
+{
+  "id": "a649dadfa2e8",
+  "name": "tech-edge-ai-challenges",
+  "topic": "tech-edge-ai",
+  "chain_position": 4,
+  "depends_on": "tech-edge-ai-overview",
+  "description": "Use web_search to search for 'edge AI deployment challenges memory latency power constraints LLM'. Many results overlap with earlier edge AI searches. List the top 3 challenges for deploying LLMs on edge devices. One sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Memory constraints are the primary barrier, as a 1.5B-parameter model with KV-cache requires ~1.2GB at 4-bit precision, and state-of-the-art LLMs demand extreme compression to fit edge device RAM. Latency and compute limitations arise because billion-parameter models require substantial arithmetic throughput that edge processors struggle to sustain in real time. Power consumption is critical since high-end GPUs draw hundreds of watts, far exceeding the 2-10W budgets of mobile and IoT devices, necessitating aggressive optimization to stay within thermal and battery limits.",
+    "key_facts": [
+      "A 1.5B-parameter model with 2K token KV-cache requires approximately 1.2GB of memory at 4-bit weights",
+      "Edge devices are typically limited to 2-10W power consumption versus hundreds of watts for datacenter GPUs",
+      "Billion-parameter models pose a significant barrier due to high memory footprint and computation cost on resource-constrained devices",
+      "Bandwidth limitations further compound the challenge as LLMs require large data throughput that edge devices cannot easily provide"
+    ],
+    "source_urls": [
+      "https://www.sciencedirect.com/science/article/abs/pii/S1574013725000310",
+      "https://dl.acm.org/doi/10.1145/3767742",
+      "https://hailo.ai/blog/bringing-generative-ai-to-the-edge-llm-on-hailo-10h/"
+    ],
+    "max_expected_tokens": 100
+  }
+}

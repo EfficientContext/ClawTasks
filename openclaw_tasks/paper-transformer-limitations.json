@@ -1,0 +1,38 @@
+{
+  "id": "ef33f3a4cbc8",
+  "name": "paper-transformer-limitations",
+  "topic": "paper-transformer",
+  "chain_position": 4,
+  "depends_on": "paper-transformer-overview",
+  "description": "Use web_search to search for 'transformer architecture limitations quadratic attention complexity context length'. Many results will overlap with earlier searches about transformers. Identify the top 3 limitations of the original transformer design. One sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. **Quadratic Complexity**: Self-attention computes N² pairwise interactions, causing computational cost and memory usage to grow quadratically with sequence length, making long sequences prohibitively expensive.\n2. **Fixed Context Length**: Transformers are constrained to a maximum context window set at training time, limiting their ability to process entire books, long documents, or extended conversations without truncation.\n3. **Memory-Intensive Inference**: Each attention head stores an N×N attention matrix, and the KV cache grows linearly with sequence length, causing GPU memory to become a bottleneck during generation.",
+    "key_facts": [
+      "Self-attention has O(N²) time and memory complexity in sequence length",
+      "Doubling sequence length quadruples computational cost",
+      "Context length is fixed at training time and does not generalize to longer sequences without adaptation",
+      "The N×N attention score matrix per head exhausts GPU memory for very long sequences",
+      "Sub-quadratic alternatives exist but often trade off expressiveness for efficiency"
+    ],
+    "source_urls": [
+      "https://wandb.ai/wandb_fc/tips/reports/The-Problem-with-Quadratic-Attention-in-Transformer-Architectures--Vmlldzo3MDE0Mzcz",
+      "https://arxiv.org/abs/2209.04881",
+      "https://arxiv.org/html/2510.05364v1"
+    ],
+    "max_expected_tokens": 100
+  }
+}

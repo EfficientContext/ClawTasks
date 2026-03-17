@@ -1,0 +1,38 @@
+{
+  "id": "9d32b07f0946",
+  "name": "paper-hyperconn-implementation",
+  "topic": "paper-hyperconn",
+  "chain_position": 9,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'hyper-connections implementation expansion rate hyperparameters practical guidelines'. Results overlap with earlier searches. What are the key implementation details and hyperparameters for hyper-connections? List the main practical considerations. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Each layer contains two hyper-connection modules (one for self-attention, one for FFN), each with n*(n+2) parameters where n is the expansion rate. Recommended expansion rate is n=4 for LLMs and n=2 for vision tasks. For DHC, dynamic weights are computed via linear transformation with normalization before and tanh activation after, scaled by a small learnable factor. Weight matrix W_r is initialized to 0, while static matrices use specific defaults. Both WC (width-connection) and B parameters must be trainable; not training WC increases V2 loss by 0.021. For stability at scale, consider mHC which projects mixing matrices onto doubly stochastic manifolds using ~20 Sinkhorn-Knopp iterations. Use activation recomputation to manage memory overhead from the n-stream design.",
+    "key_facts": [
+      "Each hyper-connection module has n*(n+2) parameters; two modules per layer (attention and FFN)",
+      "Recommended expansion rate: n=4 for LLMs, n=2 for vision tasks",
+      "DHC uses linear transformation with normalization and tanh activation; W_r initialized to 0",
+      "Width-connection (WC) trainability is critical; disabling it increases loss by 0.021",
+      "mHC variant uses ~20 Sinkhorn-Knopp iterations for stability at large scale"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2409.19606v1",
+      "https://github.com/Kareem404/hyper-connections",
+      "https://arxiv.org/pdf/2512.24880"
+    ],
+    "max_expected_tokens": 120
+  }
+}

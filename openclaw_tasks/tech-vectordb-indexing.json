@@ -1,0 +1,39 @@
+{
+  "id": "c1d838f91048",
+  "name": "tech-vectordb-indexing",
+  "topic": "tech-vectordb",
+  "chain_position": 3,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'vector database indexing algorithms HNSW IVF PQ ANN comparison'. Many results will overlap with earlier vector DB searches. Explain the main ANN indexing algorithms (HNSW, IVF, PQ) and their recall vs speed tradeoffs. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "HNSW (Hierarchical Navigable Small World) builds a multi-layer graph enabling very high recall (~99%) with fast query times, but requires 1.5-2x the raw vector size in memory and slow index builds. IVF (Inverted File Index) partitions vectors into clusters via k-means, searching only nearby clusters for faster builds and lower memory than HNSW, but with moderate recall. PQ (Product Quantization) is a compression technique that reduces vector memory by 10-50x by splitting vectors into subvectors and encoding each with centroid IDs, trading some accuracy for dramatic storage savings. In practice, these are combined (e.g., IVF-PQ, HNSW-PQ) to balance the three-way tradeoff between recall, speed, and memory.",
+    "key_facts": [
+      "HNSW achieves state-of-the-art recall via multi-layer graph navigation but uses 1.5-2x raw vector size in memory",
+      "IVF partitions vectors into clusters using k-means, offering faster builds and lower memory than HNSW",
+      "PQ compresses vectors by 10-50x by splitting into subvectors and storing centroid IDs instead of full vectors",
+      "ANN algorithms trade perfect accuracy for 100-1000x speed improvements with 95-99% accuracy",
+      "Production systems commonly combine methods (IVF-PQ, HNSW-PQ) to balance recall, speed, and memory"
+    ],
+    "source_urls": [
+      "https://milvus.io/blog/understanding-ivf-vector-index-how-It-works-and-when-to-choose-it-over-hnsw.md",
+      "https://www.pingcap.com/article/approximate-nearest-neighbor-ann-search-explained-ivf-vs-hnsw-vs-pq/",
+      "https://thedataquarry.com/blog/vector-db-3/",
+      "https://www.pinecone.io/learn/series/faiss/hnsw/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

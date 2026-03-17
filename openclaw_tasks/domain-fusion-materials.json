@@ -1,0 +1,38 @@
+{
+  "id": "e965653e4039",
+  "name": "domain-fusion-materials",
+  "topic": "domain-fusion",
+  "chain_position": 7,
+  "depends_on": "domain-fusion-overview",
+  "description": "Use web_search to search for 'fusion reactor materials tungsten first wall blanket neutron damage'. Results will overlap with earlier searches. What are the key materials challenges for fusion reactors? Discuss first-wall materials and neutron damage. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "The first wall and divertor of a fusion reactor face extreme conditions: neutron fluxes of ~10^14 n/cm²/s, heat loads of 2 MW/m² on the blanket and 10-20 MW/m² on the divertor, and cumulative radiation damage exceeding 100 displacements per atom (dpa) in commercial plants. Tungsten is the leading plasma-facing material due to its high melting point (3,422°C) and low sputtering rate, but it suffers from neutron-induced embrittlement as its ductile-to-brittle transition temperature rises under irradiation. No existing material has been demonstrated to survive commercial fusion conditions long-term. Research into tungsten-fiber composites, self-passivating tungsten alloys (with chromium and titanium), and advanced ceramics like MAX phases is underway to address these challenges.",
+    "key_facts": [
+      "Tungsten is the leading plasma-facing material due to high melting point and low sputtering",
+      "Neutron-induced embrittlement raises tungsten's ductile-to-brittle transition temperature",
+      "Commercial fusion plants will subject materials to over 100 dpa radiation damage",
+      "Divertor heat loads can reach 10-20 MW/m²",
+      "No existing material has been demonstrated to survive full commercial fusion conditions"
+    ],
+    "source_urls": [
+      "https://en.wikipedia.org/wiki/Plasma-facing_material",
+      "https://link.springer.com/article/10.1007/s42452-019-1591-0",
+      "https://euro-fusion.org/eurofusion-news/testing-fusion-materials-with-a-hail-of-neutrons/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

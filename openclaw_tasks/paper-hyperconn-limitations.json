@@ -1,0 +1,37 @@
+{
+  "id": "a68b100618ba",
+  "name": "paper-hyperconn-limitations",
+  "topic": "paper-hyperconn",
+  "chain_position": 4,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'hyper-connections limitations training instability identity mapping scalability'. Results overlap with earlier searches. What are the main limitations of hyper-connections? List 3 issues, one sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. Training instability: Diversifying residual streams compromises the identity mapping property, causing gradient explosions and loss spikes (observed around 12k training steps), limiting scalability to very large models.\n2. Memory overhead: The n-stream residual design increases memory I/O quadratically with expansion rate n, creating substantial system-level overhead.\n3. Loss of identity mapping: Learned connection matrices can drift far from identity, disrupting stable signal propagation across deep layers and degrading performance at large scales.",
+    "key_facts": [
+      "Training instability from loss of identity mapping property causes gradient explosions and loss spikes",
+      "Memory access overhead scales quadratically with expansion rate n",
+      "Scalability is limited for very large models without additional constraints like mHC",
+      "Loss surges observed around 12k training steps correlate with gradient norm instability",
+      "These limitations motivated DeepSeek's follow-up work on Manifold-Constrained Hyper-Connections (mHC)"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2512.24880",
+      "https://arxiv.org/pdf/2512.24880"
+    ],
+    "max_expected_tokens": 100
+  }
+}

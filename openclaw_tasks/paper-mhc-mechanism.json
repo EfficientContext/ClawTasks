@@ -1,0 +1,38 @@
+{
+  "id": "609dc9ad9755",
+  "name": "paper-mhc-mechanism",
+  "topic": "paper-mhc",
+  "chain_position": 2,
+  "depends_on": "paper-mhc-overview",
+  "description": "Use web_search to search for 'manifold-constrained hyper-connections manifold projection residual space framework'. Same articles from previous turn will appear. Explain how mHC uses manifold projection to constrain hyper-connections while restoring identity mapping. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "mHC constrains Hyper-Connections' learnable residual mixing matrices to lie on the Birkhoff polytope -- the manifold of doubly stochastic matrices where all entries are non-negative and every row and column sums to 1. This is enforced via the Sinkhorn-Knopp algorithm, which iteratively alternates row and column normalization (20 iterations) to project arbitrary learned matrices onto this manifold. The resulting doubly stochastic matrices ensure each output stream is a weighted average of input streams rather than an arbitrary linear combination, guaranteeing bounded spectral norm (at most 1) and compositional closure under matrix multiplication, thereby restoring the identity mapping property across arbitrary depth.",
+    "key_facts": [
+      "Mixing matrices are projected onto the Birkhoff polytope (set of doubly stochastic matrices) where rows and columns each sum to 1",
+      "The Sinkhorn-Knopp algorithm enforces the constraint by iteratively alternating row and column normalization for 20 iterations",
+      "Doubly stochastic matrices have spectral norm bounded by 1, preventing signal amplification",
+      "The set of doubly stochastic matrices is closed under multiplication, preserving stability at any network depth",
+      "Each output stream becomes a convex combination of input streams, conserving signal energy"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2512.24880",
+      "https://vizuara.substack.com/p/mhc-manifold-constrained-hyper-connections",
+      "https://subhadipmitra.com/blog/2026/deepseek-mhc-manifold-constrained-hyper-connections/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

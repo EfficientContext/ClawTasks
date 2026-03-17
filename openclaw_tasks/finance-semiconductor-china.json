@@ -1,0 +1,38 @@
+{
+  "id": "c3b69972ce23",
+  "name": "finance-semiconductor-china",
+  "topic": "finance-semiconductor",
+  "chain_position": 9,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'China semiconductor self-sufficiency SMIC Huawei chip development progress'. Results will overlap with earlier semiconductor searches. How far has China progressed in semiconductor self-sufficiency? What are SMIC and Huawei's latest achievements? Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "China has made notable progress in semiconductor self-sufficiency despite U.S. export controls. SMIC achieved a breakthrough with three generations of 7nm-class nodes using DUV lithography (without EUV access), and is progressing toward 5nm. Huawei's Kirin 9030 chip, fabricated on SMIC's N+3 process for the Mate 80 series, represents China's most advanced domestic semiconductor to date, though it still lags behind TSMC and Samsung's leading-edge 3nm/2nm processes. Huawei also offers competitive AI accelerators (Ascend series) challenging Nvidia in certain segments. China's self-sufficiency is expected to reach ~50% by 2025, with additional foundries like Hua Hong pursuing 7nm capability.",
+    "key_facts": [
+      "SMIC developed three generations of 7nm-class nodes using DUV lithography without EUV access",
+      "Huawei's Kirin 9030 on SMIC's N+3 is China's most advanced domestic chip, but lags global leaders",
+      "China's semiconductor self-sufficiency expected to reach approximately 50% by 2025",
+      "Huawei's Ascend AI accelerators compete with some Nvidia data center GPUs",
+      "China reportedly built a prototype EUV machine, expected to produce chips between 2028-2030"
+    ],
+    "source_urls": [
+      "https://www.technology.org/2025/12/15/huaweis-mate-80-chip-reveals-chinas-semiconductor-progress-and-its-limits/",
+      "https://www.bloomberg.com/news/articles/2025-12-11/china-s-huawei-and-smic-make-progress-with-chips-report-finds",
+      "https://www.tomshardware.com/tech-industry/semiconductors/the-state-of-chinas-decade-long-semiconductor-push-still-a-decade-behind-despite-hundreds-of-billions-spent-and-significant-progress-examining-the-original-made-in-china-2025-initiative"
+    ],
+    "max_expected_tokens": 120
+  }
+}

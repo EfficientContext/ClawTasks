@@ -1,0 +1,38 @@
+{
+  "id": "99686539b489",
+  "name": "paper-mhc-overview",
+  "topic": "paper-mhc",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'mHC manifold-constrained hyper-connections paper identity mapping scalability'. Summarize the paper's main contribution in 3 bullet points. Keep your response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- mHC (Manifold-Constrained Hyper-Connections) by Zhenda Xie et al. (DeepSeek) projects Hyper-Connections' residual mixing matrices onto the Birkhoff polytope (doubly stochastic manifold) using the Sinkhorn-Knopp algorithm, restoring the identity mapping property lost in unconstrained HC.\n- This resolves HC's severe training instability, where signal amplification reached 3000x in 27B models, reducing it to approximately 1.6x.\n- mHC achieves consistent performance gains across 3B-27B scales (e.g., +2.1% BBH, +2.3% DROP) with only 6.7% training overhead via kernel fusion, selective recomputation, and DualPipe scheduling optimizations.",
+    "key_facts": [
+      "mHC projects HC residual mixing matrices onto the Birkhoff polytope (doubly stochastic manifold) using the Sinkhorn-Knopp algorithm",
+      "It restores the identity mapping property that unconstrained Hyper-Connections compromise, reducing worst-case signal amplification from 3000x to approximately 1.6x",
+      "Achieves consistent improvements across 3B, 9B, and 27B model scales with only 6.7% additional training overhead",
+      "Infrastructure optimizations include kernel fusion via TileLang, selective recomputation, and DualPipe communication overlapping",
+      "Published by DeepSeek-AI (Zhenda Xie et al.) on December 31, 2025 as arxiv 2512.24880"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2512.24880",
+      "https://arxiv.org/html/2512.24880",
+      "https://aipapersacademy.com/deepseek-mhc/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

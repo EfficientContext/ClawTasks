@@ -1,0 +1,38 @@
+{
+  "id": "60d4c0a3803c",
+  "name": "domain-fusion-overview",
+  "topic": "domain-fusion",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'nuclear fusion energy progress ITER private companies 2025 2026'. Summarize the current state of fusion energy in 3 bullet points. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- ITER remains the flagship international project but faces major delays (first plasma now 2034, D-T operations 2039), while private fusion companies have raised over $9 billion cumulatively, more than quintupling since 2021.\n- Companies like Commonwealth Fusion Systems, Helion Energy, and TAE Technologies are racing to demonstrate net energy gain by 2027-2028, enabled by breakthroughs in high-temperature superconducting magnets and AI-driven plasma control.\n- Government support is accelerating, with the U.S. DOE releasing a fusion roadmap, the UK committing £2.5 billion, and China investing ~$10 billion since 2019.",
+    "key_facts": [
+      "Private fusion companies have raised over $9 billion cumulatively, with 77 companies in the ecosystem as of 2025",
+      "ITER first plasma delayed to 2034 with D-T operations pushed to 2039",
+      "Commonwealth Fusion Systems has raised ~$3 billion and targets net energy from SPARC by 2027",
+      "The U.S. DOE released a Fusion Science and Technology Roadmap targeting commercial fusion by mid-2030s",
+      "China has invested approximately $10 billion in fusion since 2019"
+    ],
+    "source_urls": [
+      "https://www.iaea.org/newscenter/news/fusion-energy-in-2025-six-global-trends-to-watch",
+      "https://www.ans.org/news/2025-12-05/article-7599/report-funding-growth-for-private-fusion-companies/",
+      "https://www.science.org/content/article/giant-international-fusion-project-big-trouble"
+    ],
+    "max_expected_tokens": 120
+  }
+}

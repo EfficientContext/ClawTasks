@@ -1,0 +1,38 @@
+{
+  "id": "518d95c0aaf1",
+  "name": "paper-mamba-math",
+  "topic": "paper-mamba",
+  "chain_position": 3,
+  "depends_on": "paper-mamba-overview",
+  "description": "Use web_search to search for 'state space model S4 discretization A B C D matrices math explained'. Many results will overlap with earlier Mamba searches. Explain the core SSM formulation (A, B, C, D matrices and discretization) in simple terms. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Structured State Space Models (S4) are based on continuous-time linear systems: x'(t) = Ax(t) + Bu(t), y(t) = Cx(t) + Du(t), where A is the state matrix, B is the input matrix, C is the output matrix, and D is the feedthrough. For discrete sequences, the continuous system is discretized using a step size delta via zero-order hold: A_bar = exp(delta*A), B_bar = (delta*A)^(-1)(exp(delta*A) - I)*delta*B. The key insight of S4 is that the discretized recurrence can be unrolled as a convolution with kernel K = (C*B_bar, C*A_bar*B_bar, ..., C*A_bar^(L-1)*B_bar), enabling O(N log N) parallel training via FFT while retaining O(1) per-step inference via recurrence.",
+    "key_facts": [
+      "Continuous SSM is defined by four matrices: A (state), B (input), C (output), D (feedthrough)",
+      "Zero-order hold discretization converts continuous A,B to discrete A_bar, B_bar using step size delta",
+      "The discretized recurrence can be computed as a convolution for parallel O(N log N) training via FFT",
+      "At inference time, the recurrence form gives O(1) per-step computation with fixed state size",
+      "S4 uses HiPPO initialization for matrix A to enable long-range dependency modeling"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2312.00752",
+      "https://srush.github.io/annotated-s4/",
+      "https://arxiv.org/abs/2111.00396"
+    ],
+    "max_expected_tokens": 120
+  }
+}

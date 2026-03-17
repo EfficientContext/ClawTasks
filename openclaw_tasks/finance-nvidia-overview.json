@@ -1,0 +1,37 @@
+{
+  "id": "b0012bdde4d9",
+  "name": "finance-nvidia-overview",
+  "topic": "finance-nvidia",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use web_search to search for 'NVIDIA financial performance revenue 2025 2026'. Summarize NVIDIA's current financial position in 3 bullet points. Include latest revenue figure. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "- NVIDIA reported fiscal year 2026 revenue of $215.9 billion, up 65% year-over-year, with Q4 FY2026 reaching a record $68.1 billion (up 73% YoY).\n- Gross margins remained strong at ~75% in Q4 FY2026, with non-GAAP EPS of $4.77 for the full year.\n- The company guided Q1 FY2027 revenue of $78 billion, reflecting continued exponential AI compute demand driven by the Blackwell architecture ramp.",
+    "key_facts": [
+      "NVIDIA fiscal year 2026 revenue was $215.9 billion, up 65% from FY2025's $130.5 billion",
+      "Q4 FY2026 revenue was $68.1 billion, up 73% year-over-year",
+      "Q1 FY2027 guidance is approximately $78 billion in revenue",
+      "Non-GAAP gross margin was 75.2% in Q4 FY2026",
+      "FY2025 revenue was $130.5 billion, up 114% year-over-year"
+    ],
+    "source_urls": [
+      "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026",
+      "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2025"
+    ],
+    "max_expected_tokens": 120
+  }
+}

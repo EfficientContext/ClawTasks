@@ -1,0 +1,38 @@
+{
+  "id": "00f414968c8d",
+  "name": "paper-attnres-synthesis",
+  "topic": "paper-attnres",
+  "chain_position": 10,
+  "depends_on": "paper-attnres-overview",
+  "description": "Use web_search to search for 'Attention Residuals impact future deep learning architecture residual replacement'. Results heavily overlap with earlier searches. Synthesize: strengths, limitations, and potential impact of Attention Residuals on future model architectures. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Strengths: AttnRes provides a principled replacement for fixed residual connections, yielding compute-equivalent gains of 1.25x with minimal overhead (under 2% inference, under 4% training). It mitigates PreNorm dilution, improves gradient uniformity, and delivers large gains on reasoning tasks (+7.5 GPQA-Diamond). Block AttnRes is a practical drop-in replacement. Limitations: Full AttnRes has O(Ld) memory overhead prohibitive at scale. The No-Free-Lunch theorem suggests gains on language tasks may not universally generalize. Input-dependent queries improve performance but add sequential overhead. Impact: AttnRes demonstrates that architectural wiring improvements can substitute for raw compute scaling, potentially influencing how future Transformers handle depth-wise information flow.",
+    "key_facts": [
+      "Compute-equivalent gain of 1.25x with under 2% inference and under 4% training overhead",
+      "Full AttnRes has O(Ld) memory overhead that is prohibitive for very large models",
+      "No-Free-Lunch theorem implies gains may not generalize universally beyond language tasks",
+      "Demonstrates that architectural improvements can substitute for raw compute scaling",
+      "Largest gains on multi-step reasoning and code generation tasks"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2603.15031",
+      "https://kindxiaoming.github.io/blog/2026/attention-residual/",
+      "https://lifeinthesingularity.com/p/how-attention-residuals-are-rewiring"
+    ],
+    "max_expected_tokens": 120
+  }
+}

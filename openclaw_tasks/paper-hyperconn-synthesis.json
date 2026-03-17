@@ -1,0 +1,39 @@
+{
+  "id": "52d7504003b0",
+  "name": "paper-hyperconn-synthesis",
+  "topic": "paper-hyperconn",
+  "chain_position": 10,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'hyper-connections impact residual connection alternatives future architecture design'. Results heavily overlap with earlier searches. Synthesize: strengths, weaknesses, and potential impact of hyper-connections on future neural network architecture design. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Strengths: Hyper-connections elegantly generalize residual connections with negligible overhead, resolving the gradient vanishing/representation collapse seesaw. They provide a unified theoretical framework subsuming Pre-Norm, Post-Norm, and parallel transformer blocks. Results are strong across LLMs (1B-7B dense, MoE) and vision tasks, with improved training stability.\n\nWeaknesses: Identity mapping loss causes training instability at scale (loss spikes, gradient explosions). Memory I/O scales quadratically with expansion rate. The method requires careful initialization and may need manifold constraints (mHC) for models beyond ~7B parameters.\n\nImpact: Published at ICLR 2025, the work has already inspired follow-up architectures including DeepSeek's mHC and MUDDFormer, signaling a paradigm shift from fixed to learnable inter-layer connectivity in deep networks.",
+    "key_facts": [
+      "Strengths include negligible overhead, unified theoretical framework, and strong empirical results across modalities",
+      "Weaknesses include training instability at scale and quadratic memory I/O scaling with expansion rate",
+      "Published at ICLR 2025 and already inspired follow-up work including mHC and MUDDFormer",
+      "Represents a paradigm shift from fixed to learnable inter-layer connectivity",
+      "mHC addresses scalability limitations by constraining matrices to doubly stochastic manifolds"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2409.19606",
+      "https://openreview.net/forum?id=9FqARW7dwB",
+      "https://arxiv.org/abs/2512.24880",
+      "https://arxiv.org/pdf/2502.12170"
+    ],
+    "max_expected_tokens": 120
+  }
+}

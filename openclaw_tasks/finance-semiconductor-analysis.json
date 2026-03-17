@@ -1,0 +1,38 @@
+{
+  "id": "ceabafc81721",
+  "name": "finance-semiconductor-analysis",
+  "topic": "finance-semiconductor",
+  "chain_position": 8,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'semiconductor industry analyst forecast cycle upturn downturn 2026'. Results overlap heavily with earlier searches. What do analysts say about the semiconductor cycle? Is the industry in an upturn or downturn? Summarize in 3 sentences. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Most analysts project 2026 as another strong growth year approaching $975 billion to $1 trillion in revenue, with the industry in a continued expansion phase driven by AI-related logic and memory demand. However, views are increasingly divided: Fabricated Knowledge's Doug O'Laughlin sees a \"huge upswing\" with no meaningful inventory builds yet, while Future Horizons' Malcolm Penn warns that geopolitical shocks, AI overinvestment, and economic fragility are converging into extreme uncertainty, cautioning against intoxication by AI euphoria. The key risk is that non-AI segments (automotive, consumer, industrial) remain soft, and if AI monetization timelines slip or data center buildouts stall, the narrow reliance on AI spending could trigger a sharp correction.",
+    "key_facts": [
+      "WSTS forecasts $975 billion in 2026 semiconductor revenue, roughly 25% YoY growth",
+      "AI-related chips dominate growth while non-AI segments (auto, consumer, industrial) remain soft",
+      "Some analysts warn AI overinvestment and narrow demand concentration risk a sharp correction",
+      "Memory remains a critical stress point with supply sold out through 2026",
+      "93% of industry leaders expect revenue growth in 2026 per KPMG survey"
+    ],
+    "source_urls": [
+      "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html",
+      "https://www.fabricatedknowledge.com/p/2026-ai-and-semiconductor-outlook",
+      "https://semiwiki.com/forum/threads/semiconductor-market-update-january-2026-future-horizons.24407/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "e7c34ba0d174",
+  "name": "finance-ev-china",
+  "topic": "finance-ev-market",
+  "chain_position": 7,
+  "depends_on": "finance-ev-overview",
+  "description": "Use web_search to search for 'China EV market BYD exports dominance global competition tariffs'. Results will overlap with earlier searches. How is China's EV industry reshaping the global market? Discuss BYD's rise and trade tensions. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "China commands 65% of the global EV market and produces over 70% of all EVs manufactured worldwide, with NEVs surpassing 50% of domestic passenger vehicle sales in 2025. BYD leads with 4.27 million total vehicle deliveries and surpassed 1 million overseas shipments in 2025, up 150% year-over-year. However, the US (100% tariff), Canada, and EU (up to 35.3% duties) have erected trade barriers, prompting Chinese manufacturers to pursue localized production in Thailand, Brazil, Hungary, and other markets. Intense domestic competition among 129 brands is expected to leave only about 15 profitable by 2030.",
+    "key_facts": [
+      "China commands 65% of global EV market and manufactures over 70% of all EVs",
+      "BYD delivered 4.27 million vehicles in 2024 and exceeded 1 million overseas shipments in 2025",
+      "NEVs surpassed 50% of China's domestic passenger vehicle sales in 2025",
+      "US imposed 100% tariff, EU imposed up to 35.3% duties on Chinese EVs",
+      "Only about 15 of China's 129 EV brands are expected to remain profitable by 2030"
+    ],
+    "source_urls": [
+      "https://restofworld.org/2026/china-ev-exports-competition-price/",
+      "https://english.ckgsb.edu.cn/knowledge/article/chinese-evs-reshape-global-auto-industry-amid-tariffs/",
+      "https://solartechonline.com/blog/chinese-electric-ev-cars-market-analysis-2025/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

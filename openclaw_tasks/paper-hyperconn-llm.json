@@ -1,0 +1,37 @@
+{
+  "id": "748df83b1282",
+  "name": "paper-hyperconn-llm",
+  "topic": "paper-hyperconn",
+  "chain_position": 6,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'hyper-connections large language model pretraining dense sparse MoE results'. Results overlap with earlier searches. How do hyper-connections perform in LLM pretraining for both dense and sparse models? Summarize key results. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1B dense model (500B tokens): DHC x4 reduced V2 eval loss from 2.811 to 2.781 and V3 loss from 2.544 to 2.515, improving average downstream accuracy from 62.5% to 63.8%. 7B dense model (OLMo-7B): DHC x4 improved V2 loss by 0.022, perplexity by 0.293, and average benchmark accuracy from 70.1% to 71.0%, while also eliminating training loss spikes. MoE model (OLMoE-1B-7B, 500B tokens): DHC achieved ~1.8x faster convergence and improved ARC-Challenge from 41.8% to 47.8% (+6 points). Training was notably more stable with DHC, completely removing loss spikes seen in baselines.",
+    "key_facts": [
+      "1B dense model: DHC x4 improved average downstream accuracy from 62.5% to 63.8%",
+      "7B dense model: DHC x4 improved benchmark accuracy from 70.1% to 71.0% and eliminated loss spikes",
+      "MoE model (OLMoE-1B-7B): DHC converged approximately 1.8x faster than baseline",
+      "ARC-Challenge score improved from 41.8% to 47.8% on the MoE model",
+      "DHC completely eliminated training loss spikes that plagued baseline OLMo-7B"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2409.19606v1",
+      "https://arxiv.org/abs/2409.19606"
+    ],
+    "max_expected_tokens": 120
+  }
+}

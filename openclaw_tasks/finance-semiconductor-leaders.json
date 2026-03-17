@@ -1,0 +1,38 @@
+{
+  "id": "d86552186156",
+  "name": "finance-semiconductor-leaders",
+  "topic": "finance-semiconductor",
+  "chain_position": 2,
+  "depends_on": "finance-semiconductor-overview",
+  "description": "Use web_search to search for 'TSMC Samsung Intel foundry market share advanced nodes'. Same semiconductor articles from previous turn will appear. List the top 3 foundries and their technology position. One sentence each. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "TSMC dominates with over 70% foundry market share (Q2 2025), leading the 2nm GAA transition with its N2 process in volume production and initial yields around 65%, serving Apple, Nvidia, and AMD. Samsung holds a distant second at ~7% market share, ramping its 2nm SF2 GAA process but struggling with yield challenges (3nm yields reported at 20-50%). Intel Foundry holds less than 5% share but is aggressively catching up with its 18A (2nm-equivalent) process at 50-55% yield, targeting mass production in 2025-2026.",
+    "key_facts": [
+      "TSMC holds over 70% foundry market share as of Q2 2025, a record high",
+      "Samsung Foundry ranks second at approximately 7.3% market share",
+      "Intel Foundry holds less than 5% market share but is ramping its 18A process",
+      "TSMC's 2nm N2 process entered volume production in Q4 2025 with ~65% yield",
+      "Samsung's 3nm yields remain problematic at 20-50%, constraining its competitiveness"
+    ],
+    "source_urls": [
+      "https://www.trendforce.com/presscenter/news/20250901-12691.html",
+      "https://patentpc.com/blog/tsmc-samsung-and-intel-whos-leading-the-semiconductor-race-latest-market-share-data",
+      "https://www.astutegroup.com/news/industrial/165b-in-2025-advanced-nodes-drive-foundry-revenue-to-record-high/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

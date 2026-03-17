@@ -1,0 +1,37 @@
+{
+  "id": "feb223e94306",
+  "name": "finance-ev-challenges",
+  "topic": "finance-ev-market",
+  "chain_position": 4,
+  "depends_on": "finance-ev-overview",
+  "description": "Use web_search to search for 'electric vehicle adoption barriers charging infrastructure range anxiety cost'. Many results overlap with earlier EV searches. What are the top 3 barriers to EV adoption? One sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "High upfront cost remains the primary barrier, as EV purchase prices still exceed comparable ICE vehicles despite declining battery costs. Range anxiety persists as a psychological concern, though 77% of EV owners report reduced anxiety after purchase. Insufficient charging infrastructure, particularly the lack of fast chargers and uneven geographic distribution, limits adoption for drivers without home charging access.",
+    "key_facts": [
+      "High upfront purchase cost driven by battery prices is the single largest barrier to EV adoption",
+      "Range anxiety is a persistent psychological barrier, though it typically diminishes after purchase",
+      "Approximately 80% of US public chargers are slower Level 1 or Level 2, with fast chargers still insufficient",
+      "About one-third of UK drivers lack any way to charge an EV at home"
+    ],
+    "source_urls": [
+      "https://ceepr.mit.edu/challenges-to-expanding-ev-adoption-and-policy-responses/",
+      "https://www.elementfleet.com/resources/blog/the-top-three-barriers-to-electric-vehicle-adoption",
+      "https://www.geotab.com/white-paper/barriers-to-ev-adoption/"
+    ],
+    "max_expected_tokens": 100
+  }
+}

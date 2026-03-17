@@ -1,0 +1,37 @@
+{
+  "id": "af7721331fc8",
+  "name": "finance-nvidia-earnings",
+  "topic": "finance-nvidia",
+  "chain_position": 6,
+  "depends_on": "finance-nvidia-overview",
+  "description": "Use web_search to search for 'NVIDIA latest earnings Q4 2025 revenue guidance Blackwell ramp'. Results will overlap with earlier NVIDIA searches. Summarize NVIDIA's most recent quarterly earnings: revenue, guidance, and Blackwell production ramp status. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "NVIDIA's most recent quarter, Q4 FY2026 (ended January 25, 2026), delivered record revenue of $68.1 billion, up 73% year-over-year and 20% sequentially. Full-year FY2026 revenue reached $215.9 billion, up 65% from FY2025. Non-GAAP gross margins were 75.2% in Q4. Management guided Q1 FY2027 revenue of approximately $78 billion (~77% YoY growth), excluding any China data center compute revenue. The Blackwell architecture ramp accelerated throughout FY2026, with GB300 accounting for two-thirds of Blackwell revenue by Q3, and the company holds over $350 billion in unfulfilled purchase commitments.",
+    "key_facts": [
+      "Q4 FY2026 revenue was $68.1 billion, up 73% YoY",
+      "Full-year FY2026 revenue was $215.9 billion, up 65% YoY",
+      "Q1 FY2027 guidance is $78 billion, plus or minus 2%",
+      "GB300 accounted for two-thirds of Blackwell revenue by Q3 FY2026",
+      "Over $350 billion in unfulfilled purchase commitments remain"
+    ],
+    "source_urls": [
+      "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026",
+      "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2026"
+    ],
+    "max_expected_tokens": 120
+  }
+}

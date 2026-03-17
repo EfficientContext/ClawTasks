@@ -1,0 +1,38 @@
+{
+  "id": "4c8708c3b1cd",
+  "name": "paper-hyperconn-vs-residual",
+  "topic": "paper-hyperconn",
+  "chain_position": 5,
+  "depends_on": "paper-hyperconn-overview",
+  "description": "Use web_search to search for 'hyper-connections vs residual connections vs highway networks skip connections comparison'. Results overlap with earlier searches. Compare hyper-connections with standard residual connections and highway networks. One key difference per approach. Keep response under 100 words.",
+  "category": "planning",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Residual Connections (2015): Add identity shortcut y=F(x)+x with no extra parameters. Simple and stable but impose fixed connection strength, creating the Pre-Norm/Post-Norm seesaw trade-off.\n\nHighway Networks (2015): Use learned gating mechanisms y=H(x)*T(x)+x*(1-T(x)) to modulate information flow, inspired by LSTMs. More expressive than residuals but sensitive to gate initialization; ResNets are a special case with gates fixed open.\n\nHyper-Connections (2024): Expand to n parallel streams with learnable mixing matrices, generalizing both approaches. Most expressive, with negligible parameter overhead. Enable sequential-parallel duality and dynamic input-dependent connections (DHC). Outperform residuals significantly on LLMs and vision tasks, though may need manifold constraints (mHC) at extreme depth.",
+    "key_facts": [
+      "Residual connections use parameter-free identity addition y=F(x)+x with fixed connection strength",
+      "Highway networks use learned gating mechanisms inspired by LSTMs; ResNets are a special case with gates fixed open",
+      "Hyper-connections use n parallel streams with learnable mixing matrices, generalizing both prior approaches",
+      "Hyper-connections add negligible parameters while being the most expressive of the three",
+      "Highway networks fell out of favor despite being more general, while hyper-connections showed strong empirical gains"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2409.19606v1",
+      "https://en.wikipedia.org/wiki/Highway_network",
+      "https://theaisummer.com/skip-connections/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

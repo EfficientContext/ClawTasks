@@ -1,0 +1,38 @@
+{
+  "id": "a819fc1aa4fc",
+  "name": "paper-mhc-vs-hc",
+  "topic": "paper-mhc",
+  "chain_position": 4,
+  "depends_on": "paper-mhc-overview",
+  "description": "Use web_search to search for 'mHC vs hyper-connections training instability scalability comparison improvements'. Results overlap with earlier searches. Compare mHC with the original HC: what specific problems does mHC fix? List 3 improvements, one sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "HC expands residual connections to n parallel streams with learnable mixing matrices, improving performance but breaking identity mapping. This causes signal amplification up to 3000x and training divergence in 27B models around step 12,000. mHC constrains these matrices to be doubly stochastic via Sinkhorn-Knopp projection, bounding signal gain to approximately 1.6x. mHC achieves a final loss reduction of 0.021 over baseline and outperforms HC on most benchmarks (e.g., +2.1% BBH, +2.3% DROP), while maintaining stable gradient norms throughout training.",
+    "key_facts": [
+      "HC's unconstrained mixing matrices cause worst-case signal amplification of 3000x; mHC reduces this to approximately 1.6x",
+      "HC shows training instability and loss divergence around step 12,000 in 27B models; mHC remains stable",
+      "mHC outperforms HC on most downstream benchmarks including +2.1% on BBH and +2.3% on DROP",
+      "mHC achieves a final loss reduction of 0.021 compared to baseline",
+      "Both use n parallel residual streams, but mHC constrains mixing matrices to be doubly stochastic"
+    ],
+    "source_urls": [
+      "https://arxiv.org/abs/2512.24880",
+      "https://aipapersacademy.com/deepseek-mhc/",
+      "https://www.emergentmind.com/papers/2512.24880"
+    ],
+    "max_expected_tokens": 100
+  }
+}

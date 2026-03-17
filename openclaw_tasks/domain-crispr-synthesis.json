@@ -1,0 +1,38 @@
+{
+  "id": "ddd1a18bbbb6",
+  "name": "domain-crispr-synthesis",
+  "topic": "domain-crispr",
+  "chain_position": 10,
+  "depends_on": "domain-crispr-overview",
+  "description": "Use web_search to search for 'CRISPR gene editing future outlook 2026 2030 applications promise'. Results overlap with earlier CRISPR searches. Synthesize the CRISPR outlook: most promising applications, remaining barriers, and timeline to broader clinical use. Keep response under 100 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Promising applications: CRISPR-based therapies are most advanced for blood disorders (sickle cell, beta-thalassemia), with expanding trials in cardiovascular disease, hereditary angioedema, cancer immunotherapy via engineered CAR-T cells, and the first personalized in vivo treatments for ultra-rare diseases. Key barriers: Off-target editing risks, limited in vivo delivery beyond the liver, Cas9 immunogenicity, manufacturing complexity driving $2.2M per-patient costs, reduced venture capital investment causing company layoffs and pipeline contractions, and unresolved ethical concerns around germline editing. Timeline: By 2027-2028, expect approvals for hereditary angioedema and ATTR amyloidosis; by 2030, potentially a dozen approved CRISPR therapies spanning blood disorders, liver diseases, and select cancers, with base and prime editing entering late-stage trials.",
+    "key_facts": [
+      "Blood disorders lead CRISPR therapy development, with cardiovascular, cancer, and rare disease applications expanding",
+      "Major barriers include off-target effects, liver-centric delivery, immunogenicity, and $2.2M per-patient costs",
+      "Approvals for hereditary angioedema and ATTR amyloidosis are expected by 2027-2028",
+      "The number of approved gene editing treatments could grow from one to potentially a dozen by 2030",
+      "Reduced venture capital and high trial costs have led to layoffs and pipeline contractions across CRISPR companies"
+    ],
+    "source_urls": [
+      "https://www.graygroupintl.com/blog/gene-editing-crispr-2026/",
+      "https://www.sciencedirect.com/science/article/pii/S0092867424001119",
+      "https://innovativegenomics.org/news/crispr-clinical-trials-2025/"
+    ],
+    "max_expected_tokens": 120
+  }
+}

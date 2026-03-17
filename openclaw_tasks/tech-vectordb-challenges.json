@@ -1,0 +1,39 @@
+{
+  "id": "d561896d6bb9",
+  "name": "tech-vectordb-challenges",
+  "topic": "tech-vectordb",
+  "chain_position": 4,
+  "depends_on": "tech-vectordb-overview",
+  "description": "Use web_search to search for 'vector database challenges scaling cost accuracy filtering'. Many results overlap with earlier vector DB searches. List the top 3 challenges when operating vector databases at scale. One sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "Scaling is the foremost challenge: high-dimensional vectors suffer from the curse of dimensionality, and storing 100M+ vectors naively requires hundreds of gigabytes of RAM, demanding ANN approximations, compression techniques like PQ, and distributed architectures. Cost escalates rapidly because vector search requires keeping indexes in memory for low latency, and cloud vector databases charge for storage, compute, and queries at rates that can exceed expectations at scale. Metadata filtering degrades performance by 20-40% compared to pure vector queries, and can cause HNSW graph disconnection when too many vectors are filtered out, leading to dramatic accuracy loss.",
+    "key_facts": [
+      "100 million 1024-dim float vectors require ~400 GB of RAM without compression",
+      "Metadata filtering degrades vector search performance by 20-40% vs pure vector queries",
+      "HNSW graphs can become disconnected when heavy filtering is applied, causing accuracy loss",
+      "The curse of dimensionality makes distances less informative as dimensions grow",
+      "There is a fundamental three-way tradeoff between recall (accuracy), speed, and memory"
+    ],
+    "source_urls": [
+      "https://arxiv.org/html/2310.11703v2",
+      "https://qdrant.tech/benchmarks/",
+      "https://www.institutepm.com/knowledge-hub/vector-databases-explained",
+      "https://bhargavaparv.medium.com/managing-millions-of-high-dimensional-vectors-in-modern-vector-database-cbad318068fe"
+    ],
+    "max_expected_tokens": 100
+  }
+}

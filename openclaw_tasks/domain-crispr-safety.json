@@ -1,0 +1,38 @@
+{
+  "id": "0ba3b58139f5",
+  "name": "domain-crispr-safety",
+  "topic": "domain-crispr",
+  "chain_position": 4,
+  "depends_on": "domain-crispr-overview",
+  "description": "Use web_search to search for 'CRISPR safety concerns off-target effects delivery challenges immunogenicity'. Many results overlap with earlier CRISPR searches. What are the top 3 safety concerns? One sentence each. Keep response under 80 words.",
+  "category": "summarization",
+  "difficulty": "medium",
+  "expected_steps": 3,
+  "skills_required": [
+    "web_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "web_search",
+      "displayName": "Web Search",
+      "category": "search_web"
+    }
+  ],
+  "num_skills": 1,
+  "ground_truth": {
+    "reference_answer": "1. Off-target effects: Cas9 can cut unintended genomic sites with up to 3 mismatches from the guide RNA, potentially causing oncogene activation, large deletions, translocations, and heritable germline mutations.\n2. Delivery challenges: Viral vectors (AAVs) trigger immune responses and risk insertional mutagenesis with limited cargo capacity, while lipid nanoparticles primarily target the liver and struggle to reach other tissues.\n3. Immunogenicity: The bacterial-origin Cas9 protein elicits both humoral and cellular immune responses, which can reduce therapeutic efficacy and cause adverse reactions, particularly with in vivo delivery approaches.",
+    "key_facts": [
+      "Cas9 tolerates up to 3 mismatches between sgRNA and genomic DNA, enabling off-target cuts",
+      "Off-target effects can cause structural variations including translocations, inversions, and large deletions",
+      "AAV vectors cannot be re-dosed due to neutralizing antibodies against the viral capsid",
+      "Cas9 immunogenicity triggers both innate and adaptive immune responses due to its prokaryotic origin",
+      "Off-target germline mutations may cause heritable changes affecting future generations"
+    ],
+    "source_urls": [
+      "https://lifesciences.danaher.com/us/en/library/crispr-off-target-effects.html",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC9978118/",
+      "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2023.1339189/full"
+    ],
+    "max_expected_tokens": 100
+  }
+}
