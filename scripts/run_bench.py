@@ -245,7 +245,7 @@ def run_task_openai(task: dict, timeout: int = 800,
         response = client.chat.completions.create(
             model=model,
             messages=messages,
-            max_tokens=300,
+            max_completion_tokens=300,
             timeout=timeout,
         )
         output = response.choices[0].message.content or ""
