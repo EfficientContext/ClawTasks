@@ -202,7 +202,10 @@ OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini")
 
 
 def _get_openai_base_url() -> str:
-    """Auto-detect: use ContextPilot proxy if running, otherwise direct OpenAI."""
+    """Auto-detect base URL. Priority: env var > ContextPilot proxy > OpenAI direct."""
+    env = os.environ.get("OPENAI_BASE_URL")
+    if env:
+        return env
     if check_contextpilot_running():
         return "http://localhost:8765/v1"
     return "https://api.openai.com/v1"
