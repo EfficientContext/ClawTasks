@@ -269,6 +269,7 @@ def run_task_openai(task: dict, timeout: int = 800,
         }
     except Exception as e:
         elapsed = time.time() - start_time
+        print(f"  [openai] ERROR: {e}")
         return {
             "task_id": task["id"],
             "task_name": task["name"],
@@ -346,6 +347,13 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
     print(f"\n{'='*60}")
     print(f"ClawBench — {len(tasks)} tasks, batch_size={batch_size}, runner={runner}")
+    if runner == "openai":
+        _model = model or OPENAI_MODEL
+        _base = _get_openai_base_url()
+        _proxy = "via ContextPilot" if "localhost:8765" in _base else "direct"
+        print(f"  Model: {_model} | {_base} ({_proxy})")
+        if not os.environ.get("OPENAI_API_KEY"):
+            print(f"  WARNING: OPENAI_API_KEY not set!")
     print(f"{'='*60}\n")
 
     for i, task in enumerate(tasks):
