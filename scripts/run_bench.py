@@ -214,11 +214,20 @@ def _prepare_openclaw_benchmark_config() -> pathlib.Path:
     agent_list = [entry for entry in agent_list if not (
         isinstance(entry, dict) and entry.get("id") == BENCHMARK_AGENT_ID
     )]
-    agent_list.append({
+    default_model = None
+    agents_defaults = agents.get("defaults")
+    if isinstance(agents_defaults, dict):
+        default_model = agents_defaults.get("model")
+
+    agent_entry = {
         "id": BENCHMARK_AGENT_ID,
         "name": "ClawBench Web Search",
         "skills": WEB_SEARCH_SKILL_NAMES,
-    })
+    }
+    if default_model is not None:
+        agent_entry["model"] = default_model
+
+    agent_list.append(agent_entry)
     agents["list"] = agent_list
 
     overlay = {
