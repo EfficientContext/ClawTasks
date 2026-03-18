@@ -4,7 +4,8 @@
   "topic": "paper-mamba",
   "chain_position": 5,
   "depends_on": "paper-mamba-overview",
-  "description": "Use web_search to search for 'Mamba vs transformer comparison scaling efficiency benchmarks speed memory'. Same overview articles will appear again. Compare Mamba and Transformers on 3 axes: speed, memory, quality. One sentence per axis. Keep response under 80 words.",
+  "description": "Use web_search to search for 'Mamba state space model paper summary selective SSM'. Same overview articles will appear again. Compare Mamba and Transformers on 3 axes: speed, memory, quality. One sentence per axis. Keep response under 80 words.",
+  "search_query": "Mamba state space model paper summary selective SSM",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Speed: Mamba achieves 5x higher generation throughput than Transformers of similar size, with linear O(n) scaling versus quadratic O(n^2) for attention, and becomes up to 4x faster at very long contexts (~57K tokens) though Transformers are up to 1.9x faster at short sequences (<8K). Memory: Mamba uses constant memory during inference regardless of sequence length (fixed-size state), while Transformers require a KV cache that grows linearly, giving Mamba a ~64% reduced memory footprint at long contexts and enabling 220K sequence length within 24GB versus Transformer limits around 73K. Quality: Mamba-3B matches Transformer-7B on language modeling and common-sense reasoning, but Transformers still outperform on in-context learning, few-shot MMLU, and retrieval-heavy tasks requiring precise recall from context.",
-    "key_facts": [
-      "Mamba achieves 5x inference throughput over Transformers with O(n) vs O(n^2) scaling",
-      "Mamba uses constant inference memory vs linear KV cache growth for Transformers",
-      "Mamba-3B matches Transformer-7B quality on common-sense reasoning benchmarks",
-      "Transformers outperform Mamba on in-context learning, MMLU, and retrieval tasks",
-      "At long contexts (~57K tokens) Mamba is up to 4x faster; at short contexts (<8K) Transformers are up to 1.9x faster"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2312.00752",
-      "https://arxiv.org/html/2507.12442v2",
-      "https://goombalab.github.io/blog/2025/tradeoffs/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

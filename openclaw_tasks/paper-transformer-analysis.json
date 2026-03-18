@@ -4,7 +4,8 @@
   "topic": "paper-transformer",
   "chain_position": 8,
   "depends_on": "paper-transformer-overview",
-  "description": "Use web_search to search for 'transformer architecture expert analysis criticism scaling laws debate'. Results will overlap heavily with earlier searches. What do researchers say about transformer scaling limits? Summarize the bull and bear cases in 2 sentences each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Is All You Need transformer paper summary'. Results will overlap heavily with earlier searches. What do researchers say about transformer scaling limits? Summarize the bull and bear cases in 2 sentences each. Keep response under 100 words.",
+  "search_query": "Attention Is All You Need transformer paper summary",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "**Bull case**: Transformers demonstrate reliable power-law scaling — increasing model size, data, and compute predictably improves performance, as shown by Chinchilla and GPT-4 scaling results. Their architectural flexibility has enabled dominance across NLP, vision, audio, and multimodal tasks, with no alternative yet matching their breadth and ecosystem maturity.\n\n**Bear case**: The quadratic attention bottleneck fundamentally limits context length and efficiency, and sub-quadratic alternatives like Mamba already match Transformer accuracy at half the parameter count. Scaling laws are empirically derived from specific architectures and datasets, and popular benchmarks may reflect memorization rather than genuine understanding, with 60-70% of answers reportedly encoded in training data.",
-    "key_facts": [
-      "Chinchilla scaling laws showed model size and data should scale equally, challenging earlier Kaplan et al. findings",
-      "Scaling laws are empirical and may not generalize across all architectures and data modalities",
-      "60-70% of benchmark answers may be encoded in training sets, suggesting memorization over understanding",
-      "Alternative architectures like Mamba can match Transformers at half the parameter count",
-      "The 'bitter lesson' suggests that scaling compute has historically outperformed architectural innovations"
-    ],
-    "source_urls": [
-      "https://arxiv.org/pdf/2001.08361",
-      "https://apxml.com/courses/foundations-transformers-architecture/chapter-6-advanced-architectural-variants-analysis/scaling-laws-transformers",
-      "https://aclanthology.org/2024.emnlp-main.319.pdf"
-    ],
-    "max_expected_tokens": 130
-  }
+  "ground_truth": null
 }

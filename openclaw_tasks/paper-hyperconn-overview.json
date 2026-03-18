@@ -5,6 +5,7 @@
   "chain_position": 1,
   "depends_on": null,
   "description": "Use web_search to search for 'Hyper-Connections paper residual connections alternative deep learning'. Summarize the paper's main contribution in 3 bullet points. Keep your response under 100 words.",
+  "search_query": "Hyper-Connections paper residual connections alternative deep learning",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "- Hyper-connections, proposed by Defa Zhu et al. (ByteDance, ICLR 2025), replace residual connections by expanding the residual stream into n parallel streams with learnable mixing matrices, addressing the seesaw effect between gradient vanishing and representation collapse.\n- They generalize both Pre-Norm and Post-Norm residual connections as special non-trainable cases, and introduce sequential-parallel duality that enables dynamic layer rearrangement.\n- Experiments on 1B/7B dense LLMs, 7B MoE models, image classification (ViT), and image generation (DiT) show significant improvements with negligible parameter and compute overhead.",
-    "key_facts": [
-      "Hyper-connections replace residual connections by expanding to n parallel residual streams with learnable depth-connections and width-connections",
-      "They address the seesaw effect between gradient vanishing (Post-Norm) and representation collapse (Pre-Norm)",
-      "Both Pre-Norm and Post-Norm are special non-trainable cases of hyper-connections",
-      "Published at ICLR 2025 by ByteDance's Seed-Foundation-Model Team",
-      "Demonstrated improvements on dense LLMs (1B, 7B), sparse MoE (7B), ViT image classification, and DiT image generation"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2409.19606",
-      "https://arxiv.org/html/2409.19606v1",
-      "https://proceedings.iclr.cc/paper_files/paper/2025/file/f1e8ff97057e0c3f6bcb7018c78d4df1-Paper-Conference.pdf"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

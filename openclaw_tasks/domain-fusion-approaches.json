@@ -4,7 +4,8 @@
   "topic": "domain-fusion",
   "chain_position": 2,
   "depends_on": "domain-fusion-overview",
-  "description": "Use web_search to search for 'fusion energy approaches tokamak stellarator laser inertial confinement comparison'. Same fusion articles from previous turn will appear. Compare 3 main fusion approaches: tokamak, stellarator, and inertial confinement. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'nuclear fusion energy progress ITER private companies 2025 2026'. Same fusion articles from previous turn will appear. Compare 3 main fusion approaches: tokamak, stellarator, and inertial confinement. One sentence each. Keep response under 100 words.",
+  "search_query": "nuclear fusion energy progress ITER private companies 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Tokamaks use toroidal and poloidal magnetic fields to confine plasma in a doughnut shape, are the most mature approach with over 50 operating worldwide, but suffer from plasma instabilities and disruption risk due to required plasma current. Stellarators use complex external coils to generate twisted magnetic fields, enabling inherently steady-state operation without plasma current and better stability, but their intricate 3D coil geometry makes them difficult and expensive to build. Laser inertial confinement fusion (ICF) compresses fuel pellets to extreme densities using powerful lasers, as demonstrated by NIF achieving ignition in 2022, but faces challenges in repetition rate and overall energy efficiency since charging the lasers consumes far more energy than the fusion output.",
-    "key_facts": [
-      "Tokamaks are the most mature fusion approach with over 50 devices operating worldwide",
-      "Stellarators enable steady-state operation without plasma current, avoiding disruption risk",
-      "NIF achieved ignition in 2022, producing 3.15 MJ from 2.05 MJ of laser energy on target",
-      "Stellarators are harder to build due to complex 3D coil geometry",
-      "ICF overall energy efficiency is limited because charging the lasers requires far more energy than delivered to the target"
-    ],
-    "source_urls": [
-      "https://usfusionenergy.org/approaches-fusion",
-      "https://www.iaea.org/bulletin/magnetic-fusion-confinement-with-tokamaks-and-stellarators",
-      "https://www.scientificamerican.com/article/how-three-fusion-reactor-designs-could-power-tomorrow/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

@@ -4,7 +4,8 @@
   "topic": "paper-mamba",
   "chain_position": 9,
   "depends_on": "paper-mamba-overview",
-  "description": "Use web_search to search for 'state space model applications genomics audio time series beyond NLP'. Results overlap with earlier SSM searches. List 3 non-NLP application domains where SSMs show particular promise. One sentence each. Keep response under 80 words.",
+  "description": "Use web_search to search for 'Mamba state space model paper summary selective SSM'. Results overlap with earlier SSM searches. List 3 non-NLP application domains where SSMs show particular promise. One sentence each. Keep response under 80 words.",
+  "search_query": "Mamba state space model paper summary selective SSM",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "1. Genomics: Mamba achieves state-of-the-art on the HG38 human genome benchmark, with its selection mechanism enabling better performance with increasing context length for DNA sequence modeling, and its linear scaling making it practical for analyzing sequences of millions of base pairs.\n2. Vision: Vision Mamba (ViM) and VMamba apply Mamba to image classification and dense prediction tasks, using bidirectional scanning of image patches to achieve competitive accuracy with Vision Transformers while requiring significantly less computation at high resolutions.\n3. Audio/Speech: Mamba-based models process audio spectrograms and raw waveforms efficiently, with applications in speech recognition and music generation that benefit from its ability to handle very long temporal sequences with constant memory.",
-    "key_facts": [
-      "Mamba sets state-of-the-art on HG38 human genome benchmark for DNA sequence modeling",
-      "Vision Mamba (ViM) applies bidirectional Mamba scanning to image patches for visual recognition",
-      "Audio applications benefit from Mamba's constant-memory processing of long temporal sequences",
-      "Linear scaling enables genomics applications on sequences of millions of base pairs",
-      "Mamba has been applied across language, vision, audio, genomics, and time series domains"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2312.00752",
-      "https://arxiv.org/abs/2401.10166",
-      "https://blog.dragonscale.ai/state-space-models/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

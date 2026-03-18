@@ -5,6 +5,7 @@
   "chain_position": 1,
   "depends_on": null,
   "description": "Use web_search to search for 'global semiconductor industry market size revenue 2025 2026'. Summarize the semiconductor market in 3 bullet points. Include market size. Keep response under 100 words.",
+  "search_query": "global semiconductor industry market size revenue 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "- The global semiconductor market reached $791.7 billion in 2025, a 25.6% year-over-year increase, driven primarily by Logic (+39.9%) and Memory (+34.8%) segments fueled by AI demand.\n- For 2026, WSTS projects revenues of approximately $975 billion, with SIA forecasting the industry will approach $1 trillion, representing ~25% growth.\n- AI-related chips drive roughly half of total revenue despite comprising less than 0.2% of unit volume, while the industry is on track to exceed $1 trillion annually by 2030.",
-    "key_facts": [
-      "Global semiconductor sales reached $791.7 billion in 2025, up 25.6% YoY",
-      "2026 revenues projected at approximately $975 billion by WSTS, approaching $1 trillion",
-      "Logic products grew 39.9% to $301.9 billion; Memory grew 34.8% to $223.1 billion in 2025",
-      "AI chips drive ~50% of revenue but represent less than 0.2% of unit volume"
-    ],
-    "source_urls": [
-      "https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/",
-      "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html",
-      "https://www.eusemiconductors.eu/sites/default/files/ESIA_WSTS_PR_AuFc2025.pdf"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

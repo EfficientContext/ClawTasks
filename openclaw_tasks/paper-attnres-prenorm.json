@@ -4,7 +4,8 @@
   "topic": "paper-attnres",
   "chain_position": 4,
   "depends_on": "paper-attnres-overview",
-  "description": "Use web_search to search for 'PreNorm dilution hidden state growth residual connections deep transformers problem'. Results overlap with earlier searches. Explain the PreNorm dilution problem that AttnRes addresses: how uniform residual accumulation causes hidden-state growth and dilutes layer contributions. Keep response under 80 words.",
+  "description": "Use web_search to search for 'Attention Residuals AttnRes paper Kimi Team residual connections softmax'. Results overlap with earlier searches. Explain the PreNorm dilution problem that AttnRes addresses: how uniform residual accumulation causes hidden-state growth and dilutes layer contributions. Keep response under 80 words.",
+  "search_query": "Attention Residuals AttnRes paper Kimi Team residual connections softmax",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "In PreNorm Transformers, LayerNorm is applied before each sublayer, providing unimpeded backward gradient flow via identity skip connections. However, this design accumulates all layer outputs with fixed unit weights, causing hidden-state magnitudes to grow monotonically with depth. As the residual stream grows, each individual layer's contribution becomes proportionally smaller, forcing deeper layers to learn increasingly large outputs from fixed-scale normalized inputs to remain influential. This progressive dilution means pruning the last half of layers barely affects downstream performance. AttnRes mitigates this by using selective aggregation that keeps output magnitudes bounded across depth.",
-    "key_facts": [
-      "Hidden-state magnitudes grow monotonically with depth under PreNorm due to fixed unit-weight accumulation",
-      "Each layer's contribution is progressively diluted as depth increases",
-      "Deeper layers must produce increasingly large outputs from fixed-scale normalized inputs to stay influential",
-      "Pruning the last half of PreNorm Transformer layers barely affects downstream performance",
-      "AttnRes mitigates dilution by keeping output magnitudes bounded through selective aggregation"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2603.15031",
-      "https://arxiv.org/pdf/2603.15031"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

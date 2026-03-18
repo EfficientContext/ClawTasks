@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 8,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'edge AI inference benchmark MLPerf mobile performance comparison 2025'. Results overlap heavily with earlier searches. What do MLPerf and other benchmarks show about edge AI performance? Summarize in 3 sentences. Keep response under 100 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Results overlap heavily with earlier searches. What do MLPerf and other benchmarks show about edge AI performance? Summarize in 3 sentences. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "MLPerf Inference v5.1 (September 2025) set a participation record with 27 organizations submitting results across 10 AI models including DeepSeek-R1 (the first reasoning model in the suite), Llama 3.1 8B, and Whisper Large V3, alongside new power efficiency measurements for both datacenter and edge submissions. MLPerf Inference v5.0 (April 2025) introduced an Automotive PointPainting benchmark for 3D object detection on edge devices, and showed that median Llama 2 70B inference scores doubled year-over-year with the best score improving 3.3x over v4.0. The edge benchmark suite evaluates systems across four scenarios with standardized load generation, categorizing submissions as Available, Preview, or Research to reflect hardware maturity levels.",
-    "key_facts": [
-      "MLPerf Inference v5.1 (Sept 2025) achieved record 27 participants and added DeepSeek-R1 as the first reasoning model benchmark",
-      "MLPerf v5.0 (April 2025) introduced Automotive PointPainting for 3D object detection on edge devices",
-      "Llama 2 70B median inference scores doubled and best score improved 3.3x year-over-year between v4.0 and v5.0",
-      "MLPerf v5.0 included 17,457 performance results from 23 submitting organizations",
-      "Edge and mobile benchmarks evaluate systems across four standardized inference scenarios"
-    ],
-    "source_urls": [
-      "https://mlcommons.org/2025/09/mlperf-inference-v5-1-results/",
-      "https://mlcommons.org/2025/04/mlperf-inference-v5-0-results/",
-      "https://mlcommons.org/benchmarks/inference-edge/",
-      "https://mlcommons.org/benchmarks/inference-mobile/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

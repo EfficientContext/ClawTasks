@@ -4,7 +4,8 @@
   "topic": "paper-mhc",
   "chain_position": 9,
   "depends_on": "paper-mhc-overview",
-  "description": "Use web_search to search for 'mHC manifold hyper-connections applications language models vision multimodal'. Results overlap with earlier searches. What applications and model types benefit most from mHC? List key application domains and results. Keep response under 100 words.",
+  "description": "Use web_search to search for 'mHC manifold-constrained hyper-connections paper identity mapping scalability'. Results overlap with earlier searches. What applications and model types benefit most from mHC? List key application domains and results. Keep response under 100 words.",
+  "search_query": "mHC manifold-constrained hyper-connections paper identity mapping scalability",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "mHC has been primarily evaluated on large language model pre-training using the DeepSeek-V3 MoE architecture with Multi-Head Latent Attention. At 27B scale, it achieves significant gains on reasoning benchmarks: +7.2% on BBH (51.0% vs 43.8%), +6.9% on DROP (53.9% vs 47.0%), +7.1% on GSM8K (53.8% vs 46.7%), and +4.4% on MMLU (63.4% vs 59.0%) over baseline. The original HC paper also demonstrated improvements on vision tasks, suggesting mHC's multi-stream approach is modality-agnostic. Extension to vision and multimodal domains remains an open research direction. DeepSeek CEO Liang Wenfeng co-authored the paper, signaling likely adoption in future DeepSeek flagship models.",
-    "key_facts": [
-      "Evaluated primarily on LLM pre-training using DeepSeek-V3 MoE architecture with Multi-Head Latent Attention",
-      "27B model shows strong gains on reasoning: BBH +7.2%, DROP +6.9%, GSM8K +7.1%, MMLU +4.4% over baseline",
-      "Original HC paper demonstrated improvements on vision tasks, suggesting cross-modal applicability",
-      "Extension to vision and multimodal domains remains an open research direction",
-      "DeepSeek CEO Liang Wenfeng co-authored the paper, signaling likely production adoption"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2512.24880",
-      "https://www.analyticsvidhya.com/blog/2026/01/deepseek-mhc/",
-      "https://medium.com/@sampan090611/deepseek-mhc-explained-how-manifold-constrained-hyper-connections-redefine-residual-connections-in-2902b6cdaea3"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

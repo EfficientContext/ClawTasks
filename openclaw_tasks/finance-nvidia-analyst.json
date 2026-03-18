@@ -4,7 +4,8 @@
   "topic": "finance-nvidia",
   "chain_position": 8,
   "depends_on": "finance-nvidia-overview",
-  "description": "Use web_search to search for 'NVIDIA stock analyst ratings bull bear case 2026'. Results overlap heavily with earlier searches. What are the bull and bear cases for NVIDIA stock? Summarize each in 2 sentences. Keep response under 100 words.",
+  "description": "Use web_search to search for 'NVIDIA financial performance revenue 2025 2026'. Results overlap heavily with earlier searches. What are the bull and bear cases for NVIDIA stock? Summarize each in 2 sentences. Keep response under 100 words.",
+  "search_query": "NVIDIA financial performance revenue 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The bull case centers on NVIDIA's unmatched AI dominance with 50%+ net margins, 70%+ gross margins, and a massive product roadmap: the next-generation Vera Rubin platform promises 5x faster inference and 3.5x faster training over Blackwell, while $660-690 billion in hyperscaler capex and $3-4 trillion in projected global AI spending over three years provide a long demand runway. Evercore's Lipacis has a $352 price target implying 86% upside.\n\nThe bear case highlights decelerating growth rates across EPS, net income, and free cash flow versus three-year averages, along with mounting threats from hyperscaler custom silicon (Google TPUs, Amazon Trainium), potential AI spending fatigue as hyperscalers consume nearly 100% of operating cash flows, and ongoing China export control disruptions that have zeroed out a once-significant revenue stream.",
-    "key_facts": [
-      "39 Buy ratings, 1 Hold, 1 Sell among analysts with Strong Buy consensus",
-      "Average price target of ~$264 vs $183.22 closing price on March 16, 2026",
-      "Evercore bull case target of $352 implies 86% upside",
-      "Bear case cites decelerating growth rates in EPS, net income, and free cash flow",
-      "Vera Rubin next-gen platform promises 5x inference and 3.5x training improvement over Blackwell"
-    ],
-    "source_urls": [
-      "https://www.tipranks.com/news/nvidia-stock-nvda-forecast-bear-case-vs-bull-case-scenario-for-2026",
-      "https://www.tipranks.com/news/nvidia-stock-nvda-forecast-top-analyst-predicts-86-price-jump-in-2026",
-      "https://public.com/stocks/nvda/forecast-price-target"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

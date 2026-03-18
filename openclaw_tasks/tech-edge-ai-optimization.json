@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 9,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'edge AI optimization techniques pruning distillation speculative decoding'. Results will overlap with earlier edge AI searches. List 3 key optimization techniques beyond quantization for on-device inference. One sentence each on the tradeoff. Keep response under 80 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Results will overlap with earlier edge AI searches. List 3 key optimization techniques beyond quantization for on-device inference. One sentence each on the tradeoff. Keep response under 80 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Pruning removes unnecessary weights or structures from neural networks, achieving up to 60-75% model size reduction with minor accuracy loss, but aggressive pruning can degrade performance on complex tasks requiring careful threshold tuning. Knowledge distillation trains a smaller student model to mimic a larger teacher model's behavior via softened output distributions, halving model size and training time while retaining ~85% of teacher accuracy, though it requires access to a capable teacher model and additional training. Speculative decoding pairs a lightweight draft model with the target LLM to propose multiple tokens verified in a single forward pass, yielding 2-3x latency reduction with zero accuracy loss, but requires maintaining and coordinating two models.",
-    "key_facts": [
-      "Pruning can reduce model size by 60-75% while maintaining accuracy through techniques like OTOV3 joint training-and-pruning",
-      "Knowledge distillation transfers teacher knowledge to a student model, halving size and training time with ~85% accuracy retention",
-      "Speculative decoding achieves 2-3x latency reduction with mathematically guaranteed zero accuracy loss",
-      "Combining pruning, distillation, and quantization in pipelines can yield 10-50x total compression"
-    ],
-    "source_urls": [
-      "https://promwad.com/news/ai-model-compression-real-time-devices-2025",
-      "https://developer.nvidia.com/blog/an-introduction-to-speculative-decoding-for-reducing-latency-in-ai-inference/",
-      "https://arxiv.org/html/2501.03265v1/",
-      "https://medium.com/@amitkharche/model-compression-techniques-quantization-pruning-distillation-for-real-world-deployment-229f57e2c807"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

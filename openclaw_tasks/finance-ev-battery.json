@@ -4,7 +4,8 @@
   "topic": "finance-ev-market",
   "chain_position": 3,
   "depends_on": "finance-ev-overview",
-  "description": "Use web_search to search for 'EV battery technology LFP NMC solid state cost per kWh trends'. Many results will overlap with earlier EV searches. Compare LFP and NMC battery chemistries for EVs. What is the current cost per kWh? Keep response under 100 words.",
+  "description": "Use web_search to search for 'electric vehicle market size growth 2025 2026 global sales'. Many results will overlap with earlier EV searches. Compare LFP and NMC battery chemistries for EVs. What is the current cost per kWh? Keep response under 100 words.",
+  "search_query": "electric vehicle market size growth 2025 2026 global sales",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "LFP (lithium iron phosphate) battery packs average $81/kWh, while NMC (nickel manganese cobalt) packs average $128/kWh, making LFP roughly 37% cheaper. LFP offers superior cycle life (3,000-10,000+ cycles vs. 1,000-2,300 for NMC) and better thermal stability, but has 20-33% lower energy density. NMC remains preferred for premium long-range vehicles due to higher energy density (150-250+ Wh/kg). The overall industry average pack price hit a record low of $108/kWh in 2025, with LFP's market share projected to reach ~50% by 2030.",
-    "key_facts": [
-      "LFP pack prices average $81/kWh vs. NMC at $128/kWh as of 2025",
-      "Overall battery pack prices dropped to a record low of $108/kWh in 2025",
-      "LFP offers 3,000-10,000+ cycle life vs. 1,000-2,300 for NMC",
-      "LFP energy density is 20-33% lower than NMC by mass and volume",
-      "LFP market share is projected to reach approximately 50% by 2030"
-    ],
-    "source_urls": [
-      "https://about.bnef.com/insights/clean-transport/lithium-ion-battery-pack-prices-fall-to-108-per-kilowatt-hour-despite-rising-metal-prices-bloombergnef/",
-      "https://www.evlithium.com/Blog/nmc-vs-lfp-vs-lto-batteries-comparison.html",
-      "https://www.mckinsey.com/features/mckinsey-center-for-future-mobility/our-insights/battery-2035-building-new-advantages"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

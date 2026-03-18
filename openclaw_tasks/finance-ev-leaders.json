@@ -4,7 +4,8 @@
   "topic": "finance-ev-market",
   "chain_position": 2,
   "depends_on": "finance-ev-overview",
-  "description": "Use web_search to search for 'EV market leaders Tesla BYD market share 2025 2026'. Same EV market articles from previous turn will appear. List the top 4 EV manufacturers by market share with one sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'electric vehicle market size growth 2025 2026 global sales'. Same EV market articles from previous turn will appear. List the top 4 EV manufacturers by market share with one sentence each. Keep response under 100 words.",
+  "search_query": "electric vehicle market size growth 2025 2026 global sales",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "BYD overtook Tesla as the world's top EV seller in 2025, delivering 2.25 million all-electric vehicles with a 19.3% global plug-in market share. Tesla fell to second place with 1.63 million deliveries (a 9% annual decline), hampered by brand backlash and intensifying competition. Geely surged to third with 844,630 units and a 5.6% market share, driven by triple-digit quarterly growth. Volkswagen Group rounds out the top four, leveraging its broad European lineup to maintain a significant share of the global EV market.",
-    "key_facts": [
-      "BYD delivered 2.25 million BEVs in 2025, claiming the global number-one spot with ~19.3% plug-in market share",
-      "Tesla delivered 1.63 million vehicles in 2025, a 9% decline year-over-year",
-      "Geely ranked third globally with 844,630 plug-in units and 5.6% market share",
-      "BYD outsold Tesla by over 600,000 all-electric vehicles in 2025"
-    ],
-    "source_urls": [
-      "https://carboncredits.com/byd-overtakes-tesla-as-worlds-biggest-ev-seller-in-2025/",
-      "https://techcrunch.com/2026/01/02/tesla-annual-sales-decline-9-as-its-overtaken-by-byd-as-global-ev-leader/",
-      "https://www.visualcapitalist.com/the-worlds-top-ev-makers-by-market-share/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

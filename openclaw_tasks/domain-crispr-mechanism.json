@@ -4,7 +4,8 @@
   "topic": "domain-crispr",
   "chain_position": 3,
   "depends_on": "domain-crispr-overview",
-  "description": "Use web_search to search for 'CRISPR Cas9 mechanism guide RNA double strand break repair explained'. Many results will overlap with earlier CRISPR searches. Explain how CRISPR-Cas9 works: guide RNA, Cas9 cutting, and DNA repair pathways. Keep response under 100 words.",
+  "description": "Use web_search to search for 'CRISPR gene editing clinical trials progress 2025 2026'. Many results will overlap with earlier CRISPR searches. Explain how CRISPR-Cas9 works: guide RNA, Cas9 cutting, and DNA repair pathways. Keep response under 100 words.",
+  "search_query": "CRISPR gene editing clinical trials progress 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "CRISPR-Cas9 works in three steps: recognition, cleavage, and repair. A synthetic single guide RNA (sgRNA) directs the Cas9 nuclease to a specific DNA sequence by complementary base pairing, requiring an adjacent PAM (protospacer adjacent motif) sequence for binding. Once bound, Cas9's two nuclease domains (HNH and RuvC) each cut one strand of the DNA, creating a double-strand break three base pairs upstream of the PAM. The cell then repairs the break via either non-homologous end joining (NHEJ), which introduces insertions or deletions to disrupt the gene, or homology-directed repair (HDR), which uses a supplied DNA template to make precise edits.",
-    "key_facts": [
-      "The guide RNA (sgRNA) directs Cas9 to the target DNA sequence through complementary base pairing",
-      "Cas9 requires a PAM (protospacer adjacent motif) sequence adjacent to the target for binding and activation",
-      "The HNH domain cuts the complementary strand and RuvC cuts the non-complementary strand, creating a double-strand break",
-      "NHEJ is error-prone and creates indels for gene disruption; HDR uses a donor template for precise edits but is less efficient",
-      "HDR efficiency is typically less than 10%, making NHEJ the dominant repair pathway"
-    ],
-    "source_urls": [
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC8388126/",
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC8187289/",
-      "https://www.aatbio.com/resources/faq-frequently-asked-questions/what-are-the-mechanisms-of-the-crispr-cas9-system"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

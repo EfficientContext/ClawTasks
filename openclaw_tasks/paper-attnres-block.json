@@ -4,7 +4,8 @@
   "topic": "paper-attnres",
   "chain_position": 3,
   "depends_on": "paper-attnres-overview",
-  "description": "Use web_search to search for 'Block AttnRes block-level attention residuals memory efficiency scaling'. Results overlap with earlier searches. Explain Block AttnRes: how it groups layers into blocks and reduces memory overhead while preserving performance. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Residuals AttnRes paper Kimi Team residual connections softmax'. Results overlap with earlier searches. Explain Block AttnRes: how it groups layers into blocks and reduces memory overhead while preserving performance. Keep response under 100 words.",
+  "search_query": "Attention Residuals AttnRes paper Kimi Team residual connections softmax",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Full AttnRes requires O(L squared d) arithmetic and O(Ld) memory per token to store all preceding layer outputs, which becomes prohibitive under activation recomputation and pipeline parallelism. Block AttnRes partitions the L layers into N blocks. Within each block, outputs accumulate via standard residuals into a single block representation. Attention is applied only over these N block-level representations plus the token embedding, reducing memory and communication from O(Ld) to O(Nd). A two-phase computation strategy amortizes cross-block attention using online softmax: Phase 1 computes inter-block attention via a single batched query; Phase 2 handles intra-block attention sequentially and merges results. Empirically, approximately 8 blocks recover most of Full AttnRes's gains.",
-    "key_facts": [
-      "Partitions L layers into N blocks, applying attention only over block-level representations",
-      "Reduces memory and communication overhead from O(Ld) to O(Nd)",
-      "Two-phase computation: Phase 1 batched inter-block attention, Phase 2 sequential intra-block attention with online softmax merging",
-      "Approximately 8 blocks recovers most of Full AttnRes's gains",
-      "Training overhead under 4% with pipeline parallelism; inference overhead under 2%"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2603.15031",
-      "https://arxiv.org/pdf/2603.15031"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

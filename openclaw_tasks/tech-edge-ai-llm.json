@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 6,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'on-device LLM deployment Apple Intelligence Gemini Nano Phi small models'. Results will overlap with earlier edge AI searches. What on-device LLMs are shipping in 2025-2026? List 3 examples with model size and device. Keep response under 100 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Results will overlap with earlier edge AI searches. What on-device LLMs are shipping in 2025-2026? List 3 examples with model size and device. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Apple Intelligence runs an on-device foundation model of approximately 3 billion parameters (quantized to 4-bit) on iPhones and Macs, handling summarization, rewriting, and smart replies locally with Private Cloud Compute as fallback for complex tasks. Google's Gemini Nano is a lightweight on-device LLM integrated into Android via AI Core, powering offline summarization and generative features on Pixel and Samsung Galaxy devices. Microsoft's Phi-4 mini (3.8B parameters) is an open-weight model optimized for edge deployment, available under MIT license for on-device inference on PCs and mobile devices via ONNX Runtime and other runtimes.",
-    "key_facts": [
-      "Apple's on-device foundation model is approximately 3B parameters, quantized, running on iPhone and Mac with Private Cloud Compute fallback",
-      "Gemini Nano runs on-device via Android AI Core on Pixel and Samsung Galaxy devices for offline summarization and generative tasks",
-      "Phi-4 mini is 3.8B parameters, released under MIT license, designed for edge and on-device deployment",
-      "Sub-billion models like Gemma 3 (270M) and SmolLM2 (135M-1.7B) now handle many practical on-device tasks"
-    ],
-    "source_urls": [
-      "https://machinelearning.apple.com/research/apple-foundation-models-2025-updates",
-      "https://www.edge-ai-vision.com/2026/01/on-device-llms-in-2026-what-changed-what-matters-whats-next/",
-      "https://en.wikipedia.org/wiki/Gemini_(language_model)",
-      "https://www.techtarget.com/whatis/feature/12-of-the-best-large-language-models"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

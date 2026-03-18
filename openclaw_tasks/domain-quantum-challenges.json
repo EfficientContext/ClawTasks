@@ -4,7 +4,8 @@
   "topic": "domain-quantum",
   "chain_position": 4,
   "depends_on": "domain-quantum-overview",
-  "description": "Use web_search to search for 'quantum computing challenges decoherence scaling qubit overhead'. Many results overlap with earlier quantum searches. What are the top 3 obstacles to fault-tolerant quantum computing? One sentence each. Keep response under 80 words.",
+  "description": "Use web_search to search for 'quantum computing progress 2025 2026 logical qubits error correction'. Many results overlap with earlier quantum searches. What are the top 3 obstacles to fault-tolerant quantum computing? One sentence each. Keep response under 80 words.",
+  "search_query": "quantum computing progress 2025 2026 logical qubits error correction",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Decoherence remains the primary obstacle, as qubits lose quantum properties through environmental interactions within nanoseconds to seconds, limiting computation time and worsening as systems scale. Qubit overhead for error correction is prohibitive, with current estimates requiring millions of physical qubits (e.g., 3 million for RSA-2048 factoring) to support enough logical qubits for useful algorithms. Scaling hardware introduces compounding engineering challenges including crosstalk between qubits, control-line routing, cryogenic cooling budgets, and connectivity constraints that grow exponentially with qubit count.",
-    "key_facts": [
-      "Decoherence times range from nanoseconds to seconds depending on qubit technology, fundamentally limiting computation duration",
-      "An estimated 3 million physical qubits are needed to factor a 2048-bit integer, illustrating the massive error correction overhead",
-      "Scaling increases vulnerability to crosstalk, thermal noise, and control complexity, making each additional qubit harder to integrate",
-      "The error correction overhead may undermine the speedup offered by many quantum algorithms if not substantially reduced"
-    ],
-    "source_urls": [
-      "https://www.bluequbit.io/quantum-decoherence",
-      "https://www.science.org/doi/10.1126/science.adz8659",
-      "https://www.spinquanta.com/news-detail/decoherence-in-quantum-computing-everything-you-need-to-know"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

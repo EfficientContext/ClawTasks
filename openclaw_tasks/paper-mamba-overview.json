@@ -5,6 +5,7 @@
   "chain_position": 1,
   "depends_on": null,
   "description": "Use web_search to search for 'Mamba state space model paper summary selective SSM'. Summarize Mamba's main contribution vs transformers in 3 bullet points. Keep response under 100 words.",
+  "search_query": "Mamba state space model paper summary selective SSM",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "- Mamba is a selective state space model (S6) developed by Albert Gu (CMU) and Tri Dao (Princeton), published in December 2023, that achieves linear-time sequence modeling by making SSM parameters input-dependent.\n- It combines a selection mechanism (content-aware gating of state transitions) with a hardware-aware parallel scan algorithm optimized for GPU memory hierarchies, achieving 5x inference throughput over Transformers.\n- Mamba-3B outperforms Transformers of the same size and matches Transformers twice its size on language modeling, while scaling linearly in sequence length up to million-token contexts.",
-    "key_facts": [
-      "Developed by Albert Gu (CMU) and Tri Dao (Princeton), published December 2023",
-      "Makes SSM parameters (B, C, delta) input-dependent for content-aware selection",
-      "Achieves 5x inference throughput over Transformers with linear-time complexity",
-      "Mamba-3B matches Transformer-7B quality on language modeling benchmarks",
-      "Hardware-aware algorithm uses kernel fusion, parallel scan, and recomputation to avoid materializing expanded states"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2312.00752",
-      "https://www.ibm.com/think/topics/mamba-model",
-      "https://en.wikipedia.org/wiki/Mamba_(deep_learning_architecture)"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

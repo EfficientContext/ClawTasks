@@ -4,7 +4,8 @@
   "topic": "domain-quantum",
   "chain_position": 10,
   "depends_on": "domain-quantum-overview",
-  "description": "Use web_search to search for 'quantum computing timeline practical advantage forecast 2030 outlook'. Results overlap with earlier quantum searches. Synthesize: when will quantum computers achieve practical advantage? Key milestones, remaining barriers, and realistic timeline. Keep response under 100 words.",
+  "description": "Use web_search to search for 'quantum computing progress 2025 2026 logical qubits error correction'. Results overlap with earlier quantum searches. Synthesize: when will quantum computers achieve practical advantage? Key milestones, remaining barriers, and realistic timeline. Keep response under 100 words.",
+  "search_query": "quantum computing progress 2025 2026 logical qubits error correction",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Practical quantum advantage is expected by 2028-2030, with narrow domain-specific advantages already emerging (IonQ/Ansys demonstrated a 12% speedup in 2025). Key milestones include IBM's 200 logical qubit Starling system by 2029, IonQ targeting 80,000 logical qubits by 2030, and Quantinuum's universal fault-tolerant Apollo system by 2030. Primary barriers remain decoherence, error correction overhead requiring millions of physical qubits, and competition from advancing classical AI. The market is projected to reach $20 billion by 2030, with BCG forecasting broad quantum advantage in the 2030-2040 window and full fault tolerance after 2040. Forrester warns Q-day (breaking RSA-2048) could arrive by 2030, making post-quantum cryptography migration urgent now.",
-    "key_facts": [
-      "Forrester projects practical quantum computing and Q-day (breaking RSA-2048) are both likely by 2030",
-      "BCG segments the timeline: NISQ until 2030, broad quantum advantage 2030-2040, full fault tolerance after 2040",
-      "IBM targets 200 logical qubits by 2029; IonQ targets 80,000 logical qubits by 2030",
-      "IonQ and Ansys demonstrated a narrow practical quantum advantage (12% speedup) in March 2025",
-      "Competition from classical AI and algorithmic optimization remains a risk to quantum timelines"
-    ],
-    "source_urls": [
-      "https://www.forrester.com/blogs/practical-quantum-computing-by-2030-is-likely-and-so-is-q-day/",
-      "https://www.deloitte.com/us/en/insights/topics/emerging-technologies/quantum-computing-futures.html",
-      "https://thequantuminsider.com/2025/05/16/quantum-computing-roadmaps-a-look-at-the-maps-and-predictions-of-major-quantum-players/",
-      "https://www.ionq.com/blog/ionqs-accelerated-roadmap-turning-quantum-ambition-into-reality"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 2,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'edge AI framework comparison TensorRT ONNX Runtime Core ML TFLite'. Same edge AI articles from previous turn will appear. Compare 4 frameworks: TensorRT, ONNX Runtime, Core ML, TFLite. One sentence each on their primary platform. Keep response under 100 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Same edge AI articles from previous turn will appear. Compare 4 frameworks: TensorRT, ONNX Runtime, Core ML, TFLite. One sentence each on their primary platform. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "TensorRT is NVIDIA's SDK optimized exclusively for NVIDIA GPUs, delivering the lowest-latency inference through FP8/INT8 quantization and kernel fusion. ONNX Runtime, developed by Microsoft, is a cross-platform runtime supporting multiple frameworks and hardware backends via pluggable execution providers, ideal for multi-vendor deployment. Core ML is Apple's framework tightly integrated with Apple Silicon and the Neural Engine, optimized for iOS and macOS devices. TFLite (now LiteRT) targets mobile and microcontroller deployment across Android, iOS, and embedded platforms, with strong Google ecosystem integration and TinyML support via TFLite Micro.",
-    "key_facts": [
-      "TensorRT is NVIDIA-only and provides the fastest GPU inference with FP8/INT8 quantization and kernel fusion",
-      "ONNX Runtime supports cross-platform deployment via pluggable execution providers for CPU, GPU, NPU, and more",
-      "Core ML leverages Apple's Neural Engine and Metal for on-device inference on iPhones and Macs",
-      "LiteRT (formerly TFLite) leads for TinyML and microcontroller deployment and supports Android, iOS, and embedded platforms"
-    ],
-    "source_urls": [
-      "https://dzone.com/articles/edge-ai-tensorflow-lite-vs-onnx-runtime-vs-pytorch",
-      "https://blog.huebits.in/top-10-edge-ai-frameworks-for-2025-best-tools-for-real-time-on-device-machine-learning/",
-      "https://www.aimtechnolabs.com/blogs/tensorflow-lite-vs-onnx-runtime-edge-ai",
-      "https://www.digitalocean.com/community/tutorials/ai-model-deployment-optimization"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

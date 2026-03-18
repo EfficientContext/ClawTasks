@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 7,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'edge AI privacy advantages on-device processing data sovereignty'. Results will overlap with earlier searches. What are the privacy and latency advantages of on-device AI vs cloud? List 3 key benefits. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Results will overlap with earlier searches. What are the privacy and latency advantages of on-device AI vs cloud? List 3 key benefits. One sentence each. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "On-device processing keeps sensitive data local, eliminating exposure to cyberattacks during network transmission and ensuring personal information such as health records or financial data never leaves the device. Edge AI enables compliance with data sovereignty regulations like GDPR and HIPAA by processing and storing data within designated jurisdictions without sending it to remote cloud servers. Local inference eliminates cloud round-trip latency, achieving sub-10ms response times critical for real-time applications like autonomous vehicles, industrial automation, and healthcare monitoring.",
-    "key_facts": [
-      "On-device processing eliminates data exposure during network transmission, reducing cyberattack risk",
-      "Edge AI aids compliance with GDPR, HIPAA, and data sovereignty regulations by keeping data within local jurisdictions",
-      "Local inference achieves sub-10ms latency by eliminating cloud round-trips",
-      "Edge AI reduces bandwidth costs by sending only essential insights to the cloud rather than raw data",
-      "On-device models continue operating without internet connectivity, ensuring resilience in remote environments"
-    ],
-    "source_urls": [
-      "https://www.ibm.com/think/topics/edge-ai",
-      "https://www.imaginationtech.com/what-is-edge-ai/",
-      "https://www.nutanix.com/info/artificial-intelligence/edge-ai",
-      "https://www.suse.com/c/what-is-edge-ai-the-complete-guide/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

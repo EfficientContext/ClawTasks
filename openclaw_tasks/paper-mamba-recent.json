@@ -4,7 +4,8 @@
   "topic": "paper-mamba",
   "chain_position": 6,
   "depends_on": "paper-mamba-overview",
-  "description": "Use web_search to search for 'Mamba 2 state space model latest developments 2025 2026'. Results will overlap with earlier SSM searches. What are the latest developments in SSM research since the original Mamba paper? List 3 advances. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Mamba state space model paper summary selective SSM'. Results will overlap with earlier SSM searches. What are the latest developments in SSM research since the original Mamba paper? List 3 advances. Keep response under 100 words.",
+  "search_query": "Mamba state space model paper summary selective SSM",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "1. Mamba-2 (May 2024) introduced Structured State Space Duality (SSD), proving SSMs and linear attention are equivalent through semiseparable matrices, enabling 2-8x faster training by leveraging GPU tensor cores and increasing state dimensions from N=16 to N=64-256.\n2. Hybrid models went production: AI21's Jamba (1:7 attention-to-Mamba ratio with MoE) and IBM's Granite 4.0 ship SSM-Transformer hybrids, while Mistral's Codestral Mamba proved pure SSMs can beat CodeLlama 34B at code generation.\n3. Mamba-3 introduced complex-valued states for richer dynamics, and Routing Mamba (RoM) applied Mixture-of-Experts to Mamba layers, matching dense models at 2.3x fewer active parameters.",
-    "key_facts": [
-      "Mamba-2 SSD framework proved SSMs and linear attention are equivalent via semiseparable matrices",
-      "Mamba-2 achieves 2-8x faster training than Mamba-1 by leveraging tensor core matmuls",
-      "AI21's Jamba uses 1:7 attention-to-Mamba ratio with MoE, supporting 256K context on a single GPU",
-      "IBM Granite 4.0 and Mistral Codestral Mamba are production SSM-based models",
-      "Mamba-2 increases state dimension from N=16 to N=64-256 while being faster"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2405.21060",
-      "https://goombalab.github.io/blog/2024/mamba2-part1-model/",
-      "https://arxiv.org/abs/2403.19887"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

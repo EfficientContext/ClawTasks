@@ -4,7 +4,8 @@
   "topic": "finance-ev-market",
   "chain_position": 8,
   "depends_on": "finance-ev-overview",
-  "description": "Use web_search to search for 'EV market analyst forecast growth slowdown demand 2026 outlook'. Results overlap heavily with earlier searches. What do analysts say about EV growth rates? Is growth accelerating or decelerating? Summarize in 3 sentences. Keep response under 100 words.",
+  "description": "Use web_search to search for 'electric vehicle market size growth 2025 2026 global sales'. Results overlap heavily with earlier searches. What do analysts say about EV growth rates? Is growth accelerating or decelerating? Summarize in 3 sentences. Keep response under 100 words.",
+  "search_query": "electric vehicle market size growth 2025 2026 global sales",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Analysts widely characterize 2026 as a year of \"recalibration\" for the EV market, with global sales still growing but at a notably slower pace than the 20-25% gains of 2024-2025. The US faces the steepest headwinds, with J.D. Power projecting EV retail share falling to 6.6% in early 2026 following tax credit expiration, while China's January 2026 EV sales dropped 13.4% year-over-year as new taxes took effect. Forecasters expect the slowdown to be temporary, with growth re-accelerating by 2028 as pricing stabilizes and natural demand replaces subsidy-driven adoption.",
-    "key_facts": [
-      "Analysts describe 2026 as a year of recalibration for the EV market",
-      "J.D. Power projects US EV retail share at just 6.6% in February 2026, down 1.8 percentage points year-over-year",
-      "China EV sales fell 13.4% year-over-year in January 2026 due to subsidy tightening",
-      "EV Volumes forecasts 27.5% global EV market share in 2026",
-      "Growth is expected to re-accelerate by 2028 as pricing and demand stabilize"
-    ],
-    "source_urls": [
-      "https://www.technewsworld.com/story/ev-market-faces-2026-recalibration-as-prices-plunge-subsidies-fade-179975.html",
-      "https://investingnews.com/electric-vehicle-forecast/",
-      "https://www.jdpower.com/business/press-releases/jd-power-globaldata-forecast-february-2026"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

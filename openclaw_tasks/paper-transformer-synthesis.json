@@ -4,7 +4,8 @@
   "topic": "paper-transformer",
   "chain_position": 10,
   "depends_on": "paper-transformer-overview",
-  "description": "Use web_search to search for 'transformer impact NLP computer vision multimodal AI legacy'. Results will heavily overlap with earlier transformer searches. Synthesize the overall impact of the transformer architecture: strengths, weaknesses, and lasting legacy. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Is All You Need transformer paper summary'. Results will heavily overlap with earlier transformer searches. Synthesize the overall impact of the transformer architecture: strengths, weaknesses, and lasting legacy. Keep response under 100 words.",
+  "search_query": "Attention Is All You Need transformer paper summary",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "**Strengths**: The Transformer's self-attention mechanism captures long-range dependencies without recurrence, enabling massive parallelization and reliable scaling across NLP, vision, audio, and multimodal tasks — powering models from BERT to GPT-4 and ViT.\n\n**Weaknesses**: Quadratic attention complexity limits practical context length and efficiency; the architecture is memory-intensive at inference, and empirical scaling laws may not reflect genuine reasoning or generalize across all domains.\n\n**Legacy**: The Transformer is the single most consequential architecture in modern AI, cited over 173,000 times by 2026, forming the backbone of the generative AI revolution and spawning an open ecosystem of over one million model checkpoints.",
-    "key_facts": [
-      "Transformers enable parallelized training and reliable power-law scaling across multiple modalities",
-      "Quadratic attention complexity is the primary architectural weakness limiting context length",
-      "The original paper has been cited over 173,000 times as of early 2026",
-      "Transformers underpin the entire generative AI revolution from ChatGPT to diffusion models",
-      "Over 1 million Transformer checkpoints exist on Hugging Face, spanning NLP, vision, audio, and multimodal applications"
-    ],
-    "source_urls": [
-      "https://en.wikipedia.org/wiki/Transformer_(deep_learning)",
-      "https://arxiv.org/html/2408.15178v1",
-      "https://www.ibm.com/think/topics/transformer-model"
-    ],
-    "max_expected_tokens": 130
-  }
+  "ground_truth": null
 }

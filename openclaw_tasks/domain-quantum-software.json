@@ -4,7 +4,8 @@
   "topic": "domain-quantum",
   "chain_position": 8,
   "depends_on": "domain-quantum-overview",
-  "description": "Use web_search to search for 'quantum computing software frameworks Qiskit Cirq PennyLane SDK comparison'. Results overlap heavily with earlier searches. Compare the 3 main quantum computing SDKs. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'quantum computing progress 2025 2026 logical qubits error correction'. Results overlap heavily with earlier searches. Compare the 3 main quantum computing SDKs. One sentence each. Keep response under 100 words.",
+  "search_query": "quantum computing progress 2025 2026 logical qubits error correction",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Qiskit (IBM) is the most feature-rich and widely adopted framework, offering full-stack capabilities including circuit design, pulse control, noise simulation, and direct cloud access to IBM quantum hardware, making it ideal for education and broad quantum applications. Cirq (Google) is optimized for NISQ algorithm research with fine-grained control over hardware noise and gate-level operations, but has a steeper learning curve and limited public hardware access compared to Qiskit. PennyLane (Xanadu) specializes in differentiable quantum programming for quantum machine learning, integrating natively with PyTorch, TensorFlow, and JAX, and is hardware-agnostic through a plugin system supporting multiple backends.",
-    "key_facts": [
-      "Qiskit is IBM's open-source SDK, the most widely adopted, with direct cloud access to IBM quantum hardware",
-      "Cirq is Google's framework focused on NISQ algorithms with fine-grained noise-aware control but limited public hardware access",
-      "PennyLane specializes in differentiable quantum programming and quantum ML, with native PyTorch/TensorFlow/JAX integration",
-      "PennyLane is hardware-agnostic via plugins supporting Qiskit, Cirq, and other backends",
-      "All three frameworks are Python-based and open source"
-    ],
-    "source_urls": [
-      "https://www.opensourceforu.com/2025/11/the-top-open-source-quantum-computing-frameworks/",
-      "https://postquantum.com/quantum-computing/quantum-programming/",
-      "https://wqs.events/sdk-showdown-pennylane-0-42-vs-qiskit-1-0-a-comprehensive-comparison/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

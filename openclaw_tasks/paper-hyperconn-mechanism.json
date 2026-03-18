@@ -4,7 +4,8 @@
   "topic": "paper-hyperconn",
   "chain_position": 2,
   "depends_on": "paper-hyperconn-overview",
-  "description": "Use web_search to search for 'hyper-connections mechanism dynamic layer connection strength depth features'. Same hyper-connections articles from previous turn will appear. Explain how hyper-connections work: expansion rate, connection weights, and layer reorganization. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Hyper-Connections paper residual connections alternative deep learning'. Same hyper-connections articles from previous turn will appear. Explain how hyper-connections work: expansion rate, connection weights, and layer reorganization. Keep response under 100 words.",
+  "search_query": "Hyper-Connections paper residual connections alternative deep learning",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The expansion rate n controls how many parallel copies of the hidden state are maintained. With n>1, the input is expanded into n streams, each with its own depth connection. Learnable (n+1)x(n+1) connection matrices assign weights between layer inputs and outputs, enabling the network to adjust residual strength per stream. Width-connections allow information exchange between the n hidden vectors within the same layer. Dynamic hyper-connections (DHC) predict connection weights conditioned on input via linear transformation with tanh activation. This enables sequential-parallel duality: the network can learn to arrange layers sequentially, in parallel, or as soft mixtures.",
-    "key_facts": [
-      "Expansion rate n determines the number of parallel residual streams; n=4 is optimal for LLMs",
-      "Learnable (n+1)x(n+1) matrices control connection weights between layer inputs and outputs",
-      "Width-connections enable information exchange between parallel hidden vectors within the same layer",
-      "Dynamic hyper-connections (DHC) adjust weights conditioned on input tokens",
-      "Sequential-parallel duality allows learned layer arrangements beyond fixed sequential or parallel configurations"
-    ],
-    "source_urls": [
-      "https://arxiv.org/html/2409.19606v1",
-      "https://proceedings.iclr.cc/paper_files/paper/2025/file/f1e8ff97057e0c3f6bcb7018c78d4df1-Paper-Conference.pdf"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

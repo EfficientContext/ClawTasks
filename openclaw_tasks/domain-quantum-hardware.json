@@ -4,7 +4,8 @@
   "topic": "domain-quantum",
   "chain_position": 2,
   "depends_on": "domain-quantum-overview",
-  "description": "Use web_search to search for 'quantum computing hardware approaches superconducting trapped ion photonic'. Same quantum articles from previous turn will appear. Compare 3 qubit technologies: superconducting, trapped ion, and photonic. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'quantum computing progress 2025 2026 logical qubits error correction'. Same quantum articles from previous turn will appear. Compare 3 qubit technologies: superconducting, trapped ion, and photonic. One sentence each. Keep response under 100 words.",
+  "search_query": "quantum computing progress 2025 2026 logical qubits error correction",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Superconducting qubits (used by Google and IBM) offer the fastest gate operations and leverage mature semiconductor fabrication, but require cryogenic cooling near absolute zero and suffer from short coherence times around 68-300 microseconds. Trapped ion systems (used by IonQ and Quantinuum) provide the highest gate fidelities (99.99%) and longest coherence times (up to 600 seconds for hyperfine qubits), but face slower gate speeds and scaling challenges with ion-chain architectures. Photonic qubits (pursued by PsiQuantum and Xanadu) operate at room temperature and are naturally noise-resistant, but creating two-qubit gates between non-interacting photons requires complex measurement-based schemes.",
-    "key_facts": [
-      "Superconducting qubits have fast gate speeds but require dilution refrigerators near absolute zero and have coherence times limited to microseconds",
-      "Trapped ion qubits achieve coherence times up to 600 seconds and two-qubit gate fidelities of 99.99%, but face scaling limitations",
-      "Photonic qubits operate at room temperature and resist environmental noise, but two-qubit entangling gates are inherently difficult since photons do not naturally interact",
-      "Trapped ion and photonic investments accelerated sharply in 2025, reflecting a recalibration of which technologies may deliver usable systems first"
-    ],
-    "source_urls": [
-      "https://www.quandela.com/resources/blog/exploring-types-of-quantum-computers-which-technology-leads/",
-      "https://quantumbits.lset.uk/quantum-hardware-battle-heats-up-superconducting-ion-trap-and-photonic-systems-compete-for-scale/",
-      "https://ts2.tech/en/quantum-showdown-superconducting-vs-trapped-ion-vs-photonic-who-will-rule-quantum-computing/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

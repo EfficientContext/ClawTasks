@@ -4,7 +4,8 @@
   "topic": "paper-transformer",
   "chain_position": 9,
   "depends_on": "paper-transformer-overview",
-  "description": "Use web_search to search for 'transformer training optimization techniques learning rate warmup mixed precision'. Results will overlap with earlier transformer searches. List 3 key training techniques used for large transformers. One sentence each. Keep response under 80 words.",
+  "description": "Use web_search to search for 'Attention Is All You Need transformer paper summary'. Results will overlap with earlier transformer searches. List 3 key training techniques used for large transformers. One sentence each. Keep response under 80 words.",
+  "search_query": "Attention Is All You Need transformer paper summary",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "1. **Learning Rate Warmup**: The learning rate increases linearly over an initial warmup period (typically ~4,000 steps), then decays via inverse square root or cosine annealing, which is essential because Adam's noisy second-moment estimates in early training can destabilize Transformer optimization.\n2. **Mixed Precision Training**: Model parameters and activations are stored in FP16 while critical accumulations use FP32, reducing memory usage and accelerating training, with dynamic loss scaling to prevent gradient underflow.\n3. **AdamW Optimizer with Gradient Clipping**: AdamW decouples weight decay from the adaptive learning rate for better generalization, while gradient clipping caps gradient norms to prevent exploding gradients in deep Transformer layers.",
-    "key_facts": [
-      "Learning rate warmup is necessary for Transformers due to noisy Adam second-moment estimates in early training",
-      "The original paper used linear warmup over 4,000 steps followed by inverse square root decay",
-      "Mixed precision (FP16/FP32) reduces memory and speeds up training with dynamic loss scaling",
-      "AdamW decouples weight decay from adaptive learning rate for improved generalization",
-      "Gradient clipping prevents exploding gradients that cause training divergence"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/1804.00247",
-      "https://apxml.com/courses/foundations-transformers-architecture/chapter-7-implementation-details-optimization/learning-rate-scheduling",
-      "https://medium.com/@hassaanidrees7/challenges-in-training-transformers-tips-and-tricks-for-optimizing-performance-e92cc64721bc"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

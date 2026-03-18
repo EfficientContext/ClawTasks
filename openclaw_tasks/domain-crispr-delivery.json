@@ -4,7 +4,8 @@
   "topic": "domain-crispr",
   "chain_position": 6,
   "depends_on": "domain-crispr-overview",
-  "description": "Use web_search to search for 'CRISPR in vivo delivery methods lipid nanoparticle AAV virus-like particles 2025'. Results will overlap with earlier CRISPR searches. What are the main delivery methods for getting CRISPR into cells in vivo? List 3 approaches. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'CRISPR gene editing clinical trials progress 2025 2026'. Results will overlap with earlier CRISPR searches. What are the main delivery methods for getting CRISPR into cells in vivo? List 3 approaches. One sentence each. Keep response under 100 words.",
+  "search_query": "CRISPR gene editing clinical trials progress 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "1. Lipid nanoparticles (LNPs) are the leading non-viral delivery platform, offering low immunogenicity, high cargo capacity, and the ability to be re-dosed, though they primarily target the liver; LNPs delivered the first personalized in vivo CRISPR therapy in 2025.\n2. Adeno-associated viruses (AAVs) efficiently transduce target cells using engineered serotypes for tissue specificity, but are limited by small packaging capacity (~4.7 kb), strong anti-capsid immune responses preventing re-dosing, and risk of insertional mutagenesis.\n3. Virus-like particles (VLPs), such as the customizable RIDE platform, deliver pre-assembled Cas9 ribonucleoprotein complexes for transient editing without genome integration risk, achieving efficiency comparable to AAVs while being reprogrammable to target neurons, T cells, and dendritic cells.",
-    "key_facts": [
-      "LNPs enable repeat dosing unlike AAVs and were used in the first personalized in vivo CRISPR therapy in 2025",
-      "AAVs cannot be re-dosed due to neutralizing antibodies against the viral capsid",
-      "The RIDE VLP platform achieved editing efficiency comparable to AAVs and can be reprogrammed for different cell types",
-      "LNPs primarily target the liver, limiting utility for diseases in other organs",
-      "VLPs deliver pre-assembled ribonucleoprotein complexes, avoiding genome integration risk"
-    ],
-    "source_urls": [
-      "https://www.nature.com/articles/s41565-024-01851-7",
-      "https://www.drugtargetreview.com/article/188056/advancing-gene-editing-the-role-of-lipid-nanoparticles-in-crispr-delivery/",
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC8424283/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

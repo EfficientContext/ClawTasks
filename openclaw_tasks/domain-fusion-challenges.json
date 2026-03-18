@@ -4,7 +4,8 @@
   "topic": "domain-fusion",
   "chain_position": 4,
   "depends_on": "domain-fusion-overview",
-  "description": "Use web_search to search for 'fusion energy challenges plasma containment materials tritium supply'. Many results overlap with earlier fusion searches. What are the top 3 engineering challenges for commercial fusion? One sentence each. Keep response under 80 words.",
+  "description": "Use web_search to search for 'nuclear fusion energy progress ITER private companies 2025 2026'. Many results overlap with earlier fusion searches. What are the top 3 engineering challenges for commercial fusion? One sentence each. Keep response under 80 words.",
+  "search_query": "nuclear fusion energy progress ITER private companies 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Plasma containment remains extremely difficult because turbulence and instabilities cause rapid energy loss, and robust divertors must handle extreme heat loads of 10-20 MW/m² while removing helium ash. Materials face unprecedented conditions, as no currently mass-manufacturable material can simultaneously withstand the intense neutron radiation (~10^14 n/cm²/s), temperatures of 1,100-1,500 K, and elemental transmutation over months without critical degradation. Tritium supply is a critical bottleneck, with global production under 4 kg/year from CANDU reactors, while a single 1 GW fusion plant would consume ~120 kg annually, requiring unproven tritium breeding blankets to close the fuel cycle.",
-    "key_facts": [
-      "No existing mass-manufacturable material can withstand fusion neutron radiation, high temperatures, and transmutation simultaneously",
-      "Global tritium production is under 4 kg/year, but a 1 GW fusion plant needs ~120 kg/year",
-      "Divertors must handle heat loads of 10-20 MW/m²",
-      "Tritium has a 12.3-year half-life and does not exist naturally in significant quantities",
-      "Tritium breeding blankets using lithium are required but remain unproven at scale"
-    ],
-    "source_urls": [
-      "https://www.thechemicalengineer.com/features/the-challenges-of-developing-a-fusion-fuel-cycle-and-how-chemical-engineers-are-solving-them/",
-      "https://kleinmanenergy.upenn.edu/research/publications/bringing-fusion-energy-to-the-grid-challenges-and-pathways/",
-      "https://en.wikipedia.org/wiki/Fusion_power"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

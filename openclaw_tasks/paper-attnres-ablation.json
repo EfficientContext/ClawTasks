@@ -4,7 +4,8 @@
   "topic": "paper-attnres",
   "chain_position": 9,
   "depends_on": "paper-attnres-overview",
-  "description": "Use web_search to search for 'Attention Residuals ablation study content-dependent depth-wise selection results'. Results overlap with earlier searches. What do the ablation studies reveal about the importance of content-dependent depth-wise selection in AttnRes? Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Residuals AttnRes paper Kimi Team residual connections softmax'. Results overlap with earlier searches. What do the ablation studies reveal about the importance of content-dependent depth-wise selection in AttnRes? Keep response under 100 words.",
+  "search_query": "Attention Residuals AttnRes paper Kimi Team residual connections softmax",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Ablation studies validate key design choices in AttnRes. The PreNorm baseline achieves loss 1.766. DenseFormer (fixed input-independent coefficients) shows no improvement at 1.767. Hyper-connections (mHC) with input-dependent parallel streams achieves 1.747. Full AttnRes with content-dependent softmax selection achieves 1.737, and Block AttnRes achieves 1.746. Component ablations reveal: making the query input-dependent (projected from hidden state) further lowers loss to 1.731 but adds a d x d projection and sequential memory access overhead. Replacing softmax with sigmoid degrades performance to 1.741, attributed to softmax's competitive normalization forcing sharper selection. Using learnable input-independent scalars instead of queries and keys hurts performance (1.749). These results confirm that content-dependent selection via softmax attention is critical.",
-    "key_facts": [
-      "Baseline loss 1.766; DenseFormer 1.767 (no gain); mHC 1.747; Full AttnRes 1.737; Block AttnRes 1.746",
-      "Input-dependent query projection lowers loss to 1.731 but adds d x d overhead per layer",
-      "Sigmoid replacing softmax degrades to 1.741; softmax's competitive normalization enables sharper selection",
-      "Input-independent learnable scalars achieve 1.749, worse than content-dependent AttnRes",
-      "Content-dependent depth-wise selection via softmax attention is the key contributor to improvement"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2603.15031",
-      "https://arxiv.org/pdf/2603.15031"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

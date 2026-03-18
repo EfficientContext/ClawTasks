@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 10,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'edge AI future on-device LLM trends 2026 2027 outlook'. Results overlap with earlier edge AI searches. Synthesize: what is the future of on-device AI? Key trends, remaining challenges, and outlook. Keep response under 100 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Results overlap with earlier edge AI searches. Synthesize: what is the future of on-device AI? Key trends, remaining challenges, and outlook. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,22 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The edge AI trajectory through 2026-2027 points toward on-device inference becoming the default for privacy-sensitive and latency-critical applications, with Gartner predicting organizations will use task-specific small models 3x more than general-purpose LLMs by 2027. Key trends include NPUs reaching 80+ TOPS in flagship devices, sub-billion parameter models handling practical tasks via distillation and synthetic data, and hybrid local-cloud architectures balancing capability with efficiency. Challenges persist in ecosystem fragmentation across hardware and software stacks, memory constraints limiting model complexity, and the global memory shortage driven by AI datacenter demand pushing component costs higher through 2027. The outlook favors agentic, multimodal AI at the edge, with inference workloads expected to account for two-thirds of all AI compute by 2026 and the market for inference-optimized chips exceeding $50 billion.",
-    "key_facts": [
-      "Gartner predicts organizations will use small task-specific AI models 3x more than general-purpose LLMs by 2027",
-      "Inference workloads are expected to account for two-thirds of all AI compute by 2026, up from one-third in 2023",
-      "The market for inference-optimized chips is projected to exceed $50 billion in 2026",
-      "The global edge AI market is projected to reach $118.69 billion by 2033 at 21.7% CAGR",
-      "Ecosystem fragmentation and global memory shortage remain key challenges through 2027"
-    ],
-    "source_urls": [
-      "https://www.n-ix.com/edge-ai-trends/",
-      "https://www.edge-ai-vision.com/2026/01/on-device-llms-in-2026-what-changed-what-matters-whats-next/",
-      "https://www.dell.com/en-us/blog/the-power-of-small-edge-ai-predictions-for-2026/",
-      "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/compute-power-ai.html",
-      "https://sensory.com/edge-ai-2026/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

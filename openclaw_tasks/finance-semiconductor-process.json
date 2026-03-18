@@ -4,7 +4,8 @@
   "topic": "finance-semiconductor",
   "chain_position": 3,
   "depends_on": "finance-semiconductor-overview",
-  "description": "Use web_search to search for 'semiconductor process technology 3nm 2nm GAA transistor roadmap'. Many results will overlap with earlier semiconductor searches. Explain the current state of advanced semiconductor process nodes: where are 3nm and 2nm, and what is GAA? Keep response under 100 words.",
+  "description": "Use web_search to search for 'global semiconductor industry market size revenue 2025 2026'. Many results will overlap with earlier semiconductor searches. Explain the current state of advanced semiconductor process nodes: where are 3nm and 2nm, and what is GAA? Keep response under 100 words.",
+  "search_query": "global semiconductor industry market size revenue 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The industry is transitioning from FinFET to Gate-All-Around (GAA) nanosheet transistors at the 2nm node. GAA transistors use stacked horizontal silicon nanosheets (3-5 layers) with the gate wrapping all four sides, providing superior electrostatic control and reduced leakage versus FinFET's three-sided approach. TSMC's N2 entered volume production in Q4 2025, Samsung's SF2 began mass production around the same time, and Intel's 18A (RibbonFET) targets 2026 ramp. 3nm remains in high-volume production using mature FinFET. Beyond 2nm, forksheet and CFET architectures are planned for sub-1.4nm nodes around 2028-2031.",
-    "key_facts": [
-      "GAA nanosheet transistors replace FinFET at 2nm, with the gate surrounding the channel on all four sides for better electrostatic control",
-      "TSMC N2, Samsung SF2, and Intel 18A are all GAA-based 2nm-class processes ramping in 2025-2026",
-      "3nm production uses mature FinFET technology at high volume",
-      "Beyond 2nm, forksheet and CFET architectures target sub-1.4nm nodes around 2028-2031",
-      "The GAA transistor market is projected to reach $2 billion by 2034 at 12.84% CAGR"
-    ],
-    "source_urls": [
-      "https://www.tomshardware.com/tech-industry/semiconductors/tsmc-begins-quietly-volume-production-of-2nm-class-chips-first-gaa-transistor-for-tsmc-claims-up-to-15-percent-improvement-at-iso-power",
-      "https://www.imec-int.com/en/articles/smaller-better-faster-imec-presents-chip-scaling-roadmap",
-      "https://cyberraiden.wordpress.com/2026/03/11/comparing-the-leading-2nm-nodes-in-2026-tsmc-n2-intel-18a-and-samsung-sf2-density-performance-yields-and-ecosystem/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

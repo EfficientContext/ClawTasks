@@ -4,7 +4,8 @@
   "topic": "finance-nvidia",
   "chain_position": 2,
   "depends_on": "finance-nvidia-overview",
-  "description": "Use web_search to search for 'NVIDIA Blackwell H200 B200 data center GPU product lineup'. Same NVIDIA articles from previous turn will appear. List NVIDIA's top 3 AI chip products and their target market. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'NVIDIA financial performance revenue 2025 2026'. Same NVIDIA articles from previous turn will appear. List NVIDIA's top 3 AI chip products and their target market. One sentence each. Keep response under 100 words.",
+  "search_query": "NVIDIA financial performance revenue 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "NVIDIA's top 3 AI chip products target the data center market: The B200 (Blackwell architecture) delivers 3x training and 15x inference performance over prior generations, targeting hyperscale AI training and inference workloads. The B300 offers double the memory of H200 for memory-intensive large language model serving and frontier model training. The GB200 Grace Blackwell Superchip pairs two B200 GPUs with a Grace CPU via NVLink for rack-scale AI supercomputing in the GB200 NVL72 liquid-cooled system.",
-    "key_facts": [
-      "B200 uses Blackwell architecture with 208 billion transistors in a dual-die design",
-      "B300 offers more than twice the memory of H200 and supports up to 1,100W TDP",
-      "GB200 Grace Blackwell Superchip connects two B200 GPUs to a Grace CPU via 900GB/s NVLink",
-      "H200 was the first GPU with HBM3e memory at 141GB and 4.8 TB/s bandwidth",
-      "Blackwell shows up to 15x faster inference than previous-generation Hopper systems"
-    ],
-    "source_urls": [
-      "https://www.exxactcorp.com/blog/hpc/comparing-nvidia-tensor-core-gpus",
-      "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
-      "https://www.bentoml.com/blog/nvidia-data-center-gpus-explained-a100-h200-b200-and-beyond"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

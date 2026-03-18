@@ -4,7 +4,8 @@
   "topic": "finance-nvidia",
   "chain_position": 7,
   "depends_on": "finance-nvidia-overview",
-  "description": "Use web_search to search for 'AI chip market demand supply shortage hyperscaler capex 2026'. Results will overlap with earlier searches. What is the current state of AI chip demand vs supply? How much are hyperscalers spending? Summarize in 3 bullet points. Keep response under 100 words.",
+  "description": "Use web_search to search for 'NVIDIA financial performance revenue 2025 2026'. Results will overlap with earlier searches. What is the current state of AI chip demand vs supply? How much are hyperscalers spending? Summarize in 3 bullet points. Keep response under 100 words.",
+  "search_query": "NVIDIA financial performance revenue 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "- AI chip demand far exceeds supply in 2026: all major hyperscalers report being supply-constrained rather than demand-constrained, with TSMC's N3 node capacity becoming the critical bottleneck as NVIDIA (Rubin), AMD (MI350X), Google (TPU v7), and AWS (Trainium3) all converge on the same process node.\n- Hyperscaler capex is projected at $660-690 billion in 2026, a 36% increase over 2025, with roughly 75% (~$450 billion) directed at AI infrastructure; Amazon leads at $200 billion, followed by Alphabet at $175-185 billion.\n- Additional constraints include HBM memory shortages, as AI demand forces Samsung, SK Hynix, and Micron to reallocate wafer capacity, and power availability bottlenecks with transformer lead times stretching to 128 weeks.",
-    "key_facts": [
-      "Hyperscaler capex projected at $660-690 billion in 2026, up 36% from 2025",
-      "All major AI accelerators transitioning to TSMC N3 node in 2026 creating silicon shortage",
-      "Hyperscalers are supply-constrained, not demand-constrained",
-      "HBM memory shortages as manufacturers reallocate to higher-margin AI chips",
-      "Power transformer lead times stretched to 128 weeks"
-    ],
-    "source_urls": [
-      "https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/",
-      "https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage",
-      "https://introl.com/blog/hyperscaler-capex-690-billion-microsoft-azure-power-bottleneck-2026"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

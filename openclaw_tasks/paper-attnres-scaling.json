@@ -4,7 +4,8 @@
   "topic": "paper-attnres",
   "chain_position": 7,
   "depends_on": "paper-attnres-overview",
-  "description": "Use web_search to search for 'Attention Residuals scaling laws experiments model size performance improvement'. Results overlap with earlier searches. What do the scaling law experiments show about AttnRes benefits at different model sizes? Summarize key findings. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Residuals AttnRes paper Kimi Team residual connections softmax'. Results overlap with earlier searches. What do the scaling law experiments show about AttnRes benefits at different model sizes? Summarize key findings. Keep response under 100 words.",
+  "search_query": "Attention Residuals AttnRes paper Kimi Team residual connections softmax",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Scaling law experiments show both Full and Block AttnRes consistently outperform the PreNorm baseline across all compute budgets. The fitted scaling laws are: Baseline L = 1.891 * C^(-0.057), Block AttnRes L = 1.870 * C^(-0.058), Full AttnRes L = 1.865 * C^(-0.057). Block AttnRes matches the validation loss of a baseline trained with approximately 1.25x more compute. The gap between Full and Block AttnRes narrows with scale, shrinking to just 0.001 at the largest model size. On downstream benchmarks with the 48B Kimi Linear model, AttnRes improves MMLU from 73.5 to 74.6, GPQA-Diamond from 36.9 to 44.4 (+7.5), BBH from 76.3 to 78.0, Math from 53.5 to 57.1, HumanEval from 59.1 to 62.2, and MBPP from 72.0 to 73.9.",
-    "key_facts": [
-      "Fitted scaling laws: Baseline L=1.891*C^(-0.057), Block AttnRes L=1.870*C^(-0.058), Full AttnRes L=1.865*C^(-0.057)",
-      "Block AttnRes matches baseline trained with ~1.25x more compute",
-      "Gap between Full and Block AttnRes narrows to 0.001 at largest scale",
-      "GPQA-Diamond improved from 36.9 to 44.4 (+7.5 points)",
-      "Consistent improvement across all model sizes and all evaluated benchmarks"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2603.15031",
-      "https://arxiv.org/pdf/2603.15031"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

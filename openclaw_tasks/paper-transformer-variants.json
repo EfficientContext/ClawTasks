@@ -4,7 +4,8 @@
   "topic": "paper-transformer",
   "chain_position": 5,
   "depends_on": "paper-transformer-overview",
-  "description": "Use web_search to search for 'transformer variants efficient attention Linformer Performer Longformer comparison'. The same transformer overview pages from earlier turns will appear. Compare 3 major transformer variants (Linformer, Performer, Longformer) -- name each and state its key modification in one sentence.",
+  "description": "Use web_search to search for 'Attention Is All You Need transformer paper summary'. The same transformer overview pages from earlier turns will appear. Compare 3 major transformer variants (Linformer, Performer, Longformer) -- name each and state its key modification in one sentence.",
+  "search_query": "Attention Is All You Need transformer paper summary",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "1. **Longformer** uses a combination of local sliding-window attention and task-specific global attention tokens, reducing complexity from O(n²) to O(n·k) and excelling at long document tasks like summarization and question answering.\n2. **Linformer** assumes the attention matrix is low-rank and projects keys and values to a lower dimension, achieving O(n) memory complexity, though it cannot generalize to sequences longer than its fixed training context or be used auto-regressively.\n3. **Performer** approximates softmax attention using Positive Orthogonal Random Features (FAVOR+), achieving linear O(n) complexity while supporting auto-regressive decoding, though it trades off exact attention fidelity for speed.",
-    "key_facts": [
-      "Longformer combines local sliding-window attention with global attention, reducing complexity to O(n·k)",
-      "Linformer projects keys/values to lower dimensions assuming low-rank attention, achieving O(n) memory",
-      "Performer uses FAVOR+ kernel approximation for linear O(n) complexity",
-      "Linformer cannot be used auto-regressively or generalize to longer sequences than training",
-      "Performer and Longformer both support auto-regressive generation unlike Linformer"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2009.06732",
-      "https://huggingface.co/blog/long-range-transformers",
-      "https://dl.acm.org/doi/fullHtml/10.1145/3530811"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

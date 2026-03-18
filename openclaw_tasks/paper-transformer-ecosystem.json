@@ -4,7 +4,8 @@
   "topic": "paper-transformer",
   "chain_position": 7,
   "depends_on": "paper-transformer-overview",
-  "description": "Use web_search to search for 'transformer model ecosystem GPT BERT T5 LLaMA foundation models'. Results will overlap with earlier transformer searches. List the 4 most influential transformer-based models (GPT, BERT, T5, LLaMA) with one sentence each on their key contribution. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Is All You Need transformer paper summary'. Results will overlap with earlier transformer searches. List the 4 most influential transformer-based models (GPT, BERT, T5, LLaMA) with one sentence each on their key contribution. Keep response under 100 words.",
+  "search_query": "Attention Is All You Need transformer paper summary",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "1. **BERT** (Google, 2018): An encoder-only model using bidirectional masked language modeling that revolutionized language understanding tasks like question answering, sentiment analysis, and powers modern search and vector databases.\n2. **GPT** (OpenAI, 2018-2024): A decoder-only autoregressive model family that predicts the next token, scaling from GPT-1 to GPT-4, powering ChatGPT and catalyzing the generative AI revolution.\n3. **T5** (Google, 2020): An encoder-decoder model that reframes all NLP tasks as text-to-text problems, using relative position biases and enabling flexible multitask learning.\n4. **LLaMA** (Meta, 2023-2025): An open-source decoder-only model family scaling up to 70B+ parameters, enabling broad community research, fine-tuning, and deployment.",
-    "key_facts": [
-      "BERT is encoder-only and uses bidirectional masked language modeling for understanding tasks",
-      "GPT is decoder-only and autoregressive, scaling from GPT-1 through GPT-4 for text generation",
-      "T5 is encoder-decoder and treats all NLP tasks as text-to-text problems",
-      "LLaMA is open-source decoder-only, enabling community research with models up to 70B+ parameters",
-      "Over 1 million Transformer model checkpoints are available on the Hugging Face Hub"
-    ],
-    "source_urls": [
-      "https://www.unite.ai/nlp-rise-with-transformer-models-a-comprehensive-analysis-of-t5-bert-and-gpt/",
-      "https://arxiv.org/html/2302.07730v4",
-      "https://link.springer.com/article/10.1007/s42452-025-07668-w"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

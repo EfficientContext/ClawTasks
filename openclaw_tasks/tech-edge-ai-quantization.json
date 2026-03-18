@@ -4,7 +4,8 @@
   "topic": "tech-edge-ai",
   "chain_position": 3,
   "depends_on": "tech-edge-ai-overview",
-  "description": "Use web_search to search for 'model quantization techniques INT8 INT4 GPTQ AWQ edge deployment'. Many results will overlap with earlier edge AI searches. Explain the main quantization approaches (PTQ, QAT, GPTQ, AWQ) and their accuracy vs speed tradeoffs. Keep response under 100 words.",
+  "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Many results will overlap with earlier edge AI searches. Explain the main quantization approaches (PTQ, QAT, GPTQ, AWQ) and their accuracy vs speed tradeoffs. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Post-Training Quantization (PTQ) applies quantization after training without retraining, offering simplicity but potential accuracy loss at low bit-widths. Quantization-Aware Training (QAT) simulates quantization during training, yielding better accuracy retention but requiring full retraining. GPTQ is a one-shot post-training method using approximate second-order (Hessian) information to quantize weights layer-by-layer to INT4, optimized for GPU inference. AWQ identifies the ~1% of salient weight channels via activation statistics and scales them before quantization, generally achieving higher accuracy than GPTQ at the same bit-width, and is specifically designed for edge deployment. The tradeoff: lower precision reduces memory and latency but risks accuracy degradation, with AWQ and GPTQ mitigating this at INT4.",
-    "key_facts": [
-      "PTQ applies quantization after training with no retraining needed but may degrade accuracy at very low bit-widths",
-      "QAT simulates quantization during training for better accuracy retention but requires full retraining",
-      "GPTQ uses Hessian-based second-order information for layer-wise weight quantization, primarily targeting GPU inference",
-      "AWQ identifies ~1% of salient weight channels via activation statistics and protects them during quantization, yielding higher accuracy than GPTQ at the same bit-width",
-      "INT4 quantization reduces a 70B model from 140GB to ~35GB, enabling deployment on consumer GPUs"
-    ],
-    "source_urls": [
-      "https://medium.com/data-science-at-microsoft/a-practical-guide-to-int4-quantization-for-slms-gptq-vs-awq-olive-and-real-world-results-2f63d6963d1d",
-      "https://mljourney.com/quantization-techniques-for-llm-inference-int8-int4-gptq-and-awq/",
-      "https://aws.amazon.com/blogs/machine-learning/accelerating-llm-inference-with-post-training-weight-and-activation-using-awq-and-gptq-on-amazon-sagemaker-ai/",
-      "https://bentoml.com/llm/getting-started/llm-quantization"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

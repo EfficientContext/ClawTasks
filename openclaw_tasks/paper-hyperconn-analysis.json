@@ -4,7 +4,8 @@
   "topic": "paper-hyperconn",
   "chain_position": 8,
   "depends_on": "paper-hyperconn-overview",
-  "description": "Use web_search to search for 'hyper-connections gradient flow analysis representation learning deep network theory'. Results overlap heavily with earlier searches. What theoretical insights do hyper-connections provide about gradient flow and representation learning? Keep response under 80 words.",
+  "description": "Use web_search to search for 'Hyper-Connections paper residual connections alternative deep learning'. Results overlap heavily with earlier searches. What theoretical insights do hyper-connections provide about gradient flow and representation learning? Keep response under 80 words.",
+  "search_query": "Hyper-Connections paper residual connections alternative deep learning",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Hyper-connections unify Pre-Norm and Post-Norm as special non-trainable cases within a single learnable framework. Analysis of learned connection matrices reveals a Lambda-shaped pattern: layers prefer short-range connections to adjacent layers, while early layers (0, 2) are frequently accessed by most subsequent layers, creating a free mixture of Pre- and Post-Norm styles. The sequential-parallel duality shows networks can learn soft-mixture layer arrangements beyond fixed sequential or parallel configurations. With n=1, DHC underperforms the baseline, but n>1 enables both residual strength adjustment and layer rearrangement, confirming that multi-stream expansion is essential.",
-    "key_facts": [
-      "Pre-Norm and Post-Norm are special non-trainable cases of hyper-connections",
-      "Learned matrices exhibit a Lambda-shaped pattern: short-range decay with persistent early-layer access",
-      "Sequential-parallel duality enables soft-mixture layer arrangements",
-      "Expansion rate n=1 underperforms baseline; n>1 is required for both strength adjustment and layer rearrangement",
-      "The learned pattern represents a free mixture of Pre-Norm and Post-Norm architectures"
-    ],
-    "source_urls": [
-      "https://arxiv.org/html/2409.19606v1",
-      "https://proceedings.iclr.cc/paper_files/paper/2025/file/f1e8ff97057e0c3f6bcb7018c78d4df1-Paper-Conference.pdf"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

@@ -4,7 +4,8 @@
   "topic": "paper-attnres",
   "chain_position": 2,
   "depends_on": "paper-attnres-overview",
-  "description": "Use web_search to search for 'Attention Residuals mechanism softmax attention preceding layer outputs aggregation'. Same articles from previous turn will appear. Explain how AttnRes replaces fixed residual accumulation with learned attention-based aggregation. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Attention Residuals AttnRes paper Kimi Team residual connections softmax'. Same articles from previous turn will appear. Explain how AttnRes replaces fixed residual accumulation with learned attention-based aggregation. Keep response under 100 words.",
+  "search_query": "Attention Residuals AttnRes paper Kimi Team residual connections softmax",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,19 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "AttnRes draws on the duality between sequence modeling and depth-wise aggregation. Standard residual connections compress all prior layer outputs into a single state using fixed unit weights, analogous to RNN recurrence over time. AttnRes generalizes this to depth-wise softmax attention: each layer learns a trainable query vector, while keys and values are the hidden states of all preceding layers. The softmax-weighted combination allows each layer to selectively retrieve relevant information from earlier representations in a content-dependent manner. The authors show through structured-matrix analysis that standard residuals correspond to depth-wise linear attention, while AttnRes performs depth-wise softmax attention. Query vectors are initialized to zero so initial weights are uniform, reducing to equal-weight averaging at the start of training.",
-    "key_facts": [
-      "Each layer has a trainable query vector; keys and values are hidden states of preceding layers",
-      "Standard residuals are shown to be depth-wise linear attention; AttnRes generalizes to depth-wise softmax attention",
-      "Query vectors initialized to zero yield uniform initial weights, equivalent to equal-weight averaging at training start",
-      "Content-dependent, input-aware weighting replaces fixed unit-weight accumulation",
-      "Only one d-dimensional vector per layer is needed, making the mechanism lightweight"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2603.15031",
-      "https://arxiv.org/pdf/2603.15031"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

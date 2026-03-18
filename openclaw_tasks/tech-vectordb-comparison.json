@@ -4,7 +4,8 @@
   "topic": "tech-vectordb",
   "chain_position": 2,
   "depends_on": "tech-vectordb-overview",
-  "description": "Use web_search to search for 'Pinecone vs Weaviate vs Milvus vs Qdrant features benchmark'. Same vector DB articles from previous turn will appear. Compare 4 vector databases. One sentence each on their key differentiator. Keep response under 100 words.",
+  "description": "Use web_search to search for 'vector database comparison 2025 2026 Pinecone Weaviate Milvus'. Same vector DB articles from previous turn will appear. Compare 4 vector databases. One sentence each on their key differentiator. Keep response under 100 words.",
+  "search_query": "vector database comparison 2025 2026 Pinecone Weaviate Milvus",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Pinecone is a fully managed serverless platform that abstracts all infrastructure, offering the easiest onboarding but no self-hosted option and higher costs at scale. Weaviate differentiates with native hybrid search that simultaneously combines vector similarity, BM25 keyword matching, and metadata filtering in a single query through its graph-like data model. Milvus leads in raw performance and scalability with support for 11 index types, GPU acceleration, and distributed architecture handling billions of vectors. Qdrant, built in Rust, excels at advanced pre-filtering with complex metadata conditions while offering the best free tier and resource-efficient quantization.",
-    "key_facts": [
-      "Pinecone is fully managed serverless with no self-hosted option, abstracting all infrastructure complexity",
-      "Weaviate natively combines vector similarity, BM25, and metadata filtering in a single hybrid query",
-      "Milvus supports 11 index types and handles billion-scale vector workloads with GPU acceleration",
-      "Qdrant is built in Rust with advanced pre-filtering and offers a 1GB free tier forever",
-      "Milvus/Zilliz leads latency benchmarks while Qdrant offers the best budget-conscious pricing"
-    ],
-    "source_urls": [
-      "https://tensorblue.com/blog/vector-database-comparison-pinecone-weaviate-qdrant-milvus-2025",
-      "https://liquidmetal.ai/casesAndBlogs/vector-comparison/",
-      "https://www.firecrawl.dev/blog/best-vector-databases",
-      "https://digitaloneagency.com.au/best-vector-database-for-rag-in-2025-pinecone-vs-weaviate-vs-qdrant-vs-milvus-vs-chroma/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

@@ -4,7 +4,8 @@
   "topic": "domain-quantum",
   "chain_position": 5,
   "depends_on": "domain-quantum-overview",
-  "description": "Use web_search to search for 'quantum computing companies Google IBM Microsoft qubit count milestones 2025'. Same quantum articles will appear. Compare the 3 leading quantum computing companies and their latest milestone. One sentence each. Keep response under 100 words.",
+  "description": "Use web_search to search for 'quantum computing progress 2025 2026 logical qubits error correction'. Same quantum articles will appear. Compare the 3 leading quantum computing companies and their latest milestone. One sentence each. Keep response under 100 words.",
+  "search_query": "quantum computing progress 2025 2026 logical qubits error correction",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Google's 105-qubit Willow chip achieved the first below-threshold quantum error correction demonstration and completed a random circuit sampling benchmark in 5 minutes that would take classical supercomputers 10^25 years. IBM deployed its 156-qubit Heron processor in System Two and plans to link three 1,386-qubit Kookaburra chips into a 4,158-qubit system in 2026, with a fault-tolerant 200-logical-qubit Starling system targeted for 2029. Microsoft introduced the Majorana 1 topological qubit chip using novel topoconductor materials and, with Atom Computing, demonstrated 24 entangled logical qubits -- the highest count on record.",
-    "key_facts": [
-      "Google's Willow chip has 105 superconducting qubits and demonstrated below-threshold error correction published in Nature",
-      "IBM's current Heron processor offers 133 or 156 qubits, with a 4,158-qubit Kookaburra system planned for 2026",
-      "Microsoft introduced Majorana 1 topological qubit architecture and demonstrated 24 entangled logical qubits with Atom Computing",
-      "IBM's Starling system targets 200 logical qubits executing 100 million gates by 2029",
-      "Quantinuum reached quantum volume over 2 million with its 56-qubit system"
-    ],
-    "source_urls": [
-      "https://www.spinquanta.com/news-detail/quantum-computing-industry-trends-2025-breakthrough-milestones-commercial-transition",
-      "https://thequantuminsider.com/2025/05/16/quantum-computing-roadmaps-a-look-at-the-maps-and-predictions-of-major-quantum-players/",
-      "https://www.ibm.com/roadmaps/quantum/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

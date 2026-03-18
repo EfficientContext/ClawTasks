@@ -4,7 +4,8 @@
   "topic": "finance-ev-market",
   "chain_position": 6,
   "depends_on": "finance-ev-overview",
-  "description": "Use web_search to search for 'EV charging infrastructure deployment fast charging NACS CCS standards 2025 2026'. Results will overlap with earlier EV searches. What is the state of EV charging infrastructure? Discuss fast charging rollout and connector standard convergence. Keep response under 100 words.",
+  "description": "Use web_search to search for 'electric vehicle market size growth 2025 2026 global sales'. Results will overlap with earlier EV searches. What is the state of EV charging infrastructure? Discuss fast charging rollout and connector standard convergence. Keep response under 100 words.",
+  "search_query": "electric vehicle market size growth 2025 2026 global sales",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The US had 67,916 public DC fast-charging connectors as of January 2026, up 33% year-over-year, with NACS (Tesla's standard, now SAE J3400) holding 48% share and CCS1 at 40%. Every major automaker has committed to switching to NACS for North American EVs by 2025-2026, though 89% of NACS ports are still at Tesla Supercharger sites. The federal NEVI program now requires dual NACS+CCS connectors at funded sites, and deployment is pivoting toward higher-capacity 350-400 kW chargers, with 250+ kW units rising from 25% to 38% of new installations.",
-    "key_facts": [
-      "67,916 public DC fast-charging connectors in the US as of January 2026, up 33% year-over-year",
-      "NACS holds 48% of DC fast-charging connectors, CCS1 holds 40%",
-      "89% of publicly available NACS ports are at Tesla Supercharger sites",
-      "NEVI federal program requires dual NACS+CCS connectors at new funded sites",
-      "Share of 250+ kW chargers rose from 25% to 38% in Q2 2025"
-    ],
-    "source_urls": [
-      "https://evchargingstations.com/chargingnews/dc-fast-charging-connectors-in-the-us-jan-2026/",
-      "https://www.paren.app/reports/state-of-the-industry-report-us-ev-fast-charging-q2-2025",
-      "https://cars.usnews.com/cars-trucks/advice/nacs-vs-ccs"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

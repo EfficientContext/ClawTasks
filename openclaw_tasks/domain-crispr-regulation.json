@@ -4,7 +4,8 @@
   "topic": "domain-crispr",
   "chain_position": 8,
   "depends_on": "domain-crispr-overview",
-  "description": "Use web_search to search for 'CRISPR gene editing regulation FDA EMA approval pathway ethics'. Results overlap heavily with earlier searches. How are regulators approaching CRISPR therapies? What are the key regulatory and ethical considerations? Summarize in 3 sentences. Keep response under 100 words.",
+  "description": "Use web_search to search for 'CRISPR gene editing clinical trials progress 2025 2026'. Results overlap heavily with earlier searches. How are regulators approaching CRISPR therapies? What are the key regulatory and ethical considerations? Summarize in 3 sentences. Keep response under 100 words.",
+  "search_query": "CRISPR gene editing clinical trials progress 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The FDA regulates CRISPR therapies as biologics under its Center for Biologics Evaluation and Research (CBER), requiring Investigational New Drug applications for clinical trials; in late 2025, the FDA introduced a novel \"plausible mechanism\" approval pathway to accelerate personalized gene-editing therapies for rare diseases based on data from small patient populations. The EMA takes a risk-based approach to gene therapy development, and both agencies prohibit germline editing in clinical applications, with U.S. congressional riders explicitly blocking federal funding for heritable human embryo modifications. Key ethical concerns include the distinction between therapeutic somatic editing and enhancement, equitable access given costs of $2.2 million per treatment, informed consent challenges for embryonic or pediatric applications, and the irreversibility of germline changes affecting future generations without their consent.",
-    "key_facts": [
-      "The FDA's new 'plausible mechanism' pathway (2025-2026) enables accelerated approval of personalized CRISPR therapies for rare diseases",
-      "CRISPR products are classified as biologics and regulated through CBER at the FDA",
-      "U.S. law prohibits FDA from using funds to review IND submissions involving heritable human embryo modifications",
-      "The EMA uses a risk-based approach to gene therapy product development",
-      "Casgevy's $2.2 million price raises significant equity and access concerns"
-    ],
-    "source_urls": [
-      "https://www.statnews.com/2026/01/26/fda-makary-prasad-crispr-gene-editing-concerns-baby-kj/",
-      "https://www.fiercebiotech.com/biotech/fda-illuminates-new-approval-pathway-bespoke-gene-therapies",
-      "https://www.congress.gov/crs-product/R44824"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

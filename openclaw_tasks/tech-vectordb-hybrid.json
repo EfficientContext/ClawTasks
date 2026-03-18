@@ -4,7 +4,8 @@
   "topic": "tech-vectordb",
   "chain_position": 7,
   "depends_on": "tech-vectordb-overview",
-  "description": "Use web_search to search for 'hybrid search vector database keyword BM25 sparse dense retrieval'. Results will overlap with earlier searches. What is hybrid search and why is it better than pure vector search? Explain in 3 sentences. Keep response under 100 words.",
+  "description": "Use web_search to search for 'vector database comparison 2025 2026 Pinecone Weaviate Milvus'. Results will overlap with earlier searches. What is hybrid search and why is it better than pure vector search? Explain in 3 sentences. Keep response under 100 words.",
+  "search_query": "vector database comparison 2025 2026 Pinecone Weaviate Milvus",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Hybrid search combines sparse retrieval (BM25 keyword matching based on term frequency and document length normalization) with dense retrieval (transformer-based semantic embeddings like BERT or OpenAI) to capture both exact lexical matches and semantic meaning in a single query. The two approaches retrieve complementary result sets: BM25 excels at rare keywords, proper nouns, and exact phrases, while dense vectors handle paraphrases, synonyms, and vocabulary gaps, yielding 15-30% better recall than either method alone. Results are typically merged using Reciprocal Rank Fusion (RRF), which combines ranked lists by position rather than raw scores, avoiding the scale mismatch between cosine similarity and BM25 scores.",
-    "key_facts": [
-      "Hybrid search combines BM25 sparse retrieval with dense vector semantic retrieval",
-      "Sparse and dense methods retrieve complementary relevant document sets",
-      "Hybrid search achieves 15-30% better recall than either approach alone",
-      "Reciprocal Rank Fusion (RRF) merges results by rank position rather than raw scores",
-      "BM25 excels at exact keywords and rare terms while dense vectors handle paraphrases and synonyms"
-    ],
-    "source_urls": [
-      "https://weaviate.io/blog/hybrid-search-explained",
-      "https://dev.to/qvfagundes/dense-vs-sparse-retrieval-mastering-faiss-bm25-and-hybrid-search-4kb1",
-      "https://www.elastic.co/what-is/hybrid-search",
-      "https://www.meilisearch.com/blog/hybrid-search-rag"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

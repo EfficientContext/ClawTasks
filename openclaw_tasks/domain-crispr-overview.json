@@ -5,6 +5,7 @@
   "chain_position": 1,
   "depends_on": null,
   "description": "Use web_search to search for 'CRISPR gene editing clinical trials progress 2025 2026'. Summarize the current state of CRISPR clinical trials in 3 bullet points. Keep response under 100 words.",
+  "search_query": "CRISPR gene editing clinical trials progress 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "• As of early 2026, over 250 gene-editing clinical trials are tracked globally, with 150+ active trials spanning CRISPR-Cas9, base editing, prime editing, and epigenetic editing across blood disorders, cardiovascular disease, cancer, and rare genetic conditions.\n• Casgevy (exagamglogene autotemcel), the first approved CRISPR therapy for sickle cell disease and beta-thalassemia, is now approved in 8+ markets; Intellia and Beam have advanced in vivo and base-editing candidates into Phase III trials.\n• Key 2025 milestones include Cleveland Clinic's first-in-human CRISPR cholesterol-lowering trial, the first personalized LNP-delivered CRISPR therapy for an infant, and Beam's first clinical correction of a disease-causing mutation via base editing.",
-    "key_facts": [
-      "Over 250 gene-editing clinical trials are being tracked globally, with 150+ currently active as of 2025-2026",
-      "Casgevy is approved in 8+ markets including the US, UK, EU, and several Middle Eastern countries",
-      "Cleveland Clinic's Phase 1 trial of CTX310 demonstrated safe reduction of LDL cholesterol and triglycerides via CRISPR",
-      "Beam Therapeutics achieved the first-ever clinical correction of a disease-causing mutation using base editing",
-      "The first personalized in vivo CRISPR therapy was delivered to an infant via lipid nanoparticles in 2025"
-    ],
-    "source_urls": [
-      "https://crisprmedicinenews.com/clinical-trials/",
-      "https://innovativegenomics.org/news/crispr-clinical-trials-2025/",
-      "https://newsroom.clevelandclinic.org/2025/11/08/cleveland-clinic-first-in-human-trial-of-crispr-gene-editing-therapy-shown-to-safely-lower-cholesterol-and-triglycerides"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

@@ -5,6 +5,7 @@
   "chain_position": 1,
   "depends_on": null,
   "description": "Use web_search to search for 'edge AI inference frameworks on-device deployment 2025 2026'. Summarize the edge AI landscape in 3 bullet points. Keep response under 100 words.",
+  "search_query": "edge AI inference frameworks on-device deployment 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "- The edge AI inference landscape in 2025-2026 is driven by frameworks like LiteRT (formerly TFLite), llama.cpp, ONNX Runtime, ExecuTorch, and Core ML, enabling on-device deployment of sub-billion to 3B parameter models on smartphones, PCs, and IoT devices.\n- Key drivers are latency reduction (eliminating cloud round-trips), privacy (data never leaves the device), cost savings (offloading inference to user hardware), and offline availability.\n- Compact models such as Llama 3.2 (1B/3B), Gemma 3 (270M+), Phi-4 mini (3.8B), and Qwen2.5 (0.5B-1.5B) now handle practical tasks on-device, aided by INT4/INT8 quantization and NPUs exceeding 45 TOPS in flagship chips.",
-    "key_facts": [
-      "LiteRT (formerly TFLite) delivers 1.4x faster GPU performance than TFLite and adds NPU acceleration",
-      "Sub-billion parameter models now handle many practical on-device tasks thanks to distillation and high-quality synthetic training data",
-      "Four key drivers of edge AI adoption are latency, privacy, cost, and offline availability",
-      "Major compact models for edge include Llama 3.2, Gemma 3, Phi-4 mini, SmolLM2, and Qwen2.5",
-      "Hybrid edge-cloud for agentic AI can yield energy savings up to 75% and cost reductions over 80%"
-    ],
-    "source_urls": [
-      "https://www.edge-ai-vision.com/2026/01/on-device-llms-in-2026-what-changed-what-matters-whats-next/",
-      "https://developers.googleblog.com/litert-the-universal-framework-for-on-device-ai/",
-      "https://hakia.com/tech-insights/edge-ai/",
-      "https://blog.huebits.in/top-10-edge-ai-frameworks-for-2025-best-tools-for-real-time-on-device-machine-learning/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

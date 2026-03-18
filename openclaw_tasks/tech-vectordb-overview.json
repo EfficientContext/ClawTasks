@@ -5,6 +5,7 @@
   "chain_position": 1,
   "depends_on": null,
   "description": "Use web_search to search for 'vector database comparison 2025 2026 Pinecone Weaviate Milvus'. Summarize the vector DB landscape in 3 bullet points. Keep response under 100 words.",
+  "search_query": "vector database comparison 2025 2026 Pinecone Weaviate Milvus",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,21 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "- The vector database market is dominated by Pinecone (fully managed serverless, easiest onboarding), Weaviate (open-source with best-in-class hybrid search and GraphQL API), and Milvus (open-source, distributed, optimized for billion-scale deployments with GPU acceleration).\n- Benchmarks show Milvus/Zilliz leading in latency (<10ms p50), with Pinecone and Qdrant at 20-50ms, and Weaviate slightly higher but offering richer query capabilities.\n- The market is projected to grow from $2.65B (2025) to $8.95B (2030) at 27.5% CAGR, driven by RAG adoption and generative AI workloads.",
-    "key_facts": [
-      "Pinecone is fully managed and serverless with no self-hosted option, optimized for minimal operational overhead",
-      "Milvus is open-source and distributed, supporting billions of vectors with GPU acceleration and 11 index types",
-      "Weaviate excels at hybrid search combining vector similarity, BM25 keyword matching, and metadata filtering natively",
-      "Benchmarks show Milvus/Zilliz with sub-10ms p50 latency on 768-dim embeddings",
-      "The vector database market is expected to reach $8.95B by 2030 at 27.5% CAGR"
-    ],
-    "source_urls": [
-      "https://liquidmetal.ai/casesAndBlogs/vector-comparison/",
-      "https://tensorblue.com/blog/vector-database-comparison-pinecone-weaviate-qdrant-milvus-2025",
-      "https://www.firecrawl.dev/blog/best-vector-databases",
-      "https://www.fortunebusinessinsights.com/vector-database-market-112428"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

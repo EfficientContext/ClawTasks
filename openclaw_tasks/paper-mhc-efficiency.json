@@ -4,7 +4,8 @@
   "topic": "paper-mhc",
   "chain_position": 7,
   "depends_on": "paper-mhc-overview",
-  "description": "Use web_search to search for 'mHC computational efficiency infrastructure optimization practical deployment'. Results overlap with earlier searches. What are the computational costs and efficiency tradeoffs of mHC? Summarize infrastructure considerations. Keep response under 100 words.",
+  "description": "Use web_search to search for 'mHC manifold-constrained hyper-connections paper identity mapping scalability'. Results overlap with earlier searches. What are the computational costs and efficiency tradeoffs of mHC? Summarize infrastructure considerations. Keep response under 100 words.",
+  "search_query": "mHC manifold-constrained hyper-connections paper identity mapping scalability",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "mHC with 4 parallel residual streams adds only 6.7% training time overhead, achieved through three infrastructure optimizations. Kernel fusion: the entire mHC computation (normalization, projections, 20 Sinkhorn iterations) is fused into single GPU kernels using TileLang with mixed-precision processing, minimizing memory bandwidth bottlenecks. Selective recomputation: intermediate activations are discarded after the forward pass and recomputed during backpropagation by rerunning lightweight mHC kernels. DualPipe scheduling: recomputation is decoupled from pipeline communication dependencies, enabling overlapping of communication and computation at pipeline stage boundaries using high-priority compute streams. Without these optimizations, a naive implementation could see 50-100% overhead.",
-    "key_facts": [
-      "Only 6.7% additional training time overhead with 4 parallel residual streams after optimization",
-      "Kernel fusion combines normalization, projections, and 20 Sinkhorn iterations into single GPU kernels using TileLang",
-      "Selective recomputation discards intermediate activations and recomputes during backpropagation",
-      "DualPipe scheduling overlaps communication and computation at pipeline stage boundaries",
-      "A naive implementation without optimizations could incur 50-100% overhead"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/2512.24880",
-      "https://jianyuh.github.io/deepseek/2026/01/06/mHC.html",
-      "https://aicybr.com/blog/deepseek-mhc-architecture"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

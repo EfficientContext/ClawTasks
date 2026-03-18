@@ -4,7 +4,8 @@
   "topic": "finance-nvidia",
   "chain_position": 4,
   "depends_on": "finance-nvidia-overview",
-  "description": "Use web_search to search for 'NVIDIA risks export controls China competition valuation'. Many results overlap with earlier NVIDIA searches. What are the top 3 risks to NVIDIA's business? One sentence each. Keep response under 80 words.",
+  "description": "Use web_search to search for 'NVIDIA financial performance revenue 2025 2026'. Many results overlap with earlier NVIDIA searches. What are the top 3 risks to NVIDIA's business? One sentence each. Keep response under 80 words.",
+  "search_query": "NVIDIA financial performance revenue 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "U.S. export controls have effectively eliminated NVIDIA's China data center revenue, with the H20 ban triggering a $4.5 billion charge and CEO Huang stating market share went from 95% to 0%, while Chinese competitors like Huawei's Ascend chips accelerate domestic alternatives. Rising competition from hyperscaler custom silicon (Google TPUs, Amazon Trainium) and AMD's MI300X threatens NVIDIA's pricing power and market share in specific workloads. NVIDIA's elevated valuation, with P/E ratios well above industry averages, leaves the stock vulnerable to sharp correction if AI spending growth decelerates or competition intensifies.",
-    "key_facts": [
-      "H20 export ban caused a $4.5 billion charge in Q1 FY2026",
-      "Jensen Huang stated NVIDIA went from 95% to 0% market share in China",
-      "Huawei Ascend chips and other Chinese competitors are filling the gap",
-      "Google TPUs and Amazon Trainium represent custom silicon competition from hyperscalers",
-      "NVIDIA's forward P/E compressed 27% year-over-year per Bernstein"
-    ],
-    "source_urls": [
-      "https://www.cnbc.com/2026/02/26/nvidia-china-chip-sales-export-controls-ai-competition.html",
-      "https://the-cfo.io/2025/04/17/nvidia-faces-5-5b-hit-as-us-tightens-chip-export-rules-to-china/",
-      "https://www.ainvest.com/news/nvidia-china-exports-political-influence-risks-navigating-regulatory-shifts-national-security-tensions-2512/"
-    ],
-    "max_expected_tokens": 100
-  }
+  "ground_truth": null
 }

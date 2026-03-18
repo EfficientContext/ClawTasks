@@ -1812,15 +1812,51 @@ def generate_task_id(task: dict) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:12]
 
 
+def extract_search_query(description: str) -> str:
+    marker = "Use web_search to search for '"
+    start = description.find(marker)
+    if start == -1:
+        raise ValueError(f"Could not find search query in description: {description!r}")
+    start += len(marker)
+    end = description.find("'", start)
+    if end == -1:
+        raise ValueError(f"Could not parse search query in description: {description!r}")
+    return description[start:end]
+
+
+def replace_search_query(description: str, query: str) -> str:
+    marker = "Use web_search to search for '"
+    start = description.find(marker)
+    if start == -1:
+        return description
+    start += len(marker)
+    end = description.find("'", start)
+    if end == -1:
+        return description
+    return description[:start] + query + description[end:]
+
+
+TOPIC_SEARCH_QUERIES = {}
+for template in TASK_TEMPLATES:
+    topic = template["topic"]
+    if topic not in TOPIC_SEARCH_QUERIES and template["chain_position"] == 1:
+        TOPIC_SEARCH_QUERIES[topic] = extract_search_query(template["description"])
+
+
+assert len(TOPIC_SEARCH_QUERIES) == 13, f"Expected 13 topics, got {len(TOPIC_SEARCH_QUERIES)}"
+
+
 def build_task(template: dict) -> dict:
     task_id = generate_task_id(template)
+    search_query = TOPIC_SEARCH_QUERIES[template["topic"]]
     return {
         "id": task_id,
         "name": template["name"],
         "topic": template["topic"],
         "chain_position": template["chain_position"],
         "depends_on": template["depends_on"],
-        "description": template["description"],
+        "description": replace_search_query(template["description"], search_query),
+        "search_query": search_query,
         "category": template["category"],
         "difficulty": template["difficulty"],
         "expected_steps": template["expected_steps"],

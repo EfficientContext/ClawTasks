@@ -4,7 +4,8 @@
   "topic": "paper-mamba",
   "chain_position": 10,
   "depends_on": "paper-mamba-overview",
-  "description": "Use web_search to search for 'Mamba SSM future outlook transformer replacement subquadratic attention'. Results overlap with earlier SSM searches. Synthesize: will SSMs replace transformers? Summarize the consensus view, key strengths, and remaining gaps. Keep response under 100 words.",
+  "description": "Use web_search to search for 'Mamba state space model paper summary selective SSM'. Results overlap with earlier SSM searches. Synthesize: will SSMs replace transformers? Summarize the consensus view, key strengths, and remaining gaps. Keep response under 100 words.",
+  "search_query": "Mamba state space model paper summary selective SSM",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Strengths: Mamba provides linear-time training and constant-memory inference, achieving 5x throughput over Transformers while matching their quality at equivalent scale, with proven scaling laws and production adoption in models like Jamba and Granite 4.0. Weaknesses: Pure SSMs still lag on in-context learning, associative recall, and multi-hop reasoning tasks due to their finite recurrent state bottleneck and optimization instability; practical deployments predominantly use hybrid SSM-attention architectures. Outlook: The 2026 consensus favors hybrids (1-in-8 attention ratio) as the default architecture, with pure SSMs dominating long-context and edge scenarios; the SSD framework's proof that SSMs and attention are mathematically dual suggests future convergence toward modular architectures that dynamically switch between paradigms based on task demands.",
-    "key_facts": [
-      "Mamba achieves 5x throughput over Transformers with linear-time complexity and constant inference memory",
-      "Pure SSMs still lag on in-context learning and retrieval, making hybrids the production default",
-      "The 2026 consensus favors hybrid architectures with approximately 1-in-8 attention-to-SSM layer ratio",
-      "SSD framework proved mathematical duality between SSMs and attention via semiseparable matrices",
-      "Production adoption includes IBM Granite 4.0, AI21 Jamba, and Mistral Codestral Mamba"
-    ],
-    "source_urls": [
-      "https://goombalab.github.io/blog/2025/tradeoffs/",
-      "https://blog.serendeep.tech/blog/the-post-transformer-era",
-      "https://arxiv.org/abs/2405.21060"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

@@ -4,7 +4,8 @@
   "topic": "finance-ev-market",
   "chain_position": 5,
   "depends_on": "finance-ev-overview",
-  "description": "Use web_search to search for 'EV subsidies tax credits policy US EU China 2025 2026'. Same EV market articles will appear. Compare EV policy incentives in US, EU, and China. One sentence per region. Keep response under 100 words.",
+  "description": "Use web_search to search for 'electric vehicle market size growth 2025 2026 global sales'. Same EV market articles will appear. Compare EV policy incentives in US, EU, and China. One sentence per region. Keep response under 100 words.",
+  "search_query": "electric vehicle market size growth 2025 2026 global sales",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The US $7,500 federal EV tax credit expired September 30, 2025, and a 100% tariff on Chinese-made EVs effectively blocks Chinese imports, leaving the US market largely unsubsidized in 2026. The EU imposed tiered countervailing duties of 7.8%-35.3% on Chinese EVs while exploring corporate fleet mandates and negotiating minimum-price agreements with Chinese manufacturers. China is phasing down its NEV purchase tax exemption from full exemption (through 2025) to a 50% exemption capped at RMB 15,000 per vehicle for 2026-2027, signaling a shift toward market-driven growth.",
-    "key_facts": [
-      "US $7,500 federal EV tax credit expired September 30, 2025",
-      "US maintains 100% tariff on Chinese-made EVs",
-      "EU imposed tiered duties of 7.8%-35.3% on Chinese EVs based on subsidy levels",
-      "China halves its NEV purchase tax exemption starting 2026, capped at RMB 15,000 per vehicle",
-      "China's cumulative EV subsidies totaled an estimated $78 billion from 2018-2021"
-    ],
-    "source_urls": [
-      "https://markets.financialcontent.com/wral/article/marketminute-2026-1-1-the-great-electric-wall-global-tariffs-and-the-end-of-subsidies-reshape-the-ev-market-in-2026",
-      "https://www.china-briefing.com/news/china-extends-nev-tax-reduction-and-exemption-policy-to-2027/",
-      "https://eastasiaforum.org/2025/12/04/chinas-ev-dominance-sparks-eu-retaliation/"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

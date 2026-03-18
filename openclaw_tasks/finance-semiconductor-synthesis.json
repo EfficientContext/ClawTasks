@@ -4,7 +4,8 @@
   "topic": "finance-semiconductor",
   "chain_position": 10,
   "depends_on": "finance-semiconductor-overview",
-  "description": "Use web_search to search for 'semiconductor industry outlook 2026 2027 AI demand geopolitics forecast'. Results overlap with earlier semiconductor searches. Synthesize the semiconductor industry outlook: growth drivers, key risks, and market forecast. Keep response under 100 words.",
+  "description": "Use web_search to search for 'global semiconductor industry market size revenue 2025 2026'. Results overlap with earlier semiconductor searches. Synthesize the semiconductor industry outlook: growth drivers, key risks, and market forecast. Keep response under 100 words.",
+  "search_query": "global semiconductor industry market size revenue 2025 2026",
   "category": "summarization",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "The semiconductor industry is poised to approach $1 trillion in 2026 revenue, driven overwhelmingly by AI infrastructure spending on logic, HBM memory, and advanced packaging. Growth drivers include hyperscaler capex (~$500 billion from top four), the 2nm GAA node ramp, and an HBM supercycle with capacity sold out through 2026. Key risks include heavy dependence on AI demand (without which growth drops from 31% to 8%), Taiwan concentration risk, U.S.-China decoupling and export controls, potential AI monetization disappointments, and power constraints for data centers. The consensus forecast is bullish for 2026 but increasingly cautious for 2027-2028, as the industry's narrow reliance on AI spending, combined with geopolitical fragmentation and possible overcapacity, could trigger a correction if demand falters.",
-    "key_facts": [
-      "2026 semiconductor revenue forecast at ~$975 billion, approaching $1 trillion",
-      "AI is the dominant growth driver; without AI-related logic and memory, industry growth drops from 31% to 8%",
-      "Key risks: Taiwan concentration, U.S.-China decoupling, AI monetization uncertainty, power constraints",
-      "HBM and advanced packaging are critical bottlenecks shaping supply dynamics",
-      "Outlook is bullish for 2026 but increasingly cautious for 2027-2028 due to correction risks"
-    ],
-    "source_urls": [
-      "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html",
-      "https://www.semi.org/en/semi-press-release/semi-forecasts-69-percent-growth-in-advanced-chipmaking-capacity-through-2028-due-to-ai",
-      "https://kpmg.com/us/en/media/news/ai-boom-drives-semiconductor-industry-confidence.html"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

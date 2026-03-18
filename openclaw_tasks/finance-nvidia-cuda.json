@@ -4,7 +4,8 @@
   "topic": "finance-nvidia",
   "chain_position": 3,
   "depends_on": "finance-nvidia-overview",
-  "description": "Use web_search to search for 'NVIDIA CUDA ecosystem moat developer tools AI frameworks'. Many results will overlap with earlier NVIDIA searches. Explain NVIDIA's CUDA software moat: why is it hard for competitors to replicate? Answer in 3 sentences. Keep response under 100 words.",
+  "description": "Use web_search to search for 'NVIDIA financial performance revenue 2025 2026'. Many results will overlap with earlier NVIDIA searches. Explain NVIDIA's CUDA software moat: why is it hard for competitors to replicate? Answer in 3 sentences. Keep response under 100 words.",
+  "search_query": "NVIDIA financial performance revenue 2025 2026",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "NVIDIA's CUDA platform, launched in 2007, has created one of the deepest competitive moats in technology by building an ecosystem of 4+ million developers, 3,000+ GPU-accelerated applications, and 40,000+ companies locked into NVIDIA hardware through proprietary libraries like cuDNN, TensorRT, and NCCL. Switching costs are prohibitive because rewriting CUDA code for alternatives like AMD's ROCm can take months of engineering effort and hundreds of thousands of dollars. This creates a powerful flywheel: more developers attract better software optimization, which drives superior performance, which attracts even more developers, sustaining NVIDIA's 90%+ market share in AI training hardware.",
-    "key_facts": [
-      "CUDA ecosystem includes 4+ million developers and 40,000+ companies",
-      "Key libraries include cuDNN, TensorRT, and NCCL that lock developers into NVIDIA hardware",
-      "Rewriting CUDA code for AMD ROCm can cost months and hundreds of thousands of dollars",
-      "NVIDIA holds over 90% market share in AI training hardware partly due to CUDA",
-      "CUDA was first released in 2006-2007, giving NVIDIA nearly two decades of ecosystem investment"
-    ],
-    "source_urls": [
-      "https://medium.com/@productbrief/nvidias-cuda-moat-how-developer-lock-in-built-a-trillion-dollar-ai-empire-40d2f7f7dca2",
-      "https://weightythoughts.com/p/cuda-is-still-a-giant-moat-for-nvidia",
-      "https://www.nasdaq.com/articles/nvidias-broadening-moat-securing-ai-ecosystem"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }

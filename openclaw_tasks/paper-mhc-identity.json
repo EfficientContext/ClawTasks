@@ -4,7 +4,8 @@
   "topic": "paper-mhc",
   "chain_position": 3,
   "depends_on": "paper-mhc-overview",
-  "description": "Use web_search to search for 'identity mapping property residual connections importance deep learning training stability'. Results overlap with earlier searches. Why is the identity mapping property important for training stability? How does HC compromise it and how does mHC restore it? Keep response under 100 words.",
+  "description": "Use web_search to search for 'mHC manifold-constrained hyper-connections paper identity mapping scalability'. Results overlap with earlier searches. Why is the identity mapping property important for training stability? How does HC compromise it and how does mHC restore it? Keep response under 100 words.",
+  "search_query": "mHC manifold-constrained hyper-connections paper identity mapping scalability",
   "category": "planning",
   "difficulty": "medium",
   "expected_steps": 3,
@@ -19,20 +20,5 @@
     }
   ],
   "num_skills": 1,
-  "ground_truth": {
-    "reference_answer": "Identity mapping in residual connections ensures that forward signals and backward gradients can propagate directly between any two layers without attenuation. As shown by He et al. (2016), this property is essential for training very deep networks: it prevents gradient vanishing, avoids signal degradation, and enables convergence of networks with hundreds or thousands of layers. Multiplicative manipulations on shortcuts -- scaling, gating, convolutions, or dropout -- demonstrably impair training stability. In mHC's context, unconstrained Hyper-Connections break identity mapping by using arbitrary mixing matrices, causing signal amplification up to 3000x and training divergence in large models. Restoring identity mapping via doubly stochastic constraints is what makes mHC stable at scale.",
-    "key_facts": [
-      "Identity mapping allows direct propagation of both forward signals and backward gradients between any two network layers",
-      "He et al. (2016) proved that modifications to identity shortcuts (scaling, gating, convolutions, dropout) consistently hurt training performance",
-      "Without identity mapping, gradient vanishing and signal degradation prevent training of very deep networks",
-      "Unconstrained Hyper-Connections break identity mapping, causing signal amplification up to 3000x in 27B models",
-      "All modern transformer architectures (GPT, BERT, etc.) rely on residual connections with identity mapping for stable training"
-    ],
-    "source_urls": [
-      "https://arxiv.org/abs/1603.05027",
-      "https://arxiv.org/abs/2512.24880",
-      "https://en.wikipedia.org/wiki/Residual_neural_network"
-    ],
-    "max_expected_tokens": 120
-  }
+  "ground_truth": null
 }
