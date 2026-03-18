@@ -320,6 +320,8 @@ def run_task_claude(task: dict, timeout: int = 800,
 
 OPENAI_MODEL = os.environ.get("OPENAI_MODEL", os.environ.get("MODEL_ID", "gpt-5.4-mini"))
 DOCS_DIR = ROOT / "openclaw_docs"
+WEB_SEARCH_MAX_RESULTS = int(os.environ.get("CLAWBENCH_WEB_SEARCH_MAX_RESULTS", "3"))
+WEB_SEARCH_MAX_DOC_CHARS = int(os.environ.get("CLAWBENCH_WEB_SEARCH_MAX_DOC_CHARS", "2000"))
 
 
 # ── Tool-use pipeline: real web search → tool_result messages ──────────────
@@ -354,7 +356,7 @@ def _extract_question(description: str) -> str:
     return m.group(1).strip() if m else description
 
 
-def _web_search_and_fetch(query: str, max_results: int = 7) -> list[dict]:
+def _web_search_and_fetch(query: str, max_results: int = WEB_SEARCH_MAX_RESULTS) -> list[dict]:
     """DuckDuckGo search + fetch page content for each result.
 
     Returns list of {"title": ..., "url": ..., "content": ...}.
@@ -412,7 +414,7 @@ def _web_search_and_fetch(query: str, max_results: int = 7) -> list[dict]:
                     text = _re.sub(r"<[^>]+>", " ", text)
                     text = _re.sub(r"\s+", " ", text).strip()
                     if len(text) > 200:
-                        content = text[:8000]
+                        content = text[:WEB_SEARCH_MAX_DOC_CHARS]
             except Exception:
                 pass  # Keep snippet as content
 
@@ -421,7 +423,7 @@ def _web_search_and_fetch(query: str, max_results: int = 7) -> list[dict]:
     return results
 
 
-def _search_and_cache(task: dict, max_results: int = 7) -> list[dict]:
+def _search_and_cache(task: dict, max_results: int = WEB_SEARCH_MAX_RESULTS) -> list[dict]:
     """Live web search + fetch, saving results to disk for inspection.
 
     Always performs a live search (no loading from cache) so that e2e
@@ -460,7 +462,6 @@ def _build_tool_messages(task: dict) -> list[dict]:
     question = _extract_question(task["description"])
     docs = _search_and_cache(task)
 
-    MAX_DOC_CHARS = 8000
     tool_call_id = f"call_{task['name']}"
     tool_result = json.dumps({
         "query": query,
@@ -469,7 +470,7 @@ def _build_tool_messages(task: dict) -> list[dict]:
             {
                 "title": d.get("title", ""),
                 "url": d.get("url", ""),
-                "description": d.get("content", "")[:MAX_DOC_CHARS],
+                "description": d.get("content", "")[:WEB_SEARCH_MAX_DOC_CHARS],
             }
             for d in docs
         ],
