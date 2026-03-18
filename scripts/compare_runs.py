@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Compare two benchmark runs side-by-side (e.g. ContextPilot vs baseline).
 
+Shows per-turn prefill (TTFT) and end-to-end (elapsed) latency comparison.
+
 Usage:
     python scripts/compare_runs.py results/run_A.json results/run_B.json
     python scripts/compare_runs.py results/run_A.json results/run_B.json --topic paper-transformer
@@ -13,8 +15,32 @@ import sys
 
 
 def load_run(path: pathlib.Path) -> dict:
-    data = json.loads(path.read_text())
-    return data
+    return json.loads(path.read_text())
+
+
+def _fmt_ms(val):
+    if val is None:
+        return "n/a"
+    return f"{val:.0f}ms"
+
+
+def _fmt_s(val):
+    if val is None:
+        return "n/a"
+    return f"{val:.1f}s"
+
+
+def _speedup(a, b):
+    """Speedup of A over B (>1 means A is faster)."""
+    if a is None or b is None or a <= 0:
+        return None
+    return b / a
+
+
+def _fmt_speedup(val):
+    if val is None:
+        return ""
+    return f"{val:.2f}x"
 
 
 def compare(run_a: dict, run_b: dict, label_a: str, label_b: str,
@@ -22,7 +48,6 @@ def compare(run_a: dict, run_b: dict, label_a: str, label_b: str,
     results_a = {r["task_name"]: r for r in run_a["results"]}
     results_b = {r["task_name"]: r for r in run_b["results"]}
 
-    # Find common tasks
     common = sorted(set(results_a) & set(results_b),
                     key=lambda n: (results_a[n].get("topic", ""),
                                   results_a[n].get("chain_position", 1)))
@@ -41,112 +66,146 @@ def compare(run_a: dict, run_b: dict, label_a: str, label_b: str,
         topics.setdefault(topic, []).append(name)
 
     # Header
-    print(f"\n{'='*80}")
+    print(f"\n{'='*100}")
     print(f"Run Comparison")
     print(f"  A: {label_a}")
     print(f"  B: {label_b}")
-    print(f"{'='*80}")
+    print(f"{'='*100}")
 
-    overall_a_elapsed = []
-    overall_b_elapsed = []
-    overall_a_ttft = []
-    overall_b_ttft = []
+    all_prefill_a = []
+    all_prefill_b = []
+    all_e2e_a = []
+    all_e2e_b = []
 
     for topic in sorted(topics):
         task_names = topics[topic]
-        print(f"\n{'─'*80}")
-        print(f"  Topic: {topic} ({len(task_names)} turns)")
-        print(f"{'─'*80}")
-        print(f"  {'Turn':<6} {'Task':<35} {'A elapsed':>10} {'B elapsed':>10} {'Speedup':>8}"
-              f"  {'A TTFT':>8} {'B TTFT':>8}")
-        print(f"  {'─'*4:<6} {'─'*33:<35} {'─'*8:>10} {'─'*8:>10} {'─'*6:>8}"
-              f"  {'─'*6:>8} {'─'*6:>8}")
 
-        topic_a_elapsed = []
-        topic_b_elapsed = []
+        print(f"\n{'─'*100}")
+        print(f"  Topic: {topic} ({len(task_names)} turns)")
+        print(f"{'─'*100}")
+
+        # Table header
+        print(f"  {'Turn':<5} {'Task':<28}"
+              f" {'A prefill':>9} {'B prefill':>9} {'Speedup':>8}"
+              f" │ {'A e2e':>8} {'B e2e':>8} {'Speedup':>8}")
+        print(f"  {'─'*4:<5} {'─'*26:<28}"
+              f" {'─'*8:>9} {'─'*8:>9} {'─'*6:>8}"
+              f" │ {'─'*7:>8} {'─'*7:>8} {'─'*6:>8}")
+
+        topic_prefill_a = []
+        topic_prefill_b = []
+        topic_e2e_a = []
+        topic_e2e_b = []
 
         for name in task_names:
             ra = results_a[name]
             rb = results_b[name]
             pos = ra.get("chain_position", 1)
 
-            ea = ra.get("elapsed_seconds", 0)
-            eb = rb.get("elapsed_seconds", 0)
-            topic_a_elapsed.append(ea)
-            topic_b_elapsed.append(eb)
-            overall_a_elapsed.append(ea)
-            overall_b_elapsed.append(eb)
+            # Prefill = TTFT (proxy-measured)
+            pa = ra.get("proxy_ttft_first_ms")
+            pb = rb.get("proxy_ttft_first_ms")
+            if pa is not None:
+                topic_prefill_a.append(pa)
+                all_prefill_a.append(pa)
+            if pb is not None:
+                topic_prefill_b.append(pb)
+                all_prefill_b.append(pb)
 
-            speedup = eb / ea if ea > 0 else 0
-            speedup_str = f"{speedup:.2f}x" if ea > 0 else "n/a"
+            # E2E = elapsed time
+            ea = ra.get("elapsed_seconds")
+            eb = rb.get("elapsed_seconds")
+            if ea is not None:
+                topic_e2e_a.append(ea)
+                all_e2e_a.append(ea)
+            if eb is not None:
+                topic_e2e_b.append(eb)
+                all_e2e_b.append(eb)
 
-            ta = ra.get("proxy_ttft_first_ms")
-            tb = rb.get("proxy_ttft_first_ms")
-            if ta is not None:
-                overall_a_ttft.append(ta)
-            if tb is not None:
-                overall_b_ttft.append(tb)
+            prefill_sp = _speedup(pa, pb)
+            e2e_sp = _speedup(ea, eb)
 
-            ta_str = f"{ta:.0f}ms" if ta is not None else "n/a"
-            tb_str = f"{tb:.0f}ms" if tb is not None else "n/a"
-
+            short_name = name.replace(f"{topic}-", "")
             status_a = "OK" if ra.get("success") else "FAIL"
             status_b = "OK" if rb.get("success") else "FAIL"
-            short_name = name.replace(f"{topic}-", "")
             if status_a != "OK" or status_b != "OK":
                 short_name += f" [{status_a}/{status_b}]"
 
-            print(f"  {pos:<6} {short_name:<35} {ea:>9.1f}s {eb:>9.1f}s {speedup_str:>8}"
-                  f"  {ta_str:>8} {tb_str:>8}")
+            print(f"  {pos:<5} {short_name:<28}"
+                  f" {_fmt_ms(pa):>9} {_fmt_ms(pb):>9} {_fmt_speedup(prefill_sp):>8}"
+                  f" │ {_fmt_s(ea):>8} {_fmt_s(eb):>8} {_fmt_speedup(e2e_sp):>8}")
 
         # Topic summary
-        avg_a = sum(topic_a_elapsed) / len(topic_a_elapsed) if topic_a_elapsed else 0
-        avg_b = sum(topic_b_elapsed) / len(topic_b_elapsed) if topic_b_elapsed else 0
-        total_a = sum(topic_a_elapsed)
-        total_b = sum(topic_b_elapsed)
-        topic_speedup = total_b / total_a if total_a > 0 else 0
+        print(f"  {'─'*4:<5} {'─'*26:<28}"
+              f" {'─'*8:>9} {'─'*8:>9} {'─'*6:>8}"
+              f" │ {'─'*7:>8} {'─'*7:>8} {'─'*6:>8}")
 
-        print(f"  {'':─<6} {'':─<35} {'':─>10} {'':─>10} {'':─>8}")
-        print(f"  {'Avg':<6} {'':<35} {avg_a:>9.1f}s {avg_b:>9.1f}s")
-        print(f"  {'Total':<6} {'':<35} {total_a:>9.1f}s {total_b:>9.1f}s {topic_speedup:.2f}x")
+        avg_pa = sum(topic_prefill_a) / len(topic_prefill_a) if topic_prefill_a else None
+        avg_pb = sum(topic_prefill_b) / len(topic_prefill_b) if topic_prefill_b else None
+        avg_ea = sum(topic_e2e_a) / len(topic_e2e_a) if topic_e2e_a else None
+        avg_eb = sum(topic_e2e_b) / len(topic_e2e_b) if topic_e2e_b else None
+
+        print(f"  {'Avg':<5} {'':<28}"
+              f" {_fmt_ms(avg_pa):>9} {_fmt_ms(avg_pb):>9} {_fmt_speedup(_speedup(avg_pa, avg_pb)):>8}"
+              f" │ {_fmt_s(avg_ea):>8} {_fmt_s(avg_eb):>8} {_fmt_speedup(_speedup(avg_ea, avg_eb)):>8}")
+
+        # Show prefill trend if data exists
+        if topic_prefill_a and len(topic_prefill_a) >= 3:
+            first = topic_prefill_a[0]
+            last = topic_prefill_a[-1]
+            trend = ((last - first) / first) * 100 if first > 0 else 0
+            direction = "↓" if trend < 0 else "↑"
+            print(f"        {'A prefill trend:':<28}"
+                  f" turn 1: {_fmt_ms(first):<8} → turn {len(topic_prefill_a)}: {_fmt_ms(last):<8}"
+                  f" ({direction}{abs(trend):.0f}%)")
+        if topic_prefill_b and len(topic_prefill_b) >= 3:
+            first = topic_prefill_b[0]
+            last = topic_prefill_b[-1]
+            trend = ((last - first) / first) * 100 if first > 0 else 0
+            direction = "↓" if trend < 0 else "↑"
+            print(f"        {'B prefill trend:':<28}"
+                  f" turn 1: {_fmt_ms(first):<8} → turn {len(topic_prefill_b)}: {_fmt_ms(last):<8}"
+                  f" ({direction}{abs(trend):.0f}%)")
 
     # Overall summary
-    print(f"\n{'='*80}")
+    print(f"\n{'='*100}")
     print(f"Overall Summary ({len(common)} tasks)")
-    print(f"{'='*80}")
+    print(f"{'='*100}")
 
-    total_a = sum(overall_a_elapsed)
-    total_b = sum(overall_b_elapsed)
-    avg_a = total_a / len(overall_a_elapsed) if overall_a_elapsed else 0
-    avg_b = total_b / len(overall_b_elapsed) if overall_b_elapsed else 0
+    print(f"\n  {'Metric':<30} {'A':>12} {'B':>12} {'Speedup':>10}")
+    print(f"  {'─'*28:<30} {'─'*10:>12} {'─'*10:>12} {'─'*8:>10}")
 
-    print(f"  {'Metric':<30} {'A':>12} {'B':>12} {'Ratio':>8}")
-    print(f"  {'─'*28:<30} {'─'*10:>12} {'─'*10:>12} {'─'*6:>8}")
+    # Prefill summary
+    if all_prefill_a or all_prefill_b:
+        avg_pa = sum(all_prefill_a) / len(all_prefill_a) if all_prefill_a else None
+        avg_pb = sum(all_prefill_b) / len(all_prefill_b) if all_prefill_b else None
+        sp = _speedup(avg_pa, avg_pb)
+        print(f"  {'Avg prefill (TTFT)':<30} {_fmt_ms(avg_pa):>12} {_fmt_ms(avg_pb):>12} {_fmt_speedup(sp):>10}")
 
-    overall_speedup = total_b / total_a if total_a > 0 else 0
-    print(f"  {'Total elapsed':<30} {total_a:>11.1f}s {total_b:>11.1f}s {overall_speedup:>7.2f}x")
-    print(f"  {'Avg elapsed/task':<30} {avg_a:>11.1f}s {avg_b:>11.1f}s")
+        if all_prefill_a:
+            p50a = sorted(all_prefill_a)[len(all_prefill_a) // 2]
+            print(f"  {'P50 prefill (A)':<30} {_fmt_ms(p50a):>12}")
+        if all_prefill_b:
+            p50b = sorted(all_prefill_b)[len(all_prefill_b) // 2]
+            print(f"  {'P50 prefill (B)':<30} {'':>12} {_fmt_ms(p50b):>12}")
 
-    if overall_a_ttft:
-        avg_ttft_a = sum(overall_a_ttft) / len(overall_a_ttft)
-        print(f"  {'Avg TTFT (A only)':<30} {avg_ttft_a:>10.0f}ms")
-    if overall_b_ttft:
-        avg_ttft_b = sum(overall_b_ttft) / len(overall_b_ttft)
-        print(f"  {'Avg TTFT (B only)':<30} {'':>12} {avg_ttft_b:>10.0f}ms")
+    # E2E summary
+    avg_ea = sum(all_e2e_a) / len(all_e2e_a) if all_e2e_a else None
+    avg_eb = sum(all_e2e_b) / len(all_e2e_b) if all_e2e_b else None
+    total_ea = sum(all_e2e_a) if all_e2e_a else None
+    total_eb = sum(all_e2e_b) if all_e2e_b else None
 
+    sp = _speedup(avg_ea, avg_eb)
+    print(f"  {'Avg e2e latency':<30} {_fmt_s(avg_ea):>12} {_fmt_s(avg_eb):>12} {_fmt_speedup(sp):>10}")
+    sp = _speedup(total_ea, total_eb)
+    print(f"  {'Total e2e time':<30} {_fmt_s(total_ea):>12} {_fmt_s(total_eb):>12} {_fmt_speedup(sp):>10}")
+
+    # Pass rate
     passed_a = sum(1 for n in common if results_a[n].get("success"))
     passed_b = sum(1 for n in common if results_b[n].get("success"))
     print(f"  {'Tasks passed':<30} {passed_a:>12} {passed_b:>12}")
 
-    # Load eval files if they exist
-    for label, run_data, run_label in [(label_a, run_a, "A"), (label_b, run_b, "B")]:
-        if "eval_summary" in run_data:
-            s = run_data["eval_summary"]
-            print(f"\n  Eval ({run_label}): composite={s.get('avg_composite', 0):.3f} "
-                  f"accuracy={s.get('avg_accuracy', 0):.2f}/5 "
-                  f"completeness={s.get('avg_completeness', 0):.2f}/5")
-
-    print(f"{'='*80}\n")
+    print(f"{'='*100}\n")
 
 
 def main():
