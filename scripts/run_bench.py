@@ -589,10 +589,36 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             session_id = topic_sessions.get(topic,
                                             f"clawbench-{topic}-{run_ts}")
 
-        # Seed gets task prompt; follow-ups get just the question.
-        # For openclaw: no skill injection (OpenClaw handles it).
-        # For claude: manual skill injection for ALL tasks (no skill system).
-        # For openai: build tool-use messages (user + assistant tool_call + tool result).
+        print(f"[{i+1}/{len(tasks)}] {task['name']}")
+        max_pos = max(t.get("chain_position", 1) for t in tasks if t.get("topic") == topic)
+        print(f"  Topic: {topic} | position {chain_pos}/{max_pos} | "
+              f"session: ...{session_id[-12:]}")
+        print(f"  Skills: {', '.join(task['skills_required'])}")
+
+        if dry_run:
+            if runner == "openai":
+                # Show message structure without doing any network calls
+                query = _extract_query(task["description"])
+                question = _extract_question(task["description"])
+                print(f"  [DRY RUN] Tool messages: 3 msgs (user + assistant tool_call + tool result)")
+                print(f"  [DRY RUN] Query: {query[:80]}")
+                print(f"  [DRY RUN] Question: {question[:80]}...")
+                results.append({"task_id": task["id"], "task_name": task["name"],
+                               "topic": topic, "chain_position": chain_pos,
+                               "dry_run": True, "query": query})
+            else:
+                prompt = build_prompt_claude(task) if runner == "claude" else (
+                    build_prompt_seed(task) if is_seed else task["description"])
+                plen = len(prompt)
+                print(f"  [DRY RUN] Prompt: ~{plen} chars"
+                      f"{' (full w/ skills)' if is_seed else ' (follow-up)'}")
+                print(f"  [DRY RUN] {task['description'][:80]}...")
+                results.append({"task_id": task["id"], "task_name": task["name"],
+                               "topic": topic, "chain_position": chain_pos,
+                               "dry_run": True, "prompt_length": plen})
+            continue
+
+        # Build prompt / tool messages (live search happens here for openai runner)
         prompt = None
         tool_msgs = None
         if runner == "claude":
@@ -603,43 +629,6 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             prompt = build_prompt_seed(task)
         else:
             prompt = task["description"]
-
-        print(f"[{i+1}/{len(tasks)}] {task['name']}")
-        max_pos = max(t.get("chain_position", 1) for t in tasks if t.get("topic") == topic)
-        print(f"  Topic: {topic} | position {chain_pos}/{max_pos} | "
-              f"session: ...{session_id[-12:]}")
-        print(f"  Skills: {', '.join(task['skills_required'])}")
-
-        if dry_run:
-            if runner == "openai" and tool_msgs:
-                # Show tool message structure for dry run
-                n_docs = 0
-                tool_content_len = 0
-                for m in tool_msgs:
-                    if m.get("role") == "tool":
-                        tool_content_len = len(m.get("content", ""))
-                        try:
-                            tr = json.loads(m["content"])
-                            n_docs = len(tr.get("results", []))
-                        except Exception:
-                            pass
-                question = tool_msgs[0].get("content", "")[:80]
-                print(f"  [DRY RUN] Tool messages: 3 msgs | {n_docs} docs | "
-                      f"tool_result ~{tool_content_len} chars")
-                print(f"  [DRY RUN] Question: {question}...")
-                results.append({"task_id": task["id"], "task_name": task["name"],
-                               "topic": topic, "chain_position": chain_pos,
-                               "dry_run": True, "n_docs": n_docs,
-                               "tool_result_chars": tool_content_len})
-            else:
-                plen = len(prompt) if prompt else 0
-                print(f"  [DRY RUN] Prompt: ~{plen} chars"
-                      f"{' (full w/ skills)' if is_seed else ' (follow-up)'}")
-                print(f"  [DRY RUN] {task['description'][:80]}...")
-                results.append({"task_id": task["id"], "task_name": task["name"],
-                               "topic": topic, "chain_position": chain_pos,
-                               "dry_run": True, "prompt_length": plen})
-            continue
 
         print(f"  Running{'...' if is_seed else ' (follow-up in same session)...'}")
 
