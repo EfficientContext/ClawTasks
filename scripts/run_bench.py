@@ -104,13 +104,34 @@ def _get_proxy_ttft_last(n: int) -> list[float]:
         return []
 
 
+def _node_version_ok(node_bin: str) -> bool:
+    try:
+        r = subprocess.run([node_bin, '-p', 'process.versions.node'], capture_output=True, text=True, timeout=5)
+        if r.returncode != 0:
+            return False
+        version = (r.stdout or '').strip().split('.')
+        major = int(version[0]) if version and version[0].isdigit() else 0
+        minor = int(version[1]) if len(version) > 1 and version[1].isdigit() else 0
+        return major > 22 or (major == 22 and minor >= 12)
+    except Exception:
+        return False
+
+
 def get_node22_path():
-    nvm_dir = pathlib.Path.home() / ".nvm"
+    nvm_dir = pathlib.Path.home() / '.nvm'
     if nvm_dir.exists():
-        for d in sorted((nvm_dir / "versions" / "node").glob("v22.*"), reverse=True):
-            node = d / "bin" / "node"
-            if node.exists():
+        for d in sorted((nvm_dir / 'versions' / 'node').glob('v22.*'), reverse=True):
+            node = d / 'bin' / 'node'
+            if node.exists() and _node_version_ok(str(node)):
                 return str(node)
+    try:
+        r = subprocess.run(['which', 'node'], capture_output=True, text=True, timeout=5)
+        if r.returncode == 0:
+            node = r.stdout.strip()
+            if node and _node_version_ok(node):
+                return node
+    except Exception:
+        pass
     return None
 
 
