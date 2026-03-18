@@ -16,9 +16,11 @@ import argparse
 import json
 import os
 import pathlib
+import re as _re
 import subprocess
 import sys
 import time
+import urllib.request
 from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -212,61 +214,164 @@ OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini")
 DOCS_DIR = ROOT / "openclaw_docs"
 
 
-def _load_task_docs(task: dict) -> list[dict]:
-    """Load pre-fetched search result documents for a task."""
-    topic = task.get("topic", "")
-    pos = task.get("chain_position", 1)
-    doc_file = DOCS_DIR / topic / f"turn_{pos:02d}.json"
-    if not doc_file.exists():
-        return []
-    try:
-        return json.loads(doc_file.read_text())
-    except Exception:
-        return []
+# ── Tool-use pipeline: real web search → tool_result messages ──────────────
+
+WEB_SEARCH_TOOL = {
+    "type": "function",
+    "function": {
+        "name": "web_search",
+        "description": "Search the web for information",
+        "parameters": {
+            "type": "object",
+            "properties": {"query": {"type": "string", "description": "Search query"}},
+            "required": ["query"],
+        },
+    },
+}
 
 
-def _build_prompt_with_docs(task: dict) -> str:
-    """Build a prompt with injected search result documents.
+def _extract_query(description: str) -> str:
+    """Extract the search query from a task description.
 
-    Produces a RAG-style prompt with numbered documents that ContextPilot
-    can detect and reorder for prefix cache sharing.
+    Task descriptions follow the pattern:
+        Use web_search to search for '<query>'. <question>
     """
-    import re as _re
-    docs = _load_task_docs(task)
-    description = task["description"]
+    m = _re.search(r"search for ['\"]([^'\"]+)['\"]", description)
+    return m.group(1) if m else description[:120]
 
-    # Extract the question part (everything after the search instruction)
-    # e.g. "Use web_search to search for '...'. Summarize X. Keep under Y words."
-    m = _re.search(r"search for '[^']+'[.\s]*(.*)", description, _re.DOTALL)
-    question = m.group(1).strip() if m else description
 
-    if not docs:
-        # No docs fetched — fall back to plain description
-        return description
+def _extract_question(description: str) -> str:
+    """Extract the user question (everything after the search instruction)."""
+    m = _re.search(r"search for ['\"][^'\"]+['\"][.\s]*(.*)", description, _re.DOTALL)
+    return m.group(1).strip() if m else description
 
-    # Format documents as numbered list (ContextPilot detects [N] format)
-    doc_parts = []
-    for i, doc in enumerate(docs, 1):
-        title = doc.get("title", "")
-        url = doc.get("url", "")
-        content = doc.get("content", "")
-        # Truncate individual docs to keep total prompt manageable
-        if len(content) > 6000:
-            content = content[:6000] + "..."
-        header = f"[{i}] {title}"
+
+def _web_search_and_fetch(query: str, max_results: int = 7) -> list[dict]:
+    """DuckDuckGo search + fetch page content for each result.
+
+    Returns list of {"title": ..., "url": ..., "content": ...}.
+    """
+    try:
+        from duckduckgo_search import DDGS
+    except ImportError:
+        print("  [search] duckduckgo-search not installed. Run: pip install duckduckgo-search")
+        return []
+
+    results = []
+    try:
+        with DDGS() as ddgs:
+            hits = list(ddgs.text(query, max_results=max_results))
+    except Exception as e:
+        print(f"  [search] DuckDuckGo search failed: {e}")
+        return []
+
+    for hit in hits:
+        url = hit.get("href", hit.get("link", ""))
+        title = hit.get("title", "")
+        snippet = hit.get("body", hit.get("snippet", ""))
+
+        # Try to fetch full page content
+        content = snippet
         if url:
-            header += f" ({url})"
-        doc_parts.append(f"{header}\n{content}")
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    raw = resp.read()
+                    # Decode with fallback
+                    for enc in ("utf-8", "latin-1"):
+                        try:
+                            html = raw.decode(enc)
+                            break
+                        except UnicodeDecodeError:
+                            continue
+                    else:
+                        html = raw.decode("utf-8", errors="replace")
+                    # Strip HTML tags for a rough text extraction
+                    text = _re.sub(r"<script[^>]*>.*?</script>", "", html, flags=_re.S)
+                    text = _re.sub(r"<style[^>]*>.*?</style>", "", text, flags=_re.S)
+                    text = _re.sub(r"<[^>]+>", " ", text)
+                    text = _re.sub(r"\s+", " ", text).strip()
+                    if len(text) > 200:
+                        content = text[:8000]
+            except Exception:
+                pass  # Keep snippet as content
 
-    docs_text = "\n\n".join(doc_parts)
+        results.append({"title": title, "url": url, "content": content})
 
-    prompt = f"""Based on the following search results, answer the question below.
+    return results
 
-{docs_text}
 
-Question: {question}"""
+def _search_and_cache(task: dict, max_results: int = 7) -> list[dict]:
+    """Live web search + fetch, saving results to disk for inspection.
 
-    return prompt
+    Always performs a live search (no loading from cache) so that e2e
+    timing reflects real network latency.  Results are saved to
+    openclaw_docs/{topic}/turn_{NN}.json for post-hoc inspection.
+    """
+    query = _extract_query(task["description"])
+    docs = _web_search_and_fetch(query, max_results=max_results)
+
+    # Save for inspection / debugging (never loaded back)
+    if docs:
+        topic = task.get("topic", "")
+        pos = task.get("chain_position", 1)
+        cache_dir = DOCS_DIR / topic
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        cache_file = cache_dir / f"turn_{pos:02d}.json"
+        cache_file.write_text(json.dumps(docs, indent=2, ensure_ascii=False))
+
+    return docs
+
+
+def _build_tool_messages(task: dict) -> list[dict]:
+    """Build the 3-message tool-use sequence for a single turn.
+
+    Returns:
+        [user question, assistant tool_call, tool result]
+
+    The tool result uses the JSON format that ContextPilot's
+    intercept_parser.py detects via json_results mode:
+        {"query": ..., "provider": ..., "results": [{url, title, description}, ...]}
+
+    ContextPilot extracts `url` from each result item via _JSON_ID_KEYS
+    for clustering and cross-turn deduplication.
+    """
+    query = _extract_query(task["description"])
+    question = _extract_question(task["description"])
+    docs = _search_and_cache(task)
+
+    tool_call_id = f"call_{task['name']}"
+    tool_result = json.dumps({
+        "query": query,
+        "provider": "duckduckgo",
+        "results": [
+            {
+                "title": d.get("title", ""),
+                "url": d.get("url", ""),
+                "description": d.get("content", ""),
+            }
+            for d in docs
+        ],
+    })
+
+    return [
+        {"role": "user", "content": question},
+        {
+            "role": "assistant",
+            "content": None,
+            "tool_calls": [
+                {
+                    "id": tool_call_id,
+                    "type": "function",
+                    "function": {
+                        "name": "web_search",
+                        "arguments": json.dumps({"query": query}),
+                    },
+                }
+            ],
+        },
+        {"role": "tool", "tool_call_id": tool_call_id, "content": tool_result},
+    ]
 
 
 def _get_openai_base_url() -> str:
@@ -281,16 +386,23 @@ def _get_openai_base_url() -> str:
 
 def run_task_openai(task: dict, timeout: int = 800,
                     session_id: str | None = None,
-                    prompt: str | None = None,
+                    tool_messages: list[dict] | None = None,
                     model: str | None = None) -> dict:
-    """Run a task using the OpenAI API, routing through ContextPilot if available."""
+    """Run a task using the OpenAI API with tool-use messages.
+
+    Each turn adds 3 messages to the session:
+      1. user question
+      2. assistant tool_call (web_search)
+      3. tool result (JSON with search results)
+
+    ContextPilot intercepts the tool result messages transparently,
+    extracting URLs for dedup and reordering documents.
+    """
     try:
         from openai import OpenAI
     except ImportError:
         return _error_result(task, "openai package not installed. Run: pip install openai")
 
-    if prompt is None:
-        prompt = task["description"]
     if model is None:
         model = OPENAI_MODEL
     if session_id is None:
@@ -304,19 +416,44 @@ def run_task_openai(task: dict, timeout: int = 800,
         _openai_sessions[session_id] = [
             {"role": "system", "content": (
                 "You are a research assistant. Answer questions concisely based on "
-                "your knowledge. Keep responses under 100 words unless told otherwise. "
-                "Use bullet points when asked."
+                "the provided search results. Keep responses under 100 words unless "
+                "told otherwise. Use bullet points when asked."
             )}
         ]
     messages = _openai_sessions[session_id]
-    messages.append({"role": "user", "content": prompt})
+
+    # Build tool messages if not provided
+    if tool_messages is None:
+        tool_messages = _build_tool_messages(task)
+
+    # Extend session history with the 3-message tool-use sequence
+    messages.extend(tool_messages)
+
+    # Calculate prompt length (tool result content can be large)
+    prompt_length = sum(
+        len(m.get("content", "") or "")
+        for m in messages
+    )
+
+    n_docs = 0
+    for m in tool_messages:
+        if m.get("role") == "tool":
+            try:
+                tr = json.loads(m["content"])
+                n_docs = len(tr.get("results", []))
+            except Exception:
+                pass
+    print(f"  [tool] {n_docs} docs in tool_result, ~{prompt_length} chars total")
 
     start_time = time.time()
     try:
-        # Use streaming to measure TTFT (time to first token)
+        # Stream with tools declared but tool_choice="none" so the model
+        # answers based on the tool results already in context.
         stream = client.chat.completions.create(
             model=model,
             messages=messages,
+            tools=[WEB_SEARCH_TOOL],
+            tool_choice="none",
             max_completion_tokens=300,
             timeout=timeout,
             stream=True,
@@ -345,7 +482,8 @@ def run_task_openai(task: dict, timeout: int = 800,
             "elapsed_seconds": round(elapsed, 2),
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "skills": task["skills_required"],
-            "prompt_length": sum(len(m["content"]) for m in messages),
+            "prompt_length": prompt_length,
+            "n_docs": n_docs,
             "model": model,
             "client_ttft_ms": round(ttft_ms, 2) if ttft_ms is not None else None,
         }
@@ -454,13 +592,13 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         # Seed gets task prompt; follow-ups get just the question.
         # For openclaw: no skill injection (OpenClaw handles it).
         # For claude: manual skill injection for ALL tasks (no skill system).
+        # For openai: build tool-use messages (user + assistant tool_call + tool result).
+        prompt = None
+        tool_msgs = None
         if runner == "claude":
             prompt = build_prompt_claude(task)
         elif runner == "openai":
-            # Build prompt with injected search result documents.
-            # Documents are loaded from openclaw_docs/{topic}/turn_{N}.json
-            # and formatted as numbered docs for ContextPilot to detect/reorder.
-            prompt = _build_prompt_with_docs(task)
+            tool_msgs = _build_tool_messages(task)
         elif is_seed:
             prompt = build_prompt_seed(task)
         else:
@@ -473,13 +611,34 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         print(f"  Skills: {', '.join(task['skills_required'])}")
 
         if dry_run:
-            plen = len(prompt)
-            print(f"  [DRY RUN] Prompt: ~{plen} chars"
-                  f"{' (full w/ skills)' if is_seed else ' (follow-up)'}")
-            print(f"  [DRY RUN] {task['description'][:80]}...")
-            results.append({"task_id": task["id"], "task_name": task["name"],
-                           "topic": topic, "chain_position": chain_pos,
-                           "dry_run": True, "prompt_length": plen})
+            if runner == "openai" and tool_msgs:
+                # Show tool message structure for dry run
+                n_docs = 0
+                tool_content_len = 0
+                for m in tool_msgs:
+                    if m.get("role") == "tool":
+                        tool_content_len = len(m.get("content", ""))
+                        try:
+                            tr = json.loads(m["content"])
+                            n_docs = len(tr.get("results", []))
+                        except Exception:
+                            pass
+                question = tool_msgs[0].get("content", "")[:80]
+                print(f"  [DRY RUN] Tool messages: 3 msgs | {n_docs} docs | "
+                      f"tool_result ~{tool_content_len} chars")
+                print(f"  [DRY RUN] Question: {question}...")
+                results.append({"task_id": task["id"], "task_name": task["name"],
+                               "topic": topic, "chain_position": chain_pos,
+                               "dry_run": True, "n_docs": n_docs,
+                               "tool_result_chars": tool_content_len})
+            else:
+                plen = len(prompt) if prompt else 0
+                print(f"  [DRY RUN] Prompt: ~{plen} chars"
+                      f"{' (full w/ skills)' if is_seed else ' (follow-up)'}")
+                print(f"  [DRY RUN] {task['description'][:80]}...")
+                results.append({"task_id": task["id"], "task_name": task["name"],
+                               "topic": topic, "chain_position": chain_pos,
+                               "dry_run": True, "prompt_length": plen})
             continue
 
         print(f"  Running{'...' if is_seed else ' (follow-up in same session)...'}")
@@ -492,7 +651,8 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
                                       session_id=session_id, prompt=prompt)
         elif runner == "openai":
             result = run_task_openai(task, timeout,
-                                    session_id=session_id, prompt=prompt,
+                                    session_id=session_id,
+                                    tool_messages=tool_msgs,
                                     model=model)
         else:
             # Claude runner: no session resume (each task runs independently;
