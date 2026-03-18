@@ -57,7 +57,17 @@ def check_contextpilot_running(port: int = 8765) -> bool:
         resp = urllib.request.urlopen(f"http://localhost:{port}/health", timeout=3)
         return resp.status == 200
     except Exception:
-        return False
+        # Also try: ContextPilot may return non-200 in stateful mode before
+        # index is initialized, but it's still running and can proxy requests.
+        try:
+            import urllib.request, urllib.error
+            urllib.request.urlopen(f"http://localhost:{port}/", timeout=3)
+            return True
+        except urllib.error.HTTPError:
+            # Got an HTTP response (even if error) — server is running
+            return True
+        except Exception:
+            return False
 
 
 def _get_proxy_ttft_count() -> int:
