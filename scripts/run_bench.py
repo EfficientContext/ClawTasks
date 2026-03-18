@@ -252,18 +252,30 @@ def _web_search_and_fetch(query: str, max_results: int = 7) -> list[dict]:
     Returns list of {"title": ..., "url": ..., "content": ...}.
     """
     try:
-        from duckduckgo_search import DDGS
+        from ddgs import DDGS
     except ImportError:
-        print("  [search] duckduckgo-search not installed. Run: pip install duckduckgo-search")
-        return []
+        try:
+            from duckduckgo_search import DDGS
+        except ImportError:
+            print("  [search] ddgs not installed. Run: pip install ddgs")
+            return []
 
     results = []
-    try:
-        with DDGS() as ddgs:
-            hits = list(ddgs.text(query, max_results=max_results))
-    except Exception as e:
-        print(f"  [search] DuckDuckGo search failed: {e}")
-        return []
+    hits = []
+    for attempt in range(3):
+        try:
+            with DDGS() as ddgs:
+                hits = list(ddgs.text(query, max_results=max_results))
+            if hits:
+                break
+        except Exception as e:
+            if attempt < 2:
+                wait = 2 ** attempt
+                print(f"  [search] attempt {attempt+1} failed, retrying in {wait}s: {e}")
+                time.sleep(wait)
+            else:
+                print(f"  [search] DuckDuckGo search failed after 3 attempts: {e}")
+                return []
 
     for hit in hits:
         url = hit.get("href", hit.get("link", ""))
