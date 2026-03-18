@@ -580,6 +580,8 @@ def main():
                        choices=["openclaw", "claude", "openai"])
     parser.add_argument("--model", type=str, default=None,
                        help="Model name for openai runner (default: $OPENAI_MODEL or gpt-5.4-mini)")
+    parser.add_argument("--judge-model", type=str, default=None,
+                       help="Model for LLM-as-judge eval (default: same as --model, or gpt-5.4-mini for local models)")
     parser.add_argument("--tasks-file", type=str, default=None,
                        help="Path to tasks JSON file (default: tasks_all.json)")
     parser.add_argument("--evaluate", action="store_true",
@@ -620,12 +622,19 @@ def main():
                             model=args.model)
 
     if args.evaluate and not args.dry_run:
-        # Score each task against ground truth using the same model
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
         from evaluate_openclaw import evaluate_results
         all_tasks = json.loads(tasks_file.read_text())
         task_map = {t["name"]: t for t in all_tasks}
-        judge_model = args.model or OPENAI_MODEL if args.runner == "openai" else None
+        # Use explicit --judge-model, or fall back to gpt-5.4-mini for
+        # local models (they aren't available on the OpenAI API for judging)
+        judge_model = args.judge_model
+        if not judge_model:
+            if args.runner == "openai" and args.model and "/" in args.model:
+                # Local model (e.g. Qwen/Qwen2.5-7B-Instruct) — use OpenAI for judge
+                judge_model = "gpt-5.4-mini"
+            elif args.runner == "openai":
+                judge_model = args.model or OPENAI_MODEL
         evaluate_results(results, task_map, RESULTS_DIR, model=judge_model)
 
 
