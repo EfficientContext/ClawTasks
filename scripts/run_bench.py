@@ -9,6 +9,7 @@ Usage:
     python scripts/run_bench.py --dry-run
     python scripts/run_bench.py --batch-size 1 --runner openclaw
     python scripts/run_bench.py --batch-size 1 --runner claude
+    python scripts/run_bench.py --batch-size 1 --runner api
     python scripts/run_bench.py --task morning-briefing --batch-size 1
 """
 
@@ -19,14 +20,22 @@ import pathlib
 import re as _re
 import subprocess
 import sys
+import tempfile
 import time
 import urllib.request
 from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-TASKS_FILE = ROOT / "tasks_all.json"  # default; override with --tasks-file
+OPENCLAW_TASKS_FILE = ROOT / "openclaw_tasks_all.json"
+LEGACY_TASKS_FILE = ROOT / "tasks_all.json"
+TASKS_FILE = OPENCLAW_TASKS_FILE if OPENCLAW_TASKS_FILE.exists() else LEGACY_TASKS_FILE
 SKILLS_DIR = ROOT / "skills"
 RESULTS_DIR = ROOT / "results"
+BENCHMARK_AGENT_ID = "clawbench-web-search"
+WEB_SEARCH_SKILL_NAMES = ["web-search", "web_search"]
+
+# Synthetic API runner sessions: one growing conversation per topic.
+_openai_sessions: dict[str, list[dict]] = {}
 def find_openclaw_bin():
     """Auto-detect openclaw.mjs location."""
     candidates = [
@@ -115,13 +124,105 @@ Save the final output to a file (PDF or markdown as specified).
 Show the tool commands you ran and their outputs."""
 
 
+def _resolve_skill_md(slug: str) -> pathlib.Path | None:
+    """Resolve a task skill slug to the checked-in skill directory."""
+    candidates = [slug, slug.replace("_", "-"), slug.replace("-", "_")]
+    seen = set()
+    for candidate in candidates:
+        if candidate in seen:
+            continue
+        seen.add(candidate)
+        skill_md = SKILLS_DIR / candidate / "SKILL.md"
+        if skill_md.exists():
+            return skill_md
+    return None
+
+
+def _resolve_skill_dir(slug: str) -> pathlib.Path | None:
+    skill_md = _resolve_skill_md(slug)
+    return skill_md.parent if skill_md is not None else None
+
+
+def _default_openclaw_config_path() -> pathlib.Path:
+    return pathlib.Path(
+        os.environ.get("OPENCLAW_CONFIG_PATH", pathlib.Path.home() / ".openclaw" / "openclaw.json")
+    )
+
+
+def _deep_merge_dict(base: dict, overlay: dict) -> dict:
+    merged = dict(base)
+    for key, value in overlay.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = _deep_merge_dict(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+
+def _prepare_openclaw_benchmark_config() -> pathlib.Path:
+    """Create a temp OpenClaw config that exposes only the web-search skill."""
+    try:
+        import json5
+    except ImportError as e:
+        raise RuntimeError("json5 package not installed") from e
+
+    web_search_dir = _resolve_skill_dir("web_search")
+    if web_search_dir is None:
+        raise RuntimeError("web_search skill directory not found in ClawBench/skills")
+
+    base_config_path = _default_openclaw_config_path()
+    if base_config_path.exists():
+        raw = base_config_path.read_text()
+        base_config = json5.loads(raw) if raw.strip() else {}
+        if not isinstance(base_config, dict):
+            raise RuntimeError(f"OpenClaw config at {base_config_path} is not an object")
+    else:
+        raise RuntimeError(
+            f"OpenClaw config not found at {base_config_path}. "
+            "Set OPENCLAW_CONFIG_PATH or create ~/.openclaw/openclaw.json"
+        )
+
+    agents = base_config.get("agents")
+    if not isinstance(agents, dict):
+        agents = {}
+        base_config["agents"] = agents
+    agent_list = agents.get("list")
+    if not isinstance(agent_list, list):
+        agent_list = []
+        agents["list"] = agent_list
+    agent_list = [entry for entry in agent_list if not (
+        isinstance(entry, dict) and entry.get("id") == BENCHMARK_AGENT_ID
+    )]
+    agent_list.append({
+        "id": BENCHMARK_AGENT_ID,
+        "name": "ClawBench Web Search",
+        "skills": WEB_SEARCH_SKILL_NAMES,
+    })
+    agents["list"] = agent_list
+
+    overlay = {
+        "skills": {
+            "allowBundled": ["__none__"],
+            "load": {
+                "extraDirs": [str(SKILLS_DIR)],
+            },
+        },
+    }
+    merged = _deep_merge_dict(base_config, overlay)
+
+    temp_dir = pathlib.Path(tempfile.mkdtemp(prefix="clawbench-openclaw-"))
+    temp_config_path = temp_dir / "openclaw.json"
+    temp_config_path.write_text(json.dumps(merged, indent=2))
+    return temp_config_path
+
+
 def build_prompt_claude(task: dict) -> str:
     """Build prompt for Claude Code runner (no OpenClaw skill injection).
     Falls back to manual skill context since Claude Code has no skill system."""
     parts = []
     for slug in task["skills_required"]:
-        skill_md = SKILLS_DIR / slug / "SKILL.md"
-        if skill_md.exists():
+        skill_md = _resolve_skill_md(slug)
+        if skill_md is not None:
             parts.append(f"<skill name=\"{slug}\">\n{skill_md.read_text()}\n</skill>")
     ctx = "\n\n".join(parts)
     return f"""You have the following skills available. Use them to complete the task.
@@ -152,19 +253,29 @@ def run_task_openclaw(task: dict, timeout: int = 800,
             "or clone ~/openclaw and run pnpm install && pnpm build")
 
     if prompt is None:
-        prompt = build_prompt(task)
+        prompt = build_prompt_seed(task)
     if session_id is None:
         session_id = f"clawbench-{task['id']}-{int(time.time())}"
+    try:
+        benchmark_config_path = _prepare_openclaw_benchmark_config()
+    except Exception as e:
+        return _error_result(task, f"failed to prepare OpenClaw benchmark config: {e}")
 
     if str(oc_bin).endswith(".mjs"):
         cmd = [node_bin, str(oc_bin), "agent",
+               "--agent", BENCHMARK_AGENT_ID,
                "--session-id", session_id, "--message", prompt]
     else:
         cmd = [str(oc_bin), "agent",
+               "--agent", BENCHMARK_AGENT_ID,
                "--session-id", session_id, "--message", prompt]
 
-    env = {**os.environ, "NODE_NO_WARNINGS": "1",
-           "OPENCLAW_LOG_LEVEL": os.environ.get("OPENCLAW_LOG_LEVEL", "info")}
+    env = {
+        **os.environ,
+        "NODE_NO_WARNINGS": "1",
+        "OPENCLAW_LOG_LEVEL": os.environ.get("OPENCLAW_LOG_LEVEL", "info"),
+        "OPENCLAW_CONFIG_PATH": str(benchmark_config_path),
+    }
 
     start_time = time.time()
     try:
@@ -188,7 +299,7 @@ def run_task_claude(task: dict, timeout: int = 800,
                     prompt: str | None = None,
                     resume: bool = False) -> dict:
     if prompt is None:
-        prompt = build_prompt(task)
+        prompt = build_prompt_seed(task)
     start_time = time.time()
     cmd = ["claude", "--print", "-p", prompt]
     if resume and session_id:
@@ -205,12 +316,9 @@ def run_task_claude(task: dict, timeout: int = 800,
         return _error_result(task, "claude CLI not found")
 
 
-# ── OpenAI-compatible runner (works with any model via ContextPilot proxy) ──
+# ── OpenAI-compatible API runner (ContextPilot, SGLang, vLLM, OpenAI) ───────
 
-# Conversation history per session for multi-turn
-_openai_sessions: dict[str, list[dict]] = {}
-
-OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini")
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL", os.environ.get("MODEL_ID", "gpt-5.4-mini"))
 DOCS_DIR = ROOT / "openclaw_docs"
 
 
@@ -352,6 +460,7 @@ def _build_tool_messages(task: dict) -> list[dict]:
     question = _extract_question(task["description"])
     docs = _search_and_cache(task)
 
+    MAX_DOC_CHARS = 8000
     tool_call_id = f"call_{task['name']}"
     tool_result = json.dumps({
         "query": query,
@@ -360,7 +469,7 @@ def _build_tool_messages(task: dict) -> list[dict]:
             {
                 "title": d.get("title", ""),
                 "url": d.get("url", ""),
-                "description": d.get("content", ""),
+                "description": d.get("content", "")[:MAX_DOC_CHARS],
             }
             for d in docs
         ],
@@ -386,21 +495,31 @@ def _build_tool_messages(task: dict) -> list[dict]:
     ]
 
 
+def _normalize_api_base_url(base_url: str) -> str:
+    base_url = base_url.rstrip("/")
+    return base_url if base_url.endswith("/v1") else f"{base_url}/v1"
+
+
 def _get_openai_base_url() -> str:
-    """Auto-detect base URL. Priority: env var > ContextPilot proxy > OpenAI direct."""
-    env = os.environ.get("OPENAI_BASE_URL")
-    if env:
-        return env
+    """Auto-detect an OpenAI-compatible base URL."""
+    for env_name in ("OPENAI_BASE_URL", "BENCH_BASE_URL", "INFERENCE_URL", "SGLANG_URL", "VLLM_URL"):
+        env = os.environ.get(env_name)
+        if env:
+            return _normalize_api_base_url(env)
     if check_contextpilot_running():
         return "http://localhost:8765/v1"
     return "https://api.openai.com/v1"
+
+
+def _is_api_runner(runner: str) -> bool:
+    return runner in ("api", "openai")
 
 
 def run_task_openai(task: dict, timeout: int = 800,
                     session_id: str | None = None,
                     tool_messages: list[dict] | None = None,
                     model: str | None = None) -> dict:
-    """Run a task using the OpenAI API with tool-use messages.
+    """Run a task against an OpenAI-compatible API with tool-use messages.
 
     Each turn adds 3 messages to the session:
       1. user question
@@ -421,27 +540,27 @@ def run_task_openai(task: dict, timeout: int = 800,
         session_id = f"clawbench-{task['id']}-{int(time.time())}"
 
     base_url = _get_openai_base_url()
-    client = OpenAI(base_url=base_url, api_key=os.environ.get("OPENAI_API_KEY", ""))
+    client = OpenAI(base_url=base_url, api_key=os.environ.get("OPENAI_API_KEY") or "placeholder")
 
-    # Retrieve or create conversation history for this session
-    if session_id not in _openai_sessions:
-        _openai_sessions[session_id] = [
-            {"role": "system", "content": (
-                "You are a research assistant. Answer questions concisely based on "
-                "the provided search results. Keep responses under 100 words unless "
-                "told otherwise. Use bullet points when asked."
-            )}
-        ]
-    messages = _openai_sessions[session_id]
+    system_msg = {
+        "role": "system",
+        "content": (
+            "You are a research assistant. Answer questions concisely based on "
+            "the provided search results. Keep responses under 100 words unless "
+            "told otherwise. Use bullet points when asked."
+        ),
+    }
 
     # Build tool messages if not provided
     if tool_messages is None:
         tool_messages = _build_tool_messages(task)
 
-    # Extend session history with the 3-message tool-use sequence
-    messages.extend(tool_messages)
+    if session_id not in _openai_sessions:
+        _openai_sessions[session_id] = [system_msg]
+    session_messages = _openai_sessions[session_id]
+    messages = session_messages + tool_messages
 
-    # Calculate prompt length (tool result content can be large)
+    # Calculate prompt length
     prompt_length = sum(
         len(m.get("content", "") or "")
         for m in messages
@@ -456,6 +575,35 @@ def run_task_openai(task: dict, timeout: int = 800,
             except Exception:
                 pass
     print(f"  [tool] {n_docs} docs in tool_result, ~{prompt_length} chars total")
+
+    # ── Dump the full message structure so you can verify ──
+    print(f"  {'─'*56}")
+    for mi, m in enumerate(messages):
+        role = m["role"]
+        if role == "system":
+            print(f"  msg[{mi}] system: {(m['content'] or '')[:80]}...")
+        elif role == "user":
+            print(f"  msg[{mi}] user: {(m['content'] or '')[:120]}")
+        elif role == "assistant":
+            tc = m.get("tool_calls", [])
+            if tc:
+                fn = tc[0]["function"]
+                print(f"  msg[{mi}] assistant: tool_call → {fn['name']}({fn['arguments']})")
+            else:
+                print(f"  msg[{mi}] assistant: {(m.get('content') or '')[:80]}")
+        elif role == "tool":
+            try:
+                tr = json.loads(m["content"])
+                results = tr.get("results", [])
+                print(f"  msg[{mi}] tool (id={m.get('tool_call_id','')}): "
+                      f"{len(results)} results")
+                for ri, r in enumerate(results):
+                    desc_len = len(r.get("description", ""))
+                    print(f"    [{ri}] {r.get('url','')[:60]}  "
+                          f"({desc_len} chars)  {r.get('title','')[:40]}")
+            except Exception:
+                print(f"  msg[{mi}] tool: {(m.get('content') or '')[:80]}")
+    print(f"  {'─'*56}")
 
     start_time = time.time()
     try:
@@ -479,8 +627,9 @@ def run_task_openai(task: dict, timeout: int = 800,
                 output_chunks.append(chunk.choices[0].delta.content)
 
         output = "".join(output_chunks)
-        messages.append({"role": "assistant", "content": output})
         elapsed = time.time() - start_time
+        session_messages.extend(tool_messages)
+        session_messages.append({"role": "assistant", "content": output})
 
         return {
             "task_id": task["id"],
@@ -569,6 +718,7 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
                   model=None):
     RESULTS_DIR.mkdir(exist_ok=True)
     results = []
+    _openai_sessions.clear()
 
     # Sort by topic + chain_position so sessions run in order
     tasks = _sort_by_topic_chain(tasks)
@@ -579,12 +729,12 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
 
     print(f"\n{'='*60}")
     print(f"ClawBench — {len(tasks)} tasks, batch_size={batch_size}, runner={runner}")
-    if runner == "openai":
+    if _is_api_runner(runner):
         _model = model or OPENAI_MODEL
         _base = _get_openai_base_url()
         _proxy = "via ContextPilot" if "localhost:8765" in _base else "direct"
         print(f"  Model: {_model} | {_base} ({_proxy})")
-        if not os.environ.get("OPENAI_API_KEY"):
+        if "api.openai.com" in _base and not os.environ.get("OPENAI_API_KEY"):
             print(f"  WARNING: OPENAI_API_KEY not set!")
     print(f"{'='*60}\n")
 
@@ -608,7 +758,7 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         print(f"  Skills: {', '.join(task['skills_required'])}")
 
         if dry_run:
-            if runner == "openai":
+            if _is_api_runner(runner):
                 # Show message structure without doing any network calls
                 query = _extract_query(task["description"])
                 question = _extract_question(task["description"])
@@ -630,12 +780,12 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
                                "dry_run": True, "prompt_length": plen})
             continue
 
-        # Build prompt / tool messages (live search happens here for openai runner)
+        # Build prompt / tool messages (live search happens here for API runner)
         prompt = None
         tool_msgs = None
         if runner == "claude":
             prompt = build_prompt_claude(task)
-        elif runner == "openai":
+        elif _is_api_runner(runner):
             tool_msgs = _build_tool_messages(task)
         elif is_seed:
             prompt = build_prompt_seed(task)
@@ -650,7 +800,7 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         if runner == "openclaw":
             result = run_task_openclaw(task, timeout,
                                       session_id=session_id, prompt=prompt)
-        elif runner == "openai":
+        elif _is_api_runner(runner):
             result = run_task_openai(task, timeout,
                                     session_id=session_id,
                                     tool_messages=tool_msgs,
@@ -698,13 +848,15 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             json.dumps(result, indent=2))
         print()
 
-    run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    combined = RESULTS_DIR / f"run_{run_id}.json"
-    combined.write_text(json.dumps({
-        "run_id": run_id, "runner": runner,
-        "batch_size": batch_size, "total_tasks": len(tasks),
-        "results": results,
-    }, indent=2))
+    combined = None
+    if not dry_run:
+        run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+        combined = RESULTS_DIR / f"run_{run_id}.json"
+        combined.write_text(json.dumps({
+            "run_id": run_id, "runner": runner,
+            "batch_size": batch_size, "total_tasks": len(tasks),
+            "results": results,
+        }, indent=2))
 
     if not dry_run:
         passed = sum(1 for r in results if r.get("success"))
@@ -812,13 +964,13 @@ def main():
     parser.add_argument("--timeout", type=int, default=None,
                        help="Timeout per task in seconds (default: no limit)")
     parser.add_argument("--runner", default="openclaw",
-                       choices=["openclaw", "claude", "openai"])
+                       choices=["openclaw", "claude", "api", "openai"])
     parser.add_argument("--model", type=str, default=None,
-                       help="Model name for openai runner (default: $OPENAI_MODEL or gpt-5.4-mini)")
+                       help="Model name for the API runner (ContextPilot/OpenAI/SGLang/vLLM)")
     parser.add_argument("--judge-model", type=str, default=None,
                        help="Model for LLM-as-judge eval (default: same as --model, or gpt-5.4-mini for local models)")
     parser.add_argument("--tasks-file", type=str, default=None,
-                       help="Path to tasks JSON file (default: tasks_all.json)")
+                       help="Path to tasks JSON file (default: openclaw_tasks_all.json when present)")
     parser.add_argument("--evaluate", action="store_true",
                        help="Score each task against ground truth after execution")
     parser.add_argument("--eval-only", type=str, default=None,
@@ -865,10 +1017,10 @@ def main():
         # local models (they aren't available on the OpenAI API for judging)
         judge_model = args.judge_model
         if not judge_model:
-            if args.runner == "openai" and args.model and "/" in args.model:
+            if _is_api_runner(args.runner) and args.model and "/" in args.model:
                 # Local model (e.g. Qwen/Qwen2.5-7B-Instruct) — use OpenAI for judge
                 judge_model = "gpt-5.4-mini"
-            elif args.runner == "openai":
+            elif _is_api_runner(args.runner):
                 judge_model = args.model or OPENAI_MODEL
         evaluate_results(results, task_map, RESULTS_DIR, model=judge_model)
 
