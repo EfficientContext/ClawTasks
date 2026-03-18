@@ -209,6 +209,64 @@ def run_task_claude(task: dict, timeout: int = 800,
 _openai_sessions: dict[str, list[dict]] = {}
 
 OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.4-mini")
+DOCS_DIR = ROOT / "openclaw_docs"
+
+
+def _load_task_docs(task: dict) -> list[dict]:
+    """Load pre-fetched search result documents for a task."""
+    topic = task.get("topic", "")
+    pos = task.get("chain_position", 1)
+    doc_file = DOCS_DIR / topic / f"turn_{pos:02d}.json"
+    if not doc_file.exists():
+        return []
+    try:
+        return json.loads(doc_file.read_text())
+    except Exception:
+        return []
+
+
+def _build_prompt_with_docs(task: dict) -> str:
+    """Build a prompt with injected search result documents.
+
+    Produces a RAG-style prompt with numbered documents that ContextPilot
+    can detect and reorder for prefix cache sharing.
+    """
+    import re as _re
+    docs = _load_task_docs(task)
+    description = task["description"]
+
+    # Extract the question part (everything after the search instruction)
+    # e.g. "Use web_search to search for '...'. Summarize X. Keep under Y words."
+    m = _re.search(r"search for '[^']+'[.\s]*(.*)", description, _re.DOTALL)
+    question = m.group(1).strip() if m else description
+
+    if not docs:
+        # No docs fetched — fall back to plain description
+        return description
+
+    # Format documents as numbered list (ContextPilot detects [N] format)
+    doc_parts = []
+    for i, doc in enumerate(docs, 1):
+        title = doc.get("title", "")
+        url = doc.get("url", "")
+        content = doc.get("content", "")
+        # Truncate individual docs to keep total prompt manageable
+        if len(content) > 6000:
+            content = content[:6000] + "..."
+        header = f"[{i}] {title}"
+        if url:
+            header += f" ({url})"
+        doc_parts.append(f"{header}\n{content}")
+
+    docs_text = "\n\n".join(doc_parts)
+
+    prompt = f"""Based on the following search results, answer the question below.
+
+{docs_text}
+
+Question: {question}"""
+
+    return prompt
 
 
 def _get_openai_base_url() -> str:
@@ -255,13 +313,23 @@ def run_task_openai(task: dict, timeout: int = 800,
 
     start_time = time.time()
     try:
-        response = client.chat.completions.create(
+        # Use streaming to measure TTFT (time to first token)
+        stream = client.chat.completions.create(
             model=model,
             messages=messages,
             max_completion_tokens=300,
             timeout=timeout,
+            stream=True,
         )
-        output = response.choices[0].message.content or ""
+        ttft_ms = None
+        output_chunks = []
+        for chunk in stream:
+            if ttft_ms is None:
+                ttft_ms = (time.time() - start_time) * 1000
+            if chunk.choices and chunk.choices[0].delta.content:
+                output_chunks.append(chunk.choices[0].delta.content)
+
+        output = "".join(output_chunks)
         messages.append({"role": "assistant", "content": output})
         elapsed = time.time() - start_time
 
@@ -279,6 +347,7 @@ def run_task_openai(task: dict, timeout: int = 800,
             "skills": task["skills_required"],
             "prompt_length": sum(len(m["content"]) for m in messages),
             "model": model,
+            "client_ttft_ms": round(ttft_ms, 2) if ttft_ms is not None else None,
         }
     except Exception as e:
         elapsed = time.time() - start_time
@@ -388,9 +457,10 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
         if runner == "claude":
             prompt = build_prompt_claude(task)
         elif runner == "openai":
-            # OpenAI runner: just the task description, no skill injection.
-            # Multi-turn context is maintained in _openai_sessions.
-            prompt = task["description"]
+            # Build prompt with injected search result documents.
+            # Documents are loaded from openclaw_docs/{topic}/turn_{N}.json
+            # and formatted as numbered docs for ContextPilot to detect/reorder.
+            prompt = _build_prompt_with_docs(task)
         elif is_seed:
             prompt = build_prompt_seed(task)
         else:
@@ -448,6 +518,10 @@ def run_benchmark(tasks, batch_size=1, dry_run=False,
             result["proxy_ttft_all_ms"] = []
             result["proxy_ttft_avg_ms"] = None
             result["proxy_llm_calls"] = 0
+
+        # Fall back to client-side streaming TTFT when proxy TTFT is unavailable
+        if result["proxy_ttft_first_ms"] is None and result.get("client_ttft_ms") is not None:
+            result["proxy_ttft_first_ms"] = result["client_ttft_ms"]
 
         results.append(result)
 
