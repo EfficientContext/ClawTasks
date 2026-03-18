@@ -203,6 +203,10 @@ def _prepare_openclaw_benchmark_config() -> pathlib.Path:
             "Set OPENCLAW_CONFIG_PATH or create ~/.openclaw/openclaw.json"
         )
 
+    temp_dir = pathlib.Path(tempfile.mkdtemp(prefix="clawbench-openclaw-"))
+    benchmark_agent_dir = temp_dir / "agent"
+    benchmark_agent_dir.mkdir(parents=True, exist_ok=True)
+
     agents = base_config.get("agents")
     if not isinstance(agents, dict):
         agents = {}
@@ -223,6 +227,7 @@ def _prepare_openclaw_benchmark_config() -> pathlib.Path:
         "id": BENCHMARK_AGENT_ID,
         "name": "ClawBench Web Search",
         "skills": WEB_SEARCH_SKILL_NAMES,
+        "agentDir": str(benchmark_agent_dir),
     }
     if default_model is not None:
         agent_entry["model"] = default_model
@@ -240,7 +245,6 @@ def _prepare_openclaw_benchmark_config() -> pathlib.Path:
     }
     merged = _deep_merge_dict(base_config, overlay)
 
-    temp_dir = pathlib.Path(tempfile.mkdtemp(prefix="clawbench-openclaw-"))
     temp_config_path = temp_dir / "openclaw.json"
     temp_config_path.write_text(json.dumps(merged, indent=2))
     return temp_config_path
