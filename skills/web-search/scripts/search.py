@@ -329,6 +329,46 @@ def format_image_results(results: List[Dict[str, Any]], format_type: str = "text
         return "\n".join(output)
 
 
+def build_contextpilot_json(query: str, search_type: str, results: List[Dict[str, Any]]) -> str:
+    """Build ContextPilot-compatible JSON output with a top-level results array."""
+    normalized = []
+    for result in results:
+        if not isinstance(result, dict):
+            continue
+        title = result.get('title', 'No title')
+        url = (
+            result.get('href')
+            or result.get('url')
+            or result.get('image')
+            or result.get('content')
+            or ''
+        )
+        description = (
+            result.get('body')
+            or result.get('description')
+            or result.get('content')
+            or ''
+        )
+        item = {
+            'title': title,
+            'url': url,
+            'description': description,
+        }
+        for key in ('source', 'date', 'published', 'duration', 'thumbnail', 'width', 'height'):
+            value = result.get(key)
+            if value not in (None, ''):
+                item[key] = value
+        normalized.append(item)
+
+    payload = {
+        'query': query,
+        'provider': 'duckduckgo',
+        'type': search_type,
+        'results': normalized,
+    }
+    return json.dumps(payload, indent=2, ensure_ascii=False)
+
+
 def format_video_results(results: List[Dict[str, Any]], format_type: str = "text") -> str:
     """Format video search results."""
     if not results:
@@ -432,8 +472,8 @@ Time range filters (--time-range):
     search_group.add_argument(
         '-n', '--max-results',
         type=int,
-        default=10,
-        help='Maximum number of results (default: 10)'
+        default=3,
+        help='Maximum number of results (default: 3)'
     )
     search_group.add_argument(
         '--time-range',
@@ -494,8 +534,8 @@ Time range filters (--time-range):
     output_group.add_argument(
         '-f', '--format',
         choices=['text', 'markdown', 'json'],
-        default='text',
-        help='Output format (default: text)'
+        default='json',
+        help='Output format (default: json)'
     )
     output_group.add_argument(
         '-o', '--output',

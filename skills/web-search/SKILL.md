@@ -9,6 +9,8 @@ description: This skill should be used when users need to search the web for inf
 
 Search the web using DuckDuckGo's API to find information across web pages, news articles, images, and videos. Returns results in multiple formats (text, markdown, JSON) with filtering options for time range, region, and safe search.
 
+For OpenClaw and benchmarking runs, prefer structured JSON output to stdout so downstream systems can parse and reuse the results. Default to `--format json --max-results 3` unless the user explicitly asks for a different format or more results.
+
 ## When to Use This Skill
 
 Use this skill when users request:
@@ -38,15 +40,15 @@ This library provides a simple Python interface to DuckDuckGo's search API witho
 Search for web pages and information:
 
 ```bash
-python scripts/search.py "<query>"
+python scripts/search.py "<query>" --format json --max-results 3
 ```
 
 **Example:**
 ```bash
-python scripts/search.py "python asyncio tutorial"
+python scripts/search.py "python asyncio tutorial" --format json --max-results 3
 ```
 
-Returns the top 10 web results with titles, URLs, and descriptions in a clean text format.
+Returns a ContextPilot-compatible JSON object with `query`, `provider`, and a `results` array containing titles, URLs, and descriptions.
 
 ### 2. Limiting Results
 
