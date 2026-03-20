@@ -6,9 +6,9 @@ Runs 4 users concurrently via asyncio, each issuing 5 memory_search
 queries against a shared document corpus. Compares ContextPilot
 (reorders documents for KV cache reuse) against a baseline SGLang.
 
-Architecture:
+Architecture (single SGLang instance):
   Users A-D ── OpenClaw (cp-bench profile) ──▶ CP Proxy (:8765) ──▶ SGLang (:30000)
-  Users A-D ── OpenClaw (bl-bench profile) ──▶ SGLang (:30001)
+  Users A-D ── OpenClaw (bl-bench profile) ──▶ SGLang (:30000)  [direct, no proxy]
 
 Usage:
     python scripts/run_bench_multiuser.py --dry-run
@@ -35,7 +35,7 @@ DOCS_DIR = ROOT / "datasets" / "multiuser-docsearch" / "documents"
 RESULTS_DIR = ROOT / "results"
 
 CONTEXTPILOT_URL = "http://localhost:8765"
-BASELINE_URL = "http://localhost:30001"
+BASELINE_URL = "http://localhost:30000"
 
 MODEL_ID = "Qwen3-4B-Instruct-2507"
 
