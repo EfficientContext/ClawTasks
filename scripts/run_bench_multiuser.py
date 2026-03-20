@@ -98,9 +98,14 @@ def _get_proxy_ttft_last(n: int, base_url: str = CONTEXTPILOT_URL) -> list[float
 def check_service_running(url: str) -> bool:
     try:
         import urllib.request
-        resp = urllib.request.urlopen(f"{url}/health", timeout=3)
-        return resp.status == 200
+        req = urllib.request.Request(f"{url}/health")
+        resp = urllib.request.urlopen(req, timeout=3)
+        return True
+    except urllib.error.HTTPError:
+        # Server responded (e.g. 503 "not_ready") — it's running
+        return True
     except Exception:
+        # Connection refused, timeout, etc. — not running
         return False
 
 
