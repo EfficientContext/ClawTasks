@@ -1,0 +1,28 @@
+{
+  "id": "185ac596b082",
+  "name": "multiuser-docsearch-a3",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-a",
+  "chain_position": 3,
+  "depends_on": "multiuser-docsearch-a1",
+  "description": "Use memory_search to find information about thermoregulation in monitor lizards. Compare how the perentie survives extreme desert heat in Australia versus how tropical monitors regulate their temperature.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "perentie.md",
+    "varanus-genus.md",
+    "reptile-thermoregulation.md"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "b8659a31dcbd",
+  "name": "multiuser-docsearch-a1",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-a",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use memory_search to find information about Komodo dragon hunting strategies and venom mechanisms. Summarize how Komodo dragons use venom during predation, including Bryan Fry's 2009 discovery and the shift from the bacterial infection hypothesis.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "komodo-dragon.md",
+    "monitor-venom.md",
+    "varanus-genus.md"
+  ]
+}

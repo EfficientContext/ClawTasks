@@ -1,0 +1,27 @@
+{
+  "id": "626215fc0c17",
+  "name": "multiuser-docsearch-b1",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-b",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use memory_search to find information about saltwater crocodile distribution and bite force. Summarize what makes C. porosus the largest living reptile and why it has the strongest bite force of any animal.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "saltwater-crocodile.md",
+    "crocodilia-order.md"
+  ]
+}

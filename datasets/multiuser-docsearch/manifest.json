@@ -1,0 +1,48 @@
+{
+  "name": "multiuser-docsearch",
+  "description": "Multi-user document search benchmark with overlapping biology/zoology queries. 4 users concurrently query memory_search against a shared corpus of 18 documents. Hub documents are retrieved by 3-4 different users, creating prefix overlap for ContextPilot to optimize.",
+  "model": "Qwen3-4B-Instruct-2507",
+  "users": ["user-a", "user-b", "user-c", "user-d"],
+  "questions_per_user": 5,
+  "total_tasks": 20,
+  "document_count": 18,
+  "clusters": {
+    "A": {
+      "name": "Monitor Lizards",
+      "user": "user-a",
+      "documents": ["varanus-genus.md", "komodo-dragon.md", "water-monitor.md", "perentie.md", "monitor-venom.md"],
+      "hub": "varanus-genus.md"
+    },
+    "B": {
+      "name": "Crocodilians",
+      "user": "user-b",
+      "documents": ["crocodilia-order.md", "saltwater-crocodile.md", "american-alligator.md", "gharial.md"],
+      "hub": "crocodilia-order.md"
+    },
+    "C": {
+      "name": "Sea Turtles / Marine Reptiles",
+      "user": "user-c",
+      "documents": ["sea-turtle-overview.md", "leatherback-turtle.md", "green-sea-turtle.md", "marine-iguana.md"],
+      "hub": "sea-turtle-overview.md"
+    },
+    "D": {
+      "name": "Cross-cutting Biology",
+      "user": "user-d",
+      "documents": ["reptile-thermoregulation.md", "reptile-conservation.md", "squamata-order.md", "toxicofera.md", "reptile-intelligence.md"],
+      "hubs": ["reptile-thermoregulation.md", "reptile-conservation.md"]
+    }
+  },
+  "hub_documents": {
+    "varanus-genus.md": {"retrieved_by": ["user-a", "user-d"], "query_count": 7},
+    "crocodilia-order.md": {"retrieved_by": ["user-b", "user-d"], "query_count": 7},
+    "sea-turtle-overview.md": {"retrieved_by": ["user-c", "user-d"], "query_count": 6},
+    "reptile-thermoregulation.md": {"retrieved_by": ["user-a", "user-b", "user-c", "user-d"], "query_count": 5},
+    "reptile-conservation.md": {"retrieved_by": ["user-a", "user-b", "user-c", "user-d"], "query_count": 4}
+  },
+  "overlap_stats": {
+    "documents_shared_by_2_users": 3,
+    "documents_shared_by_3_users": 0,
+    "documents_shared_by_4_users": 2,
+    "avg_documents_per_query": 3.1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "059e0825198a",
+  "name": "multiuser-docsearch-d4",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-d",
+  "chain_position": 4,
+  "depends_on": "multiuser-docsearch-d1",
+  "description": "Use memory_search to find information about global reptile conservation priorities. Identify the most critically endangered reptile species and discuss the major threats and conservation strategies across crocodilians, sea turtles, and monitor lizards.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "reptile-conservation.md",
+    "gharial.md",
+    "sea-turtle-overview.md",
+    "komodo-dragon.md"
+  ]
+}

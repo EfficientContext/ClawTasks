@@ -1,0 +1,27 @@
+{
+  "id": "51ceb386a528",
+  "name": "multiuser-docsearch-c2",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-c",
+  "chain_position": 2,
+  "depends_on": "multiuser-docsearch-c1",
+  "description": "Use memory_search to find information about green sea turtle herbivory and seagrass ecology. Explain how C. mydas is unique among sea turtles as an herbivore and its role in maintaining healthy seagrass ecosystems.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "green-sea-turtle.md",
+    "sea-turtle-overview.md"
+  ]
+}

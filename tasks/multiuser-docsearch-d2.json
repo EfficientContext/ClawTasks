@@ -1,0 +1,28 @@
+{
+  "id": "2371565951e9",
+  "name": "multiuser-docsearch-d2",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-d",
+  "chain_position": 2,
+  "depends_on": "multiuser-docsearch-d1",
+  "description": "Use memory_search to find information about Squamata diversity and phylogeny. Explain the scale of squamate diversity with 11,000+ species and how modern molecular phylogenetics has reshaped our understanding of relationships within this order.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "squamata-order.md",
+    "toxicofera.md",
+    "varanus-genus.md"
+  ]
+}

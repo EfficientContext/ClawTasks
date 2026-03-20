@@ -1,0 +1,28 @@
+{
+  "id": "1b0a74c9095e",
+  "name": "multiuser-docsearch-a2",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-a",
+  "chain_position": 2,
+  "depends_on": "multiuser-docsearch-a1",
+  "description": "Use memory_search to find information about water monitor lizards and their adaptation to urban environments. Describe how Varanus salvator thrives in cities like Bangkok and Singapore, and discuss what this reveals about monitor lizard intelligence.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "water-monitor.md",
+    "varanus-genus.md",
+    "reptile-intelligence.md"
+  ]
+}

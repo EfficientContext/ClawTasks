@@ -1,0 +1,28 @@
+{
+  "id": "db0dc8621b07",
+  "name": "multiuser-docsearch-b5",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-b",
+  "chain_position": 5,
+  "depends_on": "multiuser-docsearch-b1",
+  "description": "Use memory_search to find information about crocodilian intelligence and parental care. Discuss tool use, cooperative hunting, and the sophisticated parental care behaviors observed in crocodilians.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "crocodilia-order.md",
+    "reptile-intelligence.md",
+    "american-alligator.md"
+  ]
+}

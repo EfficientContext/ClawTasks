@@ -1,0 +1,29 @@
+{
+  "id": "fe07fd37e2db",
+  "name": "multiuser-docsearch-c5",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-c",
+  "chain_position": 5,
+  "depends_on": "multiuser-docsearch-c1",
+  "description": "Use memory_search to find information about thermoregulation in marine reptiles. Compare how leatherback sea turtles use gigantothermy versus how marine iguanas cope with cold ocean temperatures through basking behavior.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "leatherback-turtle.md",
+    "marine-iguana.md",
+    "reptile-thermoregulation.md",
+    "sea-turtle-overview.md"
+  ]
+}

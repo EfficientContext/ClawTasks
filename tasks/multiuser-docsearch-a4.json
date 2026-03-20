@@ -1,0 +1,29 @@
+{
+  "id": "1cdff017849f",
+  "name": "multiuser-docsearch-a4",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-a",
+  "chain_position": 4,
+  "depends_on": "multiuser-docsearch-a1",
+  "description": "Use memory_search to find information about the Toxicofera hypothesis and how it relates to venom in monitor lizards. Explain what Toxicofera means for our understanding of venom evolution across squamate reptiles.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "monitor-venom.md",
+    "toxicofera.md",
+    "varanus-genus.md",
+    "squamata-order.md"
+  ]
+}

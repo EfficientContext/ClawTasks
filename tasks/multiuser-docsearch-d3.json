@@ -1,0 +1,28 @@
+{
+  "id": "5ed2a1862079",
+  "name": "multiuser-docsearch-d3",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-d",
+  "chain_position": 3,
+  "depends_on": "multiuser-docsearch-d1",
+  "description": "Use memory_search to find information about intelligence and cognition in reptiles. Compare cognitive abilities across monitor lizards and crocodilians, including evidence for counting, tool use, and social learning.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "reptile-intelligence.md",
+    "varanus-genus.md",
+    "crocodilia-order.md"
+  ]
+}

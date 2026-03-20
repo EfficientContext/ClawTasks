@@ -1,0 +1,567 @@
+[
+  {
+    "id": "b8659a31dcbd",
+    "name": "multiuser-docsearch-a1",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-a",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Use memory_search to find information about Komodo dragon hunting strategies and venom mechanisms. Summarize how Komodo dragons use venom during predation, including Bryan Fry's 2009 discovery and the shift from the bacterial infection hypothesis.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "komodo-dragon.md",
+      "monitor-venom.md",
+      "varanus-genus.md"
+    ]
+  },
+  {
+    "id": "1b0a74c9095e",
+    "name": "multiuser-docsearch-a2",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-a",
+    "chain_position": 2,
+    "depends_on": "multiuser-docsearch-a1",
+    "description": "Use memory_search to find information about water monitor lizards and their adaptation to urban environments. Describe how Varanus salvator thrives in cities like Bangkok and Singapore, and discuss what this reveals about monitor lizard intelligence.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "water-monitor.md",
+      "varanus-genus.md",
+      "reptile-intelligence.md"
+    ]
+  },
+  {
+    "id": "185ac596b082",
+    "name": "multiuser-docsearch-a3",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-a",
+    "chain_position": 3,
+    "depends_on": "multiuser-docsearch-a1",
+    "description": "Use memory_search to find information about thermoregulation in monitor lizards. Compare how the perentie survives extreme desert heat in Australia versus how tropical monitors regulate their temperature.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "perentie.md",
+      "varanus-genus.md",
+      "reptile-thermoregulation.md"
+    ]
+  },
+  {
+    "id": "1cdff017849f",
+    "name": "multiuser-docsearch-a4",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-a",
+    "chain_position": 4,
+    "depends_on": "multiuser-docsearch-a1",
+    "description": "Use memory_search to find information about the Toxicofera hypothesis and how it relates to venom in monitor lizards. Explain what Toxicofera means for our understanding of venom evolution across squamate reptiles.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "monitor-venom.md",
+      "toxicofera.md",
+      "varanus-genus.md",
+      "squamata-order.md"
+    ]
+  },
+  {
+    "id": "3684eabce7f7",
+    "name": "multiuser-docsearch-a5",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-a",
+    "chain_position": 5,
+    "depends_on": "multiuser-docsearch-a1",
+    "description": "Use memory_search to find information about conservation challenges facing large monitor lizards. Discuss the conservation status of Komodo dragons and perenties, including threats and protection measures.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "komodo-dragon.md",
+      "perentie.md",
+      "reptile-conservation.md",
+      "varanus-genus.md"
+    ]
+  },
+  {
+    "id": "626215fc0c17",
+    "name": "multiuser-docsearch-b1",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-b",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Use memory_search to find information about saltwater crocodile distribution and bite force. Summarize what makes C. porosus the largest living reptile and why it has the strongest bite force of any animal.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "saltwater-crocodile.md",
+      "crocodilia-order.md"
+    ]
+  },
+  {
+    "id": "306d061cad6b",
+    "name": "multiuser-docsearch-b2",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-b",
+    "chain_position": 2,
+    "depends_on": "multiuser-docsearch-b1",
+    "description": "Use memory_search to find information about American alligator habitat engineering. Explain the concept of 'alligator holes' and how A. mississippiensis acts as a keystone species, including its Endangered Species Act recovery story.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "american-alligator.md",
+      "crocodilia-order.md",
+      "reptile-conservation.md"
+    ]
+  },
+  {
+    "id": "e7df0f5f665c",
+    "name": "multiuser-docsearch-b3",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-b",
+    "chain_position": 3,
+    "depends_on": "multiuser-docsearch-b1",
+    "description": "Use memory_search to find information about the gharial and why it is critically endangered. Discuss the threats facing Gavialis gangeticus in the Ganges basin and current conservation efforts.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "gharial.md",
+      "crocodilia-order.md",
+      "reptile-conservation.md"
+    ]
+  },
+  {
+    "id": "80ca39b8e17d",
+    "name": "multiuser-docsearch-b4",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-b",
+    "chain_position": 4,
+    "depends_on": "multiuser-docsearch-b1",
+    "description": "Use memory_search to find information about thermoregulation in crocodilians. Describe the behavioral strategies crocodilians use to regulate body temperature, including basking, gaping, and shuttling between water and land.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "crocodilia-order.md",
+      "reptile-thermoregulation.md",
+      "saltwater-crocodile.md"
+    ]
+  },
+  {
+    "id": "db0dc8621b07",
+    "name": "multiuser-docsearch-b5",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-b",
+    "chain_position": 5,
+    "depends_on": "multiuser-docsearch-b1",
+    "description": "Use memory_search to find information about crocodilian intelligence and parental care. Discuss tool use, cooperative hunting, and the sophisticated parental care behaviors observed in crocodilians.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "crocodilia-order.md",
+      "reptile-intelligence.md",
+      "american-alligator.md"
+    ]
+  },
+  {
+    "id": "548c94900c1a",
+    "name": "multiuser-docsearch-c1",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-c",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Use memory_search to find information about leatherback sea turtle migration and deep diving abilities. Summarize the extraordinary physiology that allows D. coriacea to dive over 1,000 meters and migrate across entire ocean basins.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "leatherback-turtle.md",
+      "sea-turtle-overview.md",
+      "reptile-thermoregulation.md"
+    ]
+  },
+  {
+    "id": "51ceb386a528",
+    "name": "multiuser-docsearch-c2",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-c",
+    "chain_position": 2,
+    "depends_on": "multiuser-docsearch-c1",
+    "description": "Use memory_search to find information about green sea turtle herbivory and seagrass ecology. Explain how C. mydas is unique among sea turtles as an herbivore and its role in maintaining healthy seagrass ecosystems.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "green-sea-turtle.md",
+      "sea-turtle-overview.md"
+    ]
+  },
+  {
+    "id": "6a753f205b87",
+    "name": "multiuser-docsearch-c3",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-c",
+    "chain_position": 3,
+    "depends_on": "multiuser-docsearch-c1",
+    "description": "Use memory_search to find information about threats facing sea turtles globally. Provide a comprehensive overview of conservation challenges including bycatch, plastic pollution, climate change impacts on sex ratios, and nesting habitat loss.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "sea-turtle-overview.md",
+      "reptile-conservation.md",
+      "green-sea-turtle.md",
+      "leatherback-turtle.md"
+    ]
+  },
+  {
+    "id": "65281a5a6184",
+    "name": "multiuser-docsearch-c4",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-c",
+    "chain_position": 4,
+    "depends_on": "multiuser-docsearch-c1",
+    "description": "Use memory_search to find information about marine iguana adaptations. Describe how Amblyrhynchus cristatus evolved to be the only ocean-going lizard, including its salt glands, marine foraging behavior, and thermoregulation challenges.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "marine-iguana.md",
+      "squamata-order.md",
+      "reptile-thermoregulation.md"
+    ]
+  },
+  {
+    "id": "fe07fd37e2db",
+    "name": "multiuser-docsearch-c5",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-c",
+    "chain_position": 5,
+    "depends_on": "multiuser-docsearch-c1",
+    "description": "Use memory_search to find information about thermoregulation in marine reptiles. Compare how leatherback sea turtles use gigantothermy versus how marine iguanas cope with cold ocean temperatures through basking behavior.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "leatherback-turtle.md",
+      "marine-iguana.md",
+      "reptile-thermoregulation.md",
+      "sea-turtle-overview.md"
+    ]
+  },
+  {
+    "id": "d30f76c241f1",
+    "name": "multiuser-docsearch-d1",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-d",
+    "chain_position": 1,
+    "depends_on": null,
+    "description": "Use memory_search to find information about thermoregulation strategies across different reptile groups. Compare how monitors, crocodilians, and sea turtles approach the challenge of temperature regulation as ectotherms.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "reptile-thermoregulation.md",
+      "crocodilia-order.md",
+      "sea-turtle-overview.md",
+      "varanus-genus.md"
+    ]
+  },
+  {
+    "id": "2371565951e9",
+    "name": "multiuser-docsearch-d2",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-d",
+    "chain_position": 2,
+    "depends_on": "multiuser-docsearch-d1",
+    "description": "Use memory_search to find information about Squamata diversity and phylogeny. Explain the scale of squamate diversity with 11,000+ species and how modern molecular phylogenetics has reshaped our understanding of relationships within this order.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "squamata-order.md",
+      "toxicofera.md",
+      "varanus-genus.md"
+    ]
+  },
+  {
+    "id": "5ed2a1862079",
+    "name": "multiuser-docsearch-d3",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-d",
+    "chain_position": 3,
+    "depends_on": "multiuser-docsearch-d1",
+    "description": "Use memory_search to find information about intelligence and cognition in reptiles. Compare cognitive abilities across monitor lizards and crocodilians, including evidence for counting, tool use, and social learning.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "reptile-intelligence.md",
+      "varanus-genus.md",
+      "crocodilia-order.md"
+    ]
+  },
+  {
+    "id": "059e0825198a",
+    "name": "multiuser-docsearch-d4",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-d",
+    "chain_position": 4,
+    "depends_on": "multiuser-docsearch-d1",
+    "description": "Use memory_search to find information about global reptile conservation priorities. Identify the most critically endangered reptile species and discuss the major threats and conservation strategies across crocodilians, sea turtles, and monitor lizards.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "reptile-conservation.md",
+      "gharial.md",
+      "sea-turtle-overview.md",
+      "komodo-dragon.md"
+    ]
+  },
+  {
+    "id": "591df01cc0c8",
+    "name": "multiuser-docsearch-d5",
+    "topic": "multiuser-docsearch",
+    "user_id": "user-d",
+    "chain_position": 5,
+    "depends_on": "multiuser-docsearch-d1",
+    "description": "Use memory_search to find information about venom evolution in the Toxicofera clade. Explain the evidence for a single origin of venom in squamate reptiles and how this hypothesis connects monitors, iguanians, and snakes.",
+    "category": "research",
+    "difficulty": "medium",
+    "expected_steps": 4,
+    "skills_required": [
+      "memory_search"
+    ],
+    "skills_info": [
+      {
+        "slug": "memory_search",
+        "displayName": "Memory Search",
+        "category": "memory"
+      }
+    ],
+    "num_skills": 1,
+    "expected_documents": [
+      "toxicofera.md",
+      "monitor-venom.md",
+      "squamata-order.md",
+      "varanus-genus.md"
+    ]
+  }
+]

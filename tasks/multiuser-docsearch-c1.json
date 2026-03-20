@@ -1,0 +1,28 @@
+{
+  "id": "548c94900c1a",
+  "name": "multiuser-docsearch-c1",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-c",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use memory_search to find information about leatherback sea turtle migration and deep diving abilities. Summarize the extraordinary physiology that allows D. coriacea to dive over 1,000 meters and migrate across entire ocean basins.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "leatherback-turtle.md",
+    "sea-turtle-overview.md",
+    "reptile-thermoregulation.md"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "591df01cc0c8",
+  "name": "multiuser-docsearch-d5",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-d",
+  "chain_position": 5,
+  "depends_on": "multiuser-docsearch-d1",
+  "description": "Use memory_search to find information about venom evolution in the Toxicofera clade. Explain the evidence for a single origin of venom in squamate reptiles and how this hypothesis connects monitors, iguanians, and snakes.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "toxicofera.md",
+    "monitor-venom.md",
+    "squamata-order.md",
+    "varanus-genus.md"
+  ]
+}

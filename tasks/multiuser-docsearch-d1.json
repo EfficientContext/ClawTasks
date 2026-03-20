@@ -1,0 +1,29 @@
+{
+  "id": "d30f76c241f1",
+  "name": "multiuser-docsearch-d1",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-d",
+  "chain_position": 1,
+  "depends_on": null,
+  "description": "Use memory_search to find information about thermoregulation strategies across different reptile groups. Compare how monitors, crocodilians, and sea turtles approach the challenge of temperature regulation as ectotherms.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "reptile-thermoregulation.md",
+    "crocodilia-order.md",
+    "sea-turtle-overview.md",
+    "varanus-genus.md"
+  ]
+}

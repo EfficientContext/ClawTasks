@@ -1,0 +1,28 @@
+{
+  "id": "306d061cad6b",
+  "name": "multiuser-docsearch-b2",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-b",
+  "chain_position": 2,
+  "depends_on": "multiuser-docsearch-b1",
+  "description": "Use memory_search to find information about American alligator habitat engineering. Explain the concept of 'alligator holes' and how A. mississippiensis acts as a keystone species, including its Endangered Species Act recovery story.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "american-alligator.md",
+    "crocodilia-order.md",
+    "reptile-conservation.md"
+  ]
+}

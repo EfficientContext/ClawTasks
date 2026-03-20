@@ -1,0 +1,29 @@
+{
+  "id": "6a753f205b87",
+  "name": "multiuser-docsearch-c3",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-c",
+  "chain_position": 3,
+  "depends_on": "multiuser-docsearch-c1",
+  "description": "Use memory_search to find information about threats facing sea turtles globally. Provide a comprehensive overview of conservation challenges including bycatch, plastic pollution, climate change impacts on sex ratios, and nesting habitat loss.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "sea-turtle-overview.md",
+    "reptile-conservation.md",
+    "green-sea-turtle.md",
+    "leatherback-turtle.md"
+  ]
+}

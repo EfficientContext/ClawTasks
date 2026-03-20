@@ -1,0 +1,29 @@
+{
+  "id": "3684eabce7f7",
+  "name": "multiuser-docsearch-a5",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-a",
+  "chain_position": 5,
+  "depends_on": "multiuser-docsearch-a1",
+  "description": "Use memory_search to find information about conservation challenges facing large monitor lizards. Discuss the conservation status of Komodo dragons and perenties, including threats and protection measures.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "komodo-dragon.md",
+    "perentie.md",
+    "reptile-conservation.md",
+    "varanus-genus.md"
+  ]
+}

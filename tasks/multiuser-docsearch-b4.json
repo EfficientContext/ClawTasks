@@ -1,0 +1,28 @@
+{
+  "id": "80ca39b8e17d",
+  "name": "multiuser-docsearch-b4",
+  "topic": "multiuser-docsearch",
+  "user_id": "user-b",
+  "chain_position": 4,
+  "depends_on": "multiuser-docsearch-b1",
+  "description": "Use memory_search to find information about thermoregulation in crocodilians. Describe the behavioral strategies crocodilians use to regulate body temperature, including basking, gaping, and shuttling between water and land.",
+  "category": "research",
+  "difficulty": "medium",
+  "expected_steps": 4,
+  "skills_required": [
+    "memory_search"
+  ],
+  "skills_info": [
+    {
+      "slug": "memory_search",
+      "displayName": "Memory Search",
+      "category": "memory"
+    }
+  ],
+  "num_skills": 1,
+  "expected_documents": [
+    "crocodilia-order.md",
+    "reptile-thermoregulation.md",
+    "saltwater-crocodile.md"
+  ]
+}
