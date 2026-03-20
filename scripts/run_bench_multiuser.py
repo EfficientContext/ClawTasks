@@ -62,13 +62,33 @@ def find_openclaw_bin():
     return None
 
 
-def get_node22_path():
-    nvm_dir = pathlib.Path.home() / ".nvm"
+def get_node_path():
+    """Find a node binary >= v22. Checks PATH first, then nvm."""
+    # 1. Check node on PATH
+    try:
+        r = subprocess.run(["node", "--version"], capture_output=True, text=True, timeout=5)
+        if r.returncode == 0:
+            ver = r.stdout.strip().lstrip("v")
+            major = int(ver.split(".")[0])
+            if major >= 22:
+                which = subprocess.run(["which", "node"], capture_output=True, text=True, timeout=5)
+                if which.returncode == 0:
+                    return which.stdout.strip()
+    except Exception:
+        pass
+
+    # 2. Fallback: nvm versions >= 22
+    nvm_dir = pathlib.Path.home() / ".nvm" / "versions" / "node"
     if nvm_dir.exists():
-        for d in sorted((nvm_dir / "versions" / "node").glob("v22.*"), reverse=True):
-            node = d / "bin" / "node"
-            if node.exists():
-                return str(node)
+        for d in sorted(nvm_dir.glob("v*"), reverse=True):
+            try:
+                major = int(d.name.lstrip("v").split(".")[0])
+            except ValueError:
+                continue
+            if major >= 22:
+                node = d / "bin" / "node"
+                if node.exists():
+                    return str(node)
     return None
 
 
@@ -228,9 +248,9 @@ async def run_task_openclaw(task: dict, session_id: str,
                             profile_dir: pathlib.Path,
                             timeout: int = 300) -> dict:
     """Run a single task via OpenClaw subprocess."""
-    node_bin = get_node22_path()
+    node_bin = get_node_path()
     if not node_bin:
-        return _error_result(task, "Node.js 22+ not found. Run: nvm install 22")
+        return _error_result(task, "Node.js >= 22 not found on PATH or in nvm")
 
     oc_bin = find_openclaw_bin()
     if not oc_bin:
