@@ -4,16 +4,21 @@ End-to-end benchmark for evaluating LLM inference proxy optimizations on prefill
 
 ## Scenario
 
-A company (TechVentures Pte Ltd) has 4 vendor service agreements:
+A company (TechVentures Pte Ltd) manages its technology vendor relationships through a private document workspace containing 18 files across 7 document types:
 
-| Contract | Vendor | Service | Size |
-|----------|--------|---------|------|
-| Alpha | CloudNine Solutions | Cloud infrastructure | ~45 KB |
-| Beta | DeepMind Analytics | AI/ML platform | ~45 KB |
-| Gamma | CyberShield | Cybersecurity operations | ~45 KB |
-| Delta | DataStream Technologies | Data engineering | ~45 KB |
+| Category | Files | Size | Description |
+|----------|-------|------|-------------|
+| Service Agreements | 4 | 182 KB | Vendor contracts (cloud, AI, security, data) sharing Articles 1–16 template |
+| Amendments | 4 | 19 KB | Contract modifications (scope expansion, SLA tightening, sustainability) |
+| Master Service Agreement | 1 | 9 KB | Framework terms referenced by all vendor contracts |
+| Vendor Assessments | 4 | 16 KB | Annual performance reviews with SLA metrics and scores |
+| Internal Policies | 2 | 13 KB | Information Security Policy and Data Governance Policy |
+| Board Minutes | 1 | 8 KB | Q4 2024 board meeting discussing vendor strategy |
+| NDAs | 2 | 12 KB | Mutual non-disclosure agreements with two vendors |
 
-All 4 contracts share a common legal template (Articles 1–16, Schedules A–B) with vendor-specific terms in Article 17, payment schedules, and headers. Total corpus: **182 KB (~45K tokens)**.
+**Total corpus: 18 files, 260 KB (~65K tokens).**
+
+Documents share content naturally: contracts use the same legal template, amendments reference original contracts, vendor assessments quote contract SLA targets, policies are referenced in the MSA, and board minutes summarize vendor performance.
 
 30 contract-review tasks simulate realistic legal workflows:
 
@@ -129,7 +134,7 @@ contextpilot-bench/
 ├── results/
 │   └── results.jsonl           # Benchmark results (30 scenarios × 2 arms)
 └── scripts/
-    ├── gen_data.py             # Generate 4 contracts into OpenClaw workspace
+    ├── gen_data.py             # Generate 18 documents into OpenClaw workspace
     ├── run_bench.py            # Run benchmark (manages SGLang/CP lifecycle)
     └── analyze.py              # Print paper-ready results table
 ```
