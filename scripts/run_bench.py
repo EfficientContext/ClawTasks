@@ -15,6 +15,7 @@ PORT_SGLANG = 30002
 PORT_CP = 8771
 
 ROOT_DIR = Path(__file__).parent.parent
+TASKS_DIR = ROOT_DIR / "claw-tasks"
 WORKSPACE_SRC = ROOT_DIR / "data" / "workspace"
 RESULTS_DIR = ROOT_DIR / "results"
 CATEGORIES = ["commercial", "legal", "compliance", "strategic"]
@@ -43,7 +44,7 @@ def load_tasks(categories=None, filter_names=None):
     tasks = []
     cats = categories if categories else CATEGORIES
     for cat in cats:
-        cat_path = ROOT_DIR / cat / "tasks.json"
+        cat_path = TASKS_DIR / cat / "tasks.json"
         if not cat_path.exists():
             continue
         with open(cat_path) as f:
