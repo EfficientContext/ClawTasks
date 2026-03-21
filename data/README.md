@@ -2,20 +2,20 @@
 
 ## Source
 
-All documents are **synthetically generated** (mocked). No real company data, contracts, or proprietary content is used.
+All documents are **synthetically generated** by AI. No real company data, contracts, or proprietary content is used. No content was copied from any existing template or document.
 
-The documents were generated to simulate a realistic enterprise vendor management workspace. The structure, terminology, and clause patterns are based on publicly available legal templates and standards:
+The documents were written to reflect common patterns found in enterprise vendor management. The clause structures, article numbering, and legal terminology follow conventions that are standard practice across the software services industry. Specific domain knowledge referenced:
 
-| Document Type | Based On |
-|---------------|----------|
-| Service Agreements | [IACCM/WorldCC Standard Contract Templates](https://www.worldcc.com/resources/contract-templates), common software service agreement patterns used in Singapore corporate law |
-| Amendments | Standard contract amendment format per Singapore Companies Act |
-| Master Service Agreement | [Gartner MSA Framework](https://www.gartner.com/en/information-technology/glossary/master-service-agreement-msa), typical multi-vendor governance structure |
-| Vendor Assessments | [ISO 27036 Supplier Relationship Security](https://www.iso.org/standard/59689.html) assessment framework |
-| Information Security Policy | [NIST Cybersecurity Framework (CSF)](https://www.nist.gov/cyberframework), [ISO 27001:2022](https://www.iso.org/standard/27001) |
-| Data Governance Policy | [DAMA-DMBOK Data Management Body of Knowledge](https://www.dama.org/cpages/body-of-knowledge), [GDPR Article 30](https://gdpr-info.eu/art-30-gdpr/) record-keeping requirements |
-| Board Minutes | Singapore Companies Act board resolution format, [SGX Corporate Governance Code](https://www.sgx.com/regulation/corporate-governance) |
-| NDAs | Standard mutual NDA template commonly used in Singapore technology sector |
+| Document Type | Domain Knowledge |
+|---------------|-----------------|
+| Service Agreements | Standard software service agreement clauses (scope, term, fees, IP, confidentiality, liability, indemnification, dispute resolution). Governed by Singapore law. |
+| Amendments | Standard contract amendment format: recitals, numbered amendments referencing original clauses, general provisions. |
+| Master Service Agreement | Multi-vendor governance framework with qualification requirements, steering committees, performance management, financial controls. |
+| Vendor Assessments | SLA performance scoring across delivery, security, financial, relationship, and innovation dimensions. |
+| Information Security Policy | Aligned with common information security frameworks: data classification (public/internal/confidential/restricted), access control with RBAC and MFA, encryption standards (AES-256, TLS 1.2+), incident severity classification. |
+| Data Governance Policy | Data quality dimensions (accuracy, completeness, consistency, timeliness, validity, uniqueness), lifecycle management, retention schedules, privacy requirements. |
+| Board Minutes | Singapore board meeting format: quorum, resolutions, management reports, risk committee updates. |
+| NDAs | Standard mutual non-disclosure agreement with defined confidential information, exceptions, survival period. |
 
 ## Fictional Entities
 
