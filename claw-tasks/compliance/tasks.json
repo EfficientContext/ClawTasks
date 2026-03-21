@@ -99,5 +99,87 @@
       "Read contracts/contract_gamma_security.txt. The security vendor should have the most detailed breach response — verify this. Do not search the web — only analyze the contract text.",
       "Read contracts/contract_delta_data.txt. Compare breach response across all four and identify gaps. Do not search the web — only analyze the contract text."
     ]
+  },
+  {
+    "name": "s37_policy_vs_contract",
+    "turns": [
+      "Read contracts/policy_information_security.txt and list the key security requirements for vendors (Section 5 and 7). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. Does it meet the security policy's vendor requirements? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt. As the security vendor, does it comply with all policy requirements? Do not search the web — only analyze the documents.",
+      "Which contracts have gaps against the Information Security Policy? List specific missing requirements. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s38_data_governance",
+    "turns": [
+      "Read contracts/policy_data_governance.txt and extract the data quality standards and retention requirements. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_delta_data.txt. Does the data vendor's contract meet the Data Governance Policy requirements? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt. Are the AI training data provisions compliant with the data governance policy? Do not search the web — only analyze the documents.",
+      "Produce a data governance compliance gap analysis across all four contracts. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s39_msa_compliance",
+    "turns": [
+      "Read contracts/master_service_agreement.txt and extract the vendor qualification requirements (Article 2) and security requirements (Article 5). Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt. Does the cloud vendor meet MSA qualification standards? Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_beta_ai.txt and contracts/vendor_assessment_gamma_security.txt. Do these vendors comply? Do not search the web — only analyze the documents.",
+      "Based on the assessments, which vendors may not meet MSA re-qualification requirements? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s40_amendment_compliance",
+    "turns": [
+      "Read contracts/amendment_alpha_cloud_a1.txt. Does it add sustainability requirements? Describe them. Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_beta_ai_a1.txt and contracts/amendment_gamma_security_a1.txt. Do they have similar sustainability provisions? Do not search the web — only analyze the documents.",
+      "Read contracts/policy_information_security.txt. Are the amended SLA targets consistent with the security policy's requirements? Do not search the web — only analyze the documents.",
+      "Write a compliance status report on all four amendments. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s41_cross_doc_privacy",
+    "turns": [
+      "Read contracts/policy_data_governance.txt and extract the cross-border data transfer requirements (Section 4.3). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. Does it have adequate cross-border provisions per the policy? Do not search the web — only analyze the documents.",
+      "Read contracts/nda_001_cloudnine.txt. Does the NDA cover data protection adequately? Do not search the web — only analyze the documents.",
+      "Read contracts/master_service_agreement.txt. Does the MSA's data protection framework (Article 4) align with the policy? Do not search the web — only analyze the documents.",
+      "Produce a cross-document privacy compliance matrix. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s53_certification_tracking",
+    "turns": [
+      "Read contracts/vendor_assessment_alpha_cloud.txt and list all vendor certifications and their expiry dates. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_beta_ai.txt and contracts/vendor_assessment_gamma_security.txt. Same extraction. Do not search the web — only analyze the documents.",
+      "Read contracts/policy_information_security.txt. Which certifications does the policy require vendors to maintain? Do not search the web — only analyze the documents.",
+      "Are any vendor certifications expiring soon? Create a certification renewal tracker. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s54_incident_history",
+    "turns": [
+      "Read contracts/vendor_assessment_alpha_cloud.txt and extract the security incident history. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_gamma_security.txt. What incidents did the security vendor report? Do not search the web — only analyze the documents.",
+      "Read contracts/board_minutes_2024_q4.txt. What did the CTO report about combined security incidents? Do not search the web — only analyze the documents.",
+      "Read contracts/policy_information_security.txt. Were all incidents handled per the policy's severity classification? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s55_data_retention_audit",
+    "turns": [
+      "Read contracts/policy_data_governance.txt and extract all data retention periods (Section 5.3). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_delta_data.txt. Does the data vendor's retention provision match the policy? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. What about cloud data retention? Do not search the web — only analyze the documents.",
+      "Produce a data retention compliance matrix: policy requirement vs. contract provision for each vendor. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s56_access_control_review",
+    "turns": [
+      "Read contracts/policy_information_security.txt and extract access control requirements (Section 3). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. Does the cloud contract specify access control obligations? Do not search the web — only analyze the documents.",
+      "Read contracts/master_service_agreement.txt. What access control standards does the MSA mandate? Do not search the web — only analyze the documents.",
+      "Identify access control gaps between the policy, MSA, and individual contracts. Do not search the web — only analyze the documents."
+    ]
   }
 ]

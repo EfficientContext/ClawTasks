@@ -44,5 +44,50 @@
       "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Calculate total financial commitments. Do not search the web — only analyze the contract text.",
       "What is our total vendor spend across all four contracts? Provide a cost breakdown. Do not search the web — only analyze the contract text."
     ]
+  },
+  {
+    "name": "s31_amendment_impact",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and summarize the payment terms. Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_alpha_cloud_a1.txt. What changes were made to the payment terms and contract value? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt and contracts/amendment_beta_ai_a1.txt. Compare the same — what changed? Do not search the web — only analyze the documents.",
+      "Across all four contracts and their amendments, what is the total revised spend? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s32_assessment_vs_sla",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract the SLA targets from Schedule B. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt. Did the vendor meet those SLA targets? Quote the actual performance numbers. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_beta_ai.txt. How does the AI vendor's performance compare? Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_gamma_security.txt and contracts/vendor_assessment_delta_data.txt. Which vendor had the best and worst SLA compliance? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s33_msa_pricing",
+    "turns": [
+      "Read contracts/master_service_agreement.txt and extract all financial management provisions (Article 7). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. Are its payment terms compliant with the MSA's financial requirements? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt. Does its performance bonus structure comply with the MSA's rate increase cap? Do not search the web — only analyze the documents.",
+      "Summarize any MSA financial compliance gaps across all four contracts. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s48_service_credit_analysis",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract the service credit formula from Schedule B. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt. How many service credits were actually issued this year? Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_alpha_cloud_a1.txt. Did the amendment change the service credit rate? Calculate the new exposure. Do not search the web — only analyze the documents.",
+      "Compare service credit risk across all four contracts and their amendments. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s49_budget_reconciliation",
+    "turns": [
+      "Read contracts/board_minutes_2024_q4.txt and extract the CFO's reported vendor spend figures. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Do the contract values match what the CFO reported? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Complete the reconciliation. Do not search the web — only analyze the documents.",
+      "Are there any discrepancies between contracted amounts and reported spend? Do not search the web — only analyze the documents."
+    ]
   }
 ]

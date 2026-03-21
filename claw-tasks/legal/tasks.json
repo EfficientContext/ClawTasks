@@ -61,5 +61,59 @@
       "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are cyberattacks included in force majeure? Do not search the web — only analyze the contract text.",
       "Write a summary of force majeure coverage across all four and recommend improvements. Do not search the web — only analyze the contract text."
     ]
+  },
+  {
+    "name": "s34_nda_vs_contract",
+    "turns": [
+      "Read contracts/nda_001_cloudnine.txt and summarize the confidentiality obligations and survival period. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt and extract its confidentiality article. Compare with the NDA — are they consistent? Do not search the web — only analyze the documents.",
+      "Read contracts/nda_002_deepmind.txt and contracts/contract_beta_ai.txt. Same comparison — any gaps between the NDA and contract? Do not search the web — only analyze the documents.",
+      "Write a recommendation on whether the NDAs need to be updated to align with the contracts. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s35_amendment_legal",
+    "turns": [
+      "Read contracts/contract_gamma_security.txt and extract termination and liability provisions. Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_gamma_security_a1.txt. Did the amendment change any termination or liability terms? Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_delta_data_a1.txt. What about the data vendor's amendment? Do not search the web — only analyze the documents.",
+      "Are there any legal risks introduced by the amendments that were not in the original contracts? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s36_msa_legal_framework",
+    "turns": [
+      "Read contracts/master_service_agreement.txt and extract the dispute resolution and governing law provisions. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. Does its dispute resolution align with the MSA? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt. Any conflicts with the MSA's legal framework? Do not search the web — only analyze the documents.",
+      "Are all four contracts legally consistent with the MSA? Summarize any conflicts. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s50_survival_clauses",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and identify all clauses that survive termination. Do not search the web — only analyze the documents.",
+      "Read contracts/nda_001_cloudnine.txt. How long does the NDA survive? Is it consistent with the contract's survival provisions? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt and contracts/nda_002_deepmind.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Are there any gaps where protections expire too early? Write recommendations. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s51_assignment_restrictions",
+    "turns": [
+      "Read contracts/master_service_agreement.txt and extract the assignment clause (Article 8.3 equivalent). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. What happens if CloudNine is acquired? Can the contract be assigned? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt. Same question for DeepMind Analytics. Do not search the web — only analyze the documents.",
+      "If a vendor is acquired by a competitor, are we protected across all four contracts? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s52_indemnity_comparison",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract Party B's indemnification obligations. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt. Does the AI vendor have additional indemnification for IP infringement? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt. What indemnification does the security vendor provide for data breaches? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_delta_data.txt. Rank all four vendors by indemnification coverage strength. Do not search the web — only analyze the documents."
+    ]
   }
 ]
