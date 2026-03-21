@@ -1,0 +1,143 @@
+MASTER SERVICE AGREEMENT
+Agreement ID: MSA-2023-001
+Date: 2023-06-01
+
+PARTIES:
+Party A (Client): TechVentures Pte Ltd, a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
+
+Party B: Any vendor or service provider that executes a Statement of Work or Service Agreement referencing this Master Service Agreement (each, a "Vendor" or "Service Provider").
+
+RECITALS
+
+WHEREAS, Party A engages multiple technology service providers for various aspects of its business operations, including but not limited to cloud infrastructure, artificial intelligence, cybersecurity, and data engineering;
+
+WHEREAS, Party A desires to establish a unified framework of terms and conditions that shall apply to all service engagements with its technology vendors;
+
+WHEREAS, individual Service Agreements executed between Party A and each Vendor shall incorporate the terms of this Master Service Agreement by reference;
+
+NOW, THEREFORE, in consideration of the mutual covenants contained herein, Party A establishes the following Master Service Agreement:
+
+ARTICLE 1 — APPLICABILITY
+
+1.1 This Master Service Agreement ("MSA") establishes the general terms and conditions that apply to all technology service engagements between Party A and its Vendors. Each individual engagement shall be governed by a separate Service Agreement ("SA") that incorporates this MSA by reference.
+
+1.2 In the event of any conflict between the terms of this MSA and an individual SA, the terms of the SA shall prevail to the extent of such conflict, unless the MSA provision is expressly stated to be non-waivable.
+
+1.3 This MSA does not create any obligation on Party A to engage any particular Vendor or to procure any minimum volume of services.
+
+ARTICLE 2 — VENDOR QUALIFICATION
+
+2.1 All Vendors engaged by Party A must meet the following minimum qualification requirements:
+
+(a) Minimum of five (5) years of experience in the relevant technology domain;
+(b) Annual revenue of at least USD 10,000,000 or equivalent;
+(c) Relevant industry certifications as specified in the applicable SA;
+(d) Demonstrated financial stability, evidenced by audited financial statements for the most recent three (3) fiscal years;
+(e) Satisfactory results from Party A's vendor due diligence process, including background checks, reference checks, and security assessments;
+(f) Compliance with all applicable laws, regulations, and industry standards;
+(g) Adequate insurance coverage as specified in Article 8 of this MSA.
+
+2.2 Party A reserves the right to conduct periodic reassessments of Vendor qualifications during the term of any engagement. Failure to maintain the required qualifications may result in termination of the applicable SA.
+
+ARTICLE 3 — GOVERNANCE
+
+3.1 Each Vendor engagement shall be overseen by a governance structure consisting of:
+
+(a) Executive Sponsor: A senior executive from each party with authority to make strategic decisions;
+(b) Engagement Manager: A dedicated manager from each party responsible for day-to-day coordination;
+(c) Technical Lead: A technical specialist from each party responsible for technical decisions and quality;
+(d) Steering Committee: A joint committee meeting quarterly to review performance, address issues, and plan future work.
+
+3.2 The Steering Committee shall:
+(a) Review service performance against SLA targets;
+(b) Review and approve change requests exceeding USD 50,000;
+(c) Resolve escalated disputes;
+(d) Review and update risk registers;
+(e) Approve annual service improvement plans.
+
+3.3 Party A shall maintain a centralized Vendor Management Office (VMO) responsible for:
+(a) Monitoring compliance with this MSA across all Vendor engagements;
+(b) Consolidating and analyzing performance metrics;
+(c) Coordinating cross-vendor dependencies;
+(d) Managing vendor risk assessments;
+(e) Facilitating knowledge sharing across Vendor engagements.
+
+ARTICLE 4 — STANDARD TERMS
+
+4.1 Confidentiality: All Vendors shall be bound by confidentiality obligations consistent with Article 6 of each SA. The confidentiality obligations shall survive termination of any SA for a period of five (5) years, or for so long as the information remains a trade secret, whichever is longer.
+
+4.2 Data Protection: All Vendors processing Personal Data on behalf of Party A shall comply with the data protection requirements set forth in Article 7 of each SA and shall execute a Data Processing Agreement in the form provided by Party A.
+
+4.3 Intellectual Property: Unless otherwise specified in the applicable SA, all Intellectual Property created in the performance of Services shall be owned by Party A, consistent with Article 5 of each SA.
+
+4.4 Insurance: All Vendors shall maintain the minimum insurance coverages specified in Article 15 of each SA throughout the term of their engagement and for two (2) years following termination.
+
+4.5 Business Continuity: All Vendors shall maintain business continuity and disaster recovery plans consistent with Article 16 of each SA. Plans shall be tested at least semi-annually, and test results shall be shared with Party A.
+
+4.6 Compliance: All Vendors shall comply with applicable laws, regulations, and industry standards, including but not limited to anti-corruption laws, export control regulations, sanctions requirements, and data protection laws.
+
+ARTICLE 5 — SECURITY REQUIREMENTS
+
+5.1 All Vendors shall comply with Party A's Information Security Policy (ISP-2024-001) and Data Governance Policy (DGP-2024-001), as amended from time to time.
+
+5.2 Minimum security requirements for all Vendor engagements:
+
+(a) Encryption: All data at rest shall be encrypted using AES-256 or equivalent. All data in transit shall be encrypted using TLS 1.2 or higher.
+
+(b) Access Control: Role-based access control (RBAC) with the principle of least privilege. Multi-factor authentication (MFA) for all administrative and privileged access. Access reviews conducted at least quarterly.
+
+(c) Monitoring: Continuous security monitoring with real-time alerting. Security event logs retained for a minimum of one (1) year. Integration with Party A's Security Information and Event Management (SIEM) system.
+
+(d) Vulnerability Management: Monthly vulnerability scanning of all systems and applications. Quarterly penetration testing by an independent third party. Critical vulnerabilities (CVSS >= 9.0) remediated within 24 hours. High vulnerabilities (CVSS 7.0-8.9) remediated within 72 hours.
+
+(e) Incident Response: Documented incident response procedures aligned with NIST SP 800-61. Security incidents reported to Party A within 24 hours. Post-incident reports delivered within 72 hours.
+
+(f) Personnel Security: Background checks for all personnel with access to Party A's systems or data. Annual security awareness training. Confidentiality agreements signed by all personnel.
+
+ARTICLE 6 — PERFORMANCE MANAGEMENT
+
+6.1 All Vendors shall report performance metrics monthly, including:
+(a) SLA compliance rates;
+(b) Incident counts by severity;
+(c) Change request status;
+(d) Resource utilization;
+(e) Customer satisfaction scores;
+(f) Risk register updates.
+
+6.2 Party A shall conduct formal performance reviews:
+(a) Monthly: Operational review with Engagement Managers;
+(b) Quarterly: Strategic review with Executive Sponsors;
+(c) Annually: Comprehensive assessment including benchmarking against industry standards.
+
+6.3 Performance scores below the minimum acceptable threshold (as defined in each SA) for two (2) consecutive quarters shall trigger a Performance Improvement Plan (PIP). Failure to achieve the required improvement within the PIP period may result in termination of the SA for cause.
+
+ARTICLE 7 — FINANCIAL MANAGEMENT
+
+7.1 All invoices shall comply with Party A's accounts payable requirements:
+(a) Itemized breakdown of services, hours, and expenses;
+(b) Reference to the applicable SA and purchase order number;
+(c) Supporting documentation for all expense claims;
+(d) Submitted electronically through Party A's vendor portal.
+
+7.2 Payment terms: Net 30 days from receipt of a compliant invoice, unless otherwise specified in the applicable SA.
+
+7.3 Annual rate increases shall not exceed the lesser of: (a) three percent (3%); or (b) the Consumer Price Index (CPI) increase for the preceding twelve (12) months.
+
+7.4 Party A reserves the right to conduct financial audits of any Vendor with thirty (30) days' prior written notice.
+
+ARTICLE 8 — GENERAL PROVISIONS
+
+8.1 This MSA shall be governed by and construed in accordance with the laws of the Republic of Singapore.
+
+8.2 Disputes shall be resolved in accordance with the dispute resolution procedures set forth in the applicable SA.
+
+8.3 This MSA may be amended by Party A with sixty (60) days' prior written notice to all Vendors. Vendors may terminate their SA within thirty (30) days of receiving notice of an MSA amendment that materially and adversely affects their rights or obligations.
+
+8.4 This MSA shall remain in effect until terminated by Party A.
+
+AUTHORIZED BY:
+
+TechVentures Pte Ltd
+Chief Technology Officer: ____________________
+General Counsel: ____________________
+Date: 2023-06-01

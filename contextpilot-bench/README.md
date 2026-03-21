@@ -97,25 +97,14 @@ Accuracy (substantive output)
 ## Quick Start
 
 ```bash
-# 1. Generate contract data into OpenClaw workspace
-python scripts/gen_data.py
+# 1. Run benchmark (auto-copies documents to OpenClaw workspace, manages SGLang/CP lifecycle)
+python scripts/run_bench.py --gpu 0
 
-# 2. Start SGLang (terminal 1)
-CUDA_VISIBLE_DEVICES=0 python -m sglang.launch_server \
-  --model-path Qwen/Qwen3-4B-Instruct-2507 \
-  --port 30002 --host 0.0.0.0 --tp-size 1 \
-  --context-length 131072 --tool-call-parser hermes
-
-# 3. Start ContextPilot proxy (terminal 2)
-python -m contextpilot.server.http_server \
-  --port 8771 --infer-api-url http://localhost:30002
-
-# 4. Run benchmark
-python scripts/run_bench.py
-
-# 5. Analyze results
+# 2. Analyze results
 python scripts/analyze.py results/results.jsonl
 ```
+
+The runner handles everything: copies documents to OpenClaw workspace, starts/stops SGLang and ContextPilot for each scenario, and saves results to `results/results.jsonl`.
 
 Options:
 ```bash
@@ -130,11 +119,18 @@ python scripts/run_bench.py --scenarios s01_commercial_terms s02_liability_revie
 contextpilot-bench/
 ├── README.md
 ├── data/
-│   └── contract_template.txt   # Shared legal template (Articles 1-16, Schedules)
+│   ├── tasks.json              # 30 scenario definitions (name + turns)
+│   └── workspace/              # 18 enterprise documents (260 KB)
+│       ├── contract_*.txt      # 4 vendor service agreements (~45 KB each)
+│       ├── amendment_*.txt     # 4 contract amendments
+│       ├── vendor_assessment_*.txt  # 4 annual vendor reviews
+│       ├── master_service_agreement.txt
+│       ├── policy_*.txt        # Information security + data governance
+│       ├── board_minutes_*.txt # Q4 2024 board meeting
+│       └── nda_*.txt           # 2 mutual NDAs
 ├── results/
 │   └── results.jsonl           # Benchmark results (30 scenarios × 2 arms)
 └── scripts/
-    ├── gen_data.py             # Generate 18 documents into OpenClaw workspace
-    ├── run_bench.py            # Run benchmark (manages SGLang/CP lifecycle)
+    ├── run_bench.py            # Run benchmark
     └── analyze.py              # Print paper-ready results table
 ```

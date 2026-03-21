@@ -1,0 +1,138 @@
+INFORMATION SECURITY POLICY
+Policy ID: ISP-2024-001
+Version: 3.2
+Effective Date: 2024-01-01
+Review Date: 2025-01-01
+Owner: Chief Information Security Officer
+Classification: INTERNAL — RESTRICTED
+
+1. PURPOSE AND SCOPE
+
+1.1 This Information Security Policy ("Policy") establishes the principles, standards, and requirements for protecting TechVentures Pte Ltd's information assets against unauthorized access, disclosure, modification, destruction, or disruption.
+
+1.2 This Policy applies to all employees, contractors, consultants, temporary workers, and other personnel ("Users") who access, process, store, or transmit TechVentures information, regardless of location or device used.
+
+1.3 This Policy also applies to all third-party service providers and vendors who process, store, or have access to TechVentures information, as referenced in the Master Service Agreement (MSA-2023-001) and individual Service Agreements.
+
+2. INFORMATION CLASSIFICATION
+
+2.1 All information assets shall be classified into one of the following categories:
+
+(a) PUBLIC: Information intended for public disclosure. No restrictions on access or distribution.
+
+(b) INTERNAL: Information intended for internal use only. Access limited to TechVentures employees and authorized contractors.
+
+(c) CONFIDENTIAL: Sensitive business information. Access restricted to authorized personnel with a legitimate business need. Examples: financial reports, business plans, customer lists, vendor contracts, employee records.
+
+(d) RESTRICTED: Highly sensitive information. Access strictly limited to named individuals. Examples: encryption keys, authentication credentials, personally identifiable information (PII), trade secrets, board meeting minutes, M&A documents.
+
+2.2 Information owners are responsible for classifying their information assets and ensuring appropriate controls are applied.
+
+2.3 When information assets of different classifications are combined, the combined asset shall be classified at the highest classification level of any component.
+
+3. ACCESS CONTROL
+
+3.1 Access to information systems and data shall be granted based on the principle of least privilege: Users shall be granted only the minimum access rights necessary to perform their job functions.
+
+3.2 All access shall be role-based (RBAC). Roles shall be defined, documented, and reviewed at least quarterly by the information owner and the Security team.
+
+3.3 Multi-factor authentication (MFA) is mandatory for:
+(a) All remote access to internal systems;
+(b) All access to CONFIDENTIAL and RESTRICTED information;
+(c) All privileged or administrative accounts;
+(d) All access to production environments;
+(e) All VPN connections.
+
+3.4 Password requirements:
+(a) Minimum length: 14 characters;
+(b) Complexity: Must include uppercase, lowercase, numbers, and special characters;
+(c) Rotation: Every 90 days for standard accounts, every 60 days for privileged accounts;
+(d) History: Cannot reuse the last 12 passwords;
+(e) Lockout: Account locked after 5 consecutive failed attempts for 30 minutes.
+
+3.5 Access reviews shall be conducted:
+(a) Quarterly for all system access;
+(b) Monthly for privileged access;
+(c) Upon role change, transfer, or termination;
+(d) Annually as part of the comprehensive security audit.
+
+4. DATA PROTECTION
+
+4.1 Encryption Requirements:
+(a) Data at rest: AES-256 or equivalent for CONFIDENTIAL and RESTRICTED data;
+(b) Data in transit: TLS 1.2 or higher for all internal and external communications;
+(c) Key management: Centralized key management system with separation of duties;
+(d) Key rotation: Annual for data encryption keys, quarterly for session keys.
+
+4.2 Data Loss Prevention (DLP):
+(a) DLP controls shall be implemented on all endpoints, email systems, and cloud services;
+(b) Automatic blocking of RESTRICTED data transmission via unauthorized channels;
+(c) Monitoring and alerting for CONFIDENTIAL data transmission;
+(d) Regular DLP policy review and tuning.
+
+4.3 Data Retention and Disposal:
+(a) Retention periods as defined in the Data Retention Schedule;
+(b) Secure disposal: NIST SP 800-88 compliant media sanitization;
+(c) Certificate of destruction required for physical media;
+(d) Automated data lifecycle management for digital assets.
+
+5. NETWORK SECURITY
+
+5.1 Network Segmentation:
+(a) Production, development, and corporate networks shall be physically or logically separated;
+(b) DMZ for all internet-facing services;
+(c) Micro-segmentation for sensitive workloads;
+(d) Zero-trust network architecture for all new deployments.
+
+5.2 Firewall and IDS/IPS:
+(a) Next-generation firewalls at all network perimeters;
+(b) Intrusion detection/prevention systems on all critical network segments;
+(c) Regular rule review and optimization (quarterly);
+(d) Firewall changes require change management approval.
+
+5.3 Wireless Security:
+(a) WPA3-Enterprise for all corporate wireless networks;
+(b) Guest networks isolated from corporate network;
+(c) Rogue access point detection and prevention;
+(d) Regular wireless security assessments.
+
+6. INCIDENT RESPONSE
+
+6.1 All security incidents shall be reported immediately to the Security Operations Center (SOC) via the incident reporting system or emergency hotline.
+
+6.2 Incident severity classification:
+(a) Severity 1 (Critical): Active data breach, ransomware, compromise of RESTRICTED systems. Response: Immediate (within 15 minutes).
+(b) Severity 2 (High): Detected intrusion attempt, malware on production systems, unauthorized access to CONFIDENTIAL data. Response: Within 1 hour.
+(c) Severity 3 (Medium): Policy violation, suspicious activity, failed security controls. Response: Within 4 hours.
+(d) Severity 4 (Low): Minor policy deviation, security awareness issue. Response: Within 1 business day.
+
+6.3 Post-incident activities:
+(a) Root cause analysis within 5 business days;
+(b) Lessons learned review within 10 business days;
+(c) Corrective actions tracked to completion;
+(d) Regulatory notifications as required by applicable law.
+
+7. VENDOR SECURITY
+
+7.1 All vendors shall comply with this Policy as referenced in the Master Service Agreement (MSA-2023-001).
+
+7.2 Vendor security assessments shall be conducted:
+(a) Prior to engagement (due diligence);
+(b) Annually during the engagement;
+(c) Upon any significant change in the vendor's security posture;
+(d) Upon any security incident involving the vendor.
+
+7.3 Vendors processing RESTRICTED data must maintain SOC 2 Type II certification or equivalent.
+
+8. COMPLIANCE AND ENFORCEMENT
+
+8.1 Compliance with this Policy is mandatory for all Users. Non-compliance may result in disciplinary action, up to and including termination of employment or contract.
+
+8.2 This Policy shall be reviewed and updated at least annually by the Chief Information Security Officer.
+
+8.3 Exceptions to this Policy must be approved in writing by the CISO and documented in the exception register.
+
+APPROVED BY:
+Chief Information Security Officer: ____________________
+Chief Technology Officer: ____________________
+Date: 2024-01-01

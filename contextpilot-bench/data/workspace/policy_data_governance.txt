@@ -1,0 +1,129 @@
+DATA GOVERNANCE POLICY
+Policy ID: DGP-2024-001
+Version: 2.1
+Effective Date: 2024-01-01
+Review Date: 2025-01-01
+Owner: Chief Data Officer
+Classification: INTERNAL — CONFIDENTIAL
+
+1. PURPOSE AND SCOPE
+
+1.1 This Data Governance Policy ("Policy") establishes the framework for managing TechVentures Pte Ltd's data assets throughout their lifecycle, ensuring data quality, security, privacy, and compliance with applicable regulations.
+
+1.2 This Policy applies to all structured and unstructured data created, collected, processed, stored, or transmitted by or on behalf of TechVentures, regardless of format, medium, or location.
+
+1.3 This Policy complements the Information Security Policy (ISP-2024-001) and applies to all employees, contractors, and third-party service providers as referenced in the Master Service Agreement (MSA-2023-001).
+
+2. DATA GOVERNANCE FRAMEWORK
+
+2.1 Roles and Responsibilities:
+
+(a) Chief Data Officer (CDO): Overall accountability for data governance strategy, policy, and compliance. Chairs the Data Governance Council.
+
+(b) Data Governance Council: Cross-functional committee comprising the CDO, CISO, General Counsel, and business unit data stewards. Meets monthly to review data governance matters.
+
+(c) Data Stewards: Business unit representatives responsible for data quality, classification, and usage within their domain. Each business unit shall designate at least one Data Steward.
+
+(d) Data Custodians: IT personnel responsible for the technical management of data assets, including storage, backup, access control, and security.
+
+(e) Data Users: All personnel who access or use TechVentures data in the course of their duties. Responsible for complying with data governance policies and procedures.
+
+3. DATA QUALITY
+
+3.1 Data quality dimensions and minimum standards:
+
+(a) Accuracy: Data shall correctly represent the real-world entity or event it describes. Target: 99.5% accuracy for critical data elements.
+
+(b) Completeness: Required data fields shall be populated. Target: 98% completeness for mandatory fields.
+
+(c) Consistency: Data shall be consistent across all systems and repositories. Target: 99% cross-system consistency.
+
+(d) Timeliness: Data shall be available within the required timeframe. Target: Real-time for operational data, T+1 for analytical data.
+
+(e) Validity: Data shall conform to defined formats, ranges, and business rules. Target: 99.9% validity for structured data.
+
+(f) Uniqueness: Data shall not contain unintended duplicates. Target: Less than 0.1% duplicate records for master data.
+
+3.2 Data quality monitoring shall be automated and continuous for critical data assets. Quality dashboards shall be maintained and reviewed weekly by Data Stewards.
+
+3.3 Data quality issues shall be tracked in the Data Quality Issue Register and resolved within the following timeframes:
+(a) Critical (affects regulatory reporting or customer-facing systems): 24 hours;
+(b) High (affects business decisions or operational efficiency): 72 hours;
+(c) Medium (affects internal reporting or analytics): 5 business days;
+(d) Low (cosmetic or minor inconsistencies): Next scheduled maintenance window.
+
+4. DATA PRIVACY
+
+4.1 Personal Data Processing:
+(a) All processing of Personal Data shall have a lawful basis as defined by applicable Data Protection Laws;
+(b) Privacy Impact Assessments (PIA) shall be conducted for any new system, process, or vendor that processes Personal Data;
+(c) Data Protection Officer (DPO) shall be consulted on all privacy-related matters;
+(d) Records of Processing Activities (ROPA) shall be maintained as required by GDPR Article 30 and PDPA requirements.
+
+4.2 Data Subject Rights:
+(a) Processes shall be in place to respond to Data Subject requests within statutory timeframes;
+(b) Access requests: Response within 30 days (GDPR) or 30 days (PDPA);
+(c) Erasure requests: Completion within 30 days, subject to legal retention requirements;
+(d) Portability requests: Data provided in machine-readable format within 30 days.
+
+4.3 Cross-Border Data Transfers:
+(a) Personal Data shall not be transferred outside Singapore without appropriate safeguards;
+(b) Approved transfer mechanisms: Standard Contractual Clauses (SCCs), Binding Corporate Rules (BCRs), or consent of the Data Subject;
+(c) Transfer Impact Assessments shall be conducted for all new cross-border data flows;
+(d) All cross-border transfers shall be documented in the Transfer Register.
+
+5. DATA LIFECYCLE MANAGEMENT
+
+5.1 Data Creation and Collection:
+(a) Data collection shall be limited to what is necessary for the stated purpose (data minimization);
+(b) Data sources shall be documented and validated;
+(c) Data entry controls shall ensure accuracy at the point of creation.
+
+5.2 Data Storage:
+(a) Data shall be stored in approved systems and locations only;
+(b) Storage classification: Hot (frequent access), Warm (periodic access), Cold (archival);
+(c) Storage costs shall be optimized through automated tiering.
+
+5.3 Data Retention:
+(a) Retention periods shall be defined for all data categories in the Data Retention Schedule;
+(b) Default retention periods:
+    - Financial records: 7 years;
+    - Customer data: Duration of relationship plus 3 years;
+    - Employee records: Duration of employment plus 7 years;
+    - Contract documents: Duration of contract plus 7 years;
+    - Operational logs: 1 year;
+    - Security logs: 3 years.
+(c) Data beyond retention period shall be securely disposed of within 90 days.
+
+5.4 Data Disposal:
+(a) Secure disposal methods as specified in ISP-2024-001 Section 4.3;
+(b) Disposal logs maintained for audit purposes;
+(c) Third-party disposal vendors must be certified and audited.
+
+6. METADATA MANAGEMENT
+
+6.1 A centralized metadata repository (data catalog) shall be maintained for all critical data assets.
+
+6.2 Required metadata elements:
+(a) Data owner and steward;
+(b) Classification level;
+(c) Source system and lineage;
+(d) Quality metrics;
+(e) Retention period;
+(f) Privacy classification;
+(g) Access restrictions.
+
+7. COMPLIANCE AND AUDIT
+
+7.1 Data governance compliance shall be assessed:
+(a) Continuously through automated monitoring;
+(b) Quarterly through Data Steward reviews;
+(c) Annually through internal audit;
+(d) As required by external regulatory audits.
+
+7.2 Non-compliance shall be reported to the Data Governance Council and tracked to resolution.
+
+APPROVED BY:
+Chief Data Officer: ____________________
+General Counsel: ____________________
+Date: 2024-01-01

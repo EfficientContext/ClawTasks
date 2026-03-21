@@ -1,6 +1,14 @@
+SOFTWARE SERVICE AGREEMENT
+Contract ID: SA-2024-002
+Date: 2024-03-01
+
+PARTIES:
+Party A (Client): TechVentures Pte Ltd
+Party B (Provider): DeepMind Analytics Ltd
+
 ARTICLE 1 — DEFINITIONS
 
-1.1 "Service" means the {service_type} services described in Schedule A, including all updates, patches, maintenance releases, bug fixes, security patches, feature enhancements, and documentation updates provided during the Term of this Agreement. The Service shall be delivered in accordance with the specifications, timelines, and quality standards set forth in Schedule A and shall include all ancillary services reasonably necessary for the effective delivery of the primary Service.
+1.1 "Service" means the artificial intelligence and machine learning platform services described in Schedule A, including all updates, patches, maintenance releases, bug fixes, security patches, feature enhancements, and documentation updates provided during the Term of this Agreement. The Service shall be delivered in accordance with the specifications, timelines, and quality standards set forth in Schedule A and shall include all ancillary services reasonably necessary for the effective delivery of the primary Service.
 
 1.2 "Confidential Information" means any non-public information disclosed by either party to the other, whether orally, visually, electronically, or in writing, that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure. Confidential Information includes, but is not limited to, trade secrets, know-how, inventions, techniques, processes, algorithms, software programs, source code, object code, hardware designs, customer lists, financial information, business plans, marketing plans, pricing strategies, vendor relationships, employee information, and any other information that provides a competitive advantage. Confidential Information also includes the terms and conditions of this Agreement, all proposals, quotations, and communications exchanged between the parties during the negotiation of this Agreement, and all information relating to any disputes arising under this Agreement.
 
@@ -22,9 +30,9 @@ ARTICLE 1 — DEFINITIONS
 
 ARTICLE 2 — SCOPE OF SERVICES
 
-2.1 Party B shall provide {service_type} services to Party A in accordance with the specifications set forth in Schedule A. The services shall include system design and architecture, development and coding, unit testing and integration testing, user acceptance testing support, deployment and go-live support, post-deployment monitoring, performance optimization, and ongoing maintenance and support throughout the Term.
+2.1 Party B shall provide artificial intelligence and machine learning platform services to Party A in accordance with the specifications set forth in Schedule A. The services shall include system design and architecture, development and coding, unit testing and integration testing, user acceptance testing support, deployment and go-live support, post-deployment monitoring, performance optimization, and ongoing maintenance and support throughout the Term.
 
-2.2 Party B shall assign qualified personnel with appropriate skills, experience, and certifications to perform the Services. All personnel assigned to the project shall have a minimum of three (3) years of relevant professional experience in {service_type} and shall hold appropriate professional certifications as required by industry standards. Party B shall provide Party A with resumes and qualification details of all key personnel prior to their assignment. Party A shall have the right to request the replacement of any personnel who, in Party A's reasonable judgment, do not meet the required standards of competence or professionalism.
+2.2 Party B shall assign qualified personnel with appropriate skills, experience, and certifications to perform the Services. All personnel assigned to the project shall have a minimum of three (3) years of relevant professional experience in artificial intelligence and machine learning platform and shall hold appropriate professional certifications as required by industry standards. Party B shall provide Party A with resumes and qualification details of all key personnel prior to their assignment. Party A shall have the right to request the replacement of any personnel who, in Party A's reasonable judgment, do not meet the required standards of competence or professionalism.
 
 2.3 Party B shall establish and maintain a project management office (PMO) to oversee the delivery of Services, including but not limited to: weekly status reports with updated Gantt charts and burn-down charts, risk registers with mitigation plans reviewed bi-weekly, change management processes with impact assessments for all proposed changes, quality assurance procedures including code review standards and testing protocols, resource management including capacity planning and skills matrix, communication protocols including escalation paths for issues of varying severity, and document management including version control and archival policies.
 
@@ -38,7 +46,7 @@ ARTICLE 2 — SCOPE OF SERVICES
 
 ARTICLE 3 — TERM AND TERMINATION
 
-3.1 This Agreement shall commence on {start_date} (the "Effective Date") and shall continue until {end_date} (the "Initial Term"), unless earlier terminated in accordance with this Article 3. The parties may extend the Term by mutual written agreement executed at least sixty (60) days prior to the expiration of the then-current Term.
+3.1 This Agreement shall commence on 2024-03-01 (the "Effective Date") and shall continue until 2027-02-28 (the "Initial Term"), unless earlier terminated in accordance with this Article 3. The parties may extend the Term by mutual written agreement executed at least sixty (60) days prior to the expiration of the then-current Term.
 
 3.2 Either party may terminate this Agreement for convenience by providing ninety (90) days' prior written notice to the other party. In the event of termination for convenience by Party A, Party A shall pay Party B for: (a) all Services satisfactorily performed through the effective date of termination; (b) any non-cancelable commitments reasonably made by Party B in connection with the Services prior to receipt of the termination notice; and (c) reasonable wind-down costs incurred by Party B in connection with the orderly cessation of Services, not to exceed ten percent (10%) of the remaining contract value.
 
@@ -50,9 +58,9 @@ ARTICLE 3 — TERM AND TERMINATION
 
 ARTICLE 4 — FEES AND PAYMENT
 
-4.1 Party A shall pay Party B the total contract amount of {amount} for the Services described herein, subject to the payment schedule and terms set forth in this Article 4 and the applicable Schedules.
+4.1 Party A shall pay Party B the total contract amount of USD 3,600,000 for the Services described herein, subject to the payment schedule and terms set forth in this Article 4 and the applicable Schedules.
 
-{payment_schedule}
+4.2 Payment shall be made in quarterly installments of USD 300,000 each, payable within fifteen (15) business days of the start of each quarter. Model performance bonuses of up to USD 150,000 per quarter shall be payable upon achieving accuracy targets defined in Schedule E.
 
 4.3 All invoices shall be itemized and include reasonable detail of the Services performed, hours worked (for time-and-materials engagements), expenses incurred, and applicable taxes. Invoices shall be due and payable within thirty (30) days of receipt. Late payments shall accrue interest at the rate of one and one-half percent (1.5%) per month or the maximum rate permitted by applicable law, whichever is less. Party A shall notify Party B of any disputed invoice amounts within fifteen (15) business days of receipt; undisputed amounts shall remain due on the original payment date.
 
@@ -196,11 +204,19 @@ ARTICLE 16 — BUSINESS CONTINUITY AND DISASTER RECOVERY
 
 ARTICLE 17 — SPECIFIC SERVICE TERMS
 
-{specific_terms}
+13.1 AI Model Requirements: Party B shall develop and deploy machine learning models meeting the performance benchmarks specified in Schedule E. All models must achieve minimum accuracy of 95% on test datasets and maintain F1 score above 0.92 in production.
+
+13.2 Model Governance: All AI models shall include bias detection and fairness monitoring. Party B shall provide model explainability reports using SHAP or LIME for all customer-facing predictions. Model drift monitoring shall be continuous with alerts triggered when performance degrades by more than 5% from baseline.
+
+13.3 Training Data: Party B shall maintain complete lineage and provenance records for all training data. No publicly sourced data shall be used without Party A's explicit written approval. All training datasets must be reviewed for PII and sensitive information before use.
+
+13.4 Compute Resources: Party B shall utilize GPU clusters with minimum NVIDIA A100 or equivalent for training workloads. Training infrastructure must support distributed training across at least 8 nodes. Party B shall provide detailed compute cost reports monthly and optimize resource utilization to maintain costs within 110% of budget.
+
+13.5 Model Versioning: All models shall be version-controlled with complete reproducibility. Party B shall maintain at minimum the current production model and two prior versions available for rollback at all times.
 
 SCHEDULE A — SERVICE SPECIFICATIONS
 
-A.1 The detailed technical specifications, functional requirements, non-functional requirements, system architecture, and integration requirements for the {service_type} services shall be as mutually agreed upon by the parties and documented in separate Statements of Work.
+A.1 The detailed technical specifications, functional requirements, non-functional requirements, system architecture, and integration requirements for the artificial intelligence and machine learning platform services shall be as mutually agreed upon by the parties and documented in separate Statements of Work.
 
 A.2 All software deliverables shall be developed in accordance with the coding standards, security guidelines, and quality metrics specified in the applicable Statement of Work. Minimum requirements include: (a) adherence to OWASP Top 10 security practices; (b) code review by at least two (2) qualified reviewers before deployment; (c) automated unit test coverage of at least eighty percent (80%); (d) performance testing under expected and peak load conditions; and (e) accessibility compliance with WCAG 2.1 Level AA standards.
 
@@ -217,3 +233,14 @@ B.3 Resolution Times: Severity 1: 4 hours; Severity 2: 8 hours; Severity 3: 2 bu
 B.4 Service Credits: For each 0.1% below the availability target, Party A shall receive a service credit equal to 2% of the monthly fees, up to a maximum of 20% of the monthly fees.
 
 B.5 Reporting: Party B shall provide monthly SLA performance reports within five (5) business days of the end of each calendar month.
+
+
+SIGNATURES:
+
+Party A: TechVentures Pte Ltd
+Authorized Representative: ____________________
+Date: 2024-03-01
+
+Party B: DeepMind Analytics Ltd
+Authorized Representative: ____________________
+Date: 2024-03-01

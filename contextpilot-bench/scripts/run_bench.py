@@ -1,381 +1,193 @@
 #!/usr/bin/env python3
-"""
-ContextPilot Block-Dedup Benchmark Runner
-=========================================
-Standalone runner for the ContextPilot block-dedup benchmark.
-Manages SGLang and ContextPilot lifecycles and runs OpenClaw agent tasks.
-"""
-
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
 from pathlib import Path
+
 import requests
 
-# Default Configuration
 MODEL = "Qwen/Qwen3-4B-Instruct-2507"
 PORT_SGLANG = 30002
 PORT_CP = 8771
-GPU_ID = "0"
 
-# Paths
+BENCH_DIR = Path(__file__).parent.parent
+TASKS_PATH = BENCH_DIR / "data" / "tasks.json"
+WORKSPACE_SRC = BENCH_DIR / "data" / "workspace"
+RESULTS_DIR = BENCH_DIR / "results"
+
 OPENCLAW_PATH = os.path.expanduser("~/openclaw/openclaw.mjs")
 CONFIG_PATH = os.path.expanduser("~/.openclaw/openclaw.json")
-RESULTS_DIR = Path(__file__).parent.parent / "results"
+WORKSPACE_DST = Path(os.path.expanduser("~/.openclaw/workspace/contracts"))
+
 SGLANG_LOG = "/tmp/sglang_bench.log"
 CP_LOG = "/tmp/cp_bench.log"
-
-_NO_WEB = "Do not search the web — only analyze the contract text."
-
-SCENARIOS = [
-    {
-        "name": "s01_commercial_terms",
-        "turns": [
-            "List all files in the contracts/ folder.",
-            f"Read contracts/contract_alpha_cloud.txt and summarize: parties, total amount, duration, payment schedule, and service scope. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt and compare its commercial terms with Alpha. What is identical vs different? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. How do the payment terms compare across all three? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Create a comparison table of all four contracts: value, duration, payment structure, SLA targets. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s02_liability_review",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract all liability and indemnification clauses. Quote the text. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are the liability caps and exclusions identical to Alpha? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Rank all four by liability exposure. {_NO_WEB}",
-            f"Write a risk assessment memo on liability gaps and recommended amendments. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s03_data_protection",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and evaluate its data protection clauses. List any gaps. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. How do its privacy terms compare with Alpha? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. Assess its breach notification and incident response terms. {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Review the data retention provisions. {_NO_WEB}",
-            f"Produce a data protection compliance scorecard for all four contracts. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s04_ip_ownership",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and summarize the IP ownership and assignment clauses. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are the IP terms different given it involves AI/ML work? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare IP clauses across all four. {_NO_WEB}",
-            f"Are there any gaps in IP protection that could expose our company? Write recommendations. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s05_termination_rights",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt. What are the termination rights for both parties? {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Compare its termination clauses with Alpha. {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. Are there any termination-for-cause triggers unique to the security contract? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Create a summary of termination rights across all four contracts with notice periods and consequences. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s06_sla_comparison",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract all SLA targets: uptime, response times, resolution times. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Does it have the same SLA structure? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. What SLA commitments are specific to security operations? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare SLA targets across all four and identify which vendor has the weakest commitments. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s07_insurance_audit",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract the insurance requirements. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are the insurance requirements identical? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. Does the security vendor have higher cyber insurance requirements? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Summarize insurance requirements across all four and flag any inadequacies. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s08_dispute_resolution",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and outline the dispute resolution process step by step. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Is the dispute mechanism the same? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are there any differences in arbitration or governing law? {_NO_WEB}",
-            f"Write a memo summarizing the dispute resolution framework across all four contracts. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s09_change_management",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and describe the change management process. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. How flexible are the change order terms for AI projects? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. Are emergency changes handled differently in the security contract? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare change management across all four. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s10_subcontracting",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract subcontracting restrictions. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are subcontracting terms different for AI development? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are there heightened subcontracting controls for security? {_NO_WEB}",
-            f"Summarize subcontracting risks across all four vendors. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s11_warranty_terms",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and list all warranties and their durations. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are the warranty terms adequate for an AI platform? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. What warranties does the security vendor provide? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare warranty coverage across all four and identify weak spots. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s12_confidentiality",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and analyze the confidentiality obligations. How long do they survive? {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are there any differences in confidentiality scope? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare confidentiality terms. {_NO_WEB}",
-            f"Are there any gaps in confidentiality protection? Write a recommendation. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s13_payment_risk",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and analyze payment risk: late payment penalties, audit rights, service credits. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What performance bonuses or penalties exist? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. How are incident response fees structured? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare financial risk across all four contracts. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s14_force_majeure",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract the force majeure clause. What events are covered? {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Is the force majeure definition the same? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are cyberattacks included in force majeure? {_NO_WEB}",
-            f"Write a summary of force majeure coverage across all four and recommend improvements. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s15_bcp_dr",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and evaluate the business continuity and disaster recovery requirements. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are there BCP/DR requirements for the AI platform? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. What RTOs are specified for the security SOC? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare BCP/DR across all four. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s16_personnel_reqs",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and list personnel qualification requirements. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What certifications are required for AI personnel? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. What certifications are required for SOC analysts? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare personnel requirements across all four. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s17_acceptance_testing",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and describe the acceptance testing process. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. How are AI model deliverables accepted? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare acceptance criteria. {_NO_WEB}",
-            f"Are the acceptance testing timelines reasonable? Recommend improvements. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s18_renewal_analysis",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt. When does it expire and what are the renewal terms? {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Compare its term with Alpha. {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. What is its duration? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Create a renewal timeline for all four with key dates. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s19_compliance_scorecard",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt. Evaluate its regulatory compliance provisions. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Assess AI governance and data provenance safeguards. {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. Check incident response and vulnerability management. {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Review data quality and retention. {_NO_WEB}",
-            f"Produce a compliance scorecard rating each contract on 5 dimensions. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s20_vendor_comparison",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Compare these two vendors side by side. {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare these two vendors. {_NO_WEB}",
-            f"Which vendor has the most favorable terms for our company? Rank all four. {_NO_WEB}",
-            f"Which vendor poses the highest risk? Explain with specific clause references. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s21_cost_analysis",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt. What is the total cost including potential penalties and bonuses? {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What is the maximum financial exposure including performance bonuses? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Calculate total financial commitments. {_NO_WEB}",
-            f"What is our total vendor spend across all four contracts? Provide a cost breakdown. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s22_audit_rights",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract all audit rights. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What audit provisions exist for AI model governance? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. Are there audit rights specific to security operations? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare audit rights across all four. Are they adequate? {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s23_knowledge_transfer",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and review the knowledge transfer and transition provisions. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are AI model handover procedures adequate? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. What transition support is guaranteed? {_NO_WEB}",
-            f"Write a transition readiness assessment for all four vendors. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s24_security_assessment",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and evaluate all security-related provisions. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are there adequate security controls for AI training data? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. This is the security vendor — are their own security terms comprehensive? {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare security posture across all four vendors. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s25_exit_strategy",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt. What happens if we need to exit this contract? Describe the process. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What are the exit costs and data retrieval provisions? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare exit provisions. {_NO_WEB}",
-            f"Develop an exit strategy plan covering all four vendors with timeline and cost estimates. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s26_open_source",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and check for open-source software provisions. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What are the open-source disclosure requirements for AI models? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are there software bill of materials requirements? {_NO_WEB}",
-            f"Summarize open-source risk across all four vendors. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s27_cross_border",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt. What are the data sovereignty and cross-border transfer provisions? {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. Are there restrictions on where AI training happens? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare cross-border data provisions. {_NO_WEB}",
-            f"Are we compliant with Singapore PDPA cross-border requirements across all four contracts? {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s28_breach_response",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and extract data breach notification timelines and procedures. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What are the breach notification obligations? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt. The security vendor should have the most detailed breach response — verify this. {_NO_WEB}",
-            f"Read contracts/contract_delta_data.txt. Compare breach response across all four and identify gaps. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s29_board_summary",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Prepare a board-level summary of these two contracts. {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Prepare the same for these two. {_NO_WEB}",
-            f"Write a one-page executive summary of all four vendor contracts suitable for the board of directors. {_NO_WEB}",
-        ],
-    },
-    {
-        "name": "s30_negotiation_prep",
-        "turns": [
-            f"Read contracts/contract_alpha_cloud.txt and identify the top 3 clauses we should renegotiate. {_NO_WEB}",
-            f"Read contracts/contract_beta_ai.txt. What terms are most unfavorable to us? {_NO_WEB}",
-            f"Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Identify weak negotiation positions. {_NO_WEB}",
-            f"Prepare a negotiation strategy document covering all four contracts with specific amendment proposals. {_NO_WEB}",
-        ],
-    },
-]
 
 _sglang_proc = None
 _cp_proc = None
 
+
+def setup_workspace():
+    WORKSPACE_DST.mkdir(parents=True, exist_ok=True)
+    for f in WORKSPACE_SRC.iterdir():
+        shutil.copy2(f, WORKSPACE_DST / f.name)
+    n = len(list(WORKSPACE_DST.iterdir()))
+    total = sum(f.stat().st_size for f in WORKSPACE_DST.iterdir())
+    print(f"Workspace: {n} files ({total // 1024} KB) copied to {WORKSPACE_DST}")
+
+
+def load_tasks(filter_names=None):
+    with open(TASKS_PATH) as f:
+        tasks = json.load(f)
+    if filter_names:
+        tasks = [t for t in tasks if t["name"] in filter_names]
+    return tasks
+
+
 def kill_sglang():
     global _sglang_proc
     if _sglang_proc:
-        try: _sglang_proc.kill(); _sglang_proc.wait(timeout=5)
-        except: pass
+        try:
+            _sglang_proc.kill()
+            _sglang_proc.wait(timeout=10)
+        except Exception:
+            pass
         _sglang_proc = None
-    subprocess.run("fuser -k 30002/tcp 2>/dev/null", shell=True, capture_output=True)
+    subprocess.run(
+        f"fuser -k {PORT_SGLANG}/tcp 2>/dev/null", shell=True, capture_output=True
+    )
+    time.sleep(3)
+    subprocess.run(
+        f"fuser -k {PORT_SGLANG}/tcp 2>/dev/null", shell=True, capture_output=True
+    )
     time.sleep(2)
+
 
 def kill_cp():
     global _cp_proc
     if _cp_proc:
-        try: _cp_proc.kill(); _cp_proc.wait(timeout=5)
-        except: pass
+        try:
+            _cp_proc.kill()
+            _cp_proc.wait(timeout=10)
+        except Exception:
+            pass
         _cp_proc = None
-    subprocess.run("fuser -k 8771/tcp 2>/dev/null", shell=True, capture_output=True)
+    subprocess.run(
+        f"fuser -k {PORT_CP}/tcp 2>/dev/null", shell=True, capture_output=True
+    )
     time.sleep(1)
+
 
 def start_sglang(gpu_id):
     global _sglang_proc
     kill_sglang()
-    env = {**os.environ, "CUDA_VISIBLE_DEVICES": gpu_id, "SGLANG_DISABLE_CUDNN_CHECK": "1"}
+    env = {
+        **os.environ,
+        "CUDA_VISIBLE_DEVICES": gpu_id,
+        "SGLANG_DISABLE_CUDNN_CHECK": "1",
+    }
     cmd = [
-        sys.executable, "-m", "sglang.launch_server",
-        "--model-path", MODEL,
-        "--port", str(PORT_SGLANG),
-        "--host", "0.0.0.0",
-        "--tp-size", "1",
-        "--context-length", "131072",
-        "--tool-call-parser", "hermes",
-        "--attention-backend", "triton",
-        "--skip-server-warmup"
+        sys.executable,
+        "-m",
+        "sglang.launch_server",
+        "--model-path",
+        MODEL,
+        "--port",
+        str(PORT_SGLANG),
+        "--host",
+        "0.0.0.0",
+        "--tp-size",
+        "1",
+        "--mem-fraction-static",
+        "0.8",
+        "--context-length",
+        "131072",
+        "--tool-call-parser",
+        "hermes",
+        "--attention-backend",
+        "triton",
+        "--skip-server-warmup",
     ]
-    print(f"  Starting SGLang on GPU {gpu_id}...")
+    print("  Starting SGLang...", end="", flush=True)
     log_f = open(SGLANG_LOG, "w")
-    _sglang_proc = subprocess.Popen(cmd, env=env, stdout=log_f, stderr=subprocess.STDOUT)
-    
+    _sglang_proc = subprocess.Popen(
+        cmd, env=env, stdout=log_f, stderr=subprocess.STDOUT
+    )
     for i in range(180):
         time.sleep(1)
         try:
             with open(SGLANG_LOG) as f:
                 content = f.read()
+            if "address already in use" in content:
+                print(" port conflict, retrying...", end="", flush=True)
+                _sglang_proc.kill()
+                _sglang_proc.wait(timeout=10)
+                subprocess.run(
+                    f"fuser -k {PORT_SGLANG}/tcp 2>/dev/null",
+                    shell=True,
+                    capture_output=True,
+                )
+                time.sleep(5)
+                log_f = open(SGLANG_LOG, "w")
+                _sglang_proc = subprocess.Popen(
+                    cmd, env=env, stdout=log_f, stderr=subprocess.STDOUT
+                )
+                continue
             if "ready to roll" in content:
-                print(f"  SGLang ready ({i+1}s)")
+                time.sleep(2)
+                requests.post(
+                    f"http://localhost:{PORT_SGLANG}/v1/chat/completions",
+                    json={
+                        "model": "x",
+                        "messages": [{"role": "user", "content": "hi"}],
+                        "max_tokens": 1,
+                        "temperature": 0,
+                    },
+                    timeout=60,
+                )
+                print(f" ready ({i + 1}s)")
                 return
-        except: pass
+        except Exception:
+            pass
+    print(" TIMEOUT!")
+    _sglang_proc.kill()
     raise RuntimeError("SGLang failed to start")
+
 
 def start_contextpilot():
     global _cp_proc
     kill_cp()
     cmd = [
-        sys.executable, "-m", "contextpilot.server.http_server",
-        "--port", str(PORT_CP),
-        "--infer-api-url", f"http://localhost:{PORT_SGLANG}"
+        sys.executable,
+        "-m",
+        "contextpilot.server.http_server",
+        "--port",
+        str(PORT_CP),
+        "--infer-api-url",
+        f"http://localhost:{PORT_SGLANG}",
+        "--log-level",
+        "info",
     ]
-    print("  Starting ContextPilot...")
-    _cp_proc = subprocess.Popen(cmd, env=os.environ.copy(), stdout=open(CP_LOG, "w"), stderr=subprocess.STDOUT)
-    
+    print("  Starting ContextPilot...", end="", flush=True)
+    _cp_proc = subprocess.Popen(
+        cmd, env=os.environ.copy(), stdout=open(CP_LOG, "w"), stderr=subprocess.STDOUT
+    )
     for i in range(30):
         time.sleep(1)
         try:
             r = requests.get(f"http://localhost:{PORT_CP}/health", timeout=2)
             if r.status_code in (200, 503):
-                print(f"  ContextPilot ready ({i+1}s)")
+                print(f" ready ({i + 1}s)")
                 return
-        except: pass
+        except Exception:
+            pass
+    print(" TIMEOUT!")
+    _cp_proc.kill()
     raise RuntimeError("ContextPilot failed to start")
+
 
 def set_openclaw_url(url):
     with open(CONFIG_PATH) as f:
@@ -384,80 +196,121 @@ def set_openclaw_url(url):
     with open(CONFIG_PATH, "w") as f:
         json.dump(cfg, f, indent=2)
 
+
 def run_agent_turn(session_id, message):
     cmd = [
-        "node", OPENCLAW_PATH, "agent", "--local",
-        "--session-id", session_id,
-        "--message", message,
-        "--json", "--timeout", "180"
+        "node",
+        OPENCLAW_PATH,
+        "agent",
+        "--local",
+        "--session-id",
+        session_id,
+        "--message",
+        message,
+        "--json",
+        "--timeout",
+        "180",
     ]
     t0 = time.perf_counter()
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=210)
     wall = time.perf_counter() - t0
-    
     try:
         json_start = result.stdout.index("{")
         data = json.loads(result.stdout[json_start:])
         meta = data.get("meta", {})
         agent = meta.get("agentMeta", {})
         usage = agent.get("lastCallUsage", agent.get("usage", {}))
+        payloads = data.get("payloads", [])
+        text = payloads[0].get("text", "") if payloads else ""
         return {
             "wall_s": round(wall, 3),
             "prompt_tokens": usage.get("input", 0),
             "completion_tokens": usage.get("output", 0),
-            "output_chars": len(data.get("payloads", [{}])[0].get("text", ""))
+            "total_input": agent.get("usage", {}).get("input", 0),
+            "total_output": agent.get("usage", {}).get("output", 0),
+            "output_chars": len(text),
+            "content_preview": text[:300],
         }
-    except:
-        return {"error": "parse_failed", "wall_s": round(wall, 3), "stdout": result.stdout[:200]}
+    except (ValueError, json.JSONDecodeError):
+        return {
+            "error": "parse_failed",
+            "wall_s": round(wall, 3),
+            "stdout": result.stdout[:500],
+            "stderr": result.stderr[:500],
+        }
 
-def run_scenario(scenario, arm_label, base_url, trial, gpu_id):
-    session_id = f"bench-{scenario['name']}-{arm_label}-t{trial}-{int(time.time())}"
+
+def run_scenario(task, arm_label, base_url, trial, gpu_id):
+    session_id = f"bench-{task['name']}-{arm_label}-t{trial}-{int(time.time())}"
     set_openclaw_url(base_url)
     start_sglang(gpu_id)
     if arm_label == "CP":
         start_contextpilot()
-    
-    print(f"\n  [{scenario['name']}] arm={arm_label} trial={trial}")
+
+    print(f"\n  [{task['name']}] arm={arm_label} trial={trial}")
     results = []
-    for i, msg in enumerate(scenario["turns"]):
+    for i, msg in enumerate(task["turns"]):
         print(f"    Turn {i}: ", end="", flush=True)
         r = run_agent_turn(session_id, msg)
-        r.update(turn=i, arm=arm_label, trial=trial, name=scenario["name"])
+        r.update(
+            turn=i, arm=arm_label, trial=trial, name=task["name"], session_id=session_id
+        )
         results.append(r)
-        print(f"ptok={r.get('prompt_tokens',0):,} wall={r.get('wall_s',0):.1f}s")
-    
+        err = r.get("error", "")
+        print(
+            f"ptok={r.get('prompt_tokens', 0):>6,} ctok={r.get('completion_tokens', 0):>5} "
+            f"wall={r.get('wall_s', 0):>5.1f}s chars={r.get('output_chars', 0):>5}"
+            + (f" ERR={err[:40]}" if err else "")
+        )
+
     kill_sglang()
-    kill_cp()
+    if arm_label == "CP":
+        kill_cp()
     return results
 
+
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="ContextPilot Benchmark Runner")
     parser.add_argument("--trials", type=int, default=1)
     parser.add_argument("--gpu", default="0")
     parser.add_argument("--scenarios", nargs="*", default=None)
     args = parser.parse_args()
-    
+
+    setup_workspace()
+    tasks = load_tasks(args.scenarios)
+
+    print(
+        f"\nModel: {MODEL}  GPU: {args.gpu}  Trials: {args.trials}  Scenarios: {len(tasks)}"
+    )
+
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     all_results = []
-    
-    scenarios = SCENARIOS
-    if args.scenarios:
-        scenarios = [s for s in SCENARIOS if s["name"] in args.scenarios]
 
     for trial in range(args.trials):
-        for scenario in scenarios:
-            for arm, url in [("Direct", f"http://localhost:{PORT_SGLANG}/v1"), ("CP", f"http://localhost:{PORT_CP}/v1")]:
+        print(f"\n{'─' * 80}\nTRIAL {trial}\n{'─' * 80}")
+        for task in tasks:
+            for arm, url in [
+                ("Direct", f"http://localhost:{PORT_SGLANG}/v1"),
+                ("CP", f"http://localhost:{PORT_CP}/v1"),
+            ]:
                 try:
-                    all_results.extend(run_scenario(scenario, arm, url, trial, args.gpu))
+                    results = run_scenario(task, arm, url, trial, args.gpu)
+                    all_results.extend(results)
                 except Exception as e:
-                    print(f"Error: {e}")
-                    kill_sglang(); kill_cp()
+                    print(f"\n  ERROR in {task['name']}/{arm}: {e}")
+                    kill_sglang()
+                    kill_cp()
+                    time.sleep(5)
 
     outfile = RESULTS_DIR / "results.jsonl"
     with open(outfile, "w") as f:
         for r in all_results:
-            f.write(json.dumps(r) + "\n")
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
     print(f"\nResults saved to {outfile}")
+    print("Run: python scripts/analyze.py results/results.jsonl")
+
+    set_openclaw_url(f"http://localhost:{PORT_SGLANG}/v1")
+
 
 if __name__ == "__main__":
     main()
