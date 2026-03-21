@@ -4,7 +4,20 @@
 
 All documents are **synthetically generated** by AI. No real company data, contracts, or proprietary content is used. No content was copied from any existing template or document.
 
-The documents were AI-generated to reflect standard enterprise vendor management practices. The clause structure follows the [typical components of a software service agreement](https://www.genieai.co/en-us/blog/drafting-a-b2b-saas-agreement) (scope, term, fees, IP, confidentiality, liability, indemnification, dispute resolution, general provisions) as described in publicly available legal drafting guides. Specific domain knowledge referenced:
+### Documents
+
+The contract clause structure follows the [standard components of a B2B SaaS/software service agreement](https://www.genieai.co/en-us/blog/drafting-a-b2b-saas-agreement) (definitions, scope, term, fees, IP, confidentiality, data protection, warranties, liability, indemnification, dispute resolution, general provisions) as described in publicly available legal drafting guides.
+
+### Tasks
+
+The 60 review tasks follow standard enterprise contract management workflows as described in:
+- [Vendor Contract Management Process](https://zapro.ai/contract-management/vendor-contract-management-process/) — 7 phases: intake, drafting, review & negotiation, approval, execution, performance monitoring, renewal/termination
+- [Contract Review Process: Steps, Checklist & Best Practices](https://www.sirion.ai/library/contract-management/contract-review-process/) — multi-stage review covering risk identification, compliance verification, accuracy checks
+- [Contract Audit Best Practices](https://www.contractsafe.com/blog/contract-audit-checklist/) — compliance audits, financial audits, performance audits, clause-level scrutiny
+- [Contract Review Checklist](https://www.pandadoc.com/blog/contract-review-checklist/) — scope, payment, liability, termination, compliance verification
+- [Vendor Contract Review Checklist](https://www.process.st/templates/vendor-contract-review-checklist/) — stakeholder identification, risk assessment, pricing review, legal counsel review, periodic performance review
+
+Specific domain knowledge referenced per document type:
 
 | Document Type | Domain Knowledge |
 |---------------|-----------------|
