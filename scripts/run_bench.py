@@ -20,6 +20,9 @@ WORKSPACE_SRC = ROOT_DIR / "data" / "workspace"
 RESULTS_DIR = ROOT_DIR / "results"
 CATEGORIES = ["commercial", "legal", "compliance", "strategic"]
 
+NODE_PATH = os.path.expanduser("~/.nvm/versions/node/v22.22.0/bin/node")
+if not os.path.exists(NODE_PATH):
+    NODE_PATH = "node"
 OPENCLAW_PATH = os.path.expanduser("~/openclaw/openclaw.mjs")
 CONFIG_PATH = os.path.expanduser("~/.openclaw/openclaw.json")
 WORKSPACE_DST = Path(os.path.expanduser("~/.openclaw/workspace/contracts"))
@@ -209,7 +212,7 @@ def set_openclaw_url(url):
 
 def run_agent_turn(session_id, message):
     cmd = [
-        "node",
+        NODE_PATH,
         OPENCLAW_PATH,
         "agent",
         "--local",

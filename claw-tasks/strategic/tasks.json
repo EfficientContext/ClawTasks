@@ -62,94 +62,122 @@
     ]
   },
   {
-    "name": "s42_board_followup",
+    "name": "s42_proposal_team_comparison",
     "turns": [
-      "Read contracts/board_minutes_2024_q4.txt and list all resolutions and action items from the board meeting. Do not search the web — only analyze the documents.",
-      "Read contracts/vendor_assessment_alpha_cloud.txt and contracts/vendor_assessment_gamma_security.txt. Do the assessment findings align with the board's discussion? Do not search the web — only analyze the documents.",
-      "Read contracts/amendment_alpha_cloud_a1.txt. The board discussed the Alpha amendment — does the executed amendment match what was discussed? Do not search the web — only analyze the documents.",
-      "Write a board action item status report based on all documents reviewed. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and summarize the proposed team composition and certifications. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_deepmind_ai.txt. Compare its team with CloudNine's. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Compare all four teams. Do not search the web — only analyze the documents.",
+      "Which vendor has the strongest team? Create a team comparison matrix. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s43_risk_register",
+    "name": "s43_proposal_timeline",
     "turns": [
-      "Read contracts/board_minutes_2024_q4.txt and extract the top 5 enterprise risks from the Risk Committee report. Do not search the web — only analyze the documents.",
-      "Read contracts/contract_alpha_cloud.txt and contracts/contract_gamma_security.txt. How do these contracts mitigate the cybersecurity risk (Risk #1)? Do not search the web — only analyze the documents.",
-      "Read contracts/policy_information_security.txt. Does the security policy address all five board-identified risks? Do not search the web — only analyze the documents.",
-      "Write a risk mitigation coverage report mapping each board risk to its contractual and policy controls. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and extract the project timeline and milestones. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_deepmind_ai.txt. Compare its timeline with CloudNine's. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. How do all four timelines compare? Do not search the web — only analyze the documents.",
+      "Are the proposed timelines realistic? Identify risks for each vendor. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s44_vendor_renewal_strategy",
+    "name": "s44_proposal_references",
     "turns": [
-      "Read contracts/vendor_assessment_alpha_cloud.txt and contracts/vendor_assessment_beta_ai.txt. Summarize their overall ratings and key issues. Do not search the web — only analyze the documents.",
-      "Read contracts/amendment_alpha_cloud_a1.txt. The Alpha contract was already amended — what terms should be further negotiated at renewal? Do not search the web — only analyze the documents.",
-      "Read contracts/board_minutes_2024_q4.txt. What did the board decide about the Gamma (CyberShield) renewal? Do not search the web — only analyze the documents.",
-      "Prepare a vendor renewal strategy document covering all four vendors with recommended actions. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. List all client references from both proposals. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. List their references too. Do not search the web — only analyze the documents.",
+      "Which vendor has the most relevant references for our industry? Rank all four. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s45_onboarding_checklist",
+    "name": "s45_vendor_selection_memo",
     "turns": [
-      "Read contracts/master_service_agreement.txt and extract all vendor qualification and onboarding requirements. Do not search the web — only analyze the documents.",
-      "Read contracts/policy_information_security.txt. What security checks must a new vendor pass? Do not search the web — only analyze the documents.",
-      "Read contracts/policy_data_governance.txt. What data governance requirements apply to new vendors? Do not search the web — only analyze the documents.",
-      "Create a comprehensive new vendor onboarding checklist based on the MSA and both policies. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. Summarize strengths and weaknesses of each. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. How did the final contracts compare with the proposals? Do not search the web — only analyze the documents.",
+      "Write a vendor selection recommendation memo for the CTO based on all proposals and contracts reviewed. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s46_incident_readiness",
+    "name": "s46_full_procurement_review",
     "turns": [
-      "Read contracts/contract_gamma_security.txt and extract all incident response obligations. Do not search the web — only analyze the documents.",
-      "Read contracts/policy_information_security.txt. Compare the contract's incident response terms with the policy's requirements (Section 6). Do not search the web — only analyze the documents.",
-      "Read contracts/vendor_assessment_gamma_security.txt. What was the actual incident history? Do not search the web — only analyze the documents.",
-      "Read contracts/board_minutes_2024_q4.txt. What did the board note about security incidents? Do not search the web — only analyze the documents.",
-      "Write an incident readiness assessment incorporating all four documents. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and contracts/contract_alpha_cloud.txt. Trace the full procurement journey for the cloud vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_deepmind_ai.txt and contracts/contract_beta_ai.txt. Same for the AI vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt and contracts/vendor_assessment_beta_ai.txt. How are these vendors performing against what was proposed and contracted? Do not search the web — only analyze the documents.",
+      "Write a comprehensive procurement review covering proposal → contract → delivery for both vendors. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s47_full_portfolio_review",
+    "name": "s47_board_vendor_brief",
     "turns": [
-      "Read contracts/master_service_agreement.txt and contracts/board_minutes_2024_q4.txt. What is the overall vendor management strategy? Do not search the web — only analyze the documents.",
-      "Read contracts/vendor_assessment_alpha_cloud.txt, contracts/vendor_assessment_beta_ai.txt, contracts/vendor_assessment_gamma_security.txt, and contracts/vendor_assessment_delta_data.txt. Summarize performance across all four vendors. Do not search the web — only analyze the documents.",
-      "Read contracts/policy_information_security.txt and contracts/policy_data_governance.txt. Are all vendors compliant with internal policies? Do not search the web — only analyze the documents.",
-      "Write a comprehensive annual vendor portfolio review for the CTO, covering performance, compliance, risks, and recommendations. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. Prepare a summary of what each vendor proposed. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. What was actually contracted vs proposed? Do not search the web — only analyze the documents.",
+      "Read contracts/board_minutes_2024_q4.txt. What did the board discuss about these vendors? Do not search the web — only analyze the documents.",
+      "Prepare an updated board briefing on vendor status incorporating proposals, contracts, and board feedback. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s57_cto_briefing",
+    "name": "s48_contract_consolidation",
     "turns": [
-      "Read contracts/board_minutes_2024_q4.txt and summarize the CTO's vendor review section. Do not search the web — only analyze the documents.",
-      "Read contracts/vendor_assessment_alpha_cloud.txt and contracts/vendor_assessment_beta_ai.txt. Do the detailed assessments support the CTO's board presentation? Do not search the web — only analyze the documents.",
-      "Read contracts/amendment_alpha_cloud_a1.txt. Was the Alpha amendment discussed at the board? Does it align with the board's direction? Do not search the web — only analyze the documents.",
-      "Prepare a CTO briefing document for the next board meeting with updated vendor status. Do not search the web — only analyze the documents."
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. What terms could be standardized across both? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Read contracts/master_service_agreement.txt. Does the MSA already cover the terms that should be standardized? Do not search the web — only analyze the documents.",
+      "Write a recommendation for contract consolidation — which clauses should move to the MSA and which should remain vendor-specific. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s58_transition_plan",
+    "name": "s49_renewal_negotiation",
     "turns": [
-      "Read contracts/contract_gamma_security.txt. What transition assistance is guaranteed upon termination? Do not search the web — only analyze the documents.",
-      "Read contracts/master_service_agreement.txt. What does the MSA say about vendor transitions? Do not search the web — only analyze the documents.",
-      "Read contracts/vendor_assessment_gamma_security.txt. How does the assessment rate knowledge transfer readiness? Do not search the web — only analyze the documents.",
-      "Prepare a transition plan for replacing the security vendor, incorporating all contractual and assessment data. Do not search the web — only analyze the documents."
+      "Read contracts/contract_alpha_cloud.txt and contracts/proposal_cloudnine_cloud.txt. What was the original proposed price vs contracted price? Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt. How has the vendor performed? Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_alpha_cloud_a1.txt. What changes have already been made? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt and contracts/proposal_deepmind_ai.txt. Same analysis for the AI vendor. Do not search the web — only analyze the documents.",
+      "Prepare a negotiation strategy for renewing both the cloud and AI vendor contracts. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s59_sustainability_report",
+    "name": "s50_annual_portfolio",
     "turns": [
-      "Read contracts/amendment_alpha_cloud_a1.txt and extract the sustainability requirements (Article 17A). Do not search the web — only analyze the documents.",
-      "Read contracts/amendment_beta_ai_a1.txt and contracts/amendment_gamma_security_a1.txt. Do they have similar sustainability provisions? Do not search the web — only analyze the documents.",
-      "Read contracts/board_minutes_2024_q4.txt. What did the board discuss about ESG reporting? Do not search the web — only analyze the documents.",
-      "Draft a vendor sustainability status report for the upcoming ESG disclosure. Do not search the web — only analyze the documents."
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Summarize both contracts' key terms. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Same for these two. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt and contracts/vendor_assessment_beta_ai.txt. Summarize performance. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_gamma_security.txt and contracts/vendor_assessment_delta_data.txt. Same. Do not search the web — only analyze the documents.",
+      "Write a complete annual vendor portfolio review covering all four vendors: contracts, performance, and recommendations. Do not search the web — only analyze the documents."
     ]
   },
   {
-    "name": "s60_annual_review_package",
+    "name": "s57_proposal_risk_assessment",
     "turns": [
-      "Read contracts/vendor_assessment_alpha_cloud.txt, contracts/vendor_assessment_beta_ai.txt, contracts/vendor_assessment_gamma_security.txt, and contracts/vendor_assessment_delta_data.txt. Create a consolidated performance summary. Do not search the web — only analyze the documents.",
-      "Read contracts/master_service_agreement.txt. Are all vendors meeting MSA governance requirements (Article 3)? Do not search the web — only analyze the documents.",
-      "Read contracts/board_minutes_2024_q4.txt. What actions did the board approve regarding vendors? Do not search the web — only analyze the documents.",
-      "Compile a complete annual vendor review package covering performance, compliance, risks, board directives, and recommended actions for each vendor. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. What risks does each vendor identify? What are their mitigation plans? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Read contracts/board_minutes_2024_q4.txt. Do the board-identified risks align with what the vendors proposed to address? Do not search the web — only analyze the documents.",
+      "Write a consolidated risk assessment comparing vendor-proposed mitigations with board-identified risks. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s58_full_vendor_lifecycle",
+    "turns": [
+      "Read contracts/proposal_cybershield_security.txt. What did the security vendor propose? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt. What was contracted? Do not search the web — only analyze the documents.",
+      "Read contracts/amendment_gamma_security_a1.txt. What changed? Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_gamma_security.txt. How are they performing? Do not search the web — only analyze the documents.",
+      "Write a full vendor lifecycle report for CyberShield: proposal → contract → amendment → performance. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s59_vendor_capability_map",
+    "turns": [
+      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. Map each vendor's technical capabilities and certifications. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Complete the capability map. Do not search the web — only analyze the documents.",
+      "Are there any capability gaps across our vendor portfolio? Do not search the web — only analyze the documents.",
+      "Write a vendor capability matrix and identify areas where we need additional vendor coverage. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s60_executive_dashboard",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Extract key metrics: contract value, term, SLA targets. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Same extraction. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt, contracts/vendor_assessment_beta_ai.txt, contracts/vendor_assessment_gamma_security.txt, and contracts/vendor_assessment_delta_data.txt. Extract actual performance vs SLA. Do not search the web — only analyze the documents.",
+      "Create an executive dashboard showing: contract status, spend, SLA compliance, and overall health for all four vendors. Do not search the web — only analyze the documents."
     ]
   }
 ]
