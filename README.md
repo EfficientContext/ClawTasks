@@ -2,6 +2,14 @@
 
 Prefill-heavy, multi-turn document analysis tasks for benchmarking LLM inference optimizations on [OpenClaw](https://openclaw.ai) agent workloads.
 
+## Prerequisites
+
+- [OpenClaw](https://openclaw.ai) installed with Node.js v22+
+- [SGLang](https://github.com/sgl-project/sglang) with a model (e.g., `Qwen/Qwen3-4B-Instruct-2507`)
+- (Optional) [ContextPilot](https://github.com/EfficientContext/ContextPilot) or any inference proxy to evaluate
+
+The runner copies documents from `data/workspace/` to OpenClaw's workspace (`~/.openclaw/workspace/contracts/`) automatically. OpenClaw's agent reads files from this workspace using its built-in `read` tool.
+
 ## Quick Start
 
 ```bash
@@ -20,14 +28,14 @@ python scripts/analyze.py results/results.jsonl
 
 ## Overview
 
-18 synthetic enterprise documents (260 KB), 60 tasks across 4 categories, ~250 turns total.
+22 synthetic enterprise documents (304 KB), 60 tasks across 4 categories, ~250 turns total.
 
 | Category | Tasks | Focus |
 |----------|-------|-------|
-| [`commercial/`](claw-tasks/commercial/) | 10 | Contract values, SLAs, payments, cost analysis |
-| [`legal/`](claw-tasks/legal/) | 13 | Liability, IP, termination, confidentiality, indemnification |
-| [`compliance/`](claw-tasks/compliance/) | 20 | Data protection, policies, certifications, access control |
-| [`strategic/`](claw-tasks/strategic/) | 17 | Board follow-up, vendor renewal, transitions, annual reviews |
+| [`commercial/`](claw-tasks/commercial/) | 10 | Contract values, SLAs, payments, proposal pricing, cost analysis |
+| [`legal/`](claw-tasks/legal/) | 12 | Liability, IP, termination, confidentiality, NDA alignment, indemnification |
+| [`compliance/`](claw-tasks/compliance/) | 18 | Data protection, policies, certifications, proposal compliance, security audit |
+| [`strategic/`](claw-tasks/strategic/) | 20 | Vendor selection, procurement review, board briefings, lifecycle reviews |
 
 See [`claw-tasks/`](claw-tasks/) for per-task details and [`data/`](data/) for document sources and construction notes.
 
@@ -48,7 +56,7 @@ See [`claw-tasks/`](claw-tasks/) for per-task details and [`data/`](data/) for d
 ├── README.md
 ├── data/
 │   ├── README.md               # Data sources, construction notes, licensing
-│   └── workspace/              # 18 enterprise documents (260 KB)
+│   └── workspace/              # 22 enterprise documents (304 KB)
 ├── claw-tasks/
 │   ├── README.md               # Per-task details with documents used
 │   ├── commercial/tasks.json
