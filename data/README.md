@@ -4,7 +4,7 @@
 
 All documents are **synthetically generated** by AI. No real company data, contracts, or proprietary content is used. No content was copied from any existing template or document.
 
-The documents were written to reflect common patterns found in enterprise vendor management. The clause structures, article numbering, and legal terminology follow conventions that are standard practice across the software services industry. Specific domain knowledge referenced:
+The documents were AI-generated to reflect standard enterprise vendor management practices. The clause structure follows the [typical components of a software service agreement](https://www.genieai.co/en-us/blog/drafting-a-b2b-saas-agreement) (scope, term, fees, IP, confidentiality, liability, indemnification, dispute resolution, general provisions) as described in publicly available legal drafting guides. Specific domain knowledge referenced:
 
 | Document Type | Domain Knowledge |
 |---------------|-----------------|
