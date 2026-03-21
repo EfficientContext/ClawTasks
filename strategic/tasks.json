@@ -1,0 +1,64 @@
+[
+  {
+    "name": "s09_change_management",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and describe the change management process. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. How flexible are the change order terms for AI projects? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. Are emergency changes handled differently in the security contract? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare change management across all four. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s20_vendor_comparison",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Compare these two vendors side by side. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare these two vendors. Do not search the web — only analyze the contract text.",
+      "Which vendor has the most favorable terms for our company? Rank all four. Do not search the web — only analyze the contract text.",
+      "Which vendor poses the highest risk? Explain with specific clause references. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s23_knowledge_transfer",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and review the knowledge transfer and transition provisions. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Are AI model handover procedures adequate? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. What transition support is guaranteed? Do not search the web — only analyze the contract text.",
+      "Write a transition readiness assessment for all four vendors. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s24_security_assessment",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and evaluate all security-related provisions. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Are there adequate security controls for AI training data? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. This is the security vendor — are their own security terms comprehensive? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare security posture across all four vendors. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s25_exit_strategy",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt. What happens if we need to exit this contract? Describe the process. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What are the exit costs and data retrieval provisions? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare exit provisions. Do not search the web — only analyze the contract text.",
+      "Develop an exit strategy plan covering all four vendors with timeline and cost estimates. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s29_board_summary",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Prepare a board-level summary of these two contracts. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Prepare the same for these two. Do not search the web — only analyze the contract text.",
+      "Write a one-page executive summary of all four vendor contracts suitable for the board of directors. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s30_negotiation_prep",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and identify the top 3 clauses we should renegotiate. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What terms are most unfavorable to us? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Identify weak negotiation positions. Do not search the web — only analyze the contract text.",
+      "Prepare a negotiation strategy document covering all four contracts with specific amendment proposals. Do not search the web — only analyze the contract text."
+    ]
+  }
+]

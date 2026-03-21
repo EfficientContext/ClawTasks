@@ -14,10 +14,10 @@ MODEL = "Qwen/Qwen3-4B-Instruct-2507"
 PORT_SGLANG = 30002
 PORT_CP = 8771
 
-BENCH_DIR = Path(__file__).parent.parent
-TASKS_PATH = BENCH_DIR / "data" / "tasks.json"
-WORKSPACE_SRC = BENCH_DIR / "data" / "workspace"
-RESULTS_DIR = BENCH_DIR / "results"
+ROOT_DIR = Path(__file__).parent.parent
+WORKSPACE_SRC = ROOT_DIR / "data" / "workspace"
+RESULTS_DIR = ROOT_DIR / "results"
+CATEGORIES = ["commercial", "legal", "compliance", "strategic"]
 
 OPENCLAW_PATH = os.path.expanduser("~/openclaw/openclaw.mjs")
 CONFIG_PATH = os.path.expanduser("~/.openclaw/openclaw.json")
@@ -39,9 +39,18 @@ def setup_workspace():
     print(f"Workspace: {n} files ({total // 1024} KB) copied to {WORKSPACE_DST}")
 
 
-def load_tasks(filter_names=None):
-    with open(TASKS_PATH) as f:
-        tasks = json.load(f)
+def load_tasks(categories=None, filter_names=None):
+    tasks = []
+    cats = categories if categories else CATEGORIES
+    for cat in cats:
+        cat_path = ROOT_DIR / cat / "tasks.json"
+        if not cat_path.exists():
+            continue
+        with open(cat_path) as f:
+            cat_tasks = json.load(f)
+        for t in cat_tasks:
+            t["category"] = cat
+        tasks.extend(cat_tasks)
     if filter_names:
         tasks = [t for t in tasks if t["name"] in filter_names]
     return tasks
@@ -270,14 +279,23 @@ def run_scenario(task, arm_label, base_url, trial, gpu_id):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ContextPilot Benchmark Runner")
+    parser = argparse.ArgumentParser(description="ClawTask Benchmark Runner")
     parser.add_argument("--trials", type=int, default=1)
     parser.add_argument("--gpu", default="0")
-    parser.add_argument("--scenarios", nargs="*", default=None)
+    parser.add_argument(
+        "--category",
+        nargs="*",
+        default=None,
+        choices=CATEGORIES,
+        help="Run specific categories (default: all)",
+    )
+    parser.add_argument(
+        "--scenarios", nargs="*", default=None, help="Run specific scenario names"
+    )
     args = parser.parse_args()
 
     setup_workspace()
-    tasks = load_tasks(args.scenarios)
+    tasks = load_tasks(categories=args.category, filter_names=args.scenarios)
 
     print(
         f"\nModel: {MODEL}  GPU: {args.gpu}  Trials: {args.trials}  Scenarios: {len(tasks)}"

@@ -1,0 +1,48 @@
+[
+  {
+    "name": "s01_commercial_terms",
+    "turns": [
+      "List all files in the contracts/ folder.",
+      "Read contracts/contract_alpha_cloud.txt and summarize: parties, total amount, duration, payment schedule, and service scope. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt and compare its commercial terms with Alpha. What is identical vs different? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. How do the payment terms compare across all three? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Create a comparison table of all four contracts: value, duration, payment structure, SLA targets. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s06_sla_comparison",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract all SLA targets: uptime, response times, resolution times. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Does it have the same SLA structure? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. What SLA commitments are specific to security operations? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare SLA targets across all four and identify which vendor has the weakest commitments. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s13_payment_risk",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and analyze payment risk: late payment penalties, audit rights, service credits. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What performance bonuses or penalties exist? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. How are incident response fees structured? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare financial risk across all four contracts. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s18_renewal_analysis",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt. When does it expire and what are the renewal terms? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Compare its term with Alpha. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. What is its duration? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Create a renewal timeline for all four with key dates. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s21_cost_analysis",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt. What is the total cost including potential penalties and bonuses? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What is the maximum financial exposure including performance bonuses? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Calculate total financial commitments. Do not search the web — only analyze the contract text.",
+      "What is our total vendor spend across all four contracts? Provide a cost breakdown. Do not search the web — only analyze the contract text."
+    ]
+  }
+]
