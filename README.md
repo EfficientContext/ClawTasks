@@ -8,7 +8,7 @@ Prefill-heavy, multi-turn document analysis tasks for benchmarking LLM inference
 - [SGLang](https://github.com/sgl-project/sglang) with a model (e.g., `Qwen/Qwen3-4B-Instruct-2507`)
 - (Optional) [ContextPilot](https://github.com/EfficientContext/ContextPilot) or any inference proxy to evaluate
 
-The runner copies documents from `data/workspace/` to OpenClaw's workspace (`~/.openclaw/workspace/contracts/`) automatically. OpenClaw's agent reads files from this workspace using its built-in `read` tool.
+The runner copies documents from `data/workspace/` to OpenClaw's workspace (`~/.openclaw/workspace/contracts/`) automatically.
 
 ## Quick Start
 
@@ -28,7 +28,7 @@ python scripts/analyze.py results/results.jsonl
 
 ## Overview
 
-22 synthetic enterprise documents (304 KB), 60 tasks across 4 categories, ~250 turns total.
+22 synthetic enterprise documents (490 KB), 60 tasks across 4 categories, ~250 turns total.
 
 | Category | Tasks | Focus |
 |----------|-------|-------|
@@ -39,16 +39,33 @@ python scripts/analyze.py results/results.jsonl
 
 See [`claw-tasks/`](claw-tasks/) for per-task details and [`data/`](data/) for document sources and construction notes.
 
+## Data
+
+A technology company (TechVentures Pte Ltd) manages four vendor relationships. The workspace contains:
+
+| Documents | Files | Size |
+|-----------|-------|------|
+| Service Agreements | 4 | 182 KB |
+| Vendor Proposals | 4 | 242 KB |
+| Amendments | 4 | 19 KB |
+| Master Service Agreement | 1 | 9 KB |
+| Vendor Assessments | 4 | 16 KB |
+| Internal Policies | 2 | 13 KB |
+| Board Minutes | 1 | 8 KB |
+| NDAs | 2 | 12 KB |
+
+Contracts share a common legal template (Articles 1-16). Proposals share methodology, governance, compliance, and sustainability sections. Amendments reference originals. Assessments quote SLA targets. Policies are cross-referenced in the MSA.
+
 ## Workload Profile
 
 | Property | Value |
 |----------|-------|
-| Avg input tokens (turn 0) | ~25K |
-| Avg input tokens (turn 3) | ~65K |
+| Avg input tokens (all turns) | ~46K |
 | Max input tokens | ~93K |
-| Avg output tokens | ~740 |
+| Avg output tokens | ~760 |
 | Input/output ratio | ~60:1 |
 | Content overlap (contracts) | ~70% |
+| Content overlap (proposals) | ~66% |
 
 ## File Structure
 
@@ -56,13 +73,13 @@ See [`claw-tasks/`](claw-tasks/) for per-task details and [`data/`](data/) for d
 ├── README.md
 ├── data/
 │   ├── README.md               # Data sources, construction notes, licensing
-│   └── workspace/              # 22 enterprise documents (304 KB)
+│   └── workspace/              # 22 enterprise documents (490 KB)
 ├── claw-tasks/
 │   ├── README.md               # Per-task details with documents used
-│   ├── commercial/tasks.json
-│   ├── legal/tasks.json
-│   ├── compliance/tasks.json
-│   └── strategic/tasks.json
+│   ├── commercial/tasks.json   # 10 tasks
+│   ├── legal/tasks.json        # 12 tasks
+│   ├── compliance/tasks.json   # 18 tasks
+│   └── strategic/tasks.json    # 20 tasks
 ├── scripts/
 │   ├── run_bench.py
 │   └── analyze.py

@@ -28,6 +28,7 @@ Specific domain knowledge referenced per document type:
 | Information Security Policy | Aligned with common information security frameworks: data classification (public/internal/confidential/restricted), access control with RBAC and MFA, encryption standards (AES-256, TLS 1.2+), incident severity classification. |
 | Data Governance Policy | Data quality dimensions (accuracy, completeness, consistency, timeliness, validity, uniqueness), lifecycle management, retention schedules, privacy requirements. |
 | Board Minutes | Singapore board meeting format: quorum, resolutions, management reports, risk committee updates. |
+| Vendor Proposals | Standard vendor proposal format: executive summary, company overview, requirements analysis, technical methodology (5-phase approach), team composition, timeline, pricing, references, terms. Shared governance, risk management, compliance, training, innovation, and sustainability sections across all proposals. |
 | NDAs | Standard mutual non-disclosure agreement with defined confidential information, exceptions, survival period. |
 
 ## Fictional Entities
@@ -60,9 +61,13 @@ All company names, vendor names, personnel names, contract IDs, and financial fi
 | policy_information_security.txt | 7 KB | Policy |
 | policy_data_governance.txt | 6 KB | Policy |
 | board_minutes_2024_q4.txt | 8 KB | Board Minutes |
+| proposal_cloudnine_cloud.txt | 60 KB | Vendor Proposal |
+| proposal_deepmind_ai.txt | 60 KB | Vendor Proposal |
+| proposal_cybershield_security.txt | 60 KB | Vendor Proposal |
+| proposal_datastream_data.txt | 60 KB | Vendor Proposal |
 | nda_001_cloudnine.txt | 6 KB | NDA |
 | nda_002_deepmind.txt | 6 KB | NDA |
-| **Total** | **260 KB** | **18 files** |
+| **Total** | **490 KB** | **22 files** |
 
 ## Content Overlap
 
