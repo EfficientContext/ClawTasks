@@ -1,0 +1,114 @@
+VENDOR ASSESSMENT REPORT
+Report ID: VA-2024-DELTA_DATA
+Date: 2024-12-15
+Prepared By: Company A Vendor Management Office
+Subject: Annual Assessment of Data Services E Pte Ltd
+
+1. EXECUTIVE SUMMARY
+
+This report presents the annual assessment of Data Services E Pte Ltd (Contract SA-2024-004) for data engineering and analytics platform services. The assessment covers the period from 2024-04-15 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
+
+Overall Rating: SATISFACTORY (3.6 / 5.0)
+
+2. CONTRACT OVERVIEW
+
+Vendor: Data Services E Pte Ltd
+Contract ID: SA-2024-004
+Service Type: data engineering and analytics platform
+Contract Value: USD 2,100,000
+Contract Period: 2024-04-15 to 2026-04-14
+Current Status: Active
+
+3. SERVICE DELIVERY ASSESSMENT (Score: 3.8 / 5.0)
+
+3.1 SLA Performance:
+- Availability: 99.92% (Target: 99.9%) — MET
+- Severity 1 Response Time: 12 min avg (Target: 15 min) — MET
+- Severity 2 Response Time: 48 min avg (Target: 60 min) — MET
+- Severity 1 Resolution Time: 3.5 hrs avg (Target: 4 hrs) — MET
+- Change Request Turnaround: 8.5 days avg (Target: 10 days) — MET
+
+3.2 Deliverable Quality:
+- First-pass acceptance rate: 87% (Target: 90%) — BELOW TARGET
+- Defect density: 2.3 per 1000 LOC (Target: <3.0) — MET
+- Documentation completeness: 92% (Target: 95%) — BELOW TARGET
+
+3.3 Areas for Improvement:
+- First-pass acceptance rate needs improvement; primary issues are incomplete unit tests and missing edge case handling
+- Documentation quality inconsistent across teams; recommend standardized templates
+
+4. SECURITY COMPLIANCE ASSESSMENT (Score: 3.5 / 5.0)
+
+4.1 Certifications:
+- SOC 2 Type II: Valid (expires 2025-06-30)
+- ISO 27001: Valid (expires 2025-09-15)
+- PCI-DSS: Not applicable / Not required
+
+4.2 Security Audit Results:
+- Last penetration test: 2024-09-15 (by CyberDefense Associates)
+- Critical findings: 0
+- High findings: 2 (both remediated within SLA)
+- Medium findings: 5 (3 remediated, 2 in progress)
+- Low findings: 12 (8 remediated, 4 accepted)
+
+4.3 Incident History:
+- Total security incidents: 3
+- Severity 1: 0
+- Severity 2: 1 (unauthorized access attempt, detected and blocked)
+- Severity 3: 2 (minor policy violations, corrected)
+
+4.4 Data Protection:
+- DPA executed: Yes
+- Data breach incidents: 0
+- Cross-border data transfers: Compliant with PDPA requirements
+- Data retention compliance: Verified
+
+5. FINANCIAL MANAGEMENT ASSESSMENT (Score: 3.7 / 5.0)
+
+5.1 Budget Performance:
+- Contract value: USD 2,100,000
+- Actual spend to date: Within 5% of budget
+- Change orders: 3 (total value: USD 150,000)
+- Service credits issued: USD 12,500 (Q2 availability dip)
+
+5.2 Invoice Compliance:
+- On-time invoice submission: 95%
+- Invoice accuracy: 92%
+- Disputed invoices: 2 (both resolved)
+
+6. RELATIONSHIP MANAGEMENT ASSESSMENT (Score: 3.4 / 5.0)
+
+6.1 Communication:
+- Monthly reports: Delivered on time (11/12 months)
+- Quarterly business reviews: All conducted as scheduled
+- Escalation response: Generally within SLA, one instance of delayed response
+
+6.2 Personnel:
+- Key personnel retention: 80% (1 account manager change in Q3)
+- Personnel qualification compliance: 100%
+- Knowledge transfer readiness: Adequate
+
+7. INNOVATION ASSESSMENT (Score: 3.6 / 5.0)
+
+7.1 Technology Adoption:
+- Proactive technology recommendations: 4 proposals submitted
+- Proposals accepted: 2
+- Innovation lab sessions conducted: 3 (target: 4)
+
+8. RECOMMENDATIONS
+
+8.1 Renew contract with the following conditions:
+- Increase first-pass acceptance rate target to 92%
+- Require quarterly documentation quality audits
+- Add sustainability reporting requirements per Amendment A1
+- Maintain current pricing with CPI adjustment
+
+8.2 Risk Items to Monitor:
+- Key personnel retention (account manager transition)
+- Medium security findings remediation timeline
+- Documentation quality consistency
+
+Report Approved By:
+VP of Technology: ____________________
+Head of Vendor Management: ____________________
+Date: 2024-12-15

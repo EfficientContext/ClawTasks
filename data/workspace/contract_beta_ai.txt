@@ -1,0 +1,246 @@
+SOFTWARE SERVICE AGREEMENT
+Contract ID: SA-2024-002
+Date: 2024-03-01
+
+PARTIES:
+Party A (Client): Company A Pte Ltd
+Party B (Provider): AI Lab C Ltd
+
+ARTICLE 1 — DEFINITIONS
+
+1.1 "Service" means the artificial intelligence and machine learning platform services described in Schedule A, including all updates, patches, maintenance releases, bug fixes, security patches, feature enhancements, and documentation updates provided during the Term of this Agreement. The Service shall be delivered in accordance with the specifications, timelines, and quality standards set forth in Schedule A and shall include all ancillary services reasonably necessary for the effective delivery of the primary Service.
+
+1.2 "Confidential Information" means any non-public information disclosed by either party to the other, whether orally, visually, electronically, or in writing, that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and the circumstances of disclosure. Confidential Information includes, but is not limited to, trade secrets, know-how, inventions, techniques, processes, algorithms, software programs, source code, object code, hardware designs, customer lists, financial information, business plans, marketing plans, pricing strategies, vendor relationships, employee information, and any other information that provides a competitive advantage. Confidential Information also includes the terms and conditions of this Agreement, all proposals, quotations, and communications exchanged between the parties during the negotiation of this Agreement, and all information relating to any disputes arising under this Agreement.
+
+1.3 "Intellectual Property" means all patents, copyrights, trademarks, service marks, trade names, domain names, trade secrets, and other intellectual property rights, whether registered or unregistered, and all applications, renewals, extensions, and restorations for the foregoing, throughout the world. This includes all moral rights, rights of publicity, rights of privacy, database rights, design rights, semiconductor topography rights, and any other intellectual property or proprietary rights recognized in any jurisdiction worldwide, whether now existing or hereafter created or recognized.
+
+1.4 "Personal Data" means any information relating to an identified or identifiable natural person ("Data Subject"), including but not limited to name, identification number, location data, online identifier, IP address, cookie identifiers, device fingerprints, or one or more factors specific to the physical, physiological, genetic, mental, economic, cultural, or social identity of that person, as defined under applicable data protection laws including but not limited to the General Data Protection Regulation (EU) 2016/679 ("GDPR"), the California Consumer Privacy Act ("CCPA"), the California Privacy Rights Act ("CPRA"), the Personal Information Protection Law of the People's Republic of China ("PIPL"), the Personal Data Protection Act 2012 of Singapore ("PDPA"), and the Act on the Protection of Personal Information of Japan ("APPI").
+
+1.5 "Service Level Agreement" or "SLA" means the service levels, uptime guarantees, response times, resolution times, and performance metrics set forth in Schedule B attached hereto, which Party B commits to maintain throughout the Term of this Agreement. The SLA shall include, at a minimum, availability targets, mean time to respond (MTTR), mean time to resolve (MTTR), escalation procedures, maintenance windows, and reporting obligations. Failure to meet SLA targets shall entitle Party A to service credits as specified in Schedule B.
+
+1.6 "Force Majeure Event" means any event beyond the reasonable control of a party that prevents or delays the performance of its obligations under this Agreement, including but not limited to acts of God, natural disasters (earthquakes, hurricanes, typhoons, tsunamis, volcanic eruptions, landslides), war, armed conflict, terrorism, riots, civil unrest, embargoes, sanctions, acts of civil or military authorities, fire, floods, epidemics, pandemics, quarantine restrictions, strikes, labor disputes (excluding strikes by the affected party's own employees), freight embargoes, unusually severe weather conditions, power outages, telecommunications failures, internet service disruptions, cyberattacks (including distributed denial-of-service attacks), and government-imposed restrictions or shutdowns.
+
+1.7 "Deliverable" means any tangible or intangible work product, document, software, report, analysis, design, prototype, or other output that Party B is required to produce and deliver to Party A under this Agreement, as specified in the Schedules and any applicable Statements of Work.
+
+1.8 "Business Day" means any day other than Saturday, Sunday, or a public holiday in Singapore, and "Business Hours" means the hours between 9:00 AM and 6:00 PM Singapore Time on a Business Day.
+
+1.9 "Change Order" means a written document executed by both parties that modifies the scope, schedule, specifications, or fees of the Services, in accordance with the change management procedures set forth in Article 13.
+
+1.10 "Subcontractor" means any third party engaged by Party B to perform any portion of the Services, subject to the restrictions and requirements set forth in Article 14.
+
+ARTICLE 2 — SCOPE OF SERVICES
+
+2.1 Party B shall provide artificial intelligence and machine learning platform services to Party A in accordance with the specifications set forth in Schedule A. The services shall include system design and architecture, development and coding, unit testing and integration testing, user acceptance testing support, deployment and go-live support, post-deployment monitoring, performance optimization, and ongoing maintenance and support throughout the Term.
+
+2.2 Party B shall assign qualified personnel with appropriate skills, experience, and certifications to perform the Services. All personnel assigned to the project shall have a minimum of three (3) years of relevant professional experience in artificial intelligence and machine learning platform and shall hold appropriate professional certifications as required by industry standards. Party B shall provide Party A with resumes and qualification details of all key personnel prior to their assignment. Party A shall have the right to request the replacement of any personnel who, in Party A's reasonable judgment, do not meet the required standards of competence or professionalism.
+
+2.3 Party B shall establish and maintain a project management office (PMO) to oversee the delivery of Services, including but not limited to: weekly status reports with updated Gantt charts and burn-down charts, risk registers with mitigation plans reviewed bi-weekly, change management processes with impact assessments for all proposed changes, quality assurance procedures including code review standards and testing protocols, resource management including capacity planning and skills matrix, communication protocols including escalation paths for issues of varying severity, and document management including version control and archival policies.
+
+2.4 Party B shall provide Party A with a dedicated account manager who shall serve as the primary point of contact for all matters related to this Agreement. The account manager shall be available during Business Hours and shall respond to all inquiries within four (4) business hours. For Severity 1 issues, the account manager shall be available twenty-four (24) hours a day, seven (7) days a week. The account manager shall have sufficient authority to make operational decisions on behalf of Party B and shall attend monthly governance meetings with Party A's stakeholders.
+
+2.5 All deliverables shall be subject to Party A's acceptance testing procedures as set forth in Schedule C. Party A shall have fifteen (15) business days to complete acceptance testing following delivery of each Deliverable. If Party A identifies any defects, non-conformities, or deviations from the specifications, Party A shall notify Party B in writing, and Party B shall correct such issues within ten (10) business days at no additional cost to Party A. If the corrected Deliverable still fails to meet the acceptance criteria after two (2) rounds of corrections, Party A shall have the right to terminate the applicable Statement of Work and receive a full refund of all fees paid for the non-conforming Deliverable.
+
+2.6 Party B shall implement and follow industry-standard software development lifecycle (SDLC) practices, including agile or waterfall methodologies as agreed upon by the parties, version control using Git or equivalent systems, continuous integration and continuous deployment (CI/CD) pipelines, automated testing frameworks with minimum code coverage of eighty percent (80%), and documentation standards compliant with IEEE or equivalent standards.
+
+2.7 Party B shall conduct regular knowledge transfer sessions to Party A's technical team, ensuring that Party A's personnel are capable of operating and maintaining the delivered systems independently upon completion of the engagement. Knowledge transfer shall include comprehensive documentation, hands-on training sessions, and a transition period of no less than thirty (30) days.
+
+ARTICLE 3 — TERM AND TERMINATION
+
+3.1 This Agreement shall commence on 2024-03-01 (the "Effective Date") and shall continue until 2027-02-28 (the "Initial Term"), unless earlier terminated in accordance with this Article 3. The parties may extend the Term by mutual written agreement executed at least sixty (60) days prior to the expiration of the then-current Term.
+
+3.2 Either party may terminate this Agreement for convenience by providing ninety (90) days' prior written notice to the other party. In the event of termination for convenience by Party A, Party A shall pay Party B for: (a) all Services satisfactorily performed through the effective date of termination; (b) any non-cancelable commitments reasonably made by Party B in connection with the Services prior to receipt of the termination notice; and (c) reasonable wind-down costs incurred by Party B in connection with the orderly cessation of Services, not to exceed ten percent (10%) of the remaining contract value.
+
+3.3 Either party may terminate this Agreement immediately upon written notice if the other party: (a) materially breaches this Agreement and fails to cure such breach within thirty (30) days after receipt of written notice specifying the breach in reasonable detail; (b) becomes insolvent, files a petition for bankruptcy, has a receiver or trustee appointed for its assets, makes an assignment for the benefit of creditors, or has any similar proceedings initiated against it; (c) ceases to conduct business in the normal course; (d) is acquired by, merges with, or undergoes a change of control in favor of a competitor of the non-terminating party; or (e) is found to be in violation of applicable anti-corruption, anti-bribery, or sanctions laws.
+
+3.4 Upon termination or expiration of this Agreement for any reason, Party B shall: (a) immediately cease all work under this Agreement except as directed by Party A for orderly wind-down; (b) deliver to Party A all completed and in-progress Deliverables, work product, documentation, and materials in their then-current state; (c) return or, at Party A's election, securely destroy all Confidential Information of Party A, and certify such destruction in writing; (d) provide reasonable transition assistance for a period of up to ninety (90) days at Party B's then-current rates; (e) cooperate with Party A and any successor service provider to ensure an orderly transition; and (f) submit a final invoice for all outstanding fees within thirty (30) days of the effective date of termination.
+
+3.5 The following provisions shall survive termination or expiration of this Agreement: Article 1 (Definitions), Article 5 (Intellectual Property), Article 6 (Confidentiality), Article 7 (Data Protection), Article 8 (Warranties), Article 9 (Limitation of Liability), Article 10 (Indemnification), Article 11 (Dispute Resolution), and any other provisions that by their nature are intended to survive.
+
+ARTICLE 4 — FEES AND PAYMENT
+
+4.1 Party A shall pay Party B the total contract amount of USD 3,600,000 for the Services described herein, subject to the payment schedule and terms set forth in this Article 4 and the applicable Schedules.
+
+4.2 Payment shall be made in quarterly installments of USD 300,000 each, payable within fifteen (15) business days of the start of each quarter. Model performance bonuses of up to USD 150,000 per quarter shall be payable upon achieving accuracy targets defined in Schedule E.
+
+4.3 All invoices shall be itemized and include reasonable detail of the Services performed, hours worked (for time-and-materials engagements), expenses incurred, and applicable taxes. Invoices shall be due and payable within thirty (30) days of receipt. Late payments shall accrue interest at the rate of one and one-half percent (1.5%) per month or the maximum rate permitted by applicable law, whichever is less. Party A shall notify Party B of any disputed invoice amounts within fifteen (15) business days of receipt; undisputed amounts shall remain due on the original payment date.
+
+4.4 All fees stated in this Agreement are exclusive of applicable taxes, duties, and levies. Party A shall be responsible for all sales tax, use tax, value-added tax (VAT), goods and services tax (GST), withholding tax, and other similar taxes imposed by any governmental authority, except for taxes based on Party B's net income. If Party A is required by law to make any deduction or withholding from payments to Party B, Party A shall gross up the payment so that Party B receives the full amount that would have been received had no such deduction or withholding been made.
+
+4.5 Party B shall maintain complete, accurate, and contemporaneous records of all time, expenses, costs, and resource utilization incurred in connection with the Services for a period of five (5) years following the year in which the expense was incurred. Party A shall have the right to audit such records upon thirty (30) days' prior written notice, during normal business hours, at Party A's expense. If any audit reveals an overcharge of more than five percent (5%), Party B shall bear the cost of the audit and promptly refund the overcharged amount plus interest.
+
+4.6 In the event that Party B fails to meet the SLA targets specified in Schedule B, Party A shall be entitled to service credits calculated in accordance with the service credit formula set forth in Schedule B. Service credits shall be applied against future invoices or, at Party A's election, refunded in cash within thirty (30) days. Accumulation of service credits exceeding twenty percent (20%) of the quarterly fees shall constitute a material breach of this Agreement.
+
+ARTICLE 5 — INTELLECTUAL PROPERTY
+
+5.1 All Intellectual Property created, developed, conceived, or reduced to practice by Party B, its employees, agents, or Subcontractors in the performance of the Services ("Work Product") shall be the sole and exclusive property of Party A from the moment of creation. Party B hereby irrevocably assigns to Party A all right, title, and interest in and to the Work Product, including all Intellectual Property rights therein, throughout the world, for the full term of such rights. Party B shall execute all documents and take all actions reasonably requested by Party A to effectuate, perfect, and record such assignment.
+
+5.2 Party B retains ownership of its pre-existing intellectual property, tools, frameworks, libraries, methodologies, and general know-how that existed prior to the Effective Date or that are developed independently of the Services ("Party B Background IP"). To the extent that any Party B Background IP is incorporated into or necessary for the use of any Work Product, Party B hereby grants Party A a perpetual, irrevocable, worldwide, royalty-free, fully paid-up, non-exclusive, sublicensable license to use, reproduce, modify, adapt, create derivative works from, distribute, display, and otherwise exploit such Party B Background IP solely as part of or in connection with the Work Product.
+
+5.3 Party B represents and warrants that: (a) the Services and Work Product will not infringe upon or misappropriate any third party's Intellectual Property rights or other proprietary rights; (b) Party B has the full right and authority to grant the rights and assignments set forth in this Article 5; (c) no third party has any claim, lien, or encumbrance on the Work Product; and (d) all open-source software incorporated into the Work Product shall be disclosed to Party A in writing and shall be licensed under permissive licenses (MIT, BSD, Apache 2.0) unless otherwise approved by Party A in writing. Party B shall indemnify, defend, and hold harmless Party A against any claims, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising from any actual or alleged infringement of third-party Intellectual Property rights.
+
+5.4 Party B shall maintain a complete and accurate inventory of all third-party components, open-source libraries, and software dependencies incorporated into the Work Product, including version numbers, license types, and known vulnerabilities. This inventory shall be updated with each release and provided to Party A in a machine-readable format (SPDX or CycloneDX).
+
+ARTICLE 6 — CONFIDENTIALITY
+
+6.1 Each party (the "Receiving Party") agrees to hold the other party's (the "Disclosing Party") Confidential Information in strict confidence and not to disclose such Confidential Information to any third party without the prior written consent of the Disclosing Party. The Receiving Party shall use the Disclosing Party's Confidential Information solely for the purpose of performing its obligations or exercising its rights under this Agreement.
+
+6.2 The Receiving Party shall protect the Disclosing Party's Confidential Information using at least the same degree of care that it uses to protect its own confidential information of similar nature and importance, but in no event less than reasonable care. The Receiving Party shall limit access to Confidential Information to those of its employees, agents, and Subcontractors who have a need to know such information for the purposes of this Agreement and who are bound by confidentiality obligations no less restrictive than those set forth herein.
+
+6.3 The obligations of confidentiality set forth in this Article 6 shall not apply to information that: (a) was publicly available at the time of disclosure or becomes publicly available through no fault of the Receiving Party; (b) was rightfully in the Receiving Party's possession without restriction prior to disclosure by the Disclosing Party, as evidenced by the Receiving Party's contemporaneous written records; (c) is independently developed by the Receiving Party without reference to or use of the Disclosing Party's Confidential Information, as evidenced by the Receiving Party's contemporaneous written records; (d) is rightfully received by the Receiving Party from a third party without restriction on disclosure and without breach of any obligation of confidentiality; or (e) is required to be disclosed by applicable law, regulation, court order, or governmental authority, provided that the Receiving Party shall give the Disclosing Party prompt written notice of such requirement (to the extent legally permitted) and shall cooperate with the Disclosing Party's reasonable efforts to seek a protective order or other appropriate remedy.
+
+6.4 Upon termination or expiration of this Agreement, or upon the Disclosing Party's earlier written request, the Receiving Party shall promptly return or, at the Disclosing Party's election, securely destroy all copies of the Disclosing Party's Confidential Information in its possession or control, and shall certify such return or destruction in writing within fifteen (15) business days. Notwithstanding the foregoing, the Receiving Party may retain one (1) archival copy of the Confidential Information solely for the purpose of monitoring compliance with this Agreement, subject to the continuing confidentiality obligations set forth herein.
+
+6.5 The obligations set forth in this Article 6 shall survive the termination or expiration of this Agreement for a period of five (5) years; provided, however, that the obligations with respect to trade secrets shall continue for as long as such information remains a trade secret under applicable law.
+
+6.6 Each party acknowledges that any breach of this Article 6 may cause irreparable harm to the Disclosing Party for which monetary damages would be inadequate. Accordingly, the Disclosing Party shall be entitled to seek equitable relief, including injunction and specific performance, in addition to all other remedies available at law or in equity.
+
+ARTICLE 7 — DATA PROTECTION AND PRIVACY
+
+7.1 Each party shall comply with all applicable data protection and privacy laws and regulations, including but not limited to the General Data Protection Regulation (EU) 2016/679 ("GDPR"), the California Consumer Privacy Act and California Privacy Rights Act ("CCPA/CPRA"), the Personal Information Protection Law of the People's Republic of China ("PIPL"), the Personal Data Protection Act 2012 of Singapore ("PDPA"), and any other applicable national, state, or local data protection laws (collectively, "Data Protection Laws").
+
+7.2 To the extent that Party B processes Personal Data on behalf of Party A in the performance of the Services, Party B shall be considered a "data processor" (or equivalent designation under applicable Data Protection Laws) and the parties shall enter into a separate Data Processing Agreement (DPA) that complies with Article 28 of the GDPR and other applicable requirements. The DPA shall specify the subject matter and duration of the processing, the nature and purpose of the processing, the categories of data subjects and types of Personal Data processed, and the obligations and rights of Party A as data controller.
+
+7.3 Party B shall implement and maintain appropriate technical and organizational measures to protect Personal Data against unauthorized or unlawful processing, accidental loss, destruction, alteration, or damage. Such measures shall include, at a minimum: (a) encryption of Personal Data at rest using AES-256 or equivalent and in transit using TLS 1.2 or higher; (b) role-based access controls with the principle of least privilege; (c) multi-factor authentication for all systems processing Personal Data; (d) comprehensive audit logging of all access to and modifications of Personal Data, with logs retained for a minimum of one (1) year; (e) regular security assessments including vulnerability scanning (monthly) and penetration testing (annually); (f) documented incident response procedures tested at least semi-annually; (g) data backup and recovery procedures with regular testing; and (h) security awareness training for all personnel with access to Personal Data, conducted at least annually.
+
+7.4 In the event of a Personal Data breach (any unauthorized or unlawful processing, access, disclosure, alteration, loss, or destruction of Personal Data), Party B shall: (a) notify Party A without undue delay and in any event within twenty-four (24) hours of becoming aware of the breach; (b) provide Party A with all information necessary for Party A to comply with its notification obligations under applicable Data Protection Laws; (c) take immediate steps to contain and remediate the breach; (d) cooperate fully with Party A's investigation of the breach; (e) provide a detailed written incident report within seventy-two (72) hours; and (f) implement measures to prevent recurrence of similar breaches.
+
+7.5 Party B shall not transfer Personal Data outside of the jurisdiction specified in the applicable DPA or Schedule without the prior written consent of Party A. Any approved cross-border data transfer shall be subject to appropriate safeguards as required by applicable Data Protection Laws, including Standard Contractual Clauses, Binding Corporate Rules, or other legally recognized transfer mechanisms.
+
+7.6 Party B shall maintain records of all processing activities carried out on behalf of Party A as required by Article 30 of the GDPR and shall make such records available to Party A and applicable supervisory authorities upon request.
+
+7.7 Party B shall assist Party A in responding to Data Subject requests (including requests for access, rectification, erasure, portability, and restriction of processing) within the timeframes required by applicable Data Protection Laws, and in any event within five (5) business days of receiving such request from Party A.
+
+ARTICLE 8 — WARRANTIES AND REPRESENTATIONS
+
+8.1 Party B represents and warrants that: (a) it has the legal right, power, and authority to enter into this Agreement and to perform its obligations hereunder; (b) the execution and performance of this Agreement does not and will not violate any other agreement to which Party B is a party; (c) the Services shall be performed in a professional, workmanlike, and timely manner consistent with generally accepted industry standards and practices; (d) the Services and Deliverables shall conform to the specifications, requirements, and acceptance criteria set forth in the Schedules and any applicable Statements of Work; (e) all personnel assigned to perform the Services shall have the necessary skills, qualifications, experience, and professional certifications; (f) the Services and Deliverables shall be free from material defects, viruses, malware, and other harmful code; (g) Party B shall comply with all applicable laws, regulations, and industry standards in the performance of the Services; and (h) Party B shall maintain all licenses, permits, and certifications required for the performance of the Services.
+
+8.2 Party B warrants that for a period of twelve (12) months following acceptance of each Deliverable (the "Warranty Period"), such Deliverable shall conform to the applicable specifications and shall be free from material defects. During the Warranty Period, Party B shall correct any non-conformities or defects at no additional cost to Party A within the timeframes specified in the applicable SLA.
+
+8.3 EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, NEITHER PARTY MAKES ANY WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. PARTY B DOES NOT WARRANT THAT THE SERVICES WILL BE ERROR-FREE, UNINTERRUPTED, OR THAT ALL DEFECTS WILL BE CORRECTED.
+
+ARTICLE 9 — LIMITATION OF LIABILITY
+
+9.1 EXCEPT FOR: (A) BREACHES OF ARTICLES 5 (INTELLECTUAL PROPERTY), 6 (CONFIDENTIALITY), OR 7 (DATA PROTECTION); (B) A PARTY'S INDEMNIFICATION OBLIGATIONS UNDER ARTICLE 10; (C) FRAUD, GROSS NEGLIGENCE, OR WILLFUL MISCONDUCT; OR (D) PARTY B'S INFRINGEMENT OF PARTY A'S INTELLECTUAL PROPERTY RIGHTS (COLLECTIVELY, "EXCLUDED CLAIMS"), NEITHER PARTY'S AGGREGATE LIABILITY UNDER THIS AGREEMENT, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, OR ANY OTHER LEGAL THEORY, SHALL EXCEED THE TOTAL FEES ACTUALLY PAID OR PAYABLE BY PARTY A TO PARTY B UNDER THIS AGREEMENT DURING THE TWELVE (12) MONTH PERIOD IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
+
+9.2 FOR EXCLUDED CLAIMS, NEITHER PARTY'S AGGREGATE LIABILITY SHALL EXCEED THREE (3) TIMES THE TOTAL FEES ACTUALLY PAID OR PAYABLE BY PARTY A TO PARTY B UNDER THIS AGREEMENT DURING THE TWELVE (12) MONTH PERIOD IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
+
+9.3 IN NO EVENT SHALL EITHER PARTY BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, LOSS OF REVENUE, LOSS OF DATA, LOSS OF BUSINESS OPPORTUNITY, LOSS OF GOODWILL, COST OF COVER, OR COST OF PROCUREMENT OF SUBSTITUTE SERVICES, REGARDLESS OF THE FORM OF ACTION OR THE THEORY OF LIABILITY, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THIS LIMITATION SHALL NOT APPLY TO: (A) DAMAGES ARISING FROM A BREACH OF ARTICLE 6 (CONFIDENTIALITY) OR ARTICLE 7 (DATA PROTECTION); OR (B) DAMAGES ARISING FROM A PARTY'S FRAUD, GROSS NEGLIGENCE, OR WILLFUL MISCONDUCT.
+
+ARTICLE 10 — INDEMNIFICATION
+
+10.1 Party B shall indemnify, defend, and hold harmless Party A, its parent, subsidiaries, affiliates, officers, directors, employees, agents, successors, and assigns (collectively, "Party A Indemnitees") from and against any and all third-party claims, actions, suits, proceedings, demands, judgments, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees, expert witness fees, and court costs) (collectively, "Losses") arising out of or relating to: (a) Party B's material breach of any representation, warranty, or obligation under this Agreement; (b) Party B's negligence, gross negligence, or willful misconduct in the performance of the Services; (c) any actual or alleged infringement or misappropriation of any third party's Intellectual Property rights by the Services, Deliverables, or Work Product; (d) any violation of applicable law, regulation, or industry standard by Party B, its employees, agents, or Subcontractors; (e) any breach of Personal Data or Confidential Information caused by Party B; or (f) any claim by Party B's employees, agents, or Subcontractors related to their engagement by Party B.
+
+10.2 Party A shall indemnify, defend, and hold harmless Party B, its parent, subsidiaries, affiliates, officers, directors, employees, agents, successors, and assigns (collectively, "Party B Indemnitees") from and against any and all Losses arising out of or relating to: (a) Party A's material breach of any representation, warranty, or obligation under this Agreement; (b) Party A's negligence, gross negligence, or willful misconduct; (c) Party A's use of the Services, Deliverables, or Work Product in violation of applicable law or in a manner not authorized by this Agreement; or (d) any materials, data, or instructions provided by Party A to Party B that infringe a third party's Intellectual Property rights.
+
+10.3 The indemnifying party's obligations under this Article 10 are conditioned upon: (a) the indemnified party providing prompt written notice of the claim (provided that failure to provide timely notice shall not relieve the indemnifying party of its obligations except to the extent the indemnifying party is actually prejudiced by such delay); (b) the indemnified party granting the indemnifying party sole control of the defense and settlement of the claim (provided that the indemnifying party shall not settle any claim without the indemnified party's prior written consent if such settlement would impose any obligation or liability on the indemnified party other than the payment of money or would not include a complete release of the indemnified party); and (c) the indemnified party providing reasonable cooperation and assistance to the indemnifying party in the defense of the claim, at the indemnifying party's expense.
+
+ARTICLE 11 — DISPUTE RESOLUTION
+
+11.1 The parties shall attempt to resolve any dispute, controversy, or claim arising out of or relating to this Agreement, or the breach, termination, or validity thereof, through good faith negotiation between senior management representatives of each party who have authority to settle the dispute. Such negotiation shall commence within ten (10) business days after written notice of the dispute from either party and shall continue for a period of not less than thirty (30) days.
+
+11.2 If the dispute cannot be resolved through negotiation within the period specified in Section 11.1, either party may submit the dispute to mediation administered by the Singapore International Mediation Centre (SIMC) or the International Chamber of Commerce (ICC) in accordance with its applicable mediation rules. The mediation shall be conducted in English in Singapore. The costs of mediation shall be shared equally by the parties.
+
+11.3 If mediation is unsuccessful within sixty (60) days of commencement, the dispute shall be finally resolved by binding arbitration administered by the Singapore International Arbitration Centre (SIAC) in accordance with its Rules of Arbitration for the time being in force. The arbitration shall be conducted in English by a panel of three (3) arbitrators, with each party appointing one (1) arbitrator and the two (2) party-appointed arbitrators selecting the third arbitrator who shall serve as the chair. The place of arbitration shall be Singapore. The arbitral award shall be final and binding upon the parties and may be enforced in any court of competent jurisdiction.
+
+11.4 Notwithstanding the foregoing, either party may seek provisional or injunctive relief from any court of competent jurisdiction to protect its Intellectual Property rights or Confidential Information, or to prevent irreparable harm, without first engaging in the dispute resolution procedures set forth in this Article 11.
+
+11.5 Each party shall continue to perform its obligations under this Agreement during the pendency of any dispute resolution proceedings, except to the extent such obligations are the subject of the dispute.
+
+ARTICLE 12 — GENERAL PROVISIONS
+
+12.1 Entire Agreement. This Agreement, together with all Schedules, Exhibits, Statements of Work, and Change Orders, constitutes the entire agreement between the parties with respect to its subject matter and supersedes all prior and contemporaneous agreements, understandings, negotiations, discussions, representations, and warranties, whether oral or written, relating to such subject matter.
+
+12.2 Amendments. This Agreement may not be amended, modified, or supplemented except by a written instrument executed by authorized representatives of both parties. No waiver of any provision of this Agreement shall be effective unless in writing and signed by the waiving party.
+
+12.3 Assignment. Neither party may assign, transfer, delegate, or sublicense this Agreement or any of its rights or obligations hereunder without the prior written consent of the other party, which consent shall not be unreasonably withheld or delayed; provided, however, that either party may assign this Agreement without consent to a successor entity in connection with a merger, acquisition, or sale of all or substantially all of its assets, provided that the assignee assumes all obligations under this Agreement.
+
+12.4 Severability. If any provision of this Agreement is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, such provision shall be modified to the minimum extent necessary to make it valid and enforceable, and the remaining provisions shall continue in full force and effect. If such modification is not possible, the invalid provision shall be severed and the remaining provisions shall be enforced.
+
+12.5 Waiver. The failure of either party to enforce any provision of this Agreement shall not constitute a waiver of such provision or the right to enforce it at a later time. No waiver shall be effective unless in writing and signed by the waiving party. A waiver of any breach or default shall not constitute a waiver of any subsequent breach or default.
+
+12.6 Governing Law. This Agreement shall be governed by and construed in accordance with the laws of the Republic of Singapore, without regard to its conflicts of law principles. The United Nations Convention on Contracts for the International Sale of Goods shall not apply to this Agreement.
+
+12.7 Notices. All notices, requests, demands, and other communications required or permitted under this Agreement shall be in writing and shall be deemed to have been duly given when: (a) delivered personally; (b) sent by registered or certified mail, return receipt requested; (c) sent by a nationally recognized overnight courier service; or (d) sent by email with confirmation of receipt. Notices shall be sent to the addresses specified in this Agreement or to such other address as either party may designate by written notice to the other party.
+
+12.8 Independent Contractors. The relationship between the parties is that of independent contractors. Nothing in this Agreement shall be construed to create a partnership, joint venture, agency, employment, or franchise relationship between the parties. Neither party shall have the authority to bind the other party or to incur any obligation on behalf of the other party.
+
+12.9 Third-Party Beneficiaries. This Agreement is entered into solely for the benefit of the parties hereto and their permitted successors and assigns. Nothing in this Agreement shall confer upon any third party any legal or equitable right, benefit, or remedy.
+
+12.10 Counterparts. This Agreement may be executed in counterparts, each of which shall be deemed an original, and all of which together shall constitute one and the same instrument. Electronic signatures shall be deemed equivalent to original signatures for all purposes.
+
+12.11 Headings. The headings in this Agreement are for convenience of reference only and shall not affect the interpretation or construction of this Agreement.
+
+12.12 Compliance with Laws. Each party shall comply with all applicable laws, rules, regulations, and governmental orders in the performance of its obligations under this Agreement, including but not limited to anti-corruption laws (including the U.S. Foreign Corrupt Practices Act and the UK Bribery Act), export control laws, sanctions regulations, and anti-money laundering laws.
+
+ARTICLE 13 — CHANGE MANAGEMENT
+
+13.1 Either party may propose changes to the scope, schedule, or specifications of the Services by submitting a Change Order request in writing to the other party. Each Change Order request shall include a description of the proposed change, the rationale for the change, and the estimated impact on schedule, cost, and resources.
+
+13.2 Upon receipt of a Change Order request, the receiving party shall evaluate the proposed change and provide a written response within ten (10) business days, including an assessment of the impact on schedule, cost, quality, and resources.
+
+13.3 No change to the Services shall be effective until a Change Order has been signed by authorized representatives of both parties. Party B shall not implement any change to the Services without an executed Change Order, except for emergency changes necessary to prevent imminent harm to Party A's systems or data, in which case Party B shall notify Party A as soon as practicable and formalize the change through a Change Order within five (5) business days.
+
+ARTICLE 14 — SUBCONTRACTING
+
+14.1 Party B shall not subcontract, outsource, or delegate any portion of the Services to any third party without the prior written consent of Party A. Party A's consent to a particular Subcontractor shall not constitute a blanket approval for all subcontracting.
+
+14.2 Party B shall remain fully responsible for the performance of all Services, whether performed by Party B directly or by any approved Subcontractor. Party B shall ensure that each Subcontractor is bound by written obligations no less restrictive than those imposed on Party B under this Agreement, including confidentiality, data protection, intellectual property, and security obligations.
+
+14.3 Party B shall maintain a current list of all approved Subcontractors and shall provide such list to Party A upon request. Party B shall notify Party A at least thirty (30) days in advance of any proposed change to its Subcontractors.
+
+ARTICLE 15 — INSURANCE
+
+15.1 Party B shall maintain, at its own expense, throughout the Term and for a period of two (2) years following termination or expiration of this Agreement, the following insurance coverages with financially sound and reputable insurers: (a) commercial general liability insurance with limits of not less than USD 5,000,000 per occurrence and USD 10,000,000 in the aggregate; (b) professional liability (errors and omissions) insurance with limits of not less than USD 5,000,000 per claim and in the aggregate; (c) cyber liability and privacy insurance with limits of not less than USD 10,000,000 per claim and in the aggregate; (d) workers' compensation insurance as required by applicable law; and (e) employer's liability insurance with limits of not less than USD 1,000,000 per occurrence.
+
+15.2 Party B shall provide Party A with certificates of insurance evidencing the required coverages upon execution of this Agreement and upon request thereafter. Party B shall provide Party A with at least thirty (30) days' prior written notice of any cancellation, non-renewal, or material change in coverage.
+
+ARTICLE 16 — BUSINESS CONTINUITY AND DISASTER RECOVERY
+
+16.1 Party B shall maintain a comprehensive business continuity plan (BCP) and disaster recovery plan (DRP) that ensure the continued delivery of Services in the event of any disruption, including natural disasters, cyberattacks, pandemics, and infrastructure failures. The BCP and DRP shall be reviewed and updated at least annually and tested at least semi-annually.
+
+16.2 Party B shall provide Party A with a summary of its BCP and DRP upon request and shall notify Party A promptly of any material changes to such plans. Party B shall include Party A as a key stakeholder in its BCP/DRP testing and shall provide Party A with test results and lessons learned within thirty (30) days of each test.
+
+16.3 In the event of a disaster or business continuity event, Party B shall activate its BCP/DRP within two (2) hours and shall restore critical Services within the recovery time objectives (RTOs) specified in Schedule B.
+
+ARTICLE 17 — SPECIFIC SERVICE TERMS
+
+13.1 AI Model Requirements: Party B shall develop and deploy machine learning models meeting the performance benchmarks specified in Schedule E. All models must achieve minimum accuracy of 95% on test datasets and maintain F1 score above 0.92 in production.
+
+13.2 Model Governance: All AI models shall include bias detection and fairness monitoring. Party B shall provide model explainability reports using SHAP or LIME for all customer-facing predictions. Model drift monitoring shall be continuous with alerts triggered when performance degrades by more than 5% from baseline.
+
+13.3 Training Data: Party B shall maintain complete lineage and provenance records for all training data. No publicly sourced data shall be used without Party A's explicit written approval. All training datasets must be reviewed for PII and sensitive information before use.
+
+13.4 Compute Resources: Party B shall utilize GPU clusters with minimum NVIDIA A100 or equivalent for training workloads. Training infrastructure must support distributed training across at least 8 nodes. Party B shall provide detailed compute cost reports monthly and optimize resource utilization to maintain costs within 110% of budget.
+
+13.5 Model Versioning: All models shall be version-controlled with complete reproducibility. Party B shall maintain at minimum the current production model and two prior versions available for rollback at all times.
+
+SCHEDULE A — SERVICE SPECIFICATIONS
+
+A.1 The detailed technical specifications, functional requirements, non-functional requirements, system architecture, and integration requirements for the artificial intelligence and machine learning platform services shall be as mutually agreed upon by the parties and documented in separate Statements of Work.
+
+A.2 All software deliverables shall be developed in accordance with the coding standards, security guidelines, and quality metrics specified in the applicable Statement of Work. Minimum requirements include: (a) adherence to OWASP Top 10 security practices; (b) code review by at least two (2) qualified reviewers before deployment; (c) automated unit test coverage of at least eighty percent (80%); (d) performance testing under expected and peak load conditions; and (e) accessibility compliance with WCAG 2.1 Level AA standards.
+
+A.3 All documentation deliverables shall include, at a minimum: (a) system architecture documentation; (b) API documentation (OpenAPI/Swagger format); (c) user guides and administrator guides; (d) deployment and operations runbooks; (e) troubleshooting guides; and (f) data dictionaries and entity-relationship diagrams.
+
+SCHEDULE B — SERVICE LEVEL AGREEMENT
+
+B.1 Availability Target: 99.9% uptime measured monthly, excluding scheduled maintenance windows.
+
+B.2 Response Times: Severity 1 (Critical): 15 minutes; Severity 2 (High): 1 hour; Severity 3 (Medium): 4 hours; Severity 4 (Low): 1 business day.
+
+B.3 Resolution Times: Severity 1: 4 hours; Severity 2: 8 hours; Severity 3: 2 business days; Severity 4: 5 business days.
+
+B.4 Service Credits: For each 0.1% below the availability target, Party A shall receive a service credit equal to 2% of the monthly fees, up to a maximum of 20% of the monthly fees.
+
+B.5 Reporting: Party B shall provide monthly SLA performance reports within five (5) business days of the end of each calendar month.
+
+
+SIGNATURES:
+
+Party A: Company A Pte Ltd
+Authorized Representative: ____________________
+Date: 2024-03-01
+
+Party B: AI Lab C Ltd
+Authorized Representative: ____________________
+Date: 2024-03-01

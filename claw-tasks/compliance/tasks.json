@@ -1,0 +1,166 @@
+[
+  {
+    "name": "s03_data_protection",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and evaluate its data protection clauses. List any gaps. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. How do its privacy terms compare with Alpha? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. Assess its breach notification and incident response terms. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Review the data retention provisions. Do not search the web — only analyze the contract text.",
+      "Produce a data protection compliance scorecard for all four contracts. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s07_insurance_audit",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract the insurance requirements. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Are the insurance requirements identical? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. Does the security vendor have higher cyber insurance requirements? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Summarize insurance requirements across all four and flag any inadequacies. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s10_subcontracting",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract subcontracting restrictions. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Are subcontracting terms different for AI development? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are there heightened subcontracting controls for security? Do not search the web — only analyze the contract text.",
+      "Summarize subcontracting risks across all four vendors. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s15_bcp_dr",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and evaluate the business continuity and disaster recovery requirements. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Are there BCP/DR requirements for the AI platform? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. What RTOs are specified for the security SOC? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare BCP/DR across all four. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s16_personnel_reqs",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and list personnel qualification requirements. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What certifications are required for AI personnel? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. What certifications are required for SOC analysts? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare personnel requirements across all four. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s17_acceptance_testing",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and describe the acceptance testing process. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. How are AI model deliverables accepted? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare acceptance criteria. Do not search the web — only analyze the contract text.",
+      "Are the acceptance testing timelines reasonable? Recommend improvements. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s19_compliance_scorecard",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt. Evaluate its regulatory compliance provisions. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Assess AI governance and data provenance safeguards. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. Check incident response and vulnerability management. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Review data quality and retention. Do not search the web — only analyze the contract text.",
+      "Produce a compliance scorecard rating each contract on 5 dimensions. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s22_audit_rights",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract all audit rights. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What audit provisions exist for AI model governance? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. Are there audit rights specific to security operations? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare audit rights across all four. Are they adequate? Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s26_open_source",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and check for open-source software provisions. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What are the open-source disclosure requirements for AI models? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Are there software bill of materials requirements? Do not search the web — only analyze the contract text.",
+      "Summarize open-source risk across all four vendors. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s27_cross_border",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt. What are the data sovereignty and cross-border transfer provisions? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. Are there restrictions on where AI training happens? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Compare cross-border data provisions. Do not search the web — only analyze the contract text.",
+      "Are we compliant with Singapore PDPA cross-border requirements across all four contracts? Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s28_breach_response",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract data breach notification timelines and procedures. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_beta_ai.txt. What are the breach notification obligations? Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_gamma_security.txt. The security vendor should have the most detailed breach response — verify this. Do not search the web — only analyze the contract text.",
+      "Read contracts/contract_delta_data.txt. Compare breach response across all four and identify gaps. Do not search the web — only analyze the contract text."
+    ]
+  },
+  {
+    "name": "s37_proposal_security_audit",
+    "turns": [
+      "Read contracts/proposal_provider_b_cloud.txt and assess the proposed security approach. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_firm_d_security.txt. Compare its security approach with Cloud Provider B's. Do not search the web — only analyze the documents.",
+      "Read contracts/policy_information_security.txt. Do both proposals meet the internal security policy requirements? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_lab_c_ai.txt and contracts/proposal_services_e_data.txt. Rate all four proposals on security compliance. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s38_contract_policy_gap",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Extract all data protection provisions. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Same extraction. Do not search the web — only analyze the documents.",
+      "Read contracts/policy_data_governance.txt. Which contracts have gaps against the data governance policy? Do not search the web — only analyze the documents.",
+      "Produce a compliance gap matrix: contract vs policy requirement for each vendor. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s39_proposal_methodology",
+    "turns": [
+      "Read contracts/proposal_provider_b_cloud.txt and extract the proposed methodology and QA framework. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_lab_c_ai.txt. How does the AI vendor's methodology compare? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_firm_d_security.txt and contracts/proposal_services_e_data.txt. Compare methodologies across all four. Do not search the web — only analyze the documents.",
+      "Which vendor's methodology is most rigorous? Rank all four. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s40_assessment_vs_proposal",
+    "turns": [
+      "Read contracts/proposal_provider_b_cloud.txt and extract the promised team qualifications. Do not search the web — only analyze the documents.",
+      "Read contracts/vendor_assessment_alpha_cloud.txt. Did the vendor deliver on the personnel commitments from the proposal? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_lab_c_ai.txt and contracts/vendor_assessment_beta_ai.txt. Same comparison. Do not search the web — only analyze the documents.",
+      "Are vendors delivering what they proposed? Summarize gaps. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s41_cross_doc_security",
+    "turns": [
+      "Read contracts/contract_alpha_cloud.txt and extract all security-related clauses. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_gamma_security.txt. Compare security provisions with the cloud contract. Do not search the web — only analyze the documents.",
+      "Read contracts/policy_information_security.txt. Are both contracts compliant with the security policy? Do not search the web — only analyze the documents.",
+      "Read contracts/master_service_agreement.txt. Does the MSA's security framework cover what the individual contracts don't? Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s55_proposal_compliance_check",
+    "turns": [
+      "Read contracts/proposal_provider_b_cloud.txt and contracts/proposal_lab_c_ai.txt. Do both proposals mention compliance with MAS TRM and PDPA? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_firm_d_security.txt and contracts/proposal_services_e_data.txt. Same check. Do not search the web — only analyze the documents.",
+      "Read contracts/policy_information_security.txt. Which proposals meet the internal security policy requirements? Do not search the web — only analyze the documents.",
+      "Produce a proposal compliance matrix covering all four vendors. Do not search the web — only analyze the documents."
+    ]
+  },
+  {
+    "name": "s56_contract_vs_proposal_security",
+    "turns": [
+      "Read contracts/proposal_provider_b_cloud.txt and extract the security commitments (Section 3.3). Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt. Were all proposed security commitments included in the final contract? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_firm_d_security.txt and contracts/contract_gamma_security.txt. Same comparison for the security vendor. Do not search the web — only analyze the documents.",
+      "Identify any security commitments that were in the proposals but dropped from the contracts. Do not search the web — only analyze the documents."
+    ]
+  }
+]

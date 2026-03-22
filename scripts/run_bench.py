@@ -1,481 +1,337 @@
 #!/usr/bin/env python3
-"""
-ClawBench Runner — execute benchmark tasks with OpenClaw or Claude Code.
-
-Skills are already in skills/<slug>/SKILL.md (part of the repo).
-No downloading needed. Just clone and run.
-
-Usage:
-    python scripts/run_bench.py --dry-run
-    python scripts/run_bench.py --batch-size 1 --runner openclaw
-    python scripts/run_bench.py --batch-size 1 --runner claude
-    python scripts/run_bench.py --task morning-briefing --batch-size 1
-"""
-
 import argparse
 import json
 import os
-import pathlib
+import shutil
 import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from pathlib import Path
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-TASKS_FILE = ROOT / "tasks_all.json"
-SKILLS_DIR = ROOT / "skills"
-RESULTS_DIR = ROOT / "results"
-def find_openclaw_bin():
-    """Auto-detect openclaw.mjs location."""
-    candidates = [
-        pathlib.Path.home() / "openclaw" / "openclaw.mjs",
-        pathlib.Path("/usr/local/lib/node_modules/openclaw/openclaw.mjs"),
-        pathlib.Path.home() / ".npm-global" / "lib" / "node_modules" / "openclaw" / "openclaw.mjs",
-    ]
-    # Also check if `openclaw` is in PATH (global install)
-    for c in candidates:
-        if c.exists():
-            return c
-    # Try `which openclaw`
-    try:
-        r = subprocess.run(["which", "openclaw"], capture_output=True, text=True, timeout=5)
-        if r.returncode == 0:
-            p = pathlib.Path(r.stdout.strip())
-            if p.exists():
-                return p
-    except Exception:
-        pass
-    return None
+import requests
 
+MODEL = "Qwen/Qwen3-4B-Instruct-2507"
+PORT_SGLANG = 30002
+PORT_CP = 8771
 
-CONTEXTPILOT_URL = "http://localhost:8765"
+ROOT_DIR = Path(__file__).parent.parent
+TASKS_DIR = ROOT_DIR / "claw-tasks"
+WORKSPACE_SRC = ROOT_DIR / "data" / "workspace"
+RESULTS_DIR = ROOT_DIR / "results"
+CATEGORIES = ["commercial", "legal", "compliance", "strategic"]
+
+NODE_PATH = os.path.expanduser("~/.nvm/versions/node/v22.22.0/bin/node")
+if not os.path.exists(NODE_PATH):
+    NODE_PATH = "node"
+OPENCLAW_PATH = os.path.expanduser("~/openclaw/openclaw.mjs")
+CONFIG_PATH = os.path.expanduser("~/.openclaw/openclaw.json")
+WORKSPACE_DST = Path(os.path.expanduser("~/.openclaw/workspace/contracts"))
+
+SGLANG_LOG = "/tmp/sglang_bench.log"
+CP_LOG = "/tmp/cp_bench.log"
+
+_sglang_proc = None
+_cp_proc = None
 
 
-def check_contextpilot_running(port: int = 8765) -> bool:
-    try:
-        import urllib.request
-        resp = urllib.request.urlopen(f"http://localhost:{port}/health", timeout=3)
-        return resp.status == 200
-    except Exception:
-        return False
+def setup_workspace():
+    WORKSPACE_DST.mkdir(parents=True, exist_ok=True)
+    for f in WORKSPACE_SRC.iterdir():
+        shutil.copy2(f, WORKSPACE_DST / f.name)
+    n = len(list(WORKSPACE_DST.iterdir()))
+    total = sum(f.stat().st_size for f in WORKSPACE_DST.iterdir())
+    print(f"Workspace: {n} files ({total // 1024} KB) copied to {WORKSPACE_DST}")
 
 
-def _get_proxy_ttft_count() -> int:
-    """Get current TTFT history count from ContextPilot proxy."""
-    try:
-        import urllib.request
-        resp = urllib.request.urlopen(f"{CONTEXTPILOT_URL}/metrics/ttft", timeout=3)
-        data = json.loads(resp.read())
-        return data.get("count", 0)
-    except Exception:
-        return 0
-
-
-def _get_proxy_ttft_last(n: int) -> list[float]:
-    """Get the last N TTFT values (in ms) from ContextPilot proxy."""
-    try:
-        import urllib.request
-        resp = urllib.request.urlopen(
-            f"{CONTEXTPILOT_URL}/metrics/ttft?last={n}", timeout=3)
-        data = json.loads(resp.read())
-        return data.get("ttft_ms", [])
-    except Exception:
-        return []
-
-
-def get_node22_path():
-    nvm_dir = pathlib.Path.home() / ".nvm"
-    if nvm_dir.exists():
-        for d in sorted((nvm_dir / "versions" / "node").glob("v22.*"), reverse=True):
-            node = d / "bin" / "node"
-            if node.exists():
-                return str(node)
-    return None
-
-
-def build_prompt_seed(task: dict) -> str:
-    """Build prompt for a seed task. Skills are NOT injected — OpenClaw
-    handles skill discovery and injection automatically via its system
-    prompt.  We only send the task description as the user message."""
-    return f"""{task['description']}
-
-Save the final output to a file (PDF or markdown as specified).
-Show the tool commands you ran and their outputs."""
-
-
-def build_prompt_claude(task: dict) -> str:
-    """Build prompt for Claude Code runner (no OpenClaw skill injection).
-    Falls back to manual skill context since Claude Code has no skill system."""
-    parts = []
-    for slug in task["skills_required"]:
-        skill_md = SKILLS_DIR / slug / "SKILL.md"
-        if skill_md.exists():
-            parts.append(f"<skill name=\"{slug}\">\n{skill_md.read_text()}\n</skill>")
-    ctx = "\n\n".join(parts)
-    return f"""You have the following skills available. Use them to complete the task.
-
-{ctx}
-
----
-
-TASK: {task['description']}
-
-RULES:
-1. You MUST actually invoke the tools/commands described in each skill (web_search, agent-browser, summarize CLI, etc.). Do NOT skip any skill.
-2. Save the final output to a file (PDF or markdown as specified).
-3. Show the tool commands you ran and their outputs."""
-
-
-def run_task_openclaw(task: dict, timeout: int = 800,
-                      session_id: str | None = None,
-                      prompt: str | None = None) -> dict:
-    node_bin = get_node22_path()
-    if not node_bin:
-        return _error_result(task, "Node.js 22+ not found. Run: nvm install 22")
-
-    oc_bin = find_openclaw_bin()
-    if not oc_bin:
-        return _error_result(task,
-            "openclaw not found. Install: npm install -g openclaw, "
-            "or clone ~/openclaw and run pnpm install && pnpm build")
-
-    if prompt is None:
-        prompt = build_prompt(task)
-    if session_id is None:
-        session_id = f"clawbench-{task['id']}-{int(time.time())}"
-
-    if str(oc_bin).endswith(".mjs"):
-        cmd = [node_bin, str(oc_bin), "agent",
-               "--session-id", session_id, "--message", prompt]
-    else:
-        cmd = [str(oc_bin), "agent",
-               "--session-id", session_id, "--message", prompt]
-
-    env = {**os.environ, "NODE_NO_WARNINGS": "1",
-           "OPENCLAW_LOG_LEVEL": os.environ.get("OPENCLAW_LOG_LEVEL", "info")}
-
-    start_time = time.time()
-    try:
-        result = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=timeout, env=env,
-        )
-        if result.stderr:
-            for line in result.stderr.splitlines():
-                if any(kw in line.lower() for kw in ("compact", "guard", "overflow", "budget")):
-                    print(f"  [openclaw] {line}")
-        return _build_result(task, result, time.time() - start_time,
-                             prompt_length=len(prompt))
-    except subprocess.TimeoutExpired:
-        return _timeout_result(task, timeout, time.time() - start_time)
-    except FileNotFoundError as e:
-        return _error_result(task, str(e))
-
-
-def run_task_claude(task: dict, timeout: int = 800,
-                    session_id: str | None = None,
-                    prompt: str | None = None,
-                    resume: bool = False) -> dict:
-    if prompt is None:
-        prompt = build_prompt(task)
-    start_time = time.time()
-    cmd = ["claude", "--print", "-p", prompt]
-    if resume and session_id:
-        cmd = ["claude", "--print", "--resume", session_id, "-p", prompt]
-    try:
-        result = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=timeout,
-        )
-        return _build_result(task, result, time.time() - start_time,
-                             prompt_length=len(prompt))
-    except subprocess.TimeoutExpired:
-        return _timeout_result(task, timeout, time.time() - start_time)
-    except FileNotFoundError:
-        return _error_result(task, "claude CLI not found")
-
-
-def _build_result(task, result, elapsed, prompt_length=None):
-    r = {
-        "task_id": task["id"],
-        "task_name": task["name"],
-        "topic": task.get("topic", ""),
-        "chain_position": task.get("chain_position", 1),
-        "success": result.returncode == 0,
-        "exit_code": result.returncode,
-        "stdout": result.stdout[:10000],
-        "stderr": result.stderr[:20000],
-        "elapsed_seconds": round(elapsed, 2),
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "skills": task["skills_required"],
-    }
-    if prompt_length:
-        r["prompt_length"] = prompt_length
-    return r
-
-
-def _timeout_result(task, timeout, elapsed):
-    return {
-        "task_id": task["id"], "task_name": task["name"],
-        "topic": task.get("topic", ""),
-        "chain_position": task.get("chain_position", 1),
-        "success": False, "exit_code": -1,
-        "stdout": "", "stderr": f"Timeout after {timeout}s",
-        "elapsed_seconds": round(elapsed, 2),
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-    }
-
-
-def _error_result(task, msg):
-    return {
-        "task_id": task["id"], "task_name": task["name"],
-        "topic": task.get("topic", ""),
-        "chain_position": task.get("chain_position", 1),
-        "success": False, "exit_code": -1,
-        "stdout": "", "stderr": msg,
-        "elapsed_seconds": 0,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-    }
-
-
-def _sort_by_topic_chain(tasks):
-    """Sort tasks by topic, then chain_position within each topic."""
-    return sorted(tasks, key=lambda t: (t.get("topic", ""), t.get("chain_position", 1)))
-
-
-def run_benchmark(tasks, batch_size=1, dry_run=False,
-                  timeout=800, runner="openclaw"):
-    RESULTS_DIR.mkdir(exist_ok=True)
-    results = []
-
-    # Sort by topic + chain_position so sessions run in order
-    tasks = _sort_by_topic_chain(tasks)
-
-    # Session IDs per topic (same topic = same session)
-    run_ts = int(time.time())
-    topic_sessions = {}
-
-    print(f"\n{'='*60}")
-    print(f"ClawBench — {len(tasks)} tasks, batch_size={batch_size}, runner={runner}")
-    print(f"{'='*60}\n")
-
-    for i, task in enumerate(tasks):
-        topic = task.get("topic", task["name"])
-        chain_pos = task.get("chain_position", 1)
-        is_seed = chain_pos == 1
-
-        # Same session for same topic
-        if is_seed:
-            session_id = f"clawbench-{topic}-{run_ts}"
-            topic_sessions[topic] = session_id
-        else:
-            session_id = topic_sessions.get(topic,
-                                            f"clawbench-{topic}-{run_ts}")
-
-        # Seed gets task prompt; follow-ups get just the question.
-        # For openclaw: no skill injection (OpenClaw handles it).
-        # For claude: manual skill injection (no skill system).
-        if is_seed:
-            prompt = (build_prompt_seed(task) if runner == "openclaw"
-                      else build_prompt_claude(task))
-        else:
-            prompt = task["description"]
-
-        print(f"[{i+1}/{len(tasks)}] {task['name']}")
-        print(f"  Topic: {topic} | position {chain_pos}/5 | "
-              f"session: ...{session_id[-12:]}")
-        print(f"  Skills: {', '.join(task['skills_required'])}")
-
-        if dry_run:
-            plen = len(prompt)
-            print(f"  [DRY RUN] Prompt: ~{plen} chars"
-                  f"{' (full w/ skills)' if is_seed else ' (follow-up)'}")
-            print(f"  [DRY RUN] {task['description'][:80]}...")
-            results.append({"task_id": task["id"], "task_name": task["name"],
-                           "topic": topic, "chain_position": chain_pos,
-                           "dry_run": True, "prompt_length": plen})
+def load_tasks(categories=None, filter_names=None):
+    tasks = []
+    cats = categories if categories else CATEGORIES
+    for cat in cats:
+        cat_path = TASKS_DIR / cat / "tasks.json"
+        if not cat_path.exists():
             continue
+        with open(cat_path) as f:
+            cat_tasks = json.load(f)
+        for t in cat_tasks:
+            t["category"] = cat
+        tasks.extend(cat_tasks)
+    if filter_names:
+        tasks = [t for t in tasks if t["name"] in filter_names]
+    return tasks
 
-        print(f"  Running{'...' if is_seed else ' (follow-up in same session)...'}")
 
-        # Snapshot proxy TTFT count before this task
-        ttft_before = _get_proxy_ttft_count()
+def kill_sglang():
+    global _sglang_proc
+    if _sglang_proc:
+        try:
+            _sglang_proc.kill()
+            _sglang_proc.wait(timeout=10)
+        except Exception:
+            pass
+        _sglang_proc = None
+    subprocess.run(
+        f"fuser -k {PORT_SGLANG}/tcp 2>/dev/null", shell=True, capture_output=True
+    )
+    time.sleep(3)
+    subprocess.run(
+        f"fuser -k {PORT_SGLANG}/tcp 2>/dev/null", shell=True, capture_output=True
+    )
+    time.sleep(2)
 
-        if runner == "openclaw":
-            result = run_task_openclaw(task, timeout,
-                                      session_id=session_id, prompt=prompt)
-        else:
-            result = run_task_claude(task, timeout,
-                                    session_id=session_id, prompt=prompt,
-                                    resume=not is_seed)
 
-        # Fetch proxy-side TTFTs that occurred during this task
-        ttft_after = _get_proxy_ttft_count()
-        n_new = ttft_after - ttft_before
-        if n_new > 0:
-            proxy_ttfts = _get_proxy_ttft_last(n_new)
-            # First TTFT = time to first token for the first LLM call
-            result["proxy_ttft_first_ms"] = round(proxy_ttfts[0], 2) if proxy_ttfts else None
-            # All TTFTs during this task (agent may make multiple LLM calls)
-            result["proxy_ttft_all_ms"] = [round(t, 2) for t in proxy_ttfts]
-            result["proxy_ttft_avg_ms"] = (
-                round(sum(proxy_ttfts) / len(proxy_ttfts), 2) if proxy_ttfts else None)
-            result["proxy_llm_calls"] = n_new
-        else:
-            result["proxy_ttft_first_ms"] = None
-            result["proxy_ttft_all_ms"] = []
-            result["proxy_ttft_avg_ms"] = None
-            result["proxy_llm_calls"] = 0
+def kill_cp():
+    global _cp_proc
+    if _cp_proc:
+        try:
+            _cp_proc.kill()
+            _cp_proc.wait(timeout=10)
+        except Exception:
+            pass
+        _cp_proc = None
+    subprocess.run(
+        f"fuser -k {PORT_CP}/tcp 2>/dev/null", shell=True, capture_output=True
+    )
+    time.sleep(1)
 
-        results.append(result)
 
-        status = "PASS" if result["success"] else "FAIL"
-        ttft_str = ""
-        if result.get("proxy_ttft_first_ms") is not None:
-            ttft_str = f", TTFT={result['proxy_ttft_first_ms']:.0f}ms"
-            if n_new > 1:
-                ttft_str += f" ({n_new} calls, avg={result['proxy_ttft_avg_ms']:.0f}ms)"
-        print(f"  {status} ({result['elapsed_seconds']}s{ttft_str})")
+def start_sglang(gpu_id):
+    global _sglang_proc
+    kill_sglang()
+    env = {
+        **os.environ,
+        "CUDA_VISIBLE_DEVICES": gpu_id,
+        "SGLANG_DISABLE_CUDNN_CHECK": "1",
+    }
+    cmd = [
+        sys.executable,
+        "-m",
+        "sglang.launch_server",
+        "--model-path",
+        MODEL,
+        "--port",
+        str(PORT_SGLANG),
+        "--host",
+        "0.0.0.0",
+        "--tp-size",
+        "1",
+        "--mem-fraction-static",
+        "0.8",
+        "--context-length",
+        "131072",
+        "--tool-call-parser",
+        "hermes",
+        "--attention-backend",
+        "triton",
+        "--skip-server-warmup",
+    ]
+    print("  Starting SGLang...", end="", flush=True)
+    log_f = open(SGLANG_LOG, "w")
+    _sglang_proc = subprocess.Popen(
+        cmd, env=env, stdout=log_f, stderr=subprocess.STDOUT
+    )
+    for i in range(180):
+        time.sleep(1)
+        try:
+            with open(SGLANG_LOG) as f:
+                content = f.read()
+            if "address already in use" in content:
+                print(" port conflict, retrying...", end="", flush=True)
+                _sglang_proc.kill()
+                _sglang_proc.wait(timeout=10)
+                subprocess.run(
+                    f"fuser -k {PORT_SGLANG}/tcp 2>/dev/null",
+                    shell=True,
+                    capture_output=True,
+                )
+                time.sleep(5)
+                log_f = open(SGLANG_LOG, "w")
+                _sglang_proc = subprocess.Popen(
+                    cmd, env=env, stdout=log_f, stderr=subprocess.STDOUT
+                )
+                continue
+            if "ready to roll" in content:
+                time.sleep(2)
+                requests.post(
+                    f"http://localhost:{PORT_SGLANG}/v1/chat/completions",
+                    json={
+                        "model": "x",
+                        "messages": [{"role": "user", "content": "hi"}],
+                        "max_tokens": 1,
+                        "temperature": 0,
+                    },
+                    timeout=60,
+                )
+                print(f" ready ({i + 1}s)")
+                return
+        except Exception:
+            pass
+    print(" TIMEOUT!")
+    _sglang_proc.kill()
+    raise RuntimeError("SGLang failed to start")
 
-        (RESULTS_DIR / f"{task['name']}_result.json").write_text(
-            json.dumps(result, indent=2))
-        print()
 
-    run_id = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-    combined = RESULTS_DIR / f"run_{run_id}.json"
-    combined.write_text(json.dumps({
-        "run_id": run_id, "runner": runner,
-        "batch_size": batch_size, "total_tasks": len(tasks),
-        "results": results,
-    }, indent=2))
+def start_contextpilot():
+    global _cp_proc
+    kill_cp()
+    cmd = [
+        sys.executable,
+        "-m",
+        "contextpilot.server.http_server",
+        "--port",
+        str(PORT_CP),
+        "--infer-api-url",
+        f"http://localhost:{PORT_SGLANG}",
+        "--log-level",
+        "info",
+    ]
+    print("  Starting ContextPilot...", end="", flush=True)
+    _cp_proc = subprocess.Popen(
+        cmd, env=os.environ.copy(), stdout=open(CP_LOG, "w"), stderr=subprocess.STDOUT
+    )
+    for i in range(30):
+        time.sleep(1)
+        try:
+            r = requests.get(f"http://localhost:{PORT_CP}/health", timeout=2)
+            if r.status_code in (200, 503):
+                print(f" ready ({i + 1}s)")
+                return
+        except Exception:
+            pass
+    print(" TIMEOUT!")
+    _cp_proc.kill()
+    raise RuntimeError("ContextPilot failed to start")
 
-    if not dry_run:
-        passed = sum(1 for r in results if r.get("success"))
-        failed = len(results) - passed
 
-        # ── Per-topic metrics ─────────────────────────────────────
-        from collections import defaultdict
-        topic_ttfts = defaultdict(list)    # topic → [proxy TTFT first call, ms]
-        topic_ttft_avgs = defaultdict(list)  # topic → [proxy TTFT avg across calls, ms]
-        topic_elapsed = defaultdict(list)  # topic → [elapsed per turn]
-        topic_llm_calls = defaultdict(list)  # topic → [LLM call count per turn]
-        for r in results:
-            topic = r.get("topic", "unknown")
-            topic_elapsed[topic].append(r.get("elapsed_seconds", 0))
-            if r.get("proxy_ttft_first_ms") is not None:
-                topic_ttfts[topic].append(r["proxy_ttft_first_ms"])
-            if r.get("proxy_ttft_avg_ms") is not None:
-                topic_ttft_avgs[topic].append(r["proxy_ttft_avg_ms"])
-            topic_llm_calls[topic].append(r.get("proxy_llm_calls", 0))
+def set_openclaw_url(url):
+    with open(CONFIG_PATH) as f:
+        cfg = json.load(f)
+    cfg["models"]["providers"]["sglang"]["baseUrl"] = url
+    with open(CONFIG_PATH, "w") as f:
+        json.dump(cfg, f, indent=2)
 
-        # Per-topic averages
-        topic_avg_ttft = {}
-        topic_avg_elapsed = {}
-        for topic in sorted(topic_elapsed.keys()):
-            vals = topic_elapsed[topic]
-            topic_avg_elapsed[topic] = sum(vals) / len(vals)
-            ttfts = topic_ttfts.get(topic, [])
-            topic_avg_ttft[topic] = sum(ttfts) / len(ttfts) if ttfts else None
 
-        # Cross-topic averages (average of per-topic averages)
-        avg_elapsed_across_topics = (
-            sum(topic_avg_elapsed.values()) / len(topic_avg_elapsed)
-            if topic_avg_elapsed else 0
-        )
-        valid_ttfts = [v for v in topic_avg_ttft.values() if v is not None]
-        avg_ttft_across_topics = (
-            sum(valid_ttfts) / len(valid_ttfts) if valid_ttfts else None
-        )
-
-        print(f"\n{'='*60}")
-        print(f"Results: {passed} passed, {failed} failed")
-        print(f"{'='*60}")
-
-        # Per-topic breakdown
-        print(f"\n{'─'*60}")
-        print(f"{'Topic':<25} {'Avg TTFT':>10} {'Avg Elapsed':>12} {'LLM Calls':>10}")
-        print(f"{'─'*60}")
-        for topic in sorted(topic_avg_elapsed.keys()):
-            ttft_str = (f"{topic_avg_ttft[topic]:.0f}ms"
-                        if topic_avg_ttft[topic] is not None else "n/a")
-            total_calls = sum(topic_llm_calls.get(topic, []))
-            print(f"{topic:<25} {ttft_str:>10} "
-                  f"{topic_avg_elapsed[topic]:>10.1f}s "
-                  f"{total_calls:>10}")
-        print(f"{'─'*60}")
-
-        # Cross-topic summary
-        ttft_summary = (f"{avg_ttft_across_topics:.0f}ms"
-                        if avg_ttft_across_topics is not None else "n/a")
-        all_calls = sum(sum(v) for v in topic_llm_calls.values())
-        print(f"{'Avg across topics':<25} {ttft_summary:>10} "
-              f"{avg_elapsed_across_topics:>10.1f}s "
-              f"{all_calls:>10}")
-        print(f"{'='*60}")
-        print(f"Output:  {combined}")
-        print(f"{'='*60}")
-
-        # Save per-topic summary into the combined result
-        combined_data = json.loads(combined.read_text())
-        combined_data["topic_metrics"] = {
-            topic: {
-                "avg_ttft_ms": round(topic_avg_ttft[topic], 2) if topic_avg_ttft.get(topic) is not None else None,
-                "avg_elapsed_seconds": round(topic_avg_elapsed[topic], 2),
-                "turns": len(topic_elapsed[topic]),
-                "total_llm_calls": sum(topic_llm_calls.get(topic, [])),
-            }
-            for topic in sorted(topic_avg_elapsed.keys())
+def run_agent_turn(session_id, message):
+    cmd = [
+        NODE_PATH,
+        OPENCLAW_PATH,
+        "agent",
+        "--local",
+        "--session-id",
+        session_id,
+        "--message",
+        message,
+        "--json",
+        "--timeout",
+        "180",
+    ]
+    t0 = time.perf_counter()
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=210)
+    wall = time.perf_counter() - t0
+    try:
+        json_start = result.stdout.index("{")
+        data = json.loads(result.stdout[json_start:])
+        meta = data.get("meta", {})
+        agent = meta.get("agentMeta", {})
+        usage = agent.get("lastCallUsage", agent.get("usage", {}))
+        payloads = data.get("payloads", [])
+        text = payloads[0].get("text", "") if payloads else ""
+        return {
+            "wall_s": round(wall, 3),
+            "prompt_tokens": usage.get("input", 0),
+            "completion_tokens": usage.get("output", 0),
+            "total_input": agent.get("usage", {}).get("input", 0),
+            "total_output": agent.get("usage", {}).get("output", 0),
+            "output_chars": len(text),
+            "content_preview": text[:300],
         }
-        combined_data["summary"] = {
-            "avg_ttft_ms_across_topics": (round(avg_ttft_across_topics, 2)
-                                          if avg_ttft_across_topics is not None else None),
-            "avg_elapsed_across_topics": round(avg_elapsed_across_topics, 2),
-            "num_topics": len(topic_avg_elapsed),
-            "total_llm_calls": all_calls,
-            "passed": passed,
-            "failed": failed,
+    except (ValueError, json.JSONDecodeError):
+        return {
+            "error": "parse_failed",
+            "wall_s": round(wall, 3),
+            "stdout": result.stdout[:500],
+            "stderr": result.stderr[:500],
         }
-        combined.write_text(json.dumps(combined_data, indent=2))
 
+
+def run_scenario(task, arm_label, base_url, trial, gpu_id):
+    session_id = f"bench-{task['name']}-{arm_label}-t{trial}-{int(time.time())}"
+    set_openclaw_url(base_url)
+    start_sglang(gpu_id)
+    if arm_label == "CP":
+        start_contextpilot()
+
+    print(f"\n  [{task['name']}] arm={arm_label} trial={trial}")
+    results = []
+    for i, msg in enumerate(task["turns"]):
+        print(f"    Turn {i}: ", end="", flush=True)
+        r = run_agent_turn(session_id, msg)
+        r.update(
+            turn=i, arm=arm_label, trial=trial, name=task["name"], session_id=session_id
+        )
+        results.append(r)
+        err = r.get("error", "")
+        print(
+            f"ptok={r.get('prompt_tokens', 0):>6,} ctok={r.get('completion_tokens', 0):>5} "
+            f"wall={r.get('wall_s', 0):>5.1f}s chars={r.get('output_chars', 0):>5}"
+            + (f" ERR={err[:40]}" if err else "")
+        )
+
+    kill_sglang()
+    if arm_label == "CP":
+        kill_cp()
     return results
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ClawBench Runner")
-    parser.add_argument("--batch-size", type=int, default=1)
-    parser.add_argument("--task", type=str)
-    parser.add_argument("--category", type=str)
-    parser.add_argument("--topic", type=str,
-                       help="Filter by topic prefix, e.g. python-async, react-rsc, rag, k8s, "
-                            "rust-error, docker-compose, typescript, css-grid, prompt-engineering")
-    parser.add_argument("--difficulty", choices=["medium", "hard"])
-    parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--limit", type=int, default=None,
-                       help="Only run first N tasks")
-    parser.add_argument("--timeout", type=int, default=None,
-                       help="Timeout per task in seconds (default: no limit)")
-    parser.add_argument("--runner", default="openclaw",
-                       choices=["openclaw", "claude"])
+    parser = argparse.ArgumentParser(description="ClawTask Benchmark Runner")
+    parser.add_argument("--trials", type=int, default=1)
+    parser.add_argument("--gpu", default="0")
+    parser.add_argument(
+        "--category",
+        nargs="*",
+        default=None,
+        choices=CATEGORIES,
+        help="Run specific categories (default: all)",
+    )
+    parser.add_argument(
+        "--scenarios", nargs="*", default=None, help="Run specific scenario names"
+    )
     args = parser.parse_args()
 
-    tasks = json.loads(TASKS_FILE.read_text())
-    if args.task:
-        tasks = [t for t in tasks if t["name"] == args.task]
-        if not tasks:
-            sys.exit(f"Task '{args.task}' not found")
-    if args.category:
-        tasks = [t for t in tasks if t["category"] == args.category]
-        if not tasks:
-            sys.exit(f"No tasks in category '{args.category}'")
-    if args.topic:
-        tasks = [t for t in tasks if t["name"].startswith(args.topic)]
-        if not tasks:
-            sys.exit(f"No tasks matching topic '{args.topic}'")
-    if args.difficulty:
-        tasks = [t for t in tasks if t["difficulty"] == args.difficulty]
-    if args.limit:
-        tasks = tasks[:args.limit]
+    setup_workspace()
+    tasks = load_tasks(categories=args.category, filter_names=args.scenarios)
 
-    run_benchmark(tasks, batch_size=args.batch_size, dry_run=args.dry_run,
-                  timeout=args.timeout, runner=args.runner)
+    print(
+        f"\nModel: {MODEL}  GPU: {args.gpu}  Trials: {args.trials}  Scenarios: {len(tasks)}"
+    )
+
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    all_results = []
+
+    for trial in range(args.trials):
+        print(f"\n{'─' * 80}\nTRIAL {trial}\n{'─' * 80}")
+        for task in tasks:
+            for arm, url in [
+                ("Direct", f"http://localhost:{PORT_SGLANG}/v1"),
+                ("CP", f"http://localhost:{PORT_CP}/v1"),
+            ]:
+                try:
+                    results = run_scenario(task, arm, url, trial, args.gpu)
+                    all_results.extend(results)
+                except Exception as e:
+                    print(f"\n  ERROR in {task['name']}/{arm}: {e}")
+                    kill_sglang()
+                    kill_cp()
+                    time.sleep(5)
+
+    outfile = RESULTS_DIR / "results.jsonl"
+    with open(outfile, "w") as f:
+        for r in all_results:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    print(f"\nResults saved to {outfile}")
+    print("Run: python scripts/analyze.py results/results.jsonl")
+
+    set_openclaw_url(f"http://localhost:{PORT_SGLANG}/v1")
 
 
 if __name__ == "__main__":
