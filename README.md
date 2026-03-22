@@ -14,7 +14,7 @@ The runner copies documents from `data/workspace/` to OpenClaw's workspace (`~/.
 
 ```bash
 git clone https://github.com/EfficientContext/ClawTasks.git
-cd ClawBench
+cd ClawTasks
 
 # Run all 60 tasks
 python scripts/run_bench.py --gpu 0
