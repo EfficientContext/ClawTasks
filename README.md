@@ -13,7 +13,7 @@ The runner copies documents from `data/workspace/` to OpenClaw's workspace (`~/.
 ## Quick Start
 
 ```bash
-git clone https://github.com/EfficientContext/ClawBench.git
+git clone https://github.com/EfficientContext/ClawTasks.git
 cd ClawBench
 
 # Run all 60 tasks
