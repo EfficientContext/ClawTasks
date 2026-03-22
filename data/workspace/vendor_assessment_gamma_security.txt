@@ -1,18 +1,18 @@
 VENDOR ASSESSMENT REPORT
 Report ID: VA-2024-GAMMA_SECURITY
 Date: 2024-12-15
-Prepared By: Zephyrine Holdings Vendor Management Office
-Subject: Annual Assessment of Cyphrim Security Pte Ltd
+Prepared By: Company A Vendor Management Office
+Subject: Annual Assessment of Security Firm D Pte Ltd
 
 1. EXECUTIVE SUMMARY
 
-This report presents the annual assessment of Cyphrim Security Pte Ltd (Contract SA-2024-003) for cybersecurity operations and threat management services. The assessment covers the period from 2024-06-01 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
+This report presents the annual assessment of Security Firm D Pte Ltd (Contract SA-2024-003) for cybersecurity operations and threat management services. The assessment covers the period from 2024-06-01 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
 
 Overall Rating: SATISFACTORY (3.6 / 5.0)
 
 2. CONTRACT OVERVIEW
 
-Vendor: Cyphrim Security Pte Ltd
+Vendor: Security Firm D Pte Ltd
 Contract ID: SA-2024-003
 Service Type: cybersecurity operations and threat management
 Contract Value: USD 1,800,000

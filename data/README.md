@@ -35,11 +35,11 @@ Specific domain knowledge referenced per document type:
 
 All company names, vendor names, personnel names, contract IDs, and financial figures are fictional:
 
-- **Zephyrine Holdings Pte Ltd** — fictional client company
-- **Kolvex Cloud Inc** — fictional cloud vendor
-- **Talnova AI Ltd** — fictional AI vendor (not affiliated with Google Talnova AI)
-- **Cyphrim Security Pte Ltd** — fictional security vendor
-- **Datrique Systems Pte Ltd** — fictional data vendor
+- **Company A Pte Ltd** — fictional client company
+- **Cloud Provider B Inc** — fictional cloud vendor
+- **AI Lab C Ltd** — fictional AI vendor (not affiliated with Google AI Lab C)
+- **Security Firm D Pte Ltd** — fictional security vendor
+- **Data Services E Pte Ltd** — fictional data vendor
 
 ## Document Statistics
 

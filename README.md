@@ -41,7 +41,7 @@ See [`claw-tasks/`](claw-tasks/) for per-task details and [`data/`](data/) for d
 
 ## Scenario
 
-A technology company (Zephyrine Holdings Pte Ltd) manages four vendor relationships for cloud, AI, security, and data services. The document workspace mirrors the full vendor management lifecycle:
+A technology company (Company A Pte Ltd) manages four vendor relationships for cloud, AI, security, and data services. The document workspace mirrors the full vendor management lifecycle:
 
 ```
 NDA signed             Vendors submit         Company establishes     Individual contracts

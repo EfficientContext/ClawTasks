@@ -1,18 +1,18 @@
 VENDOR ASSESSMENT REPORT
 Report ID: VA-2024-ALPHA_CLOUD
 Date: 2024-12-15
-Prepared By: Zephyrine Holdings Vendor Management Office
-Subject: Annual Assessment of Kolvex Cloud Inc
+Prepared By: Company A Vendor Management Office
+Subject: Annual Assessment of Cloud Provider B Inc
 
 1. EXECUTIVE SUMMARY
 
-This report presents the annual assessment of Kolvex Cloud Inc (Contract SA-2024-001) for cloud infrastructure and platform engineering services. The assessment covers the period from 2024-01-15 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
+This report presents the annual assessment of Cloud Provider B Inc (Contract SA-2024-001) for cloud infrastructure and platform engineering services. The assessment covers the period from 2024-01-15 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
 
 Overall Rating: SATISFACTORY (3.6 / 5.0)
 
 2. CONTRACT OVERVIEW
 
-Vendor: Kolvex Cloud Inc
+Vendor: Cloud Provider B Inc
 Contract ID: SA-2024-001
 Service Type: cloud infrastructure and platform engineering
 Contract Value: USD 2,400,000

@@ -48,18 +48,18 @@
   {
     "name": "s31_proposal_pricing",
     "turns": [
-      "Read contracts/proposal_kolvex_cloud.txt and extract the pricing breakdown and rate card. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_talnova_ai.txt. Compare its pricing with Kolvex Cloud. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cyphrim_security.txt and contracts/proposal_datrique_data.txt. Create a pricing comparison table across all four proposals. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_provider_b_cloud.txt and extract the pricing breakdown and rate card. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_lab_c_ai.txt. Compare its pricing with Cloud Provider B. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_firm_d_security.txt and contracts/proposal_services_e_data.txt. Create a pricing comparison table across all four proposals. Do not search the web — only analyze the documents.",
       "Which vendor offers the best value for money? Rank all four with reasoning. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s32_proposal_vs_contract",
     "turns": [
-      "Read contracts/proposal_kolvex_cloud.txt and summarize the proposed pricing and scope. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_provider_b_cloud.txt and summarize the proposed pricing and scope. Do not search the web — only analyze the documents.",
       "Read contracts/contract_alpha_cloud.txt. Compare what was proposed vs what was contracted. Did the final contract match the proposal? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_talnova_ai.txt and contracts/contract_beta_ai.txt. Same comparison for the AI vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_lab_c_ai.txt and contracts/contract_beta_ai.txt. Same comparison for the AI vendor. Do not search the web — only analyze the documents.",
       "Across both vendors, what changed between proposal and contract? Any red flags? Do not search the web — only analyze the documents."
     ]
   },
@@ -75,9 +75,9 @@
   {
     "name": "s51_proposal_scope_compare",
     "turns": [
-      "Read contracts/proposal_kolvex_cloud.txt and extract the full scope of services and deliverables. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_talnova_ai.txt. How does the AI scope compare with the cloud scope? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cyphrim_security.txt and contracts/proposal_datrique_data.txt. Map all four scopes side by side. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_provider_b_cloud.txt and extract the full scope of services and deliverables. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_lab_c_ai.txt. How does the AI scope compare with the cloud scope? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_firm_d_security.txt and contracts/proposal_services_e_data.txt. Map all four scopes side by side. Do not search the web — only analyze the documents.",
       "Are there any overlapping or redundant services across the four proposals? Do not search the web — only analyze the documents."
     ]
   },

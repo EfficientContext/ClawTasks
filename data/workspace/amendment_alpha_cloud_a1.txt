@@ -4,8 +4,8 @@ Original Contract: SA-2024-001
 Date: 2025-01-15
 
 PARTIES:
-Party A (Client): Zephyrine Holdings Pte Ltd
-Party B (Provider): Kolvex Cloud Inc
+Party A (Client): Company A Pte Ltd
+Party B (Provider): Cloud Provider B Inc
 
 RECITALS
 
@@ -71,10 +71,10 @@ ARTICLE 2 — GENERAL
 
 SIGNATURES:
 
-Party A: Zephyrine Holdings Pte Ltd
+Party A: Company A Pte Ltd
 Authorized Representative: ____________________
 Date: 2025-01-15
 
-Party B: Kolvex Cloud Inc
+Party B: Cloud Provider B Inc
 Authorized Representative: ____________________
 Date: 2025-01-15

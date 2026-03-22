@@ -8,9 +8,9 @@ Classification: INTERNAL — CONFIDENTIAL
 
 1. PURPOSE AND SCOPE
 
-1.1 This Data Governance Policy ("Policy") establishes the framework for managing Zephyrine Holdings Pte Ltd's data assets throughout their lifecycle, ensuring data quality, security, privacy, and compliance with applicable regulations.
+1.1 This Data Governance Policy ("Policy") establishes the framework for managing Company A Pte Ltd's data assets throughout their lifecycle, ensuring data quality, security, privacy, and compliance with applicable regulations.
 
-1.2 This Policy applies to all structured and unstructured data created, collected, processed, stored, or transmitted by or on behalf of Zephyrine Holdings, regardless of format, medium, or location.
+1.2 This Policy applies to all structured and unstructured data created, collected, processed, stored, or transmitted by or on behalf of Company A, regardless of format, medium, or location.
 
 1.3 This Policy complements the Information Security Policy (ISP-2024-001) and applies to all employees, contractors, and third-party service providers as referenced in the Master Service Agreement (MSA-2023-001).
 
@@ -26,7 +26,7 @@ Classification: INTERNAL — CONFIDENTIAL
 
 (d) Data Custodians: IT personnel responsible for the technical management of data assets, including storage, backup, access control, and security.
 
-(e) Data Users: All personnel who access or use Zephyrine Holdings data in the course of their duties. Responsible for complying with data governance policies and procedures.
+(e) Data Users: All personnel who access or use Company A data in the course of their duties. Responsible for complying with data governance policies and procedures.
 
 3. DATA QUALITY
 
