@@ -6,7 +6,7 @@ Prefill-heavy, multi-turn document analysis tasks for benchmarking LLM inference
 
 - [OpenClaw](https://openclaw.ai) installed with Node.js v22+
 - [SGLang](https://github.com/sgl-project/sglang) with a model (e.g., `Qwen/Qwen3-4B-Instruct-2507`)
-- (Optional) [ContextPilot](https://github.com/EfficientContext/ContextPilot) or any inference proxy to evaluate
+- [ContextPilot](https://github.com/EfficientContext/ContextPilot) or any inference proxy to evaluate
 
 The runner copies documents from `data/workspace/` to OpenClaw's workspace (`~/.openclaw/workspace/contracts/`) automatically.
 
