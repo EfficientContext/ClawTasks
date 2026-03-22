@@ -39,22 +39,54 @@ python scripts/analyze.py results/results.jsonl
 
 See [`claw-tasks/`](claw-tasks/) for per-task details and [`data/`](data/) for document sources and construction notes.
 
-## Data
+## Scenario
 
-A technology company (TechVentures Pte Ltd) manages four vendor relationships. The workspace contains:
+A technology company (TechVentures Pte Ltd) manages four vendor relationships for cloud, AI, security, and data services. The document workspace mirrors the full vendor management lifecycle:
 
-| Documents | Files | Size |
-|-----------|-------|------|
-| Service Agreements | 4 | 182 KB |
-| Vendor Proposals | 4 | 242 KB |
-| Amendments | 4 | 19 KB |
-| Master Service Agreement | 1 | 9 KB |
-| Vendor Assessments | 4 | 16 KB |
-| Internal Policies | 2 | 13 KB |
-| Board Minutes | 1 | 8 KB |
-| NDAs | 2 | 12 KB |
+```
+NDA signed             Vendors submit         Company establishes     Individual contracts
+before discussions     proposals              master framework        signed per vendor
+      │                     │                       │                       │
+      ▼                     ▼                       ▼                       ▼
+ ┌─────────┐         ┌───────────┐           ┌───────────┐           ┌───────────┐
+ │  NDAs   │────────▶│ Proposals │──────────▶│    MSA    │──────────▶│ Contracts │
+ └─────────┘         └───────────┘           └───────────┘           └───────────┘
+   2 files             4 files                 1 file                  4 files
+   12 KB               242 KB                  9 KB                   182 KB
+                                                                          │
+                            ┌─────────────────────────────────────────────┤
+                            │                                             │
+                            ▼                                             ▼
+                     ┌───────────┐    Internal policies              ┌───────────┐
+                     │Amendments │    govern all vendors             │Assessments│
+                     └───────────┘           │                       └───────────┘
+                       4 files               ▼                         4 files
+                       19 KB          ┌───────────┐                    16 KB
+                                      │ Policies  │                      │
+                                      └───────────┘                      │
+                                        2 files                          ▼
+                                        13 KB                    ┌───────────────┐
+                                                                 │ Board Minutes │
+                                                                 └───────────────┘
+                                                                     1 file, 8 KB
+                                                          Board reviews vendor performance
+                                                          and approves renewal strategy
+```
 
-Contracts share a common legal template (Articles 1-16). Proposals share methodology, governance, compliance, and sustainability sections. Amendments reference originals. Assessments quote SLA targets. Policies are cross-referenced in the MSA.
+Each stage produces documents that reference earlier ones: proposals respond to requirements, contracts incorporate MSA terms, amendments modify contracts, assessments measure contract SLAs, and board minutes summarize assessment findings. This creates natural cross-document content overlap.
+
+| Documents | Files | Size | Role in Lifecycle |
+|-----------|-------|------|-------------------|
+| NDAs | 2 | 12 KB | Signed first — protects confidential information during vendor evaluation |
+| Vendor Proposals | 4 | 242 KB | Vendors respond to RFP with methodology, team, pricing, references |
+| Master Service Agreement | 1 | 9 KB | Framework terms all vendor contracts inherit |
+| Service Agreements | 4 | 182 KB | Per-vendor contracts with shared legal template (Articles 1-16) |
+| Amendments | 4 | 19 KB | Modifications to contracts (scope, SLA, sustainability) |
+| Vendor Assessments | 4 | 16 KB | Annual performance reviews measuring contract SLA compliance |
+| Internal Policies | 2 | 13 KB | Information Security and Data Governance policies vendors must follow |
+| Board Minutes | 1 | 8 KB | Board reviews vendor performance and approves renewal strategy |
+
+The 60 tasks cover every stage — from comparing proposals during vendor selection, to reviewing contracts for legal risk, to auditing compliance against internal policies, to preparing board briefings on vendor performance.
 
 ## Workload Profile
 
