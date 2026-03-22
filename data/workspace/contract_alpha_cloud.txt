@@ -3,8 +3,8 @@ Contract ID: SA-2024-001
 Date: 2024-01-15
 
 PARTIES:
-Party A (Client): Meridian Pacific Pte Ltd
-Party B (Provider): Cumulus Infra Inc
+Party A (Client): Zephyrine Holdings Pte Ltd
+Party B (Provider): Kolvex Cloud Inc
 
 ARTICLE 1 — DEFINITIONS
 
@@ -235,10 +235,10 @@ B.5 Reporting: Party B shall provide monthly SLA performance reports within five
 
 SIGNATURES:
 
-Party A: Meridian Pacific Pte Ltd
+Party A: Zephyrine Holdings Pte Ltd
 Authorized Representative: ____________________
 Date: 2024-01-15
 
-Party B: Cumulus Infra Inc
+Party B: Kolvex Cloud Inc
 Authorized Representative: ____________________
 Date: 2024-01-15

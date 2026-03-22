@@ -3,8 +3,8 @@ Contract ID: SA-2024-003
 Date: 2024-06-01
 
 PARTIES:
-Party A (Client): Meridian Pacific Pte Ltd
-Party B (Provider): Sentinel Cyber Pte Ltd
+Party A (Client): Zephyrine Holdings Pte Ltd
+Party B (Provider): Cyphrim Security Pte Ltd
 
 ARTICLE 1 — DEFINITIONS
 
@@ -237,10 +237,10 @@ B.5 Reporting: Party B shall provide monthly SLA performance reports within five
 
 SIGNATURES:
 
-Party A: Meridian Pacific Pte Ltd
+Party A: Zephyrine Holdings Pte Ltd
 Authorized Representative: ____________________
 Date: 2024-06-01
 
-Party B: Sentinel Cyber Pte Ltd
+Party B: Cyphrim Security Pte Ltd
 Authorized Representative: ____________________
 Date: 2024-06-01

@@ -35,11 +35,11 @@ Specific domain knowledge referenced per document type:
 
 All company names, vendor names, personnel names, contract IDs, and financial figures are fictional:
 
-- **Meridian Pacific Pte Ltd** — fictional client company
-- **Cumulus Infra Inc** — fictional cloud vendor
-- **Nexora AI Labs Ltd** — fictional AI vendor (not affiliated with Google Nexora AI Labs)
-- **Sentinel Cyber Pte Ltd** — fictional security vendor
-- **Aqueduct Data Pte Ltd** — fictional data vendor
+- **Zephyrine Holdings Pte Ltd** — fictional client company
+- **Kolvex Cloud Inc** — fictional cloud vendor
+- **Talnova AI Ltd** — fictional AI vendor (not affiliated with Google Talnova AI)
+- **Cyphrim Security Pte Ltd** — fictional security vendor
+- **Datrique Systems Pte Ltd** — fictional data vendor
 
 ## Document Statistics
 

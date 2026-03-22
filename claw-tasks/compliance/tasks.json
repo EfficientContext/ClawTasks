@@ -103,10 +103,10 @@
   {
     "name": "s37_proposal_security_audit",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and assess the proposed security approach. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_sentinel_security.txt. Compare its security approach with Cumulus Infra's. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and assess the proposed security approach. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cyphrim_security.txt. Compare its security approach with Kolvex Cloud's. Do not search the web — only analyze the documents.",
       "Read contracts/policy_information_security.txt. Do both proposals meet the internal security policy requirements? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_nexora_ai.txt and contracts/proposal_aqueduct_data.txt. Rate all four proposals on security compliance. Do not search the web — only analyze the documents."
+      "Read contracts/proposal_talnova_ai.txt and contracts/proposal_datrique_data.txt. Rate all four proposals on security compliance. Do not search the web — only analyze the documents."
     ]
   },
   {
@@ -121,18 +121,18 @@
   {
     "name": "s39_proposal_methodology",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and extract the proposed methodology and QA framework. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_nexora_ai.txt. How does the AI vendor's methodology compare? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. Compare methodologies across all four. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and extract the proposed methodology and QA framework. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_talnova_ai.txt. How does the AI vendor's methodology compare? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cyphrim_security.txt and contracts/proposal_datrique_data.txt. Compare methodologies across all four. Do not search the web — only analyze the documents.",
       "Which vendor's methodology is most rigorous? Rank all four. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s40_assessment_vs_proposal",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and extract the promised team qualifications. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and extract the promised team qualifications. Do not search the web — only analyze the documents.",
       "Read contracts/vendor_assessment_alpha_cloud.txt. Did the vendor deliver on the personnel commitments from the proposal? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_nexora_ai.txt and contracts/vendor_assessment_beta_ai.txt. Same comparison. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_talnova_ai.txt and contracts/vendor_assessment_beta_ai.txt. Same comparison. Do not search the web — only analyze the documents.",
       "Are vendors delivering what they proposed? Summarize gaps. Do not search the web — only analyze the documents."
     ]
   },
@@ -148,8 +148,8 @@
   {
     "name": "s55_proposal_compliance_check",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and contracts/proposal_nexora_ai.txt. Do both proposals mention compliance with MAS TRM and PDPA? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. Same check. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and contracts/proposal_talnova_ai.txt. Do both proposals mention compliance with MAS TRM and PDPA? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cyphrim_security.txt and contracts/proposal_datrique_data.txt. Same check. Do not search the web — only analyze the documents.",
       "Read contracts/policy_information_security.txt. Which proposals meet the internal security policy requirements? Do not search the web — only analyze the documents.",
       "Produce a proposal compliance matrix covering all four vendors. Do not search the web — only analyze the documents."
     ]
@@ -157,9 +157,9 @@
   {
     "name": "s56_contract_vs_proposal_security",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and extract the security commitments (Section 3.3). Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and extract the security commitments (Section 3.3). Do not search the web — only analyze the documents.",
       "Read contracts/contract_alpha_cloud.txt. Were all proposed security commitments included in the final contract? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_sentinel_security.txt and contracts/contract_gamma_security.txt. Same comparison for the security vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cyphrim_security.txt and contracts/contract_gamma_security.txt. Same comparison for the security vendor. Do not search the web — only analyze the documents.",
       "Identify any security commitments that were in the proposals but dropped from the contracts. Do not search the web — only analyze the documents."
     ]
   }

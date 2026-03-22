@@ -66,17 +66,17 @@
     "name": "s34_contract_nda_alignment",
     "turns": [
       "Read contracts/contract_alpha_cloud.txt and extract the confidentiality clauses. Do not search the web — only analyze the documents.",
-      "Read contracts/nda_001_cumulus.txt. Are the NDA terms consistent with the contract? Do not search the web — only analyze the documents.",
-      "Read contracts/contract_beta_ai.txt and contracts/nda_002_nexora.txt. Same comparison. Do not search the web — only analyze the documents.",
+      "Read contracts/nda_001_kolvex.txt. Are the NDA terms consistent with the contract? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt and contracts/nda_002_talnova.txt. Same comparison. Do not search the web — only analyze the documents.",
       "Write a recommendation on aligning NDAs with contracts across all vendors. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s35_proposal_vs_contract_legal",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and extract the proposed terms and conditions (Section 8). Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and extract the proposed terms and conditions (Section 8). Do not search the web — only analyze the documents.",
       "Read contracts/contract_alpha_cloud.txt. How do the final legal terms compare with what was proposed? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_nexora_ai.txt and contracts/contract_beta_ai.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_talnova_ai.txt and contracts/contract_beta_ai.txt. Same analysis. Do not search the web — only analyze the documents.",
       "Which legal protections were strengthened from proposal to contract? Which were weakened? Do not search the web — only analyze the documents."
     ]
   },
@@ -92,8 +92,8 @@
   {
     "name": "s53_ip_across_proposals",
     "turns": [
-      "Read contracts/proposal_cumulus_cloud.txt and extract the IP and confidentiality terms from Section 8. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_nexora_ai.txt. How do the AI vendor's IP terms differ? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_kolvex_cloud.txt and extract the IP and confidentiality terms from Section 8. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_talnova_ai.txt. How do the AI vendor's IP terms differ? Do not search the web — only analyze the documents.",
       "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Were the proposal IP terms strengthened in the final contracts? Do not search the web — only analyze the documents.",
       "Write a recommendation on standardizing IP terms across all vendor agreements. Do not search the web — only analyze the documents."
     ]
@@ -104,7 +104,7 @@
       "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. Compare dispute resolution provisions. Do not search the web — only analyze the documents.",
       "Read contracts/contract_gamma_security.txt and contracts/contract_delta_data.txt. Same comparison. Do not search the web — only analyze the documents.",
       "Read contracts/master_service_agreement.txt. Does the MSA provide a unified dispute framework? Do not search the web — only analyze the documents.",
-      "Read contracts/nda_001_cumulus.txt and contracts/nda_002_nexora.txt. Are NDA dispute terms consistent with the contracts? Do not search the web — only analyze the documents.",
+      "Read contracts/nda_001_kolvex.txt and contracts/nda_002_talnova.txt. Are NDA dispute terms consistent with the contracts? Do not search the web — only analyze the documents.",
       "Write a memo on harmonizing dispute resolution across all vendor agreements and NDAs. Do not search the web — only analyze the documents."
     ]
   }

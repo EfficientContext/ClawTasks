@@ -3,9 +3,9 @@ NDA ID: NDA-2023-002
 Date: 2023-10-01
 
 PARTIES:
-Disclosing/Receiving Party 1: Meridian Pacific Pte Ltd ("Meridian Pacific"), a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
+Disclosing/Receiving Party 1: Zephyrine Holdings Pte Ltd ("Zephyrine Holdings"), a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
 
-Disclosing/Receiving Party 2: Nexora AI Labs Ltd ("Vendor"), with its principal place of business as set forth in the applicable Service Agreement.
+Disclosing/Receiving Party 2: Talnova AI Ltd ("Vendor"), with its principal place of business as set forth in the applicable Service Agreement.
 
 (Each a "Party" and collectively the "Parties")
 
@@ -86,12 +86,12 @@ NOW, THEREFORE, in consideration of the mutual covenants and agreements containe
 
 SIGNATURES:
 
-Meridian Pacific Pte Ltd
+Zephyrine Holdings Pte Ltd
 Name: ____________________
 Title: ____________________
 Date: 2023-10-01
 
-Nexora AI Labs Ltd
+Talnova AI Ltd
 Name: ____________________
 Title: ____________________
 Date: 2023-10-01

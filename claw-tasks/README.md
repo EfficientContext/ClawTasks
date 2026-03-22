@@ -78,6 +78,6 @@
 | s49_renewal_negotiation | 5 | Prepare a negotiation strategy for renewing both the cloud and AI vendor contracts. |
 | s50_annual_portfolio | 5 | Write a complete annual vendor portfolio review covering all four vendors: contracts, performance, a... |
 | s57_proposal_risk_assessment | 4 | Write a consolidated risk assessment comparing vendor-proposed mitigations with board-identified ris... |
-| s58_full_vendor_lifecycle | 5 | Write a full vendor lifecycle report for Sentinel Cyber: proposal → contract → amendment → performance. |
+| s58_full_vendor_lifecycle | 5 | Write a full vendor lifecycle report for Cyphrim Security: proposal → contract → amendment → performance. |
 | s59_vendor_capability_map | 4 | Write a vendor capability matrix and identify areas where we need additional vendor coverage. |
 | s60_executive_dashboard | 4 | Create an executive dashboard showing: contract status, spend, SLA compliance, and overall health fo... |
