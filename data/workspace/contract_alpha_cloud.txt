@@ -3,8 +3,8 @@ Contract ID: SA-2024-001
 Date: 2024-01-15
 
 PARTIES:
-Party A (Client): TechVentures Pte Ltd
-Party B (Provider): CloudNine Solutions Inc
+Party A (Client): Meridian Pacific Pte Ltd
+Party B (Provider): Cumulus Infra Inc
 
 ARTICLE 1 — DEFINITIONS
 
@@ -235,10 +235,10 @@ B.5 Reporting: Party B shall provide monthly SLA performance reports within five
 
 SIGNATURES:
 
-Party A: TechVentures Pte Ltd
+Party A: Meridian Pacific Pte Ltd
 Authorized Representative: ____________________
 Date: 2024-01-15
 
-Party B: CloudNine Solutions Inc
+Party B: Cumulus Infra Inc
 Authorized Representative: ____________________
 Date: 2024-01-15

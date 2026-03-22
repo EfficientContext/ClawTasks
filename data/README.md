@@ -35,11 +35,11 @@ Specific domain knowledge referenced per document type:
 
 All company names, vendor names, personnel names, contract IDs, and financial figures are fictional:
 
-- **TechVentures Pte Ltd** — fictional client company
-- **CloudNine Solutions Inc** — fictional cloud vendor
-- **DeepMind Analytics Ltd** — fictional AI vendor (not affiliated with Google DeepMind)
-- **CyberShield Pte Ltd** — fictional security vendor
-- **DataStream Technologies Pte Ltd** — fictional data vendor
+- **Meridian Pacific Pte Ltd** — fictional client company
+- **Cumulus Infra Inc** — fictional cloud vendor
+- **Nexora AI Labs Ltd** — fictional AI vendor (not affiliated with Google Nexora AI Labs)
+- **Sentinel Cyber Pte Ltd** — fictional security vendor
+- **Aqueduct Data Pte Ltd** — fictional data vendor
 
 ## Document Statistics
 

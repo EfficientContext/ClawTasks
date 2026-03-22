@@ -1,18 +1,18 @@
 VENDOR ASSESSMENT REPORT
 Report ID: VA-2024-BETA_AI
 Date: 2024-12-15
-Prepared By: TechVentures Vendor Management Office
-Subject: Annual Assessment of DeepMind Analytics Ltd
+Prepared By: Meridian Pacific Vendor Management Office
+Subject: Annual Assessment of Nexora AI Labs Ltd
 
 1. EXECUTIVE SUMMARY
 
-This report presents the annual assessment of DeepMind Analytics Ltd (Contract SA-2024-002) for artificial intelligence and machine learning platform services. The assessment covers the period from 2024-03-01 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
+This report presents the annual assessment of Nexora AI Labs Ltd (Contract SA-2024-002) for artificial intelligence and machine learning platform services. The assessment covers the period from 2024-03-01 to 2024-12-31 and evaluates performance across five dimensions: service delivery, security compliance, financial management, relationship management, and innovation.
 
 Overall Rating: SATISFACTORY (3.6 / 5.0)
 
 2. CONTRACT OVERVIEW
 
-Vendor: DeepMind Analytics Ltd
+Vendor: Nexora AI Labs Ltd
 Contract ID: SA-2024-002
 Service Type: artificial intelligence and machine learning platform
 Contract Value: USD 3,600,000

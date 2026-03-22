@@ -64,34 +64,34 @@
   {
     "name": "s42_proposal_team_comparison",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and summarize the proposed team composition and certifications. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_deepmind_ai.txt. Compare its team with CloudNine's. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Compare all four teams. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and summarize the proposed team composition and certifications. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_nexora_ai.txt. Compare its team with Cumulus Infra's. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. Compare all four teams. Do not search the web — only analyze the documents.",
       "Which vendor has the strongest team? Create a team comparison matrix. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s43_proposal_timeline",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and extract the project timeline and milestones. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_deepmind_ai.txt. Compare its timeline with CloudNine's. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. How do all four timelines compare? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and extract the project timeline and milestones. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_nexora_ai.txt. Compare its timeline with Cumulus Infra's. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. How do all four timelines compare? Do not search the web — only analyze the documents.",
       "Are the proposed timelines realistic? Identify risks for each vendor. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s44_proposal_references",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. List all client references from both proposals. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. List their references too. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and contracts/proposal_nexora_ai.txt. List all client references from both proposals. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. List their references too. Do not search the web — only analyze the documents.",
       "Which vendor has the most relevant references for our industry? Rank all four. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s45_vendor_selection_memo",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. Summarize strengths and weaknesses of each. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and contracts/proposal_nexora_ai.txt. Summarize strengths and weaknesses of each. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. Same analysis. Do not search the web — only analyze the documents.",
       "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. How did the final contracts compare with the proposals? Do not search the web — only analyze the documents.",
       "Write a vendor selection recommendation memo for the CTO based on all proposals and contracts reviewed. Do not search the web — only analyze the documents."
     ]
@@ -99,8 +99,8 @@
   {
     "name": "s46_full_procurement_review",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and contracts/contract_alpha_cloud.txt. Trace the full procurement journey for the cloud vendor. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_deepmind_ai.txt and contracts/contract_beta_ai.txt. Same for the AI vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and contracts/contract_alpha_cloud.txt. Trace the full procurement journey for the cloud vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_nexora_ai.txt and contracts/contract_beta_ai.txt. Same for the AI vendor. Do not search the web — only analyze the documents.",
       "Read contracts/vendor_assessment_alpha_cloud.txt and contracts/vendor_assessment_beta_ai.txt. How are these vendors performing against what was proposed and contracted? Do not search the web — only analyze the documents.",
       "Write a comprehensive procurement review covering proposal → contract → delivery for both vendors. Do not search the web — only analyze the documents."
     ]
@@ -108,7 +108,7 @@
   {
     "name": "s47_board_vendor_brief",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. Prepare a summary of what each vendor proposed. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and contracts/proposal_nexora_ai.txt. Prepare a summary of what each vendor proposed. Do not search the web — only analyze the documents.",
       "Read contracts/contract_alpha_cloud.txt and contracts/contract_beta_ai.txt. What was actually contracted vs proposed? Do not search the web — only analyze the documents.",
       "Read contracts/board_minutes_2024_q4.txt. What did the board discuss about these vendors? Do not search the web — only analyze the documents.",
       "Prepare an updated board briefing on vendor status incorporating proposals, contracts, and board feedback. Do not search the web — only analyze the documents."
@@ -126,10 +126,10 @@
   {
     "name": "s49_renewal_negotiation",
     "turns": [
-      "Read contracts/contract_alpha_cloud.txt and contracts/proposal_cloudnine_cloud.txt. What was the original proposed price vs contracted price? Do not search the web — only analyze the documents.",
+      "Read contracts/contract_alpha_cloud.txt and contracts/proposal_cumulus_cloud.txt. What was the original proposed price vs contracted price? Do not search the web — only analyze the documents.",
       "Read contracts/vendor_assessment_alpha_cloud.txt. How has the vendor performed? Do not search the web — only analyze the documents.",
       "Read contracts/amendment_alpha_cloud_a1.txt. What changes have already been made? Do not search the web — only analyze the documents.",
-      "Read contracts/contract_beta_ai.txt and contracts/proposal_deepmind_ai.txt. Same analysis for the AI vendor. Do not search the web — only analyze the documents.",
+      "Read contracts/contract_beta_ai.txt and contracts/proposal_nexora_ai.txt. Same analysis for the AI vendor. Do not search the web — only analyze the documents.",
       "Prepare a negotiation strategy for renewing both the cloud and AI vendor contracts. Do not search the web — only analyze the documents."
     ]
   },
@@ -146,8 +146,8 @@
   {
     "name": "s57_proposal_risk_assessment",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. What risks does each vendor identify? What are their mitigation plans? Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Same analysis. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and contracts/proposal_nexora_ai.txt. What risks does each vendor identify? What are their mitigation plans? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. Same analysis. Do not search the web — only analyze the documents.",
       "Read contracts/board_minutes_2024_q4.txt. Do the board-identified risks align with what the vendors proposed to address? Do not search the web — only analyze the documents.",
       "Write a consolidated risk assessment comparing vendor-proposed mitigations with board-identified risks. Do not search the web — only analyze the documents."
     ]
@@ -155,18 +155,18 @@
   {
     "name": "s58_full_vendor_lifecycle",
     "turns": [
-      "Read contracts/proposal_cybershield_security.txt. What did the security vendor propose? Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt. What did the security vendor propose? Do not search the web — only analyze the documents.",
       "Read contracts/contract_gamma_security.txt. What was contracted? Do not search the web — only analyze the documents.",
       "Read contracts/amendment_gamma_security_a1.txt. What changed? Do not search the web — only analyze the documents.",
       "Read contracts/vendor_assessment_gamma_security.txt. How are they performing? Do not search the web — only analyze the documents.",
-      "Write a full vendor lifecycle report for CyberShield: proposal → contract → amendment → performance. Do not search the web — only analyze the documents."
+      "Write a full vendor lifecycle report for Sentinel Cyber: proposal → contract → amendment → performance. Do not search the web — only analyze the documents."
     ]
   },
   {
     "name": "s59_vendor_capability_map",
     "turns": [
-      "Read contracts/proposal_cloudnine_cloud.txt and contracts/proposal_deepmind_ai.txt. Map each vendor's technical capabilities and certifications. Do not search the web — only analyze the documents.",
-      "Read contracts/proposal_cybershield_security.txt and contracts/proposal_datastream_data.txt. Complete the capability map. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_cumulus_cloud.txt and contracts/proposal_nexora_ai.txt. Map each vendor's technical capabilities and certifications. Do not search the web — only analyze the documents.",
+      "Read contracts/proposal_sentinel_security.txt and contracts/proposal_aqueduct_data.txt. Complete the capability map. Do not search the web — only analyze the documents.",
       "Are there any capability gaps across our vendor portfolio? Do not search the web — only analyze the documents.",
       "Write a vendor capability matrix and identify areas where we need additional vendor coverage. Do not search the web — only analyze the documents."
     ]

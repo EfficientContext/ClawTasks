@@ -3,7 +3,7 @@ Agreement ID: MSA-2023-001
 Date: 2023-06-01
 
 PARTIES:
-Party A (Client): TechVentures Pte Ltd, a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
+Party A (Client): Meridian Pacific Pte Ltd, a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
 
 Party B: Any vendor or service provider that executes a Statement of Work or Service Agreement referencing this Master Service Agreement (each, a "Vendor" or "Service Provider").
 
@@ -137,7 +137,7 @@ ARTICLE 8 — GENERAL PROVISIONS
 
 AUTHORIZED BY:
 
-TechVentures Pte Ltd
+Meridian Pacific Pte Ltd
 Chief Technology Officer: ____________________
 General Counsel: ____________________
 Date: 2023-06-01

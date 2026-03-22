@@ -2,7 +2,7 @@ BOARD OF DIRECTORS MEETING MINUTES
 Meeting ID: BOD-2024-Q4
 Date: 2024-12-20
 Time: 10:00 AM — 12:30 PM (SGT)
-Location: TechVentures Pte Ltd, 1 Raffles Place, #20-01, Boardroom A
+Location: Meridian Pacific Pte Ltd, 1 Raffles Place, #20-01, Boardroom A
 Classification: RESTRICTED
 
 ATTENDEES:
@@ -69,10 +69,10 @@ The CFO presented the Q4 2024 financial results:
 (g) Outstanding receivables: SGD 42M (DSO: 38 days)
 
 Technology vendor spend for 2024:
-    - CloudNine Solutions Inc (cloud infrastructure and platform engineering): Contract SA-2024-001, value USD 2,400,000, term 2024-01-15 to 2026-01-14.
-    - DeepMind Analytics Ltd (artificial intelligence and machine learning platform): Contract SA-2024-002, value USD 3,600,000, term 2024-03-01 to 2027-02-28.
-    - CyberShield Pte Ltd (cybersecurity operations and threat management): Contract SA-2024-003, value USD 1,800,000, term 2024-06-01 to 2026-05-31.
-    - DataStream Technologies Pte Ltd (data engineering and analytics platform): Contract SA-2024-004, value USD 2,100,000, term 2024-04-15 to 2026-04-14.
+    - Cumulus Infra Inc (cloud infrastructure and platform engineering): Contract SA-2024-001, value USD 2,400,000, term 2024-01-15 to 2026-01-14.
+    - Nexora AI Labs Ltd (artificial intelligence and machine learning platform): Contract SA-2024-002, value USD 3,600,000, term 2024-03-01 to 2027-02-28.
+    - Sentinel Cyber Pte Ltd (cybersecurity operations and threat management): Contract SA-2024-003, value USD 1,800,000, term 2024-06-01 to 2026-05-31.
+    - Aqueduct Data Pte Ltd (data engineering and analytics platform): Contract SA-2024-004, value USD 2,100,000, term 2024-04-15 to 2026-04-14.
 
 Total technology vendor spend: USD 9.9M (within approved budget of USD 10.5M)
 
@@ -92,16 +92,16 @@ The CTO presented the annual technology vendor assessment summary:
 - Combined SLA compliance rate: 99.2% across all vendors.
 
 5.2 Key Highlights:
-- Cloud infrastructure (CloudNine Solutions): Strong performance, 99.92% availability. Recommended for contract renewal with enhanced SLA targets.
-- AI/ML platform (DeepMind Analytics): Good progress on model development. First-pass acceptance rate needs improvement (87% vs. 90% target).
-- Cybersecurity (CyberShield): Excellent incident response times. Zero Severity 1 incidents in 2024. SOC operations meeting all SLA targets.
-- Data engineering (DataStream Technologies): Data pipeline reliability strong (99.7% availability). Data quality scores meeting targets.
+- Cloud infrastructure (Cumulus Infra): Strong performance, 99.92% availability. Recommended for contract renewal with enhanced SLA targets.
+- AI/ML platform (Nexora AI Labs): Good progress on model development. First-pass acceptance rate needs improvement (87% vs. 90% target).
+- Cybersecurity (Sentinel Cyber): Excellent incident response times. Zero Severity 1 incidents in 2024. SOC operations meeting all SLA targets.
+- Data engineering (Aqueduct Data): Data pipeline reliability strong (99.7% availability). Data quality scores meeting targets.
 
 5.3 Contract Renewals:
-- Alpha (CloudNine): First Amendment (A1) executed in January 2025, extending term by 12 months and adding sustainability requirements.
-- Beta (DeepMind Analytics): Contract expires February 2027. No action required at this time. Performance improvement plan in place for acceptance rate.
-- Gamma (CyberShield): Contract expires May 2026. CTO recommends early renewal discussions beginning Q2 2025.
-- Delta (DataStream): Contract expires April 2026. Performance satisfactory. Standard renewal process.
+- Alpha (Cumulus Infra): First Amendment (A1) executed in January 2025, extending term by 12 months and adding sustainability requirements.
+- Beta (Nexora AI Labs): Contract expires February 2027. No action required at this time. Performance improvement plan in place for acceptance rate.
+- Gamma (Sentinel Cyber): Contract expires May 2026. CTO recommends early renewal discussions beginning Q2 2025.
+- Delta (Aqueduct Data): Contract expires April 2026. Performance satisfactory. Standard renewal process.
 
 5.4 Security Posture:
 - All vendors maintain required certifications (SOC 2 Type II, ISO 27001).
@@ -110,7 +110,7 @@ The CTO presented the annual technology vendor assessment summary:
 
 The Board discussed the vendor concentration risk and the CTO's recommendation to maintain the current four-vendor model rather than consolidating to fewer vendors. Director Kumar expressed support for the diversified approach given the current geopolitical environment.
 
-RESOLUTION 2024-Q4-03: The Board approved the CTO's vendor management strategy and authorized the CTO to proceed with contract renewal discussions for the Gamma (CyberShield) contract.
+RESOLUTION 2024-Q4-03: The Board approved the CTO's vendor management strategy and authorized the CTO to proceed with contract renewal discussions for the Gamma (Sentinel Cyber) contract.
 
 6. RISK COMMITTEE REPORT
 
@@ -124,7 +124,7 @@ The Risk Committee Chairman (Director Kumar) presented the quarterly risk assess
 5. Technology obsolescence (Risk Level: LOW — unchanged)
 
 6.2 Mitigation Actions:
-- Cybersecurity: Enhanced SOC capabilities through CyberShield contract. Quarterly penetration testing. Employee security awareness program refreshed.
+- Cybersecurity: Enhanced SOC capabilities through Sentinel Cyber contract. Quarterly penetration testing. Employee security awareness program refreshed.
 - Regulatory: Legal team monitoring EU AI Act and ASEAN data protection developments. Privacy Impact Assessments completed for all cross-border data flows.
 - Personnel: Competitive compensation review completed. Enhanced benefits package effective Q1 2025. Succession planning for key roles.
 - Vendor: Annual vendor assessments completed. Business continuity plans tested for all critical vendor services.

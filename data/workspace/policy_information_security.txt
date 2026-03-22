@@ -8,11 +8,11 @@ Classification: INTERNAL — RESTRICTED
 
 1. PURPOSE AND SCOPE
 
-1.1 This Information Security Policy ("Policy") establishes the principles, standards, and requirements for protecting TechVentures Pte Ltd's information assets against unauthorized access, disclosure, modification, destruction, or disruption.
+1.1 This Information Security Policy ("Policy") establishes the principles, standards, and requirements for protecting Meridian Pacific Pte Ltd's information assets against unauthorized access, disclosure, modification, destruction, or disruption.
 
-1.2 This Policy applies to all employees, contractors, consultants, temporary workers, and other personnel ("Users") who access, process, store, or transmit TechVentures information, regardless of location or device used.
+1.2 This Policy applies to all employees, contractors, consultants, temporary workers, and other personnel ("Users") who access, process, store, or transmit Meridian Pacific information, regardless of location or device used.
 
-1.3 This Policy also applies to all third-party service providers and vendors who process, store, or have access to TechVentures information, as referenced in the Master Service Agreement (MSA-2023-001) and individual Service Agreements.
+1.3 This Policy also applies to all third-party service providers and vendors who process, store, or have access to Meridian Pacific information, as referenced in the Master Service Agreement (MSA-2023-001) and individual Service Agreements.
 
 2. INFORMATION CLASSIFICATION
 
@@ -20,7 +20,7 @@ Classification: INTERNAL — RESTRICTED
 
 (a) PUBLIC: Information intended for public disclosure. No restrictions on access or distribution.
 
-(b) INTERNAL: Information intended for internal use only. Access limited to TechVentures employees and authorized contractors.
+(b) INTERNAL: Information intended for internal use only. Access limited to Meridian Pacific employees and authorized contractors.
 
 (c) CONFIDENTIAL: Sensitive business information. Access restricted to authorized personnel with a legitimate business need. Examples: financial reports, business plans, customer lists, vendor contracts, employee records.
 

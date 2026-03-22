@@ -1,11 +1,11 @@
 MUTUAL NON-DISCLOSURE AGREEMENT
-NDA ID: NDA-2023-002
+NDA ID: NDA-2023-001
 Date: 2023-10-01
 
 PARTIES:
-Disclosing/Receiving Party 1: TechVentures Pte Ltd ("TechVentures"), a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
+Disclosing/Receiving Party 1: Meridian Pacific Pte Ltd ("Meridian Pacific"), a company incorporated under the laws of Singapore, with its registered office at 1 Raffles Place, #20-01, One Raffles Place Tower 2, Singapore 048616.
 
-Disclosing/Receiving Party 2: DeepMind Analytics Ltd ("Vendor"), with its principal place of business as set forth in the applicable Service Agreement.
+Disclosing/Receiving Party 2: Cumulus Infra Inc ("Vendor"), with its principal place of business as set forth in the applicable Service Agreement.
 
 (Each a "Party" and collectively the "Parties")
 
@@ -86,12 +86,12 @@ NOW, THEREFORE, in consideration of the mutual covenants and agreements containe
 
 SIGNATURES:
 
-TechVentures Pte Ltd
+Meridian Pacific Pte Ltd
 Name: ____________________
 Title: ____________________
 Date: 2023-10-01
 
-DeepMind Analytics Ltd
+Cumulus Infra Inc
 Name: ____________________
 Title: ____________________
 Date: 2023-10-01
