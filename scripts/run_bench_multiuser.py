@@ -23,6 +23,7 @@ import asyncio
 import json
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -37,7 +38,7 @@ RESULTS_DIR = ROOT / "results"
 CONTEXTPILOT_URL = "http://localhost:8765"
 BASELINE_URL = "http://localhost:30000"
 
-MODEL_ID = "Qwen3-4B-Instruct-2507"
+MODEL_ID = "Qwen/Qwen3-4B-Instruct-2507"
 
 # ── OpenClaw detection ───────────────────────────────────────────────
 
@@ -115,6 +116,114 @@ def _get_proxy_ttft_last(n: int, base_url: str = CONTEXTPILOT_URL) -> list[float
         return []
 
 
+def _get_proxy_stats(base_url: str = CONTEXTPILOT_URL) -> dict:
+    """Get full proxy stats including cache info."""
+    try:
+        import urllib.request
+        resp = urllib.request.urlopen(f"{base_url}/metrics/ttft", timeout=3)
+        return json.loads(resp.read())
+    except Exception:
+        return {}
+
+
+def _reset_proxy_stats(base_url: str = CONTEXTPILOT_URL) -> bool:
+    """Reset proxy TTFT stats before a run."""
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            f"{base_url}/metrics/ttft/reset", method="POST")
+        urllib.request.urlopen(req, timeout=3)
+        return True
+    except Exception:
+        return False
+
+
+# ── SGLang prefix cache metrics ───────────────────────────────────────
+
+_PREFILL_RE = re.compile(
+    r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\].*'
+    r'Prefill batch.*#new-token:\s*(\d+).*#cached-token:\s*(\d+)'
+)
+
+
+def _parse_sglang_prefills(container_name: str = "cp-bench",
+                            since_minutes: int = 30) -> list[dict]:
+    """Parse ALL prefill batch lines from SGLang docker logs.
+
+    Returns a list of dicts: {timestamp, new_tokens, cached_tokens}.
+    """
+    try:
+        result = subprocess.run(
+            ["docker", "logs", container_name, "--since", f"{since_minutes}m"],
+            capture_output=True, text=True, timeout=10
+        )
+        logs = result.stderr + result.stdout
+    except Exception:
+        return []
+
+    prefills = []
+    for line in logs.splitlines():
+        match = _PREFILL_RE.search(line)
+        if match:
+            prefills.append({
+                "timestamp": match.group(1),
+                "new_tokens": int(match.group(2)),
+                "cached_tokens": int(match.group(3)),
+            })
+    return prefills
+
+
+def _get_sglang_cache_stats_between(start_ts: str, end_ts: str,
+                                     container_name: str = "cp-bench") -> dict:
+    """Get SGLang prefix cache stats between two ISO timestamps.
+
+    Filters prefill batches by their log timestamp so CP and baseline
+    measurements don't contaminate each other.
+    """
+    prefills = _parse_sglang_prefills(container_name, since_minutes=30)
+    if not prefills:
+        return {}
+
+    # Filter by time range (format: "2026-03-22 12:45:00")
+    # Convert ISO timestamps to the log format for comparison
+    start_cmp = start_ts.replace("T", " ")[:19]
+    end_cmp = end_ts.replace("T", " ")[:19]
+
+    total_new = 0
+    total_cached = 0
+    prefill_count = 0
+
+    for p in prefills:
+        if start_cmp <= p["timestamp"] <= end_cmp:
+            total_new += p["new_tokens"]
+            total_cached += p["cached_tokens"]
+            prefill_count += 1
+
+    if total_new + total_cached == 0:
+        return {
+            "total_new_tokens": 0,
+            "total_cached_tokens": 0,
+            "prefill_count": 0,
+            "cache_hit_rate": 0.0,
+        }
+
+    cache_hit_rate = (total_cached / (total_new + total_cached)) * 100
+
+    return {
+        "total_new_tokens": total_new,
+        "total_cached_tokens": total_cached,
+        "prefill_count": prefill_count,
+        "cache_hit_rate": round(cache_hit_rate, 1),
+    }
+
+
+def _get_sglang_cache_stats_since(start_ts: str,
+                                   container_name: str = "cp-bench") -> dict:
+    """Get SGLang prefix cache stats from start_ts until now."""
+    end_ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    return _get_sglang_cache_stats_between(start_ts, end_ts, container_name)
+
+
 def check_service_running(url: str) -> bool:
     try:
         import urllib.request
@@ -127,6 +236,57 @@ def check_service_running(url: str) -> bool:
     except Exception:
         # Connection refused, timeout, etc. — not running
         return False
+
+
+def _get_cp_proxy_log(container_name: str = "cp-bench",
+                       log_path: str = "/tmp/cp_proxy.log") -> str:
+    """Read the CP proxy log file from the container."""
+    try:
+        result = subprocess.run(
+            ["docker", "exec", container_name, "cat", log_path],
+            capture_output=True, text=True, timeout=10
+        )
+        return result.stdout
+    except Exception:
+        return ""
+
+
+def _parse_cp_intercept_summary(log_text: str, start_ts: str) -> dict:
+    """Parse CP proxy intercept log lines after start_ts.
+
+    Returns summary: {reordered, deduped, slimmed, prefix_matches,
+                      prefix_mismatches, chars_saved}
+    """
+    start_cmp = start_ts.replace("T", " ")[:19]
+    summary = {
+        "reordered": 0, "deduped": 0, "slimmed": 0,
+        "prefix_matches": 0, "prefix_mismatches": 0,
+        "chars_saved": 0, "intercept_calls": 0,
+    }
+    ts_re = re.compile(r'^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})')
+
+    for line in log_text.splitlines():
+        m = ts_re.match(line)
+        if not m or m.group(1) < start_cmp:
+            continue
+        if "Intercept:" not in line and "Intercept (" not in line:
+            continue
+        summary["intercept_calls"] += 1
+        if "prefix MATCH" in line.upper() or "prefix[:":
+            if "MATCH" in line:
+                summary["prefix_matches"] += 1
+        if "prefix mismatch" in line.lower() or "PREFIX MISMATCH" in line:
+            summary["prefix_mismatches"] += 1
+        m2 = re.search(r'reordered (\d+), deduped (\d+), slimmed (\d+)', line)
+        if m2:
+            summary["reordered"] += int(m2.group(1))
+            summary["deduped"] += int(m2.group(2))
+            summary["slimmed"] += int(m2.group(3))
+        m3 = re.search(r'saved (\d+) chars', line)
+        if m3:
+            summary["chars_saved"] += int(m3.group(1))
+
+    return summary
 
 
 # ── Profile setup ────────────────────────────────────────────────────
@@ -165,13 +325,15 @@ def _make_openclaw_config(profile_dir: pathlib.Path, mode: str) -> dict:
         },
         "agents": {
             "defaults": {
-                "model": {"primary": f"{provider_name}/{MODEL_ID}"}
-            }
-        },
-        "tools": {
-            "memorySearch": {
-                "enabled": True,
-                "extraPaths": [str(DOCS_DIR)],
+                "model": {"primary": f"{provider_name}/{MODEL_ID}"},
+                "memorySearch": {
+                    "enabled": True,
+                    "extraPaths": [str(DOCS_DIR)],
+                    "chunking": {
+                        "tokens": 3000,
+                        "overlap": 0,
+                    },
+                }
             }
         },
     }
@@ -189,10 +351,109 @@ def setup_profile(mode: str) -> pathlib.Path:
     return profile_dir
 
 
+async def warmup_memory_index(profile_dir: pathlib.Path, mode: str,
+                               timeout: int = 120):
+    """Run a dummy memory_search to ensure the embedding index is built.
+
+    The first memory_search against a fresh profile triggers async index
+    building and returns empty results.  A second query after a short
+    pause confirms the index is ready.
+    """
+    node_bin = get_node_path()
+    oc_bin = find_openclaw_bin()
+    if not node_bin or not oc_bin:
+        print("  WARNING: Cannot warm up memory index (node/openclaw not found)")
+        return
+
+    session_id = f"warmup-{mode}-{int(time.time())}"
+    prompt = "Use memory_search to find information about monitor lizards."
+
+    if str(oc_bin).endswith(".mjs"):
+        cmd = [node_bin, str(oc_bin), "agent",
+               "--session-id", session_id, "--message", prompt]
+    else:
+        cmd = [str(oc_bin), "agent",
+               "--session-id", session_id, "--message", prompt]
+
+    env = {
+        **os.environ,
+        "NODE_NO_WARNINGS": "1",
+        "OPENCLAW_LOG_LEVEL": "warn",
+        "OPENCLAW_STATE_DIR": str(profile_dir),
+    }
+
+    print(f"  Warming up memory index for {mode} profile...")
+    start = time.time()
+    try:
+        proc = await asyncio.create_subprocess_exec(
+            *cmd,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            env=env,
+        )
+        await asyncio.wait_for(proc.communicate(), timeout=timeout)
+    except Exception as e:
+        print(f"  WARNING: Warmup failed: {e}")
+        return
+
+    elapsed = time.time() - start
+    print(f"  Memory index warm-up done ({elapsed:.1f}s)")
+
+
+# ── Document extraction from session ─────────────────────────────────
+
+def _extract_fetched_docs(profile_dir: pathlib.Path, session_id: str) -> tuple[list[str], int]:
+    """Extract document filenames and total char count from LAST memory_search result.
+
+    Returns (doc_filenames, total_result_chars).
+    """
+    session_file = profile_dir / "agents" / "main" / "sessions" / f"{session_id}.jsonl"
+    if not session_file.exists():
+        return [], 0
+
+    # Get the last toolResult message (most recent memory_search)
+    last_result_text = None
+    try:
+        for line in session_file.read_text().splitlines():
+            if not line.strip():
+                continue
+            entry = json.loads(line)
+            if entry.get("type") != "message":
+                continue
+            msg = entry.get("message", {})
+            # OpenClaw uses role="toolResult" for tool results
+            if msg.get("role") == "toolResult":
+                content = msg.get("content", [])
+                if isinstance(content, list):
+                    for block in content:
+                        if isinstance(block, dict) and block.get("type") == "text":
+                            result_text = block.get("text", "")
+                            if isinstance(result_text, str) and ".md" in result_text:
+                                last_result_text = result_text
+    except Exception:
+        pass
+
+    if not last_result_text:
+        return [], 0
+
+    total_chars = len(last_result_text)
+
+    # Extract .md filenames from the last result
+    docs = re.findall(r'([a-z0-9-]+\.md)', last_result_text)
+    # Dedupe while preserving order
+    seen = set()
+    unique = []
+    for d in docs:
+        if d not in seen:
+            seen.add(d)
+            unique.append(d)
+    return unique, total_chars
+
+
 # ── Result builders ──────────────────────────────────────────────────
 
 def _build_result(task, returncode, stdout, stderr, elapsed,
-                  prompt_length=None):
+                  prompt_length=None, fetched_docs=None):
     r = {
         "task_id": task["id"],
         "task_name": task["name"],
@@ -209,6 +470,8 @@ def _build_result(task, returncode, stdout, stderr, elapsed,
     }
     if prompt_length:
         r["prompt_length"] = prompt_length
+    if fetched_docs is not None:
+        r["fetched_documents"] = fetched_docs
     return r
 
 
@@ -293,9 +556,16 @@ async def run_task_openclaw(task: dict, session_id: str,
         stdout = stdout_bytes.decode("utf-8", errors="replace")
         stderr = stderr_bytes.decode("utf-8", errors="replace")
 
-        return _build_result(task, proc.returncode, stdout, stderr,
-                             time.time() - start_time,
-                             prompt_length=len(prompt))
+        # Extract fetched documents from session
+        fetched_docs, result_chars = _extract_fetched_docs(
+            profile_dir, session_id)
+
+        r = _build_result(task, proc.returncode, stdout, stderr,
+                          time.time() - start_time,
+                          prompt_length=len(prompt),
+                          fetched_docs=fetched_docs)
+        r["fetched_result_chars"] = result_chars
+        return r
     except FileNotFoundError as e:
         return _error_result(task, str(e))
 
@@ -366,6 +636,15 @@ async def run_user_tasks(user_id: str, tasks: list[dict],
             ttft_str = f", TTFT={result['proxy_ttft_first_ms']:.0f}ms"
         print(f"  {tag} {status} ({result['elapsed_seconds']}s{ttft_str})")
 
+        # Debug: show expected vs fetched docs, sizes, LLM calls
+        expected_docs = task.get("expected_documents", [])
+        fetched_docs = result.get("fetched_documents", [])
+        result_chars = result.get("fetched_result_chars", 0)
+        llm_calls = result.get("proxy_llm_calls", "?")
+        print(f"         Expected: {expected_docs}")
+        print(f"         Fetched:  {fetched_docs} ({result_chars:,} chars)")
+        print(f"         LLM calls: {llm_calls}")
+
         results.append(result)
 
     return results
@@ -404,11 +683,21 @@ async def run_mode(tasks: list[dict], mode: str,
             if not check_service_running(CONTEXTPILOT_URL):
                 print(f"WARNING: ContextPilot proxy not reachable at "
                       f"{CONTEXTPILOT_URL}/health")
+            # Reset proxy stats for clean measurement
+            _reset_proxy_stats()
+            print("  (Reset CP proxy stats)")
         else:
             # For baseline, check SGLang directly
             if not check_service_running(BASELINE_URL):
                 print(f"WARNING: Baseline SGLang not reachable at "
                       f"{BASELINE_URL}/health")
+
+    # Warm up memory index so first-turn queries don't return empty
+    if not dry_run:
+        await warmup_memory_index(profile_dir, mode)
+
+    # Record start timestamp for clean SGLang stats
+    mode_start_ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
     # Launch all users concurrently
     coros = [
@@ -417,6 +706,9 @@ async def run_mode(tasks: list[dict], mode: str,
         for user_id, user_tasks in sorted(by_user.items())
     ]
     all_user_results = await asyncio.gather(*coros)
+
+    # Record end timestamp
+    mode_end_ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
     # Organize results
     results_by_user = {}
@@ -428,6 +720,47 @@ async def run_mode(tasks: list[dict], mode: str,
 
     # Compute metrics
     metrics = _compute_metrics(all_results, mode)
+
+    # Print CP proxy stats summary
+    if mode == "cp" and not dry_run:
+        proxy_stats = _get_proxy_stats()
+        if proxy_stats:
+            print(f"\n  ContextPilot Proxy Stats:")
+            print(f"    Total LLM calls: {proxy_stats.get('count', 0)}")
+            print(f"    Avg TTFT: {proxy_stats.get('avg_ms', 0):.0f}ms")
+            print(f"    Chars saved (dedup): {proxy_stats.get('total_chars_saved', 0)}")
+            metrics["proxy_total_chars_saved"] = proxy_stats.get(
+                "total_chars_saved", 0)
+
+        # Show CP intercept summary (reorder/dedup/prefix activity)
+        cp_log = _get_cp_proxy_log()
+        if cp_log:
+            cp_summary = _parse_cp_intercept_summary(cp_log, mode_start_ts)
+            if cp_summary["intercept_calls"] > 0:
+                print(f"\n  ContextPilot Intercept Activity:")
+                print(f"    Intercept calls: {cp_summary['intercept_calls']}")
+                print(f"    Prefix matches: {cp_summary['prefix_matches']}")
+                print(f"    Prefix mismatches: {cp_summary['prefix_mismatches']}")
+                print(f"    Reordered: {cp_summary['reordered']}")
+                print(f"    Deduped: {cp_summary['deduped']}")
+                print(f"    Slimmed: {cp_summary['slimmed']}")
+                print(f"    Chars saved: {cp_summary['chars_saved']}")
+                metrics["cp_intercept"] = cp_summary
+
+    # Collect SGLang prefix cache stats (filtered to THIS mode's timeframe)
+    if not dry_run:
+        cache_stats = _get_sglang_cache_stats_between(
+            mode_start_ts, mode_end_ts)
+        if cache_stats and cache_stats.get("prefill_count", 0) > 0:
+            print(f"\n  SGLang Prefix Cache Stats ({mode_start_ts} → {mode_end_ts}):")
+            print(f"    Prefill batches: {cache_stats['prefill_count']}")
+            print(f"    New tokens: {cache_stats['total_new_tokens']:,}")
+            print(f"    Cached tokens: {cache_stats['total_cached_tokens']:,}")
+            print(f"    Cache hit rate: {cache_stats['cache_hit_rate']:.1f}%")
+            metrics["sglang_prefill_count"] = cache_stats["prefill_count"]
+            metrics["sglang_new_tokens"] = cache_stats["total_new_tokens"]
+            metrics["sglang_cached_tokens"] = cache_stats["total_cached_tokens"]
+            metrics["sglang_cache_hit_rate"] = cache_stats["cache_hit_rate"]
 
     return {
         "mode": mode,
@@ -495,6 +828,14 @@ def compute_comparison(cp_metrics: dict, bl_metrics: dict) -> dict:
     if cp_ttft is not None:
         comparison["cp_avg_ttft_ms"] = cp_ttft
 
+    # SGLang prefix cache comparison
+    cp_cache_rate = cp_metrics.get("sglang_cache_hit_rate")
+    bl_cache_rate = bl_metrics.get("sglang_cache_hit_rate")
+    if cp_cache_rate is not None:
+        comparison["cp_cache_hit_rate"] = cp_cache_rate
+    if bl_cache_rate is not None:
+        comparison["bl_cache_hit_rate"] = bl_cache_rate
+
     return comparison
 
 
@@ -520,6 +861,10 @@ def print_summary(mode_data: dict):
         print(f"  P50 TTFT: {metrics['p50_ttft_ms']:.0f}ms")
         print(f"  P90 TTFT: {metrics['p90_ttft_ms']:.0f}ms")
         print(f"  LLM calls: {metrics.get('total_llm_calls', 0)}")
+
+    if "sglang_cache_hit_rate" in metrics:
+        print(f"  Prefix cache hit rate: {metrics['sglang_cache_hit_rate']:.1f}%")
+        print(f"  Cached tokens: {metrics.get('sglang_cached_tokens', 0):,}")
 
     # Per-user breakdown
     results_by_user = mode_data.get("results_by_user", {})
@@ -601,6 +946,10 @@ async def async_main(args):
                 print(f"  Total elapsed speedup: {comparison['total_elapsed_speedup']:.2f}x")
             if "cp_avg_ttft_ms" in comparison:
                 print(f"  CP avg TTFT: {comparison['cp_avg_ttft_ms']:.0f}ms")
+            if "cp_cache_hit_rate" in comparison:
+                print(f"  CP prefix cache hit rate: {comparison['cp_cache_hit_rate']:.1f}%")
+            if "bl_cache_hit_rate" in comparison:
+                print(f"  Baseline prefix cache hit rate: {comparison['bl_cache_hit_rate']:.1f}%")
 
     output_path = RESULTS_DIR / f"run_multiuser_{run_id}.json"
     if not args.dry_run:
