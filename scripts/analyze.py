@@ -103,15 +103,17 @@ def analyze(results_path):
     if direct and cp:
         d_rows = [r for r in all_results if r["arm"] == "Direct"]
         c_rows = [r for r in all_results if r["arm"] == "CP"]
-        d_ok = sum(1 for r in d_rows if r.get("output_chars", 0) >= 50)
-        c_ok = sum(1 for r in c_rows if r.get("output_chars", 0) >= 50)
-        print(f"Accuracy (substantive output)")
+        d_ctoks = [r.get("completion_tokens", 0) for r in d_rows]
+        c_ctoks = [r.get("completion_tokens", 0) for r in c_rows]
+        d_avg_ctok = sum(d_ctoks) / len(d_ctoks)
+        c_avg_ctok = sum(c_ctoks) / len(c_ctoks)
+        ctok_delta = (c_avg_ctok - d_avg_ctok) / d_avg_ctok * 100 if d_avg_ctok else 0
+        print(f"Accuracy")
         print(
-            f"  OpenClaw + SGLang                        {d_ok}/{len(d_rows)} ({d_ok / len(d_rows) * 100:.1f}%)"
+            f"  Avg completion tokens: Direct={d_avg_ctok:.0f}, CP={c_avg_ctok:.0f} ({ctok_delta:+.1f}%)"
         )
-        print(
-            f"  OpenClaw + ContextPilot + SGLang          {c_ok}/{len(c_rows)} ({c_ok / len(c_rows) * 100:.1f}%)"
-        )
+        print(f"  (Similar completion tokens = similar output quality)")
+        print(f"  Run with --show-responses to compare actual outputs side by side")
         print()
 
     print("\nPER-TURN BREAKDOWN")
@@ -143,8 +145,43 @@ def analyze(results_path):
                 )
 
 
+def show_responses(results_path):
+    with open(results_path) as f:
+        rows = [json.loads(l) for l in f if l.strip()]
+
+    scenarios = sorted(set(r["name"] for r in rows))
+    for s in scenarios:
+        dr = sorted(
+            [r for r in rows if r["name"] == s and r["arm"] == "Direct"],
+            key=lambda x: x["turn"],
+        )
+        cr = sorted(
+            [r for r in rows if r["name"] == s and r["arm"] == "CP"],
+            key=lambda x: x["turn"],
+        )
+        print(f"\n{'=' * 80}")
+        print(f"{s}")
+        print(f"{'=' * 80}")
+        for d, c in zip(dr, cr):
+            print(f"\n  Turn {d['turn']}:")
+            print(
+                f"    Direct ({d['prompt_tokens']:,} tok): {d.get('content_preview', '')[:150]}"
+            )
+            print(
+                f"    CP     ({c['prompt_tokens']:,} tok): {c.get('content_preview', '')[:150]}"
+            )
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("results_jsonl", help="Path to results.jsonl")
+    parser.add_argument(
+        "--show-responses",
+        action="store_true",
+        help="Show Direct vs CP responses side by side for accuracy comparison",
+    )
     args = parser.parse_args()
-    analyze(args.results_jsonl)
+    if args.show_responses:
+        show_responses(args.results_jsonl)
+    else:
+        analyze(args.results_jsonl)
