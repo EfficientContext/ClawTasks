@@ -18,7 +18,7 @@ ROOT_DIR = Path(__file__).parent.parent
 TASKS_DIR = ROOT_DIR / "claw-tasks"
 WORKSPACE_SRC = ROOT_DIR / "data" / "workspace"
 RESULTS_DIR = ROOT_DIR / "results"
-CATEGORIES = ["commercial", "legal", "compliance", "strategic"]
+CATEGORIES = ["commercial", "legal", "compliance", "strategic", "coding"]
 
 NODE_PATH = os.path.expanduser("~/.nvm/versions/node/v22.22.0/bin/node")
 if not os.path.exists(NODE_PATH):
