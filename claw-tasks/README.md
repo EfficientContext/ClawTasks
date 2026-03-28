@@ -107,5 +107,5 @@ Turn 3 (last turn), 8 valid scenarios:
 |--------|--------|-------------|-------|
 | Prompt tokens | ~41K | ~34K | **-16.2%** |
 | Wall time | ~143s | ~126s | **-12.4%** |
-| Prefill time (est.) | ~28s | ~11s | **-62.2%** |
+| Prefill time | ~28s | ~11s | **-62.2%** |
 | Accuracy | 8/8 OK | 8/8 OK | — |

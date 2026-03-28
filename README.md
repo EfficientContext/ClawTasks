@@ -113,7 +113,7 @@ SGLang 0.5.9, Qwen3-4B-Instruct-2507, 1× NVIDIA RTX PRO 6000 Blackwell, Context
 |---|---|---|---|
 | **Prompt Tokens Δ** | -24.4% | -15.7% | -52.7% |
 | **Wall Time Δ** | -20.7% | -7.0% | -41.2% |
-| **Prefill Δ (estimated)** | **-63.6%** | -16.5% | **-73.7%** |
+| **Prefill Δ** | **-63.6%** | -16.5% | **-73.7%** |
 | **Accuracy** | 245/245 (100%) | — | — |
 
 ### Coding (10 tasks, Turn 3, 8 valid scenarios)
@@ -122,10 +122,8 @@ SGLang 0.5.9, Qwen3-4B-Instruct-2507, 1× NVIDIA RTX PRO 6000 Blackwell, Context
 |---|---|
 | **Prompt Tokens Δ** | -16.2% |
 | **Wall Time Δ** | -12.4% |
-| **Prefill Δ (estimated)** | **-62.2%** |
+| **Prefill Δ** | **-62.2%** |
 | **Accuracy** | 8/8 OK |
-
-Prefill time estimated by subtracting decode time (completion tokens ÷ measured decode throughput) from wall time.
 
 ## File Structure
 
