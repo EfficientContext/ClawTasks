@@ -3,90 +3,90 @@
     "name": "s61_add_validation",
     "turns": [
       "Read codebase/user_service.py and tell me what it does.",
-      "Add email format validation to create_user — reject emails without @ symbol. Output the full updated file.",
-      "Also add password strength validation — minimum 8 characters. Output the full updated file.",
-      "Add rate limiting to the authenticate method — max 5 attempts per email per minute. Output the full updated file."
+      "Add email format validation to create_user — reject emails without @ symbol. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Also add password strength validation — minimum 8 characters. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add rate limiting to the authenticate method — max 5 attempts per email per minute. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s62_add_logging",
     "turns": [
       "Read codebase/user_service.py.",
-      "Add structured logging to every public method — log method name, args, and duration. Output the full updated file.",
-      "Add error logging with stack traces to all exception handlers. Output the full updated file.",
-      "Add audit logging — log who made changes (add an actor_id parameter to update_user and delete_user). Output the full updated file."
+      "Add structured logging to every public method — log method name, args, and duration. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add error logging with stack traces to all exception handlers. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add audit logging — log who made changes (add an actor_id parameter to update_user and delete_user). Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s63_add_pagination",
     "turns": [
       "Read codebase/user_service.py.",
-      "Change list_users to support cursor-based pagination instead of offset-based. Output the full updated file.",
-      "Add sorting support to list_users — sort by name, email, created_at, or updated_at. Output the full updated file.",
-      "Add filtering by date range (created_after, created_before) to list_users. Output the full updated file."
+      "Change list_users to support cursor-based pagination instead of offset-based. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add sorting support to list_users — sort by name, email, created_at, or updated_at. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add filtering by date range (created_after, created_before) to list_users. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s64_add_batch_ops",
     "turns": [
       "Read codebase/user_service.py.",
-      "Add a bulk_create_users method that creates multiple users in a single transaction. Output the full updated file.",
-      "Add a bulk_deactivate method that deactivates a list of user IDs. Output the full updated file.",
-      "Add an export_users method that returns all users as a CSV string. Output the full updated file."
+      "Add a bulk_create_users method that creates multiple users in a single transaction. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a bulk_deactivate method that deactivates a list of user IDs. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add an export_users method that returns all users as a CSV string. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s65_refactor_cache",
     "turns": [
       "Read codebase/user_service.py.",
-      "Refactor the cache to use a proper LRU cache with max size of 1000 entries. Output the full updated file.",
-      "Add cache hit/miss metrics tracking. Output the full updated file.",
-      "Add a cache_warm method that pre-loads the most recently active users into cache. Output the full updated file."
+      "Refactor the cache to use a proper LRU cache with max size of 1000 entries. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add cache hit/miss metrics tracking. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a cache_warm method that pre-loads the most recently active users into cache. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s66_add_permissions",
     "turns": [
       "Read codebase/user_service.py.",
-      "Add a permission system — each role has a set of permissions (read, write, delete, admin). Add a check_permission method. Output the full updated file.",
-      "Add a require_permission decorator that can be applied to methods. Output the full updated file.",
-      "Make delete_user require admin permission and update_user require write permission. Output the full updated file."
+      "Add a permission system — each role has a set of permissions (read, write, delete, admin). Add a check_permission method. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a require_permission decorator that can be applied to methods. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Make delete_user require admin permission and update_user require write permission. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s67_add_hooks",
     "turns": [
       "Read codebase/user_service.py.",
-      "Add pre/post hooks — allow registering callbacks that run before and after create, update, delete operations. Output the full updated file.",
-      "Add a hook that automatically sends a welcome email after user creation. Output the full updated file.",
-      "Add a hook that notifies admins when a user is deactivated. Output the full updated file."
+      "Add pre/post hooks — allow registering callbacks that run before and after create, update, delete operations. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a hook that automatically sends a welcome email after user creation. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a hook that notifies admins when a user is deactivated. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s68_add_soft_delete",
     "turns": [
       "Read codebase/user_service.py.",
-      "Change delete_user to soft delete — set a deleted_at timestamp instead of removing from DB. Output the full updated file.",
-      "Add a restore_user method that reverses a soft delete. Output the full updated file.",
-      "Add a purge_deleted method that permanently removes users soft-deleted more than 30 days ago. Output the full updated file."
+      "Change delete_user to soft delete — set a deleted_at timestamp instead of removing from DB. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a restore_user method that reverses a soft delete. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add a purge_deleted method that permanently removes users soft-deleted more than 30 days ago. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s69_add_sessions",
     "turns": [
       "Read codebase/user_service.py.",
-      "Add session management — create_session returns a session token after authentication. Output the full updated file.",
-      "Add validate_session and revoke_session methods. Output the full updated file.",
-      "Add revoke_all_sessions that invalidates all sessions for a user (useful after password change). Output the full updated file."
+      "Add session management — create_session returns a session token after authentication. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add validate_session and revoke_session methods. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add revoke_all_sessions that invalidates all sessions for a user (useful after password change). Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   },
   {
     "name": "s70_add_api_keys",
     "turns": [
       "Read codebase/user_service.py.",
-      "Add API key management — generate_api_key creates a key for a user with optional scopes. Output the full updated file.",
-      "Add validate_api_key that checks the key and returns the associated user and scopes. Output the full updated file.",
-      "Add revoke_api_key and list_api_keys methods. Output the full updated file."
+      "Add API key management — generate_api_key creates a key for a user with optional scopes. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add validate_api_key that checks the key and returns the associated user and scopes. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response.",
+      "Add revoke_api_key and list_api_keys methods. Do NOT use any file writing tools. Print the complete updated file in a single python code block in your response."
     ]
   }
 ]
