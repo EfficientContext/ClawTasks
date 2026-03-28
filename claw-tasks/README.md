@@ -103,8 +103,9 @@ Multi-turn coding tasks where the agent reads `codebase/user_service.py` (290 li
 
 Turn 3 (last turn), 8 valid scenarios:
 
-| Metric | Direct | ContextPilot | Avg Improvement |
-|--------|--------|-------------|-----------------|
+| Metric | Direct | ContextPilot | Avg Δ |
+|--------|--------|-------------|-------|
 | Prompt tokens | ~41K | ~34K | **-16.2%** |
 | Wall time | ~143s | ~126s | **-12.4%** |
+| Prefill time | ~28s | ~11s | **-62.2%** |
 | Accuracy | 8/8 OK | 8/8 OK | — |
