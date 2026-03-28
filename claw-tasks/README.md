@@ -1,6 +1,6 @@
 # Tasks
 
-60 multi-turn document analysis tasks across 4 categories. Each task has 3-5 turns where a user asks an OpenClaw agent to read and analyze documents from `data/workspace/`.
+70 multi-turn tasks across 5 categories. Document analysis tasks (60) have 3-5 turns where a user asks an OpenClaw agent to read and analyze documents from `data/workspace/`. Coding tasks (10) have 4 turns where the agent iteratively modifies `codebase/user_service.py`, outputting the complete file each turn.
 
 ## [`commercial/`](commercial/) — 10 tasks
 
@@ -81,3 +81,30 @@
 | s58_full_vendor_lifecycle | 5 | Write a full vendor lifecycle report for Security Firm D: proposal → contract → amendment → performance. |
 | s59_vendor_capability_map | 4 | Write a vendor capability matrix and identify areas where we need additional vendor coverage. |
 | s60_executive_dashboard | 4 | Create an executive dashboard showing: contract status, spend, SLA compliance, and overall health fo... |
+
+## [`coding/`](coding/) — 10 tasks
+
+Multi-turn coding tasks where the agent reads `codebase/user_service.py` (290 lines) and iteratively adds features, outputting the complete updated file each turn. Designed to benchmark assistant code block deduplication — each turn's output is ~90% identical to the previous turn.
+
+| Task | Turns | What the user asks |
+|------|-------|--------------------|
+| s61_add_validation | 4 | Read user_service.py. Add email validation, password strength check, and rate limiting to authenticate. |
+| s62_add_logging | 4 | Add structured logging, error logging with stack traces, and audit logging with actor_id. |
+| s63_add_pagination | 4 | Change list_users to cursor-based pagination, add sorting, and date range filtering. |
+| s64_add_batch_ops | 4 | Add bulk_create_users, bulk_deactivate, and export_users (CSV) methods. |
+| s65_refactor_cache | 4 | Refactor to LRU cache (max 1000), add hit/miss metrics, add cache_warm method. |
+| s66_add_permissions | 4 | Add permission system with roles, require_permission decorator, and enforce on delete/update. |
+| s67_add_hooks | 4 | Add pre/post hooks for CRUD, welcome email hook, and admin notification hook. |
+| s68_add_soft_delete | 4 | Change to soft delete, add restore_user, and purge_deleted (30-day retention). |
+| s69_add_sessions | 4 | Add session management: create_session, validate/revoke_session, revoke_all_sessions. |
+| s70_add_api_keys | 4 | Add API key management: generate, validate, revoke, and list API keys with scopes. |
+
+### Benchmark results (SGLang, Qwen3-4B-Instruct-2507, 1x RTX PRO 6000 Blackwell)
+
+Turn 3 (last turn), 8 valid scenarios:
+
+| Metric | Direct | ContextPilot | Avg Improvement |
+|--------|--------|-------------|-----------------|
+| Prompt tokens | ~41K | ~34K | **-16.2%** |
+| Wall time | ~143s | ~126s | **-12.4%** |
+| Accuracy | 8/8 OK | 8/8 OK | — |

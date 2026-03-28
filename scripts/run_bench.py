@@ -18,7 +18,7 @@ ROOT_DIR = Path(__file__).parent.parent
 TASKS_DIR = ROOT_DIR / "claw-tasks"
 WORKSPACE_SRC = ROOT_DIR / "data" / "workspace"
 RESULTS_DIR = ROOT_DIR / "results"
-CATEGORIES = ["commercial", "legal", "compliance", "strategic"]
+CATEGORIES = ["commercial", "legal", "compliance", "strategic", "coding"]
 
 NODE_PATH = os.path.expanduser("~/.nvm/versions/node/v22.22.0/bin/node")
 if not os.path.exists(NODE_PATH):
@@ -26,6 +26,7 @@ if not os.path.exists(NODE_PATH):
 OPENCLAW_PATH = os.path.expanduser("~/openclaw/openclaw.mjs")
 CONFIG_PATH = os.path.expanduser("~/.openclaw/openclaw.json")
 WORKSPACE_DST = Path(os.path.expanduser("~/.openclaw/workspace/contracts"))
+CP_PYTHON = "/mnt/raid0nvme0/sicheng/miniconda3/envs/contextpilot/bin/python"
 
 SGLANG_LOG = "/tmp/sglang_bench.log"
 CP_LOG = "/tmp/cp_bench.log"
@@ -174,7 +175,7 @@ def start_contextpilot():
     global _cp_proc
     kill_cp()
     cmd = [
-        sys.executable,
+        CP_PYTHON,
         "-m",
         "contextpilot.server.http_server",
         "--port",
